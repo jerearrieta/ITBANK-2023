@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+main {
+    display: flex;
+}
+
+header {
+    border-bottom: solid 1px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.sidebar {
+    width: 10%;
+    border-right: solid 1px;
+}
+
+.cont-sidebar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cont-main {
+    padding: 40px;
+    width: 100%;
+}
+
+.usuario {
+    border-bottom: solid 5px;
+}
+
+.p-main {
+    font-size: 30px;
+}
+
+.cuenta {
+    padding: 40px 0 0 0;
+    border-bottom: solid 5px;
+    padding: 35px 0 50px 0;
+}
+
+.caja-main {
+    height: 250px;
+    border-radius: 20px;
+    background-color: #d9d9d9;
+    box-shadow: 5px 5px 10px #a7a7a8;
+}
+
+.actividad {
+    padding: 40px 0 0 0;
+}
+
+.p-main {
+    padding: 0 0 40px 0;
+}
+
+.caja-principal-act {
+    display: flex;
+    flex-direction: column;
+    height: 590px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+}
+
+.p-act {
+    font-size: 30px;
+}
+
+.p-act-sub {
+    font-size: 20px;
+    align-self: flex-end;
+}
+
+.caja-hija-act {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px;
+    padding: 20px;
+}
+
+.caja-hija-act:last-child {
+    border-bottom: none;
+}
+
+.derecha {
+    display: flex;
+    flex-direction: column;
+}
