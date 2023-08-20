@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.conteiner {
+    display: flex;
+}
+
+.izquierda {
+    background-color: #d9d9d9;
+    width: 50%;
+}
+
+.conteiner_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 300px;
+    height: 100px;
+}
+
+.derecha {
+    width: 50%;
+}
+
+.conteiner_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 350px;
+    background-color: #d9d9d9;
+    padding: 30px;
+    margin-top: 100px;
+    border-radius: 20px;
+    height: 500px;
+}
+
+.formulario h4 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.formulario p {
+    font-size: 18px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.hr {
+    height: 25px;
+    background-color: #02568a;
+    border: 0;
+    margin-bottom: 15px;
+}
+
+.controls {
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 0; 
+    height: 44px;
+    font-size: 20px;
+}
+
+.button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    border: 0;
+    background-color: #02568a;
+    color: #ffffff;
+    font-size: 20px;
+    height: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.conteiner-controls {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+}
+
+.conteiner-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 20%;
+}
+
+.button-registro {
+    margin: 50px 0 0 0 ;
+}
+
+.titulo-registro {
+    height: 0;
+    padding: 0 0 60px 0;
+}
+
+
+
+
