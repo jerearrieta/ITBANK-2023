@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     height: 100%;
+    font-family: 'Inter', sans-serif;
 }
 
 .conteiner {
@@ -10,7 +11,7 @@
 }
 
 .izquierda {
-    background-color: #d9d9d9;
+    background-color: #23282D;
     width: 50%;
 }
 
@@ -48,19 +49,17 @@
 }
 
 .formulario h4 {
-    font-size: 25px;
-    margin-bottom: 20px;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
     display: flex;
     justify-content: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .formulario p {
-    font-size: 18px;
-    padding-top: 15px;
+    font-size: 1rem;
+    padding-top: 5px;
     display: flex;
     justify-content: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .hr {
@@ -72,24 +71,38 @@
 
 .controls {
     width: 100%;
-    padding: 15px;
+    padding: 1.3rem;
     border-radius: 15px;
     margin-bottom: 30px;
     border: 0; 
     height: 44px;
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 .button {
     width: 100%;
-    padding: 15px;
+    padding: 1rem;
     border-radius: 20px;
     margin-bottom: 15px;
-    border: 0;
+    border: none;
     background-color: #02568a;
-    color: #ffffff;
-    font-size: 20px;
+    font-size: 1.2rem;
     height: 50px;
+    transition: 1s;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #3a87b7;
+}
+
+.button-link {
+    color: white;
+}
+
+.link:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 a {
