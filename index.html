@@ -16,11 +16,12 @@
 
         <div class="derecha">
             <div class="conteiner_form">
-                <form class="formulario" action="">
+                <form class="formulario" action="/pages/inicio.html" method="post">
                     <h4>Bienvenido al ITBANK</h4>
-                    <input class="controls" type="email" placeholder="ejemplo@gmail.com" required>
-                    <input class="controls" type="password" placeholder="Contraseña" required>
-                    <button class="button"><a href="pages/inicio.html" class="button-link">Ingresar</a></button>
+                    <input class="controls" type="text" placeholder="DNI" pattern="[0-9]+" maxlength="8" required>
+                    <input class="controls" type="text" placeholder="Nombre de usuario" minlength="4" required>
+                    <input class="controls" type="password" placeholder="Contraseña" pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g" required>
+                    <a href="pages/inicio.html" class="button-link"><input type="button" value="Ingresar" class="button"></a>
                     <p class="link">¿Olvidaste tu contraseña?</p>
                     <hr class="hr" />
                     <a href="pages/registro.html"><p class="link">¿No tienes una cuenta? Registrate</p></a>
