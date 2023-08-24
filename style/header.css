@@ -66,3 +66,7 @@ header {
     font-family: Inter;
     font-size: 14px;
 }
+
+#lang-selector:hover {
+    cursor: pointer;
+}
