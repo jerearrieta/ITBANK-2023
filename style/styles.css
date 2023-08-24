@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.sidebar-and-main {
+    display: flex;
+    align-items: flex-start;
+    flex: 1 0 0;
+    align-self: stretch;
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    padding: 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    align-self: stretch;
+
+    background: #F1F1F1;
+}
+
+
