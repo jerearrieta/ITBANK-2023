@@ -37,6 +37,10 @@ ul {
     font-size: 0.8rem;
 }
 
+.lenguaje:hover {
+    cursor: pointer;
+}
+
 main {
     display: flex;
 }
@@ -96,22 +100,29 @@ a {
 .p-main {
     font-size: 1.3rem;
     font-weight: bolder;
-    padding: 0 0 20px 0;
+    padding: 0 0 10px 0;
 }
 
 .caja-main {
-    height: 150px;
+    height: 160px;
     border-radius: 20px;
     background-color: #d9d9d9;
     box-shadow: 5px 5px 10px #a7a7a8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
-.p-caja {
-    font-size: 1.3rem;
-    padding: 0 20px 10px 20px;
+.caja-main-title {
+    font-weight: bolder;
+    font-size: 1.45rem;
+    padding: 2rem 0 1rem 2.5rem;
+}
+
+.caja-main-subtitle {
+    font-size: 1.1rem;
+    padding-left: 2.5rem;
+}
+
+.caja-main-subtitle:last-child {
+    padding-top: 1rem;
 }
 
 .actividad {
@@ -183,6 +194,7 @@ footer {
 
 .link:hover {
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .fa-brands {
