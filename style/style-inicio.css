@@ -10,6 +10,17 @@ header {
     color: white;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex-grow: 1;
+}
+
 .logo {
     width: 13%;
     padding: 0.6rem;

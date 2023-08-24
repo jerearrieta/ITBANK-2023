@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prestamos</title>
     <link rel="stylesheet" href="../style/style-inicio.css">
+    <link rel="stylesheet" href="../style/style.prestamos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1bf2420094.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
     <header>
@@ -28,9 +31,9 @@
         <nav class="sidebar">
             <a href="inicio.html">
                 <div class="cont-sidebar link">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="44" height="44"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="44"
+                        height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
                         <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
@@ -41,9 +44,9 @@
             </a>
             <a href="cuentas.html">
                 <div class="cont-sidebar link">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44"
+                        height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                         <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
@@ -69,9 +72,9 @@
             </a>
             <a href="pagos.html">
                 <div class="cont-sidebar link">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin" width="44" height="44"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin" width="44"
+                        height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                         <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
@@ -96,7 +99,7 @@
                     <p>Prestamos</p>
                 </div>
             </a>
-            <a href="cerrar-sesion.html">
+            <a href="../index.html">
                 <div class="cont-sidebar link">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-door-exit" width="44"
                         height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none"
@@ -111,6 +114,25 @@
                 </div>
             </a>
         </nav>
+
+        <div class="cont-prestamo">
+            <h2>Solicitar prestamos</h2>
+            <div class="caja-prestamo">
+                <form class="form-info" action="">
+                    <input class="inputs" type="text" name="cbu" id="cbu" required placeholder="Moto a solicitar">
+                    <input class="inputs" type="text" name="monto" id="monto" required placeholder="Destino">
+                    <select class="inputs" name="motivo" id="motivo" required>
+                        <option value="" disabled selected>Opcion de cancelacion</option>
+                        <option value="0">Aceptar</option>
+                        <option value="1">Calcelar</option>
+                    </select>
+                </form>
+
+                <div class="boton-prestamo">
+                    <button type="submit">Transferir</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -132,4 +154,5 @@
         </ul>
     </footer>
 </body>
+
 </html>
