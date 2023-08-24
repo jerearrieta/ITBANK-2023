@@ -5,36 +5,9 @@
 }
 
 header {
-    position: fixed;
     background-color: #23282D;
-    padding: 0.5rem;
-    left: 0px;
-    right: 0px;
-    height: 80px;
-}
-
-.Not-link{
-    right: 200px;
-    position: fixed;
-    top: 10px;
     display: flex;
-    color: #fff;
-    border-radius: 0.6rem;
-    border: 1px solid #fff;
-    padding: 0.3rem;
-    width: 6rem;
-    font-size: 0.8rem;
-}
-.At-link{
-    right: 100px;
-    position: fixed;
-    top: 10px;
-    color: #fff;
-    border-radius: 0.6rem;
-    border: 1px solid #fff;
-    padding: 0.2rem;
-    width: 6rem;
-    font-size: 0.8rem;
+    color: white;
 }
 
 body {
@@ -49,13 +22,14 @@ main {
 }
 
 .logo {
-    width: 150px;
+    width: 13%;
     padding: 0.6rem;
 }
 
 .nav {
-    margin-left: auto!important;
+    margin-left: 51rem;
     font-size: 0.8rem;
+    width: 30%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,9 +40,6 @@ ul {
 }
 
 .lenguaje {
-    right: 10px;
-    position: fixed;
-    top: 10px;
     border-radius: 0.6rem;
     border: 1px solid #000;
     background: #FFF;
@@ -86,8 +57,7 @@ main {
 }
 
 .sidebar {
-    margin-top: 80px;
-    width: 200px;
+    width: 15%;
     border-right: solid 1px grey;
     background-color: #23282D;
     color: white;
@@ -104,7 +74,7 @@ main {
 }
 
 .cont-sidebar svg {
-    width: 25px;
+    width: 15%;
     font-weight: bold;
 }
 
@@ -118,8 +88,6 @@ a {
 }
 
 .cont-main {
-    margin-top: 50px;
-    margin-bottom: 0%;
     padding: 40px;
     width: 100%;
 }
@@ -170,7 +138,6 @@ a {
 
 .actividad {
     padding: 40px 0 0 0;
-    min-width: 400px;
 }
 
 .caja-principal-act {
@@ -216,7 +183,7 @@ footer {
 }
 
 .logo-footer {
-    width: 290px;
+    width: 15%;
     padding: 1.5rem;
 }
 
@@ -226,6 +193,7 @@ footer {
     justify-content: space-between;
     width: 100vw;
     margin-left: 15px;
+    padding: 1rem;
 }
 
 .columna-uno > li, .columna-dos > li, .columna-tres > li {
