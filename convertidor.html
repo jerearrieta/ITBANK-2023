@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITBA Homebanking</title>
+
+  <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet" href="style/header.css">
+  <link rel="stylesheet" href="style/sidebar.css">
+  <link rel="stylesheet" href="style/footer.css">
+  <link rel="stylesheet" href="style/convertidor.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="header-sidebar">
+      <a href="inicio.html"><img src="img/white-logo.png" alt="ITBA"></a>
+    </div>
+
+    <div class="header-content">
+      <a href="#">Atencion al cliente</a>
+      <a href="#">Notificaciones</a>
+      <select id="lang-selector">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="sidebar-and-main">
+    <aside>
+      <a href="inicio.html" class="sidebar-option selected">
+        <img class="sidebar-option-icon" src="img/home.png">
+        <p>Inicio</p>
+      </a>
+      <a href="cuentas.html" class="sidebar-option">
+        <img class="sidebar-option-icon" src="img/user.png">
+        <p>Cuentas</p>
+        <div>
+          <img class="sidebar-option-arrow" src="img/arrow-down-white.png">
+        </div>
+      </a>
+      <a href="transferencias.html" class="sidebar-option">
+        <img class="sidebar-option-icon" src="img/transaction.png">
+        <p>Transferencias</p>
+        <div>
+          <img class="sidebar-option-arrow" src="img/arrow-down-white.png">
+        </div>
+      </a>
+      <a href="prestamos.html" class="sidebar-option">
+        <img class="sidebar-option-icon" src="img/personal.png">
+        <p>Prestamos</p>
+        <div>
+          <img class="sidebar-option-arrow" src="img/arrow-down-white.png">
+        </div>
+      </a>
+      <a href="index.html" class="sidebar-option">
+        <img class="sidebar-option-icon" src="img/log-out.png">
+        <p>Cerrar sesion</p>
+      </a>
+    </aside>
+
+    <main>
+      <div class="currency-converter">
+        <h1>Convertidor de monedas</h1>
+        <div class="currency-converter-box">
+          <div class="currency-item-box">
+            <div class="currency-item">
+              <select id="left-currency-selector" class="currency-selector">
+                <option value="usd">USD</option>
+                <option value="arg">ARG</option>
+              </select>
+              <input type="number" id="left-currency-input" class="currency-input">
+            </div>
+            <img class="transfer-icon" src="img/transfer.png" alt="">
+            <div class="currency-item">
+              <select id="right-currency-selector" class="currency-selector">
+                <option value="arg">ARG</option>
+                <option value="usd">USD</option>
+              </select>
+              <input type="number" id="right-currency-input" class="currency-input">
+            </div>
+          </div>
+          <p class="currency-info">1.0 USD = 1.0 ARG (ponele)</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-logo">
+      <a href="inicio.html"><img class="logo" src="img/logo.png" alt="ITBA"></a>
+    </div>
+
+    <div class="footer-info">
+      <div class="contact-info">
+        <p>example@itbank.com</p>
+        <p>11 1234-5678 / 11 1234-5678</p>
+        <p>Domicilio 1234</p>
+      </div>
+      <div class="legal-info">
+        <a href="#">Terminos y condiciones</a>
+        <a href="#">Politicas de privacidad</a>
+        <p>© 2023 ITBANK</p>
+      </div>
+      <div class="social-media">
+        <div>
+          <a href="https://www.facebook.com/"><img class="logo" src="img/facebook.png" alt="ITBA"></a>
+          <a href="https://www.facebook.com/">/itbank</a>
+        </div>
+        <div>
+          <a href="https://www.twitter.com/"><img class="logo" src="img/twitter.png" alt="ITBA"></a>
+          <a href="https://www.twitter.com/">@itbank</a>
+        </div>
+        <div>
+          <a href="https://www.instagram.com/"><img class="logo" src="img/instagram.png" alt="ITBA"></a>
+          <a href="https://www.instagram.com/">@itbank</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

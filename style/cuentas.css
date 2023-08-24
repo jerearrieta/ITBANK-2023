@@ -4,11 +4,8 @@
     font-family: 'Inter', sans-serif;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
+main {
+    padding: 0px;
 }
 
 .cuentas-main-body {
