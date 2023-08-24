@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ITBA Regístrese</title>
     <link rel="stylesheet" href="../style/style-registro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
 <body>
     <main class="conteiner">
@@ -16,15 +19,14 @@
 
         <div class="derecha">
             <div class="conteiner_form">
-                <form class="formulario formulario-registro" action="">
+                <form class="formulario-registro" action="inicio.html" method="post">
                     <div class="conteiner-controls">
                         <h4 class="titulo-registro">Regístrese</h4>
-                        <input class="controls" type="email" placeholder="ejemplo@gmail.com" required>
-                        <input class="controls" type="password" placeholder="Contraseña" required>
+                        <input class="controls" type="text" placeholder="DNI" pattern="[0-9]+" maxlength="8" required>
+                        <input class="controls" type="text" placeholder="Nombre de usuario" minlength="4" required>
+                        <input class="controls" type="password" placeholder="Contraseña" pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g" required>
                     </div>
-                    <div class="conteiner-button">
-                        <button class="button button-registro" type="submit"><a class="button-link" href="inicio.html">Registrarse</a></button>
-                    </div>
+                    <a href="inicio.html" class="button-link"><input type="button" value="Registrarse" class="button button-registro"></a>
                 </form>
             </div>
         </div>

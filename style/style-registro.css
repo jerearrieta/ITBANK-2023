@@ -48,14 +48,13 @@
     height: 500px;
 }
 
-.formulario h4 {
+.formulario h4, .formulario-registro h4 {
     font-size: 1.6rem;
-    margin-bottom: 5px;
     display: flex;
     justify-content: center;
 }
 
-.formulario p {
+.formulario p, .formulario-registro p {
     font-size: 1rem;
     padding-top: 5px;
     display: flex;
@@ -73,7 +72,7 @@
     width: 100%;
     padding: 1.3rem;
     border-radius: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border: 0; 
     height: 44px;
     font-size: 1rem;
@@ -83,12 +82,13 @@
     width: 100%;
     padding: 1rem;
     border-radius: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     border: none;
     background-color: #02568a;
     font-size: 1.2rem;
     height: 50px;
     transition: 1s;
+    color: white;
 }
 
 .button:hover {
@@ -110,6 +110,18 @@ a {
     color: #000000;
 }
 
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 350px;
+    background-color: #d9d9d9;
+    padding: 30px;
+    margin-top: 100px;
+    border-radius: 20px;
+    height: 350px;
+}
+
 .conteiner-controls {
     display: flex;
     flex-direction: column;
@@ -124,12 +136,11 @@ a {
 }
 
 .button-registro {
-    margin: 50px 0 0 0 ;
+    margin: 20px 0 20px 0 ;
 }
 
 .titulo-registro {
-    height: 0;
-    padding: 0 0 60px 0;
+    padding: 1rem;
 }
 
 

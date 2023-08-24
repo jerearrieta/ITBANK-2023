@@ -66,6 +66,10 @@ ul {
     font-size: 0.8rem;
 }
 
+.lenguaje:hover {
+    cursor: pointer;
+}
+
 main {
     display: flex;
 }
@@ -132,10 +136,25 @@ a {
 }
 
 .caja-main {
-    height: 250px;
+    height: 160px;
     border-radius: 20px;
     background-color: #d9d9d9;
     box-shadow: 5px 5px 10px #a7a7a8;
+}
+
+.caja-main-title {
+    font-weight: bolder;
+    font-size: 1.45rem;
+    padding: 2rem 0 1rem 2.5rem;
+}
+
+.caja-main-subtitle {
+    font-size: 1.1rem;
+    padding-left: 2.5rem;
+}
+
+.caja-main-subtitle:last-child {
+    padding-top: 1rem;
 }
 
 .actividad {
@@ -206,6 +225,7 @@ footer {
 
 .link:hover {
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .fa-brands {
