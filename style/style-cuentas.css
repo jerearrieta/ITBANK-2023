@@ -10,6 +10,13 @@ header {
     color: white;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
 .logo {
     width: 13%;
     padding: 0.6rem;
@@ -38,6 +45,7 @@ ul {
 }
 
 main {
+    flex-grow: 1;
     display: flex;
 }
 
@@ -73,85 +81,99 @@ a {
 }
 
 .cont-main {
-    padding: 40px;
+    flex-grow: 1;
     width: 100%;
 }
 
-.usuario {
-    border-bottom: solid 5px #23282D;
-}
-
-.h1-main {
-    font-size: 2rem;
-    font-weight: bolder;
-    padding: 0 0 10px 0;
-}
-
-.cuenta {
-    padding: 40px 0 0 0;
-    border-bottom: solid 5px #23282D;
-    padding: 35px 0 50px 0;
-}
-
-.p-main {
-    font-size: 1.3rem;
-    font-weight: bolder;
-    padding: 0 0 20px 0;
-}
-
-.caja-main {
-    height: 150px;
-    border-radius: 20px;
-    background-color: #d9d9d9;
-    box-shadow: 5px 5px 10px #a7a7a8;
+.cont-cuentas {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    background-color: #d9d9d9;
+    padding: 40px;
 }
 
-.p-caja {
-    font-size: 1.3rem;
-    padding: 0 20px 10px 20px;
+.p-cuentas {
+    font-size: 1rem;
+    padding: 0 0 1rem 0;
 }
 
-.actividad {
-    padding: 40px 0 0 0;
+.p-cuentas2 {
+    font-size: 1.5rem;
+    padding: 0 0 1rem 0;
 }
 
-.caja-principal-act {
+.cont-moneda {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+}
+
+.p-moneda {
+    font-size: 1rem;
+    padding: 0 0 0.5rem 0;
+}
+
+.p-cantidad {
+    font-size: 1.5rem;
+}
+
+.cont-card {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgb(0, 0, 0) 0px 2px 7px -4px;
+    height: 165px;
+    padding: 15px;
+    transition: all 0.5s ease 0s;
+    width: 400px;
+}
+
+.info-card {
     display: flex;
     flex-direction: column;
-    height: 30.5rem;
+    height: 100%;
+}
+
+.top-card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.principal {
     background-color: #d9d9d9;
-    border-radius: 20px;
+    padding: 0.4rem;
+    border-radius: 15px;
 }
 
-.p-act {
-    font-size: 1.1rem;
+.bot-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 100%;
 }
 
-.p-act-sub {
-    font-size: 0.9rem;
-    color: #514f4f;
-    margin-top: 2px;
-}
-
-.caja-hija-act {
+.cont-usd {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid 1px;
-    padding: 20px;
+    width: 100%;
 }
 
-.caja-hija-act:last-child {
-    border-bottom: none;
+.info-total {
+    font-weight: bold;
 }
 
-.derecha {
-    display: flex;
-    flex-direction: column;
+svg {
+    padding: 0 0 0.5rem 0;
 }
+
 
 footer {
     font-size: 0.8rem;
