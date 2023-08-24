@@ -16,7 +16,7 @@
         <ul class="nav">
             <li class="link">Atención al cliente</li>
             <li class="link">Notificaciones</li>
-            <li><select class="lenguaje link">
+            <li><select class="lenguaje">
                 <option>Español</option>
                 <option>English</option>
             </select></li>
@@ -25,65 +25,78 @@
 
     <main>
         <div class="sidebar">
-            <div class="cont-sidebar link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                    <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-                  </svg>
-                  <a href="inicio.html"><p>Inicio</p></a>
-            </div>
-            <div class="cont-sidebar link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                  </svg>
-                  <a href="cuentas.html"><p>Cuentas</p></a>
-            </div>
-            <div class="cont-sidebar link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-transfer-up" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M7 21v-6" />
-                    <path d="M20 6l-3 -3l-3 3" />
-                    <path d="M17 3v18" />
-                    <path d="M10 18l-3 3l-3 -3" />
-                    <path d="M7 3v2" />
-                    <path d="M7 9v2" />
-                  </svg>
-                  <a href="transferencias.html"><p>Transferencias</p></a>
-            </div>
-            <div class="cont-sidebar link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                    <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
-                    <path d="M12 7v10" />
-                  </svg>
-                  <a href="pagos.html"><p>Pagos</p></a>
-            </div>
-            <div class="cont-sidebar link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z" />
-                    <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4" />
-                    <path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z" />
-                    <path d="M3 6v10c0 .888 .772 1.45 2 2" />
-                    <path d="M3 11c0 .888 .772 1.45 2 2" />
-                  </svg>
-                  <a href="prestamos.html"><p>Prestamos</p></a>
-            </div>
-            <div class="cont-sidebar link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-door-exit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M13 12v.01" />
-                    <path d="M3 21h18" />
-                    <path d="M5 21v-16a2 2 0 0 1 2 -2h7.5m2.5 10.5v7.5" />
-                    <path d="M14 7h7m-3 -3l3 3l-3 3" />
-                  </svg>
-                  <a href="cerrar-sesion.html"><p>Cerrar sesion</p></a>
-            </div>
+            <a href="inicio.html">
+                <div class="cont-sidebar link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                    </svg>
+                    <p>Inicio</p>
+                </div>
+            </a>
+            <a href="cuentas.html">
+                <div class="cont-sidebar link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    <p>Cuentas</p>
+                </div>
+            </a>
+            <a href="transferencias.html">
+                <div class="cont-sidebar link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-transfer-up" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M7 21v-6" />
+                        <path d="M20 6l-3 -3l-3 3" />
+                        <path d="M17 3v18" />
+                        <path d="M10 18l-3 3l-3 -3" />
+                        <path d="M7 3v2" />
+                        <path d="M7 9v2" />
+                    </svg>
+                    <p>Transferencias</p>
+                </div>
+            </a>
+            <a href="pagos.html">
+                <div class="cont-sidebar link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                        <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
+                        <path d="M12 7v10" />
+                    </svg>
+                    <p>Pagos</p>
+                </div>
+            </a>
+
+            <a href="prestamos.html">
+                <div class="cont-sidebar link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coins" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z" />
+                        <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4" />
+                        <path d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z" />
+                        <path d="M3 6v10c0 .888 .772 1.45 2 2" />
+                        <path d="M3 11c0 .888 .772 1.45 2 2" />
+                    </svg>
+                    <p>Prestamos</p>
+                </div>
+            </a>
+            <a href="cerrar-sesion.html">
+                <div class="cont-sidebar link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-door-exit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M13 12v.01" />
+                        <path d="M3 21h18" />
+                        <path d="M5 21v-16a2 2 0 0 1 2 -2h7.5m2.5 10.5v7.5" />
+                        <path d="M14 7h7m-3 -3l3 3l-3 3" />
+                    </svg>
+                    <p>Cerrar sesion</p>
+                </div>
+            </a>
         </div>
 
         <div class="cont-main">
@@ -94,9 +107,9 @@
             <div class="cuenta">
                 <p class="p-main">Estado de tu cuenta</p>
                 <div class="caja-main">
-                    <p class=" p-main p-caja">Dinero disponible: </p>
-                    <p class="p-caja">$ 40.000</p>
-                    <p class="p-caja">USD 100</p>
+                    <p class="caja-main-title">Dinero disponible</p>
+                    <p class="caja-main-subtitle">ARS $40.000,63</p>
+                    <p class="caja-main-subtitle">USD $100</p>
                 </div>
             </div>
 
