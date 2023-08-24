@@ -57,5 +57,11 @@ button {
     color: white;
     font-weight: bold;
     margin: 2rem 0 0 0;
+    transition: 1s;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #3a87b7;
 }
 
