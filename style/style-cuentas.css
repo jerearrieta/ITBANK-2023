@@ -4,12 +4,6 @@
     font-family: 'Inter', sans-serif;
 }
 
-header {
-    background-color: #23282D;
-    display: flex;
-    color: white;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -17,70 +11,11 @@ body {
     margin: 0;
 }
 
-.logo {
-    width: 13%;
-    padding: 0.6rem;
-}
-
-.nav {
-    font-size: 0.8rem;
-    width: 30%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 51rem;
-}
-
-ul {
-    list-style: none;
-}
-
-.lenguaje {
-    border-radius: 0.6rem;
-    border: 1px solid #000;
-    background: #FFF;
-    padding: 0.2rem;
-    width: 5.2rem;
-    font-size: 0.8rem;
-}
-
-main {
+.cuentas-main-body {
     flex-grow: 1;
-    display: flex;
 }
 
-.sidebar {
-    width: 15%;
-    border-right: solid 1px grey;
-    background-color: #23282D;
-    color: white;
-    font-size: 0.9rem;
-}
-
-.cont-sidebar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 10px;
-    padding: 0.4rem;
-    transition: 1s;
-}
-
-.cont-sidebar svg {
-    width: 15%;
-    font-weight: bold;
-}
-
-.cont-sidebar:hover {
-    background-color: #02568A;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-
-.cont-main {
+.cuentas-cont-main {
     flex-grow: 1;
     width: 100%;
 }
@@ -147,7 +82,7 @@ a {
 
 .principal {
     background-color: #d9d9d9;
-    padding: 0.4rem;
+    padding: 0.2rem 0.4rem 0 0.4rem;
     border-radius: 15px;
 }
 
@@ -172,41 +107,4 @@ a {
 
 svg {
     padding: 0 0 0.5rem 0;
-}
-
-
-footer {
-    font-size: 0.8rem;
-    display: flex;
-    border-bottom: solid 1px grey;
-    background-color: #d9d9d9;
-    height: 7rem;
-}
-
-.logo-footer {
-    width: 15%;
-    padding: 1.5rem;
-}
-
-.columna-uno, .columna-dos, .columna-tres {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100vw;
-    padding: 1rem;
-    margin-left: 15px;
-}
-
-.columna-uno > li, .columna-dos > li, .columna-tres > li {
-    padding: 0.4rem;
-    display: flex;
-    justify-content: center;
-}
-
-.link:hover {
-    cursor: pointer;
-}
-
-.fa-brands {
-    width: 5%;
 }
