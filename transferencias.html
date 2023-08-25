@@ -75,11 +75,11 @@
       <div class="cont-transf">
         <h1>Transferir dinero</h1>
         <div class="caja-transf">
-          <form class="form-info" action="">
-            <input class="inputs" type="text" name="cbu" id="cbu" required placeholder="Ingresa el CBU, CVU o alias">
-            <input class="inputs" type="number" name="monto" id="monto" required
+          <form id="form-transf" class="form-info" action="">
+            <input class="inputs" type="text" name="cbu" id="cbu" placeholder="Ingresa el CBU, CVU o alias">
+            <input id="monto-transf" class="inputs" type="number" name="monto"
               placeholder="Ingresa el monto a transferir">
-            <select class="inputs" name="motivo" id="motivo" required>
+            <select class="inputs" name="motivo" id="motivo">
               <option value="" disabled selected>Selecciona un motivo</option>
               <option value="0">Factura</option>
               <option value="1">Alquiler</option>
@@ -93,11 +93,12 @@
               <option value="9">Compras en linea</option>
               <option value="10">Otros</option>
             </select>
+            <div class="boton-transf">
+              <button id="boton-transf" type="button">Transferir</button>
+              <span id="span" class="span"></span>
+            </div>
           </form>
 
-          <div class="boton-transf">
-            <button type="submit">Transferir</button>
-          </div>
         </div>
       </div>
     </main>
@@ -135,6 +136,7 @@
       </div>
     </div>
   </footer>
+  <script src="script/transf.js"></script>
 </body>
 
 </html>
