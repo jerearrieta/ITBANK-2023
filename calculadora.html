@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <script src="script/loan-calculator.js"></script>
 </head>
 
 <body>
@@ -72,7 +74,7 @@
         <div class="loan-calculator-box">
           <div class="loan-calculator-field-box">
             <p>Importe</p>
-            <input type="number" id="value-input" class="field">
+            <input type="number" id="amount-input" class="field">
           </div>
           <div class="loan-calculator-field-box">
             <p>Interés</p>
@@ -82,14 +84,14 @@
             <p>Plazo de amortización</p>
             <div class="time-field-box">
               <select id="time-selector" class="time-selector">
-                <option value="arg">Meses</option>
-                <option value="usd">Años</option>
+                <option value="mes">Meses</option>
+                <option value="año">Años</option>
               </select>
               <input type="number" id="time-input" class="time-input">
             </div>
           </div>
           <div class="loan-calculator-button-box">
-            <button class="loan-calculator-button">Calcular</button>
+            <button id="loan-calculator-button" class="loan-calculator-button">Calcular</button>
           </div>
         </div>
       </div>
@@ -99,11 +101,11 @@
         <div class="loan-calculator-box">
           <div class="loan-calculator-field-box">
             <p>Cuota mensual</p>
-            <input type="number" id="monthly-fee" class="field" disabled>
+            <input type="text" id="monthly-payment" class="field" disabled>
           </div>
           <div class="loan-calculator-field-box">
             <p>Total intereses</p>
-            <input type="number" id="total-interest" class="field" disabled>
+            <input type="text" id="total-interest" class="field" disabled>
           </div>
         </div>
       </div>
