@@ -143,6 +143,17 @@ a {
     padding: 1rem;
 }
 
+.span {
+    display: flex;
+    justify-content: center;
+    color: red;
+    margin: 5px 0 0 0;
+}
+
+span {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 
 
 
