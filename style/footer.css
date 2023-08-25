@@ -4,7 +4,6 @@ footer {
     gap: 30px;
     flex: 1 0 0;
     align-self: stretch;
-
     border-top: 1px solid #000;
     background: #D9D9D9;
 }
@@ -16,7 +15,7 @@ footer {
     align-items: flex-start;
 }
 
-.footer-logo .logo {
+.logo {
     width: 150px;
 }
 
@@ -28,6 +27,18 @@ footer {
     align-self: stretch;
 }
 
+.footer-info a, .footer-info p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 0 0;
+    align-self: stretch;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -35,7 +46,6 @@ footer {
     align-items: center;
     flex: 1 0 0;
     align-self: stretch;
-
     border-right: 1px solid #000;
 }
 
@@ -46,7 +56,6 @@ footer {
     align-items: center;
     flex: 1 0 0;
     align-self: stretch;
-
     border-right: 1px solid #000;
     border-left: 1px solid #000;
 }
@@ -59,30 +68,11 @@ footer {
     align-items: flex-start;
     flex: 1 0 0;
     align-self: stretch;
-
     border-left: 1px solid #000;
-}
-
-.footer-info a, .footer-info p {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1 0 0;
-    align-self: stretch;
-
-    color: #000;
-    text-align: center;
-    font-family: Inter;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-decoration: none;
 }
 
 .social-media div {
     display: flex;
-    align-items: center;
     gap: 15px;
     flex: 1 0 0;
 }
@@ -92,11 +82,45 @@ footer {
     height: 24px;
 }
 
-.social-media a {
-    color: #000;
-    font-family: Inter;
+.social-media p {
     font-size: 12px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
+}
+
+@media screen and (max-width: 480px) {
+    footer {
+        width: 100vw;
+    }
+
+    .footer-logo {
+        display: none;
+    }
+
+    .footer-info {
+        flex-direction: column;
+    }
+
+    .footer-info p, .footer-info a {
+        font-size: 0.85rem;
+        margin-bottom: 3px;
+    }
+
+    .contact-info, .legal-info {
+        margin-bottom: 15px;
+    }
+
+    .social-media {
+        flex-direction: row;
+        padding: 1rem 0;
+        width: 100vw;
+    }
+
+    .social-media div {
+        gap: 0;
+        margin: 0 50px;
+    }
+
+    .social-media p {
+        display: none;
+    }
 }
