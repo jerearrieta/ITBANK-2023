@@ -96,8 +96,18 @@
     background-color: #3a87b7;
 }
 
-@media screen and (max-width: 480px) {
+.span {
+    display: flex;
+    justify-content: center;
+    color: red;
+    margin: 5px 0 0 0;
+}
 
+span {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+@media screen and (max-width: 480px) {
     .izquierda {
         display: none;
     }

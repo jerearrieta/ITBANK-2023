@@ -102,6 +102,17 @@ a {
     color: #000000;
 }
 
+.span {
+    display: flex;
+    justify-content: center;
+    color: red;
+    height: 30px;
+}
+
+span {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 @media screen and (max-width: 480px) {
     * {
         overflow: hidden;

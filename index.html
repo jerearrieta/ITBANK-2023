@@ -18,11 +18,14 @@
 
     <div class="derecha">
       <div class="conteiner_form">
-        <form class="formulario" action="inicio.html" method="post">
+        <form id="formulario" class="formulario" action="inicio.html" method="POST">
           <h4>Bienvenido al ITBANK</h4>
-          <input class="controls" type="email" placeholder="ejemplo@gmail.com" required>
-          <input class="controls" type="password" placeholder="Contraseña" required>
-          <a href="inicio.html"><input type="button" value="Ingresar" class="button"></a>
+          <input id="email" class="controls" placeholder="ejemplo@gmail.com">
+          <input id="password" class="controls" type="password" placeholder="Contraseña">
+          <input type="submit" value="Ingresar" class="button">
+          <div class="span">
+            <span id="errorMensaje"></span>
+          </div>
           <p>¿Olvidaste tu contraseña?</p>
           <hr class="hr">
           <a class="registro" href="registro.html">
@@ -32,6 +35,7 @@
       </div>
     </div>
   </main>
+  <script src="script/form-index.js"></script>
 </body>
 
 </html>

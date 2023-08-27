@@ -62,6 +62,13 @@ button:hover {
     background-color: #3a87b7;
 }
 
+.span {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    color: red;
+    padding: 0 0 20px 20px;
+}
+
 @media screen and (max-width: 480px) {
     .cont-transf {
         width: 72vw;
