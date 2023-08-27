@@ -106,7 +106,6 @@ a {
     display: flex;
     justify-content: center;
     color: red;
-    height: 30px;
 }
 
 span {
@@ -152,6 +151,7 @@ span {
     .controls {
         padding: 1.5rem;
     }
+
 }
 
 @media screen and (max-width: 768px) {
