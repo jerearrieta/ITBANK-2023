@@ -1,7 +1,6 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family: 'Inter', sans-serif;
 }
 
 main {
@@ -104,4 +103,24 @@ main {
 
 svg {
     padding: 0 0 0.5rem 0;
+}
+
+@media screen and (max-width: 480px) {
+    .cont-cuentas {
+        width: 86.5vw;
+        padding: 1rem;
+    }
+
+    .cont-moneda {
+        padding: 1rem;
+        gap: 4rem;
+    }
+
+    .cont-card {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 86.5vw;
+    }
 }

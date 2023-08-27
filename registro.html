@@ -23,14 +23,14 @@
         <form id="formulario" class="formulario-registro" action="inicio.html" method="post">
           <div class="conteiner-controls">
             <h4 class="titulo-registro">Regístrese</h4>
-            <input id="dni" class="controls" type="text" placeholder="DNI">
-            <input id="usuario" class="controls" type="text" placeholder="Nombre de usuario">
-            <input id="password" class="controls" type="password" placeholder="Contraseña">
+            <input type="text" id="dni" class="controls" placeholder="DNI" pattern="[0-9]+" maxlength="8" required>
+            <input type="text" id="usuario" class="controls" placeholder="Nombre de usuario" minlength="4" required>
+            <input type="password" id="password" class="controls" placeholder="Contraseña" pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g" required>
           </div>
           <div class="span">
             <span class="span" id="errorMensaje"></span>
           </div>
-          <input type="submit" value="Registrarse" class="button button-registro">
+          <input type="submit" value="Registrarse" class="button">
         </form>
       </div>
     </div>

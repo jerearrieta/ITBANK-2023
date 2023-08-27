@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <script src="script/currency-convertor.js"></script>
 </head>
 
 <body>
@@ -73,21 +75,48 @@
           <div class="currency-item-box">
             <div class="currency-item">
               <select id="left-currency-selector" class="currency-selector">
-                <option value="usd">USD</option>
-                <option value="arg">ARG</option>
+                <option value="0">ARS</option>
+                <option value="1" selected>USD</option>
+                <option value="2">EUR</option>
+                <option value="3">CAD</option>
+                <option value="4">AUD</option>
+                <option value="5">NZD</option>
+                <option value="6">BRL</option>
+                <option value="7">MXN</option>
+                <option value="8">UYU</option>
+                <option value="9">PYG</option>
+                <option value="10">CLP</option>
+                <option value="11">COP</option>
+                <option value="12">BOB</option>
+                <option value="13">JPY</option>
+                <option value="14">GBP</option>
               </select>
-              <input type="number" id="left-currency-input" class="currency-input">
+              <input type="number" id="left-currency-input" class="currency-input" value="1">
             </div>
-            <img class="transfer-icon" src="img/transfer.png" alt="">
+            <img id="exchange-icon" class="transfer-icon" src="img/transfer.png" alt="">
             <div class="currency-item">
               <select id="right-currency-selector" class="currency-selector">
-                <option value="arg">ARG</option>
-                <option value="usd">USD</option>
+                <option value="0">ARS</option>
+                <option value="1">USD</option>
+                <option value="2">EUR</option>
+                <option value="3">CAD</option>
+                <option value="4">AUD</option>
+                <option value="5">NZD</option>
+                <option value="6">BRL</option>
+                <option value="7">MXN</option>
+                <option value="8">UYU</option>
+                <option value="9">PYG</option>
+                <option value="10">CLP</option>
+                <option value="11">COP</option>
+                <option value="12">BOB</option>
+                <option value="13">JPY</option>
+                <option value="14">GBP</option>
               </select>
               <input type="number" id="right-currency-input" class="currency-input">
             </div>
           </div>
-          <p class="currency-info">1.0 USD = 1.0 ARG (ponele)</p>
+          <p id="currency-info-top" class="currency-info"></p>
+          <p id="currency-info-bottom" class="currency-info"></p>
         </div>
       </div>
     </main>
@@ -112,15 +141,15 @@
       <div class="social-media">
         <div>
           <a href="https://www.facebook.com/"><img class="logo" src="img/facebook.png" alt="ITBA"></a>
-          <a href="https://www.facebook.com/">/itbank</a>
+          <a href="https://www.facebook.com/"><p>/itbank</p></a>
         </div>
         <div>
           <a href="https://www.twitter.com/"><img class="logo" src="img/twitter.png" alt="ITBA"></a>
-          <a href="https://www.twitter.com/">@itbank</a>
+          <a href="https://www.twitter.com/"><p>@itbank</p></a>
         </div>
         <div>
           <a href="https://www.instagram.com/"><img class="logo" src="img/instagram.png" alt="ITBA"></a>
-          <a href="https://www.instagram.com/">@itbank</a>
+          <a href="https://www.instagram.com/"><p>@itbank</p></a>
         </div>
       </div>
     </div>

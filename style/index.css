@@ -102,28 +102,6 @@ a {
     color: #000000;
 }
 
-.conteiner-controls {
-    display: flex;
-    flex-direction: column;
-    height: 80%;
-}
-
-.conteiner-button {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 20%;
-}
-
-.button-registro {
-    margin: 50px 0 0 0 ;
-}
-
-.titulo-registro {
-    height: 0;
-    padding: 0 0 60px 0;
-}
-
 .span {
     display: flex;
     justify-content: center;
@@ -133,4 +111,41 @@ a {
 
 span {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+@media screen and (max-width: 480px) {
+    * {
+        overflow: hidden;
+    }
+
+    .izquierda {
+        display: none;
+    }
+
+    .derecha {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #23282D;
+        padding: 1rem;
+    }
+
+    .formulario {
+        padding: 20px;
+        margin-top: 0;
+    }
+
+    .formulario h4 {
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+
+    .formulario p {
+        font-size: 20px;
+        padding-top: 5px;
+    }
+
+    .controls {
+        padding: 1.5rem;
+    }
 }

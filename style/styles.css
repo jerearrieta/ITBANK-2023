@@ -1,6 +1,8 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #000;
 }
 
 .sidebar-and-main {
@@ -22,4 +24,8 @@ main {
     background: #F1F1F1;
 }
 
-
+@media screen and (max-width: 480px) {
+    main {
+        padding: 30px;
+    }
+}
