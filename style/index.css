@@ -102,24 +102,39 @@ a {
     color: #000000;
 }
 
-.conteiner-controls {
-    display: flex;
-    flex-direction: column;
-    height: 80%;
-}
+@media screen and (max-width: 480px) {
+    * {
+        overflow: hidden;
+    }
 
-.conteiner-button {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 20%;
-}
+    .izquierda {
+        display: none;
+    }
 
-.button-registro {
-    margin: 50px 0 0 0 ;
-}
+    .derecha {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #23282D;
+        padding: 1rem;
+    }
 
-.titulo-registro {
-    height: 0;
-    padding: 0 0 60px 0;
+    .formulario {
+        padding: 20px;
+        margin-top: 0;
+    }
+
+    .formulario h4 {
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+
+    .formulario p {
+        font-size: 20px;
+        padding-top: 5px;
+    }
+
+    .controls {
+        padding: 1.5rem;
+    }
 }

@@ -5,7 +5,6 @@ aside {
     align-items: flex-start;
     flex-shrink: 0;
     align-self: stretch;
-
     border-right: 1px solid #000;
     background: #23282D;
 }
@@ -16,14 +15,13 @@ aside {
     align-items: center;
     gap: 20px;
     align-self: stretch;
-
     text-decoration: none;
-    cursor: pointer;
     transition: 0.5s;
 }
 
 .sidebar-option:hover {
     background-color: #02568A;
+    cursor: pointer;
 }
 
 .sidebar-option-icon {
@@ -36,11 +34,8 @@ aside {
 
 .sidebar-option p {
     color: #FFF;
-    font-family: Inter;
     font-size: 14px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
 }
 
 .sidebar-option div {
@@ -52,12 +47,8 @@ aside {
     align-self: stretch;
 }
 
-.sidebar-option.selected{
+.selected {
     background: #02568A;
-}
-
-.sidebar-option.selected .sidebar-option-arrow {
-    transform: rotate(180deg);
 }
 
 .sidebar-option-detail {
@@ -67,7 +58,6 @@ aside {
     align-items: flex-start;
     gap: 5px;
     align-self: stretch;
-
     background: #32373C;
 }
 
@@ -76,17 +66,33 @@ aside {
     padding: 10px 20px;
     align-items: flex-start;
     align-self: stretch;
-
     color: #B4B9BE;
-    font-family: Inter;
     font-size: 14px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
-
-    cursor: pointer;
 }
 
-.sidebar-option-detail p.selected {
+.sidebar-option-detail p, .selected {
     color: #FFF;
+}
+
+@media screen and (max-width: 480px) {
+    aside {
+        width: 3.5rem;
+    }
+
+    .sidebar-option {
+        padding: 1rem;
+    }
+
+    .sidebar-option-icon {
+        width: 30px;
+    }
+
+    .sidebar-option-arrow, .sidebar-option p, .sidebar-option-detail {
+        display: none;
+    }
+
+    .sidebar-option div {
+        height: 3rem;
+    }
 }

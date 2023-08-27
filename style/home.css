@@ -7,8 +7,6 @@
 
 .welcome-user h1 {
     align-self: stretch;
-
-    font-family: Inter;
     font-size: 2rem;
     font-weight: bolder;
     padding-bottom: 10px;
@@ -26,13 +24,8 @@
 
 .account-status-label {
     align-self: stretch;
-
-    color: #000;
-    font-family: Inter;
     font-size: 1.5rem;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
 }
 
 .account-status-box {
@@ -43,31 +36,22 @@
     gap: 10px;
     flex: 1 0 0;
     align-self: stretch;
-
     border-radius: 20px;
     background: #D9D9D9;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .available-money-label {
-    color: #000;
-    font-family: Inter;
     font-size: 1rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
 }
 
 .available-money-pesos {
-    color: #000;
-    font-family: Inter;
     font-size: 1.6rem;
     font-weight: 700;
 }
 
 .available-money-usd {
-    color: #000;
-    font-family: Inter;
     font-size: 1.3rem;
 }
 
@@ -82,13 +66,8 @@
 
 .recent-activity-label {
     align-self: stretch;
-
-    color: #000;
-    font-family: Inter;
     font-size: 1.5rem;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
 }
 
 .recent-activity-box {
@@ -96,7 +75,6 @@
     flex-direction: column;
     align-items: flex-start;
     align-self: stretch;
-
     border-radius: 20px;
     background: #D9D9D9;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -119,44 +97,28 @@
 
 .recent-activity-entry-title {
     flex: 1 0 0;
-
-    color: #000;
-    font-family: Inter;
     font-size: 1.1rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
 }
 
 .recent-activity-entry-value {
-    color: #000;
     text-align: right;
-    font-family: Inter;
     font-size: 1.1rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
 }
 
 .recent-activity-entry-third {
     flex: 1 0 0;
-
     color: #514f4f;
-    font-family: Inter;
     font-size: 0.9rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
 }
 
 .recent-activity-entry-date {
     color: #514f4f;
     text-align: right;
-    font-family: Inter;
     font-size: 0.9rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
 }
 
 main hr {
@@ -166,4 +128,26 @@ main hr {
 main > hr {
     width: 100%;
     border: 1px solid;
+}
+
+@media screen and (max-width: 480px) {
+    .account-status, .recent-activity {
+        padding-top: 20px;
+    }
+
+    .account-status-box, .recent-activity-box {
+        width: 72vw;
+    }
+
+    .recent-activity-entry {
+        padding: 1.3rem;
+    }
+
+    .recent-activity-entry-part {
+        flex-direction: column;
+    }
+
+    .recent-activity-entry-third, .recent-activity-entry-date {
+        margin-left: 11rem;
+    }
 }
