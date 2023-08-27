@@ -47,9 +47,12 @@ aside {
     align-self: stretch;
 }
 
-.selected {
+.sidebar-option.selected {
     background-color: #02568A;
-    width: 100vw;
+}
+
+.sidebar-option.selected .sidebar-option-arrow {
+    transform: rotate(180deg);
 }
 
 .sidebar-option-detail {
@@ -66,18 +69,21 @@ aside {
     display: none;
 }
 
-.sidebar-option-detail p {
+.sidebar-option-detail a {
     display: flex;
     padding: 10px 20px;
     align-items: flex-start;
     align-self: stretch;
-    color: #B4B9BE;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
+
+    color: #B4B9BE;
+    text-decoration: none;
 }
 
-.sidebar-option-detail p, .selected {
+.sidebar-option-detail a.selected {
     color: #FFF;
+    font-weight: 700;
 }
 
 @media screen and (max-width: 480px) {
@@ -107,7 +113,7 @@ aside {
         padding: 2rem 0;
     }
     
-    .sidebar-option-detail p {
+    .sidebar-option-detail a {
         display: none;
     }
 
