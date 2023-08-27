@@ -48,7 +48,8 @@ aside {
 }
 
 .selected {
-    background: #02568A;
+    background-color: #02568A;
+    width: 100vw;
 }
 
 .sidebar-option-detail {
@@ -59,6 +60,10 @@ aside {
     gap: 5px;
     align-self: stretch;
     background: #32373C;
+}
+
+.sidebar-option-detail i {
+    display: none;
 }
 
 .sidebar-option-detail p {
@@ -82,14 +87,50 @@ aside {
 
     .sidebar-option {
         padding: 1rem;
+        width: 100%;
     }
 
     .sidebar-option-icon {
         width: 30px;
     }
 
-    .sidebar-option-arrow, .sidebar-option p, .sidebar-option-detail {
+    .sidebar-option-arrow, .sidebar-option p {
         display: none;
+    }
+
+    .sidebar-option-detail {
+        padding: 0 1rem;
+    }
+
+    .sidebar-option-detail i {
+        display: inline;
+        padding: 2rem 0;
+    }
+    
+    .sidebar-option-detail p {
+        display: none;
+    }
+
+    .sidebar-option div {
+        height: 3rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    aside {
+        width: 13.5rem;
+    }
+
+    .sidebar-option {
+        width: 100%;
+    }
+
+    .sidebar-option-icon {
+        width: 30px;
+    }
+
+    .sidebar-option p {
+        font-size: 0.8rem;
     }
 
     .sidebar-option div {

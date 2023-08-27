@@ -72,8 +72,12 @@ label {
 }
 
 @media screen and (max-width: 480px) {
+    main {
+        width: 80%;
+    }
+
     .cont-prestamo {
-        width: 72vw;
+        width: 100%;
     }
 
     h1 {
@@ -82,6 +86,36 @@ label {
 
     .caja-prestamo {
         padding: 1rem;
+        width: 100%;
+    }
+
+    .inputs {
+        margin: 0.6rem;
+    }
+
+    button {
+        width: 250px;
+        height: 3rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    main {
+        width: 60%;
+        padding: 1rem 3rem 0 1.5rem;
+    }
+
+    .cont-prestamo {
+        width: 110%;
+    }
+
+    h1 {
+        font-size: 1.95rem;
+    }
+
+    .caja-prestamo {
+        padding: 1rem;
+        width: 100%;
     }
 
     .inputs {

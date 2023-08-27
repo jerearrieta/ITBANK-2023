@@ -136,7 +136,7 @@ main > hr {
     }
 
     .account-status-box, .recent-activity-box {
-        width: 72vw;
+        width: 100%;
     }
 
     .recent-activity-entry {
@@ -149,5 +149,27 @@ main > hr {
 
     .recent-activity-entry-third, .recent-activity-entry-date {
         margin-left: 11rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    main {
+        width: 60%;
+    }
+
+    .account-status, .recent-activity {
+        padding-top: 20px;
+    }
+
+    .account-status-box, .recent-activity-box {
+        width: 100%;
+    }
+
+    .recent-activity-entry {
+        padding: 1.3rem;
+    }
+
+    .recent-activity-entry-part {
+        flex-direction: column;
     }
 }

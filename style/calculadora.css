@@ -115,8 +115,47 @@ h2 {
 }
 
 @media screen and (max-width: 480px) {
+    main {
+        width: 80%;
+    }
+
     .loan-calculator {
-        width: 72vw;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.95rem;
+    }
+
+    .loan-calculator-box {
+        padding: 1rem;
+    }
+
+    button {
+        width: 250px;
+        height: 3rem;
+    }
+
+    .field {
+        padding: 0.5rem 1rem;
+    }
+
+    .time-selector {
+        padding: 0.3rem;
+    }
+
+    .time-input {
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    main {
+        width: 60%;
+    }
+
+    .loan-calculator {
+        width: 100%;
     }
 
     h1 {

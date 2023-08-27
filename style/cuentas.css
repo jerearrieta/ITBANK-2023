@@ -50,6 +50,7 @@ main {
 
 .cont-card {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 16px;
     margin-top: 18px;
@@ -107,13 +108,13 @@ svg {
 
 @media screen and (max-width: 480px) {
     .cont-cuentas {
-        width: 86.5vw;
+        width: 100%;
         padding: 1rem;
     }
 
     .cont-moneda {
-        padding: 1rem;
-        gap: 4rem;
+        padding: 1.5rem;
+        width: 100%;
     }
 
     .cont-card {
@@ -121,6 +122,26 @@ svg {
     }
 
     .card {
-        width: 86.5vw;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .cont-cuentas {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .cont-moneda {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .cont-card {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
     }
 }
