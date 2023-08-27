@@ -144,3 +144,41 @@ span {
         margin: 10px 0 10px 0 ;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .izquierda {
+        display: none;
+    }
+
+    .derecha {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #23282D;
+    }
+
+    .formulario-registro {
+        padding: 20px;
+        margin-top: 0;
+        height: 400px;
+    }
+    
+
+    .formulario-registro h4 {
+        font-size: 30px;
+        margin-bottom: 1rem;
+    }
+
+    .formulario-registro p {
+        font-size: 20px;
+        padding-top: 5px;
+    }
+
+    .controls {
+        padding: 1.5rem;
+    }
+
+    .button {
+        margin: 10px 0 10px 0 ;
+    }
+}

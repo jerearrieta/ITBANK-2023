@@ -65,7 +65,7 @@ header {
 
 @media screen and (max-width: 480px) {
     .header-sidebar {
-        width: 35vw;
+        width: 100%;
         padding: 1rem;
     }
 
@@ -81,5 +81,30 @@ header {
     .header-content select {
         font-size: 0.9rem;
         padding: 0.6rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-sidebar {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .header-sidebar img {
+        width: 20vw;
+    }
+
+    .header-content {
+        padding: 1rem;
+        gap: 4rem;
+    }
+
+    .header-content a {
+        font-size: 0.7rem;
+    }
+
+    .header-content select {
+        font-size: 0.9rem;
+        padding: 0.15rem;
     }
 }

@@ -70,12 +70,41 @@ button:hover {
 }
 
 @media screen and (max-width: 480px) {
+    main {
+        width: 100%;
+    }
+
     .cont-transf {
-        width: 72vw;
+        width: 100%;
     }
 
     .caja-transf {
         padding: 1rem;
+        width: 100%;
+    }
+
+    .inputs {
+        margin: 0.6rem;
+    }
+
+    button {
+        width: 250px;
+        height: 3rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    main {
+        width: 100%;
+    }
+    
+    .cont-transf {
+        width: 100%;
+    }
+
+    .caja-transf {
+        padding: 1rem;
+        width: 100%;
     }
 
     .inputs {

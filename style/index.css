@@ -140,6 +140,51 @@ span {
         margin-bottom: 0;
     }
 
+    .button {
+        height: 10rem;
+    }
+
+    .formulario p {
+        font-size: 20px;
+        padding-top: 5px;
+    }
+
+    .controls {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    * {
+        overflow: hidden;
+    }
+
+    .izquierda {
+        display: none;
+    }
+
+    .derecha {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #23282D;
+        padding: 1rem;
+    }
+
+    .formulario {
+        padding: 20px;
+        margin-top: 0;
+    }
+
+    .formulario h4 {
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+
+    .button {
+        height: 10rem;
+    }
+
     .formulario p {
         font-size: 20px;
         padding-top: 5px;

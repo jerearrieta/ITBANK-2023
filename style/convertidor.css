@@ -88,7 +88,7 @@ h1 {
 
 @media screen and (max-width: 480px) {
     .currency-converter {
-        width: 72vw;
+        width: 100%;
     }
 
     .currency-converter-box {
@@ -97,6 +97,26 @@ h1 {
 
     .currency-item-box {
         flex-direction: column;
+    }
+
+    button {
+        width: 250px;
+        height: 3rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .currency-converter {
+        width: 100%;
+    }
+
+    .currency-converter-box {
+        padding: 1rem;
+    }
+
+    .currency-item-box {
+        width: 100%;
+        flex-wrap: wrap;
     }
 
     button {
