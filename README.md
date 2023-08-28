@@ -1,4 +1,4 @@
-Grupo numero 2
+Grupo 2
 Integrantes del grupo:
 - Gabriel Checchi
 - Camila Gonzalez
