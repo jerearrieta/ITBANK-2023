@@ -107,6 +107,7 @@ footer {
 
     .contact-info, .legal-info {
         margin-bottom: 15px;
+        border: none;
     }
 
     .social-media {
@@ -136,6 +137,7 @@ footer {
 
     .footer-info {
         flex-direction: column;
+        width: 100%;
     }
 
     .footer-info p, .footer-info a {
@@ -145,11 +147,14 @@ footer {
 
     .contact-info, .legal-info {
         margin-bottom: 15px;
+        border: none;
+        width: 100%;
     }
 
     .social-media {
         flex-direction: row;
         padding: 1rem;
+        width: 100%;
     }
 
     .social-media div {
