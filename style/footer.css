@@ -107,12 +107,17 @@ footer {
 
     .contact-info, .legal-info {
         margin-bottom: 15px;
+        border: none;
+    }
+
+    .footer-info a, .footer-info p {
+        flex: none;
     }
 
     .social-media {
         flex-direction: row;
         padding: 1rem 0;
-        width: 100vw;
+        width: 100%;
     }
 
     .social-media div {
@@ -136,6 +141,7 @@ footer {
 
     .footer-info {
         flex-direction: column;
+        width: 100%;
     }
 
     .footer-info p, .footer-info a {
@@ -145,11 +151,18 @@ footer {
 
     .contact-info, .legal-info {
         margin-bottom: 15px;
+        border: none;
+        width: 100%;
+    }
+
+    .footer-info a, .footer-info p {
+        flex: none;
     }
 
     .social-media {
         flex-direction: row;
-        padding: 1rem;
+        padding: 1rem 0;
+        width: 100%;
     }
 
     .social-media div {

@@ -69,6 +69,10 @@ aside {
     display: none;
 }
 
+.sidebar-option-detail p {
+    color: white;
+}
+
 .sidebar-option-detail a {
     display: flex;
     padding: 10px 20px;
@@ -105,15 +109,17 @@ aside {
     }
 
     .sidebar-option-detail {
-        padding: 0 1rem;
+        padding: 0;
     }
 
     .sidebar-option-detail i {
-        display: inline;
-        padding: 2rem 0;
+        display: flex;
+        justify-content: center;
+        padding: 1.5rem 0;
+        width: 100%;
     }
     
-    .sidebar-option-detail a {
+    .sidebar-option-detail p {
         display: none;
     }
 
@@ -124,7 +130,7 @@ aside {
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
     aside {
-        width: 13.5rem;
+        width: 35%;
     }
 
     .sidebar-option {
@@ -133,6 +139,10 @@ aside {
 
     .sidebar-option-icon {
         width: 30px;
+    }
+
+    .sidebar-option-arrow {
+        display: none;
     }
 
     .sidebar-option p {

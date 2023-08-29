@@ -70,10 +70,6 @@ button:hover {
 }
 
 @media screen and (max-width: 480px) {
-    main {
-        width: 100%;
-    }
-
     .cont-transf {
         width: 100%;
     }
@@ -94,10 +90,6 @@ button:hover {
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-    main {
-        width: 100%;
-    }
-    
     .cont-transf {
         width: 100%;
     }

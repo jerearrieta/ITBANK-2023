@@ -24,6 +24,7 @@ header {
 
 .header-sidebar img {
     align-self: stretch;
+    width: 100%;
 }
 
 .header-content {
@@ -69,6 +70,10 @@ header {
         padding: 1rem;
     }
 
+    .header-sidebar img {
+        width: 30vw;
+    }
+
     .header-content {
         padding: 1rem;
         width: 75vw;
@@ -84,23 +89,27 @@ header {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 768px) {
     .header-sidebar {
         width: 100%;
         padding: 1rem;
     }
-
+    
     .header-sidebar img {
         width: 20vw;
     }
-
+    
     .header-content {
         padding: 1rem;
-        gap: 4rem;
+        gap: 2.5rem;
     }
-
+    
     .header-content a {
         font-size: 0.7rem;
+    }
+    
+    .header-content select {
+        border: none;
     }
 
     .header-content select {
