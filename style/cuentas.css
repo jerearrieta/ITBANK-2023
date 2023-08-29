@@ -36,7 +36,7 @@ main {
 .cont-moneda {
     display: flex;
     justify-content: space-between;
-    width: 15%;
+    width: 50%;
 }
 
 .p-moneda {

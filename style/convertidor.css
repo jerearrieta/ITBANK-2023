@@ -99,6 +99,14 @@ h1 {
         flex-direction: column;
     }
 
+    .currency-selector {
+        width: 28%;
+    }
+
+    .currency-input {
+        width: 70%;
+    }
+
     button {
         width: 250px;
         height: 3rem;
@@ -115,8 +123,17 @@ h1 {
     }
 
     .currency-item-box {
-        width: 100%;
-        flex-wrap: wrap;
+        /* width: 100%;
+        flex-wrap: wrap; */
+        flex-direction: column;
+    }
+
+    .currency-selector {
+        width: 28%;
+    }
+
+    .currency-input {
+        width: 70%;
     }
 
     button {

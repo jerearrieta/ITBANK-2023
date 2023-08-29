@@ -110,10 +110,14 @@ footer {
         border: none;
     }
 
+    .footer-info a, .footer-info p {
+        flex: none;
+    }
+
     .social-media {
         flex-direction: row;
         padding: 1rem 0;
-        width: 100vw;
+        width: 100%;
     }
 
     .social-media div {
@@ -151,9 +155,13 @@ footer {
         width: 100%;
     }
 
+    .footer-info a, .footer-info p {
+        flex: none;
+    }
+
     .social-media {
         flex-direction: row;
-        padding: 1rem;
+        padding: 1rem 0;
         width: 100%;
     }
 
