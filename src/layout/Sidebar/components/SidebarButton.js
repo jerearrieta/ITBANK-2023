@@ -1,15 +1,20 @@
-export default function SidebarButton({ icon, alt, has_suboptions, children }) {
+import { NavLink } from "react-router-dom";
+
+export default function SidebarButton({ route, icon, title, children }) {
     return (
-        <a className="sidebar-option">
-            <img className="sidebar-option-icon" src={icon} alt={alt} /><p>{children}</p>
-            {
-                has_suboptions && (
-                    <div>
-                        <img className="sidebar-option-arrow" src="img/arrow-down-white.png" alt="Flecha" />
-                    </div>
-                )
-            }
-        </a>
+        <>
+            <NavLink to={route} className="sidebar-option">
+                <img className="sidebar-option-icon" src={icon} alt={title} /><p>{title}</p>
+                {
+                    children && (
+                        <div>
+                            <img className="sidebar-option-arrow" src="img/arrow-down-white.png" alt="Flecha" />
+                        </div>
+                    )
+                }
+            </NavLink>
+        </>
+
     );
 }
 

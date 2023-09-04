@@ -47,11 +47,11 @@ aside {
     align-self: stretch;
 }
 
-.sidebar-option.selected {
+.sidebar-option.active {
     background-color: #02568A;
 }
 
-.sidebar-option.selected .sidebar-option-arrow {
+.sidebar-option.active .sidebar-option-arrow {
     transform: rotate(180deg);
 }
 
@@ -73,7 +73,7 @@ aside {
     color: white;
 }
 
-.sidebar-option-detail a {
+.sidebar-option-detail button {
     display: flex;
     padding: 10px 20px;
     align-items: flex-start;
@@ -85,7 +85,7 @@ aside {
     text-decoration: none;
 }
 
-.sidebar-option-detail a.selected {
+.sidebar-option-detail button.selected {
     color: #FFF;
     font-weight: 700;
 }

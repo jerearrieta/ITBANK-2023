@@ -1,4 +1,4 @@
-export default function SidebarButton({ children }) {
+export default function SidebarDetailContainer({ children }) {
     return (
         <div class="sidebar-option-detail">
             {children}

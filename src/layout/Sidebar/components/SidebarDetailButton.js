@@ -1,5 +1,7 @@
-export default function SidebarButton({ icon, alt, children }) {
+import { NavLink } from "react-router-dom";
+
+export default function SidebarDetailButton({ route, title }) {
     return (
-        <a><i class="fa-solid fa-money-bill-transfer center" style="color: #ffffff;"></i><p>{children}</p></a>
+        <NavLink to={route}>{title}</NavLink>
     );
 }
