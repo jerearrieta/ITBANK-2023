@@ -6,7 +6,8 @@ import App from './App';
 import Home from './views/Home';
 import Cuentas from './views/Cuentas';
 import Transferencias from './views/Transferencias';
-import Prestamos from './views/Prestamos';
+import Prestamos from './views/Prestamos'; 
+import Login from './views/InicioSesion';
 import Convertidor from './views/Convertidor';
 import Calculadora from './views/Calculadora';
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "prestamos",
         element: <Prestamos />
+      },
+      {
+        path: "login",
+        element: <Login />
       },
       {
         path: "convertidor",
