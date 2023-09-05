@@ -2,12 +2,12 @@ import './style.css';
 
 export default function Convertidor() {
     return (
-        <div class="currency-converter">
+        <div className="currency-converter">
             <h1>Convertidor de monedas</h1>
-            <div class="currency-converter-box">
-                <div class="currency-item-box">
-                    <div class="currency-item">
-                        <select id="left-currency-selector" class="currency-selector">
+            <div className="currency-converter-box">
+                <div className="currency-item-box">
+                    <div className="currency-item">
+                        <select id="left-currency-selector" className="currency-selector">
                             <option value="0">ARS</option>
                             <option value="1" selected>USD</option>
                             <option value="2">EUR</option>
@@ -24,11 +24,11 @@ export default function Convertidor() {
                             <option value="13">JPY</option>
                             <option value="14">GBP</option>
                         </select>
-                        <input type="number" id="left-currency-input" class="currency-input" value="1" />
+                        <input type="number" id="left-currency-input" className="currency-input" value="1" />
                     </div>
-                    <img id="exchange-icon" class="transfer-icon" src="img/transfer.png" alt="" />
-                    <div class="currency-item">
-                        <select id="right-currency-selector" class="currency-selector">
+                    <img id="exchange-icon" className="transfer-icon" src="img/transfer.png" alt="" />
+                    <div className="currency-item">
+                        <select id="right-currency-selector" className="currency-selector">
                             <option value="0">ARS</option>
                             <option value="1">USD</option>
                             <option value="2">EUR</option>
@@ -45,11 +45,11 @@ export default function Convertidor() {
                             <option value="13">JPY</option>
                             <option value="14">GBP</option>
                         </select>
-                        <input type="number" id="right-currency-input" class="currency-input" />
+                        <input type="number" id="right-currency-input" className="currency-input" />
                     </div>
                 </div>
-                <p id="currency-info-top" class="currency-info"></p>
-                <p id="currency-info-bottom" class="currency-info"></p>
+                <p id="currency-info-top" className="currency-info"></p>
+                <p id="currency-info-bottom" className="currency-info"></p>
             </div>
         </div>
     );
