@@ -1,7 +1,9 @@
-import { Offcanvas } from 'react-bootstrap';
-import {ReactComponent as ReactLogo} from '../../assets/x.svg';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Accordion from 'react-bootstrap/Accordion';
+import { ReactComponent as ReactLogo } from '../../assets/x.svg';
 
 import SidebarButton from './components/SidebarButton';
+import SidebarDetailButton from './components/SidebarDetailButton';
 
 import './style.css';
 
@@ -15,16 +17,19 @@ export default function Sidebar({ sidebarShown, setSidebarShown }) {
                 </header>
 
                 <nav className='sidebar-body'>
-                    <SidebarButton route="" icon="img/home.png" title="Home" />
-                    <SidebarButton route="cuentas" icon="img/user.png" title="Cuentas">
-                        a
-                    </SidebarButton>
-                    <SidebarButton route="transferencias" icon="img/transaction.png" title="Transferencias">
-                        a
-                    </SidebarButton>
-                    <SidebarButton route="prestamos" icon="img/personal.png" title="Prestamos">
-                        a
-                    </SidebarButton>
+                    <Accordion>
+                        <SidebarButton route="" icon="img/home.png" title="Home" />
+                        <SidebarButton route="cuentas" icon="img/user.png" title="Cuentas" eventKey="0">
+                            <SidebarDetailButton route="cuentas" title="Cuentas" />
+                        </SidebarButton>
+                        <SidebarButton route="transferencias" icon="img/transaction.png" title="Transferencias" eventKey="1">
+                            a
+                        </SidebarButton>
+                        <SidebarButton route="prestamos" icon="img/personal.png" title="Prestamos" eventKey="2">
+                            a
+                        </SidebarButton>
+                    </Accordion>
+
                     <SidebarButton route="logout" icon="img/log-out.png" title="Cerrar Sesion" />
                 </nav>
             </aside>

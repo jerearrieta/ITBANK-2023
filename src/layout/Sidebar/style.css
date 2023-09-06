@@ -21,6 +21,18 @@ aside {
     flex: 1;
 }
 
+.sidebar-card {
+    display: flex;
+    padding: 0;
+    align-items: center;
+    gap: 20px;
+    align-self: stretch;
+    text-decoration: none;
+    transition: 0.5s;
+    border: 0;
+    border-radius: 0;
+}
+
 .sidebar-option {
     display: flex;
     padding: 12px;
@@ -86,7 +98,7 @@ aside {
     color: white;
 }
 
-.sidebar-option-detail button {
+.sidebar-option-detail-button {
     display: flex;
     padding: 10px 20px;
     align-items: flex-start;
@@ -98,7 +110,7 @@ aside {
     text-decoration: none;
 }
 
-.sidebar-option-detail button.selected {
+.sidebar-option-detail-button.active {
     color: #FFF;
     font-weight: 700;
 }
