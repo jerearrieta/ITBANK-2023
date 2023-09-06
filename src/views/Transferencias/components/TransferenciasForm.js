@@ -1,7 +1,7 @@
 import "./TransferenciasForm.css";
-import CampoTexto from "../CampoTexto/CampoTexto";
-import ListaOpcion from "../Lista-opcion/Lista-opcion";
-import Boton from "../Boton/Boton";
+import CampoTexto from "./CampoTexto";
+import ListaOpcion from "./ListaOpcion";
+import Boton from "./Boton";
 
 const Formulario = ({title}) => {
     return <div className="contenedor">
