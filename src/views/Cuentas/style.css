@@ -5,6 +5,7 @@
 
 main {
     padding: 0px;
+    min-height: 100vh;
 }
 
 .cuentas-main-body {
