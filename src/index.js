@@ -10,7 +10,9 @@ import Prestamos from './views/Prestamos';
 import Convertidor from './views/Convertidor';
 import Calculadora from './views/Calculadora';
 
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
+import './custom.scss';
 
 const router = createBrowserRouter([
   {

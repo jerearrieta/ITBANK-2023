@@ -106,11 +106,6 @@ h1 {
     .currency-input {
         width: 70%;
     }
-
-    button {
-        width: 250px;
-        height: 3rem;
-    }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -134,10 +129,5 @@ h1 {
 
     .currency-input {
         width: 70%;
-    }
-
-    button {
-        width: 250px;
-        height: 3rem;
     }
 }

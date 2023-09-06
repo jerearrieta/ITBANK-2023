@@ -1,12 +1,24 @@
 aside {
     display: flex;
-    width: 240px;
     flex-direction: column;
-    align-items: flex-start;
-    flex-shrink: 0;
-    align-self: stretch;
-    border-right: 1px solid #000;
+    flex: 1 0 0;
+
     background: #23282D;
+}
+
+.sidebar-close-button {
+    width: 24px;
+    padding: 0;
+
+    fill: #FFF;
+}
+
+.sidebar-close-button:hover {
+    cursor: pointer;
+}
+
+.sidebar-body {
+    flex: 1;
 }
 
 .sidebar-option {
@@ -36,6 +48,7 @@ aside {
     color: #FFF;
     font-size: 14px;
     font-weight: 700;
+    margin: 0;
 }
 
 .sidebar-option div {

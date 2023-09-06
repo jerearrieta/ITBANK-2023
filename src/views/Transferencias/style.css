@@ -44,7 +44,7 @@ h1 {
     align-self: stretch;
 }
 
-button {
+main button {
     border: none;
     font-size: 22px;
     height: 50px;
@@ -57,7 +57,7 @@ button {
     transition: 1s;
 }
 
-button:hover {
+main button:hover {
     cursor: pointer;
     background-color: #3a87b7;
 }
@@ -83,7 +83,7 @@ button:hover {
         margin: 0.6rem;
     }
 
-    button {
+    main button {
         width: 250px;
         height: 3rem;
     }
@@ -103,7 +103,7 @@ button:hover {
         margin: 0.6rem;
     }
 
-    button {
+    main button {
         width: 250px;
         height: 3rem;
     }

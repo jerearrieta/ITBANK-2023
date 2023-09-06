@@ -131,7 +131,7 @@ h2 {
         padding: 1rem;
     }
 
-    button {
+    .loan-calculator-button {
         width: 250px;
         height: 3rem;
     }
@@ -167,7 +167,7 @@ h2 {
         padding: 1rem;
     }
 
-    button {
+    .loan-calculator-button {
         width: 250px;
         height: 3rem;
     }
