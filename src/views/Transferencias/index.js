@@ -1,13 +1,12 @@
 import './style.css';
+import Formulario from '../../components/Formulario/Formulario';
+import CampoTexto from '../../components/CampoTexto/CampoTexto';
 
 export default function Transferencias() {
     return (
-        <div className="cont-transf">
-            <h1>Transferir dinero</h1>
-            <div className="caja-transf">
-                <form id="form-transf" className="form-info" action="">
-                    <input className="inputs" type="text" name="cbu" id="cbu" placeholder="Ingresa el CBU, CVU o alias" />
-                    <input id="monto-transf" className="inputs" type="number" name="monto" placeholder="Ingresa el monto a transferir" />
+        <Formulario title="Transferir dinero">
+            <CampoTexto type="text" name="cbu" id="cbu" label="Ingresa el CBU, CVU o alias" />
+            <CampoTexto type="number" name="monto" id="monto-transf" label="Ingresa el monto a transferir" />
                     <select id="moneda" className="inputs">
                         <option value="" disabled selected>Selecciona una moneda</option>
                         <option value="0">Pesos</option>
@@ -33,8 +32,6 @@ export default function Transferencias() {
                     <div className="cont-span">
                         <span id="span" className="span"></span>
                     </div>
-                </form>
-            </div>
-        </div>
+        </Formulario>
     );
 }
