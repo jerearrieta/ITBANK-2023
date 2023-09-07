@@ -20,7 +20,7 @@ const testExchanges = [
     [50.488086, 0.14425939, 0.13372697, 0.19610036, 0.2248142, 0.24375828, 0.70417808, 2.4278831, 5.4849194, 1054.9132, 122.58703, 590.89894, 1, 21.062022, 0.11470147], // BOB = 12
     [2.3965273, 0.0068476235, 0.0063479804, 0.0093090845, 0.01067144, 0.011568194, 0.033429652, 0.11525963, 0.26054639, 50.078941, 5.8217062, 28.061808, 0.047481232, 1, 0.0054457299], // JPY = 13
     [440.03049, 1.2573507, 1.1656319, 1.7093519, 1.9601151, 2.1248395, 6.1377558, 21.165666, 47.844215, 9197.1903, 1069.0685, 5148.9212, 8.7180559, 183.58463, 1], // GBP = 14
-] 
+]
 
 function updateExchanges(callback) {
     const promises = [];
@@ -76,7 +76,7 @@ export default function Convertidor() {
             aux["right-currency-input"] = "";
             if (aux["left-currency-input"] !== "") {
                 aux["right-currency-input"] = (aux["left-currency-input"] * exchanges[aux["left-currency-selector"]][aux["right-currency-selector"]]).toFixed(4);
-            }          
+            }
         }
 
         setExchangeInputs(aux);
@@ -92,13 +92,23 @@ export default function Convertidor() {
         updateValues(aux, e.target.id);
     }
 
+    function swapCurrencies(_) {
+        const aux = {
+            "left-currency-selector": exchangeInputs["right-currency-selector"],
+            "left-currency-input": exchangeInputs["left-currency-input"],
+            "right-currency-selector": exchangeInputs["left-currency-selector"],
+            "right-currency-input": exchangeInputs["right-currency-input"]
+        };
+        updateValues(aux, "left-currency-input");
+    }
+
     return (
         <div className="currency-converter">
             <h1>Convertidor de monedas</h1>
             <div className="currency-converter-box">
                 <div className="currency-item-box">
                     <div className="currency-item">
-                        <select id="left-currency-selector" className="currency-selector" defaultValue={exchangeInputs["left-currency-selector"]} onChange={handleChangeExchangeInputs}>
+                        <select id="left-currency-selector" className="currency-selector" value={exchangeInputs["left-currency-selector"]} onChange={handleChangeExchangeInputs}>
                             <option value="0">ARS</option>
                             <option value="1" selected>USD</option>
                             <option value="2">EUR</option>
@@ -117,9 +127,9 @@ export default function Convertidor() {
                         </select>
                         <input type="number" id="left-currency-input" className="currency-input" value={exchangeInputs["left-currency-input"]} onInput={handleChangeExchangeInputs} />
                     </div>
-                    <img id="exchange-icon" className="transfer-icon" src="img/transfer.png" alt="" />
+                    <img id="exchange-icon" className="transfer-icon" src="img/transfer.png" alt="" onClick={swapCurrencies} />
                     <div className="currency-item">
-                        <select id="right-currency-selector" className="currency-selector" defaultValue={exchangeInputs["right-currency-selector"]} onChange={handleChangeExchangeInputs}>
+                        <select id="right-currency-selector" className="currency-selector" value={exchangeInputs["right-currency-selector"]} onChange={handleChangeExchangeInputs}>
                             <option value="0">ARS</option>
                             <option value="1">USD</option>
                             <option value="2">EUR</option>
