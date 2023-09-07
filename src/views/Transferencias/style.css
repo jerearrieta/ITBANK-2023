@@ -1,27 +1,3 @@
-.boton-transf {
-    display: flex;
-    justify-content: center;
-    align-self: stretch;
-}
-
-main button {
-    border: none;
-    font-size: 22px;
-    height: 50px;
-    width: 300px;
-    border-radius: 10px;
-    background-color: #02568a;
-    color: white;
-    font-weight: bold;
-    margin: 0.5rem 0 0 0;
-    transition: 1s;
-}
-
-main button:hover {
-    cursor: pointer;
-    background-color: #3a87b7;
-}
-
 .span {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
