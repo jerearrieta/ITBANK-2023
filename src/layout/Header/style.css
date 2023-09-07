@@ -61,10 +61,6 @@ header {
         padding: 1rem;
     }
 
-    .header-left img {
-        width: 30vw;
-    }
-
     .header-right {
         padding: 1rem;
         width: 75vw;
@@ -84,10 +80,6 @@ header {
     .header-left {
         width: 100%;
         padding: 1rem;
-    }
-    
-    .header-left img {
-        width: 20vw;
     }
     
     .header-right {
