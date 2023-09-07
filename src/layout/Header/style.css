@@ -6,6 +6,11 @@ header {
     background: #23282D;
 }
 
+.header {
+    width: 100%;
+    position: fixed;
+}
+
 .header-left {
     display: flex;
     align-items: center;

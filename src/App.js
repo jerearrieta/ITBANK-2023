@@ -5,7 +5,6 @@ import Header from './layout/Header';
 import Sidebar from './layout/Sidebar';
 import Footer from './layout/Footer';
 
-import './App.css';
 
 function App() {
   const [sidebarShown, setSidebarShown] = useState(false);

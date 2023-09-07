@@ -4,7 +4,7 @@ import './style.css';
 
 export default function Header({ setSidebarShown }) {
     return (
-        <header>
+        <header className='header'>
             <div className="header-left">
                 <img className="header-sidebar-button" src="img/more.png" alt="More" onClick={() => setSidebarShown(true)} />
                 <Link className="header-logo-container" to=""><img className="header-logo" src="img/white-logo.png" alt="ITBA" /></Link>
