@@ -12,14 +12,14 @@ const ListaOpcion = ({id, name}) => {
         "Selecciona un motivo",
         "Factura",
         "Alquiler",
-        "Prestamos",
+        "Préstamos",
         "Bienes",
-        "Tarjeta de credito",
-        "Educacion",
-        "Donacion benefica",
+        "Tarjeta de crédito",
+        "Educación",
+        "Donación benéfica",
         "Impuestos",
         "Viajes",
-        "Compras en linea",
+        "Compras en línea",
         "Otros"
     ]
 
