@@ -36,14 +36,19 @@ export default function Sidebar({ sidebarShown, setSidebarShown }) {
                     <SidebarContext.Provider value={activeButton}>
                         <Accordion activeKey={activeButton}>
                             <SidebarButton eventKey="0" route={routes[0]} icon="img/home.png" title="Home" />
+
                             <SidebarButton eventKey="1" route={routes[1]} icon="img/user.png" title="Cuentas">
-                                <SidebarDetailButton route="cuentas" title="Cuentas" />
+                                <SidebarDetailButton route={routes[1]} title="Cuentas" />
                             </SidebarButton>
+
                             <SidebarButton eventKey="2" route={routes[2]} icon="img/transaction.png" title="Transferencias">
-                                <SidebarDetailButton route="cuentas" title="Cuentas" />
+                                <SidebarDetailButton route={routes[2]} title="Transferencias" />
+                                <SidebarDetailButton route="convertidor" title="Convertidor" />
                             </SidebarButton>
+                            
                             <SidebarButton eventKey="3" route={routes[3]} icon="img/personal.png" title="Prestamos">
-                                <SidebarDetailButton route="cuentas" title="Cuentas" />
+                                <SidebarDetailButton route={routes[3]} title="Prestamos" />
+                                <SidebarDetailButton route="calculadora" title="Calculadora" />
                             </SidebarButton>
                         </Accordion>
                     </SidebarContext.Provider>
