@@ -13,6 +13,7 @@ import Calculadora from './views/Calculadora';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import './custom.scss';
+import Login from './views/InicioSesion';
 
 const router = createBrowserRouter([
   {
@@ -43,8 +44,12 @@ const router = createBrowserRouter([
         path: "calculadora",
         element: <Calculadora />
       },
-    ]
+    ],
   },
+  {
+      path: "login",
+      element: <Login />
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

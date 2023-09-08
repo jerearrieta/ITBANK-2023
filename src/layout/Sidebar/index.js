@@ -52,7 +52,7 @@ export default function Sidebar({ sidebarShown, setSidebarShown }) {
                             </SidebarButton>
                         </Accordion>
                     </SidebarContext.Provider>
-                    <SidebarButton route="logout" icon="img/log-out.png" title="Cerrar Sesion" />
+                    <SidebarButton route="login" icon="img/log-out.png" title="Cerrar Sesion" />
                 </nav>
             </aside>
         </Offcanvas>
