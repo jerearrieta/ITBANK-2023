@@ -18,10 +18,14 @@ import Login from './views/InicioSesion';
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login />
+  },
+  {
+    path: "/",
     element: <App />,
     children: [
       {
-        path: "",
+        path: "home",
         element: <Home />
       },
       {

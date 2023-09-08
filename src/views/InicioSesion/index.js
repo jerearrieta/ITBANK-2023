@@ -6,10 +6,10 @@ import Derecha from "./components/Derecha";
 const Login = () => {
   return (
     <>
-      <main classname="conteiner">
+      <div className="conteiner">
         <Izquierda />
         <Derecha />
-      </main>
+      </div>
     </>
   );
 };
