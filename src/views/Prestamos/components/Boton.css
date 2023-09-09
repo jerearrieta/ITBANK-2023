@@ -3,11 +3,11 @@ button {
     font-size: 22px;
     height: 50px;
     width: 300px;
-    border-radius: 10px !important;
+    border-radius: 10px;
     background-color: #02568a;
     color: white;
     font-weight: bold;
-    margin: 0.8rem auto !important;
+    margin: 0.8rem auto;
     transition: 1s;
 }
 

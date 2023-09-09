@@ -1,6 +1,5 @@
 import './style.css';
 import Formulario from './components/TransferenciasForm';
-import CampoTexto from './components/CampoTexto';
 
 export default function Transferencias() {
     return (
