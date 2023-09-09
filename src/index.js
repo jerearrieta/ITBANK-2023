@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App';
+import Login from './views/Autenticacion/InicioSesion';
+import Registro from './views/Autenticacion/Registro';
 import Home from './views/Home';
 import Cuentas from './views/Cuentas';
 import Transferencias from './views/Transferencias';
@@ -13,19 +15,23 @@ import Calculadora from './views/Calculadora';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import './custom.scss';
-import Login from './views/InicioSesion';
+
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/login",
     element: <Login />
+  },
+  {
+    path: "/registro",
+    element: <Registro />
   },
   {
     path: "/",
     element: <App />,
     children: [
       {
-        path: "home",
+        path: "",
         element: <Home />
       },
       {
@@ -49,10 +55,6 @@ const router = createBrowserRouter([
         element: <Calculadora />
       },
     ],
-  },
-  {
-      path: "login",
-      element: <Login />
   }
 ]);
 

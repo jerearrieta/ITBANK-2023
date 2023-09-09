@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Derecha = () => {
   const [email, setEmail] = useState("");
@@ -32,7 +33,8 @@ const Derecha = () => {
     } else if (password.length > 8) {
       mostrarMensaje("La contraseña debe tener un máximo de 8 caracteres");
     } else {
-      navigate('/home');
+      navigate('/');
+      localStorage.setItem("userLoggedIn", true);
     }
   };
 
@@ -70,7 +72,7 @@ const Derecha = () => {
             <p>¿Olvidaste tu contraseña?</p>
             <hr className="hr" />
             <a className="registro" href="registro.html">
-              <p>¿No tiene una cuenta? Regístrate</p>
+              <Link to="/registro">¿No tiene una cuenta? Regístrate</Link>
             </a>
           </form>
         </div>

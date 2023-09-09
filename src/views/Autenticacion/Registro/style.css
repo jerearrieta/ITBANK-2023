@@ -2,15 +2,17 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    height: 100%;
-    font-family: 'Inter', sans-serif;
 }
 
 .conteiner {
     display: flex;
+    min-height: 100vh;
 }
 
 .izquierda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #23282D;
     width: 50%;
 }
@@ -27,6 +29,9 @@
 }
 
 .derecha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 50%;
 }
 
