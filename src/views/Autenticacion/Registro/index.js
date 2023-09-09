@@ -1,5 +1,4 @@
-import Derecha from '../InicioSesion/components/Derecha';
-import Izquierda from '../InicioSesion/components/Izquierda';
+import React from "react";
 import DerechaRegistro from './components/DerechaRegistro';
 import IzquierdaRegistro from './components/IzquierdaRegistro';
 import './registro.css';
