@@ -1,9 +1,8 @@
 import './style.css';
 
-
 export default function Registro() {
     return (
-        <>
+        <main className="conteiner">
             <div className="izquierda">
                 <div className="conteiner_logo">
                     <img className="logo" src="img/white-logo.png" alt="logo itba" />
@@ -26,6 +25,6 @@ export default function Registro() {
                     </form>
                 </div>
             </div>
-        </>
+        </main>
     );
 }

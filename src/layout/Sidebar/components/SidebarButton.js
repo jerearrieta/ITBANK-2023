@@ -31,4 +31,3 @@ export default function SidebarButton({ route, icon, title, eventKey, children }
         </>
     );
 }
-

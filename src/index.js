@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App';
+import Login from './views/Autenticacion/InicioSesion';
+import Registro from './views/Autenticacion/Registro';
 import Home from './views/Home';
 import Cuentas from './views/Cuentas';
 import Transferencias from './views/Transferencias';
@@ -14,7 +16,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import './custom.scss';
 
+
 const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "/registro",
+    element: <Registro />
+  },
   {
     path: "/",
     element: <App />,
@@ -43,8 +54,8 @@ const router = createBrowserRouter([
         path: "calculadora",
         element: <Calculadora />
       },
-    ]
-  },
+    ],
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
