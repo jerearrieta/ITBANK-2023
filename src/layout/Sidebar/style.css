@@ -1,0 +1,34 @@
+aside {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+
+    background: #23282D;
+}
+
+.sidebar-close-button {
+    width: 24px;
+    padding: 0;
+
+    fill: #FFF;
+}
+
+.sidebar-close-button:hover {
+    cursor: pointer;
+}
+
+.sidebar-body {
+    flex: 1;
+}
+
+.sidebar-card {
+    display: flex;
+    padding: 0;
+    align-items: center;
+    gap: 20px;
+    align-self: stretch;
+    text-decoration: none;
+    transition: 0.5s;
+    border: 0;
+    border-radius: 0;
+}

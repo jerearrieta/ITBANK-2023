@@ -1,0 +1,16 @@
+.sidebar_subbutton {
+    display: flex;
+    padding: 10px 20px;
+    align-items: flex-start;
+    align-self: stretch;
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #B4B9BE;
+    text-decoration: none;
+}
+
+.sidebar_subbutton.active {
+    color: #FFF;
+    font-weight: 700;
+}
