@@ -7,7 +7,7 @@ export default function Header({ setSidebarShown }) {
         <header className='header'>
             <div className="header-left">
                 <img className="header-sidebar-button" src="img/more.png" alt="More" onClick={() => setSidebarShown(true)} />
-                <Link className="header-logo-container" to=""><img className="header-logo" src="img/white-logo.png" alt="ITBA" /></Link>
+                <Link className="header-logo-container" to=""><img className="header-logo" src="img/white_logo_title.png" alt="ITBA" /></Link>
             </div>
 
             <div className="header-right">

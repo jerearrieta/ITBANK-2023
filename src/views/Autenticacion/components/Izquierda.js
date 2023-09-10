@@ -4,7 +4,7 @@ const Izquierda = () => {
   return (
     <div className={styles.izquierda}>
       <div className={styles.container_logo}>
-        <img className={styles.logo} src="img/white-logo.png" alt="ITBA" />
+        <img className={styles.logo} src="img/white_logo_title.png" alt="ITBA" />
       </div>
     </div>
   );

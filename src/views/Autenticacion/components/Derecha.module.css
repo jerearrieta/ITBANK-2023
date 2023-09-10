@@ -3,30 +3,12 @@
     align-items: center;
     justify-content: center;
     width: 50%;
-}
 
-.container_form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@media screen and (max-width: 480px) {
-    .derecha {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background-color: #23282D;
-        padding: 1rem;
-    }
+    background: #F1F1F1;
 }
 
 @media screen and (max-width: 768px) {
     .derecha {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        background-color: #23282D;
-        padding: 1rem;
     }
 }

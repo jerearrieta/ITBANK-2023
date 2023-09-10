@@ -13,18 +13,18 @@
 }
 
 .logo {
-    width: 300px;
-    height: 100px;
-}
-
-@media screen and (max-width: 480px) {
-    .izquierda {
-        display: none;
-    }
+    width: 420px;
+    height: auto;
 }
 
 @media screen and (max-width: 768px) {
     .izquierda {
         display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .logo {
+        width: 360px;
     }
 }

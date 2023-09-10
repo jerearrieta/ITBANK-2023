@@ -28,7 +28,7 @@ export default function Sidebar({ sidebarShown, setSidebarShown }) {
         <Offcanvas show={sidebarShown} onHide={() => setSidebarShown(false)}>
             <aside>
                 <header className='sidebar-header'>
-                    <div className='header-logo-container'><img className="header-logo" src="img/white-logo.png" alt="ITBA" /></div>
+                    <div className='header-logo-container'><img className="header-logo" src="img/white_logo_title.png" alt="ITBA" /></div>
                     <ReactLogo className='sidebar-close-button' onClick={() => setSidebarShown(false)} />
                 </header>
 
