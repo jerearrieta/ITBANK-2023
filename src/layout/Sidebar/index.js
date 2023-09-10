@@ -6,7 +6,7 @@ import { ReactComponent as ReactLogo } from '../../assets/x.svg';
 
 import SidebarContext from './SidebarContext';
 import SidebarButton from './components/SidebarButton';
-import SidebarDetailButton from './components/SidebarDetailButton';
+import SidebarSubButton from './components/SidebarSubButton';
 
 import './style.css';
 
@@ -35,24 +35,24 @@ export default function Sidebar({ sidebarShown, setSidebarShown }) {
                 <nav className='sidebar-body'>
                     <SidebarContext.Provider value={activeButton}>
                         <Accordion activeKey={activeButton}>
-                            <SidebarButton eventKey="0" route={routes[0]} icon="img/home.png" title="Home" />
+                            <SidebarButton eventKey="0" route={routes[0]} icon="img/home.png" text="Home" />
 
-                            <SidebarButton eventKey="1" route={routes[1]} icon="img/user.png" title="Cuentas">
-                                <SidebarDetailButton route={routes[1]} title="Cuentas" />
+                            <SidebarButton eventKey="1" route={routes[1]} icon="img/user.png" text="Cuentas">
+                                <SidebarSubButton route={routes[1]} text="Cuentas" />
                             </SidebarButton>
 
-                            <SidebarButton eventKey="2" route={routes[2]} icon="img/transaction.png" title="Transferencias">
-                                <SidebarDetailButton route={routes[2]} title="Transferencias" />
-                                <SidebarDetailButton route="convertidor" title="Convertidor" />
+                            <SidebarButton eventKey="2" route={routes[2]} icon="img/transaction.png" text="Transferencias">
+                                <SidebarSubButton route={routes[2]} text="Transferencias" />
+                                <SidebarSubButton route="convertidor" text="Convertidor" />
                             </SidebarButton>
                             
-                            <SidebarButton eventKey="3" route={routes[3]} icon="img/personal.png" title="Prestamos">
-                                <SidebarDetailButton route={routes[3]} title="Prestamos" />
-                                <SidebarDetailButton route="calculadora" title="Calculadora" />
+                            <SidebarButton eventKey="3" route={routes[3]} icon="img/personal.png" text="Prestamos">
+                                <SidebarSubButton route={routes[3]} text="Prestamos" />
+                                <SidebarSubButton route="calculadora" text="Calculadora" />
                             </SidebarButton>
                         </Accordion>
                     </SidebarContext.Provider>
-                    <SidebarButton route="login" icon="img/log-out.png" title="Cerrar Sesion" />
+                    <SidebarButton route="login" icon="img/log-out.png" text="Cerrar Sesion" />
                 </nav>
             </aside>
         </Offcanvas>

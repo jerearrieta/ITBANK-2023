@@ -2,32 +2,38 @@ import { NavLink } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 
-export default function SidebarButton({ route, icon, title, eventKey, children }) {
-    let suboptions = null;
-    if (children) {
-        suboptions = (
-            <Accordion.Collapse eventKey={eventKey}>
-                <Card.Body className="sidebar-option-detail">
-                    {children}
-                </Card.Body>
-            </Accordion.Collapse>
-        );
-    }
+import styles from './SidebarButton.module.css';
+import cx from 'classnames';
 
+
+export default function SidebarButton({ route, icon, text, eventKey, children }) {
     return (
         <>
-            <NavLink to={route} className="sidebar-option">
-                <img className="sidebar-option-icon" src={icon} alt={title} /><p>{title}</p>
+            <NavLink
+                to={route}
+                className={({ isActive, isPending }) => isPending ? "pending" : isActive ? cx(styles.sidebar_button, styles.active) : styles.sidebar_button}
+            >
+                <img className={styles.sidebar_button_icon} src={icon} alt={text} /><p className={styles.sidebar_button_text}>{text}</p>
                 {
-                    children && (
-                        <div>
-                            <img className="sidebar-option-arrow" src="img/arrow-down-white.png" alt="Flecha" />
+                    children &&
+                    (
+                        <div className={styles.sidebar_button_div}>
+                            <img className={styles.sidebar_button_arrow} src="img/arrow-down-white.png" alt="Flecha" />
                         </div>
                     )
                 }
             </NavLink>
 
-            {suboptions}
+            {
+                children &&
+                (
+                    <Accordion.Collapse eventKey={eventKey}>
+                        <Card.Body className={styles.sidebar_subbutton_container}>
+                            {children}
+                        </Card.Body>
+                    </Accordion.Collapse>
+                )
+            }
         </>
     );
 }
