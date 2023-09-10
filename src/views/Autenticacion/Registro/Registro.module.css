@@ -1,47 +1,4 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-.conteiner {
-    display: flex;
-    min-height: 100vh;
-}
-
-.izquierda {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #23282D;
-    width: 50%;
-}
-
-.conteiner_logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo {
-    width: 300px;
-    height: 100px;
-}
-
-.derecha {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-}
-
-.conteiner_form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.formulario-registro {
+.formulario_registro {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -53,21 +10,14 @@
     height: 450px;
 }
 
-.formulario-registro h4 {
+.titulo_registro {
     font-size: 1.6rem;
     display: flex;
     justify-content: center;
     padding: 1rem;
 }
 
-.formulario-registro p {
-    font-size: 1rem;
-    padding-top: 5px;
-    display: flex;
-    justify-content: center;
-}
-
-.conteiner-controls {
+.container_controls {
     display: flex;
     flex-direction: column;
     height: 80%;
@@ -99,47 +49,30 @@
     background-color: #3a87b7;
 }
 
-.text-button {
+.text_button {
     color: white;
 }
 
-.span {
+.span_container {
     display: flex;
     justify-content: center;
     color: red;
 }
 
-span {
+.span {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 @media screen and (max-width: 480px) {
-    .izquierda {
-        display: none;
-    }
-
-    .derecha {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background-color: #23282D;
-    }
-
-    .formulario-registro {
+    .formulario_registro {
         padding: 20px;
         margin-top: 0;
         height: 400px;
     }
-    
 
-    .formulario-registro h4 {
+    .titulo_registro {
         font-size: 30px;
         margin-bottom: 1rem;
-    }
-
-    .formulario-registro p {
-        font-size: 20px;
-        padding-top: 5px;
     }
 
     .controls {
@@ -152,32 +85,15 @@ span {
 }
 
 @media screen and (max-width: 768px) {
-    .izquierda {
-        display: none;
-    }
-
-    .derecha {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background-color: #23282D;
-    }
-
-    .formulario-registro {
+    .formulario_registro {
         padding: 20px;
         margin-top: 0;
         height: 450px;
     }
-    
 
-    .formulario-registro h4 {
+    .titulo_registro {
         font-size: 30px;
         margin-bottom: 1rem;
-    }
-
-    .formulario-registro p {
-        font-size: 20px;
-        padding-top: 5px;
     }
 
     .controls {

@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      { user &&
+      { localStorage.getItem("userLoggedIn") === "true" &&
         (
           <>
             <Header setSidebarShown={setSidebarShown} />
@@ -36,7 +36,6 @@ function App() {
           </>
         )
       }
-
     </>
   );
 }
