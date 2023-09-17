@@ -32,3 +32,11 @@ aside {
     border: 0;
     border-radius: 0;
 }
+
+.sidebar_button_icon {
+    width: 24px;
+    height: 24px;
+    color: white;
+    fill: white;
+    stroke: white;
+}
