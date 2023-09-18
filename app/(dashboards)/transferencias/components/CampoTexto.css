@@ -1,0 +1,19 @@
+.inputs {
+    height: 3rem;
+    border: none;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 480px) {
+    .inputs {
+        margin: 0.6rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .inputs {
+        margin: 0.6rem;
+    }
+}

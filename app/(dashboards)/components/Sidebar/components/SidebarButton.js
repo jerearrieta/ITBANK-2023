@@ -20,8 +20,8 @@ export default function SidebarButton({ route, icon, text, eventKey, children })
                     </svg>
                 </label>
 
-                <div className="menu-item-collapse">
-                    <div className="min-h-0">
+                <div className={`menu-item-collapse`}>
+                    <div className={`min-h-0 ${styles.sidebar_subbutton_container}`}>
                         {children}
                     </div>
                 </div>
