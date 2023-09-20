@@ -1,11 +1,7 @@
-import styles from './Izquierda.module.css';
-
 const Izquierda = () => {
   return (
-    <div className={styles.izquierda}>
-      <div className={styles.container_logo}>
-        <img className={styles.logo} src="img/white_logo_title.png" alt="ITBA" />
-      </div>
+    <div className="hidden md:flex justify-center items-center w-1/2 bg-gray-800">
+      <img className="w-[360px] lg:w-[420px] h-auto" src="/white_logo_title.png" alt="Guardian Bank" />
     </div>
   );
 };

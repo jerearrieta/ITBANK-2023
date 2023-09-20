@@ -1,3 +1,5 @@
+import ListaTransferencias from '../components/ListaTransferencias';
+
 import './style.css';
 
 export default function Home() {
@@ -19,29 +21,7 @@ export default function Home() {
             <hr />
             <div className="recent-activity">
                 <p className="recent-activity-label">Actividad reciente</p>
-                <div className="recent-activity-box">
-                    <div className="recent-activity-entry">
-                        <div className="recent-activity-entry-part">
-                            <p className="recent-activity-entry-title">Transferencia enviada</p>
-                            <p className="recent-activity-entry-value">-$10.000</p>
-                        </div>
-                        <div className="recent-activity-entry-part">
-                            <p className="recent-activity-entry-third">Google</p>
-                            <p className="recent-activity-entry-date">20/8/2023</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="recent-activity-entry">
-                        <div className="recent-activity-entry-part">
-                            <p className="recent-activity-entry-title">Transferencia enviada</p>
-                            <p className="recent-activity-entry-value">-$10.000</p>
-                        </div>
-                        <div className="recent-activity-entry-part">
-                            <p className="recent-activity-entry-third">Google</p>
-                            <p className="recent-activity-entry-date">20/8/2023</p>
-                        </div>
-                    </div>
-                </div>
+                <ListaTransferencias />
             </div>
         </>
     );

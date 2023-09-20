@@ -1,11 +1,7 @@
-import styles from './Derecha.module.css';
-
 const Derecha = ({ children }) => {
   return (
-    <div className={styles.derecha}>
-      <div className={styles.container_form}>
-        {children}
-      </div>
+    <div className="flex justify-center items-center w-full md:w-1/2 bg-gray-100">
+      {children}
     </div>
   );
 };

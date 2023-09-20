@@ -1,12 +1,10 @@
 import Izquierda from './Izquierda';
 import Derecha from './Derecha';
 
-import styles from './General.module.css';
-
 
 const General = ({ children }) => {
     return (
-        <div className={styles.container}>
+        <div className="flex min-h-screen">
             <Izquierda />
             <Derecha>
                 {children}
