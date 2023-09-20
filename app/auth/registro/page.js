@@ -1,5 +1,7 @@
+"use client"
+
+import Link from "next/link";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import General from '../components/General';
 
@@ -7,6 +9,7 @@ import styles from './Registro.module.css';
 
 
 export default function Registro() {
+    /*
     const [dni, setDni] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -31,6 +34,7 @@ export default function Registro() {
             setErrorMensaje("");
         }, 5000);
     };
+    */
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -52,44 +56,32 @@ export default function Registro() {
 
     return (
         <General>
-            <form
-                id="formulario"
-                className={styles.formulario_registro}
-                action="inicio.html"
-                method="post"
-                onSubmit={handleSubmit}
-            >
-                <div className={styles.container_controls}>
-                    <h4 className={styles.titulo_registro}>Regístrese</h4>
-                    <input
-                        type="text"
-                        id="dni"
-                        className={styles.controls}
-                        placeholder="DNI"
-                        value={dni}
-                        onChange={handleDniChange}
-                    />
-                    <input
-                        type="text"
-                        id="usuario"
-                        className={styles.controls}
-                        placeholder="Email"
-                        value={email}
-                        onChange={handleEmailChange}
-                    />
-                    <input
-                        type="password"
-                        id="password"
-                        className={styles.controls}
-                        placeholder="Contraseña"
-                        value={password}
-                        onChange={handlePasswordChange}
-                    />
+            <form className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300" onSubmit={handleSubmit}>
+                <div className="flex flex-col items-center">
+                    <h1 className="text-3xl font-semibold">Bienvenido a ITBANK</h1>
+                    <p className="text-sm">Inicia sesion para acceder a su cuenta</p>
                 </div>
-                <div className={styles.span_container}>
-                    <span className={styles.span} id="errorMensaje">{errorMensaje}</span>
+                <div className="form-group gap-5">
+                    <div className="form-field">
+                        <label className="form-label text-black">Email</label>
+                        <input placeholder="Introduzca su email aqui" type="email" className="input max-w-full border-[1px] bg-white border-gray-500" />
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label text-black">Clave</label>
+                        <input placeholder="Introduzca su clave aqui" type="password" className="input max-w-full border-[1px] bg-white border-gray-500" />
+                    </div>
+                    <div className="form-field pt-5">
+                        <div className="form-control justify-between">
+                            <button type="submit" className="btn btn-primary w-full">Iniciar Sesion</button>
+                        </div>
+                    </div>
+
+                    <div className="form-field">
+                        <div className="form-control justify-center">
+                            <Link href="login" className="link link-underline-hover link-primary text-sm">¿Ya tiene una cuenta? Inicie Sesion.</Link>
+                        </div>
+                    </div>
                 </div>
-                <input type="submit" value="Registrarse" className={styles.button} />
             </form>
         </General>
     );

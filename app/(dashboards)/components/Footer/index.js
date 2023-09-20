@@ -1,10 +1,12 @@
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+
 import './style.css';
 
 export default function Footer() {
     return (
         <footer>
-            <div className="footer-logo">
-                <a href="inicio.html"><img className="logo" src="img/logo.png" alt="ITBA" /></a>
+            <div className="p-10">
+                <a href="inicio.html"><img className="h-16 w-auto" src="/logo_title.png" alt="Guardian Bank" /></a>
             </div>
 
             <div className="footer-info">
@@ -20,15 +22,15 @@ export default function Footer() {
                 </div>
                 <div className="social-media">
                     <div>
-                        <a href="https://www.facebook.com/"><img className="logo" src="img/facebook.png" alt="logo de facebook" /></a>
+                        <a href="https://www.facebook.com/"><FaFacebook className='w-5 h-5' /></a>
                         <a href="https://www.facebook.com/"><p>/itbank</p></a>
                     </div>
                     <div>
-                        <a href="https://www.twitter.com/"><img className="logo" src="img/twitter.png" alt="logo de twitter" /></a>
+                        <a href="https://www.twitter.com/"><FaTwitter className='w-5 h-5' /></a>
                         <a href="https://www.twitter.com/"><p>@itbank</p></a>
                     </div>
                     <div>
-                        <a href="https://www.instagram.com/"><img className="logo" src="img/instagram.png" alt="logo de instagram" /></a>
+                        <a href="https://www.instagram.com/"><FaInstagram className='w-5 h-5' /></a>
                         <a href="https://www.instagram.com/"><p>@itbank</p></a>
                     </div>
                 </div>
