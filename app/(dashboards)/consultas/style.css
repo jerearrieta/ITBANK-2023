@@ -1,0 +1,6 @@
+.main-consultas {
+    display: flex;
+    padding: 70px 0px 0px 0px;
+    flex-direction: column;
+    background: #F1F1F1;
+}

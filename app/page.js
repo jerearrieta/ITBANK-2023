@@ -17,7 +17,7 @@ export default function Index() {
           <img src="/white_logo_title.png" className="w-[420px] h-auto mx-auto" />
         </header>
 
-        <main className="items-center bg-inherit p-12">
+        <main className="items-center bg-inherit p-12 px-96">
           { inLogin ? <FormLogin setInLogin={setInLogin} /> : <FormRegistro setInLogin={setInLogin} /> }
         </main>
       </div>

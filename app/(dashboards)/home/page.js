@@ -5,6 +5,7 @@ import './style.css';
 export default function Home() {
     return (
         <>
+            <main className='main-home'>
             <div className="welcome-user">
                 <h1>Hola, Usuario</h1>
             </div>
@@ -23,6 +24,7 @@ export default function Home() {
                 <p className="recent-activity-label">Actividad reciente</p>
                 <ListaTransferencias />
             </div>
+            </main>
         </>
     );
 }
