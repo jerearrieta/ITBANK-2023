@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Guardian Bank Homebanking',
-  description: 'Homebanking online del banco Guardian Bank',
+  description: 'Online Homebanking',
 }
 
 export default function RootLayout({ children }) {
