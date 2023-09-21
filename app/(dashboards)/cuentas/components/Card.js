@@ -8,7 +8,7 @@ export const Card = ({numeroCard}) => {
           <div class="card">
             <div class="info-card">
               <div class="top-card">
-                <h3>{numeroCard}</h3>
+                <h1>{numeroCard}</h1>
                 {principal &&<p class="principal">Principal</p>}
               </div>
 

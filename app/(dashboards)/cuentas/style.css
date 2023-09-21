@@ -78,6 +78,10 @@ main {
     justify-content: space-between;
 }
 
+.top-card h1 {
+    font-size: 0.8rem;
+}
+
 .principal {
     background-color: #d9d9d9;
     padding: 0.2rem 0.4rem 0 0.4rem;

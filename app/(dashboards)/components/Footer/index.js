@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <footer>
             <div className="p-10">
-                <a href="inicio.html"><img className="h-16 w-auto" src="/logo_title.png" alt="Guardian Bank" /></a>
+                <a href="inicio.html"><img className="h-16 w-auto" src="/logo_title.png" alt="Guardian Bank" title='Guardian Bank' /></a>
             </div>
 
             <div className="footer-info">
