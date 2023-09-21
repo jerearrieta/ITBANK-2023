@@ -1,3 +1,5 @@
+import { signUp } from "./actions";
+
 export default function FormRegistro({ setInLogin }) {
     /*
     const [dni, setDni] = useState("");
@@ -45,7 +47,7 @@ export default function FormRegistro({ setInLogin }) {
     };
     
     return (
-        <form className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300" onSubmit={handleSubmit}>
+        <form action={signUp} className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300">
             <div className="flex flex-col items-center">
                 <h1 className="text-3xl font-semibold">Bienvenido a Guardian Bank</h1>
                 <p className="text-sm">Inicia sesion para acceder a su cuenta</p>
@@ -53,15 +55,15 @@ export default function FormRegistro({ setInLogin }) {
             <div className="form-group gap-5">
                 <div className="form-field">
                     <label className="form-label text-black">Email</label>
-                    <input placeholder="Introduzca su email aqui" type="email" className="input max-w-full border-[1px] bg-white border-gray-500" />
+                    <input type="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su email aqui" />
                 </div>
                 <div className="form-field">
                     <label className="form-label text-black">Clave</label>
-                    <input placeholder="Introduzca su clave aqui" type="password" className="input max-w-full border-[1px] bg-white border-gray-500" />
+                    <input type="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su clave aqui" />
                 </div>
                 <div className="form-field pt-5">
                     <div className="form-control justify-between">
-                        <button type="submit" className="btn btn-primary w-full">Iniciar Sesion</button>
+                        <button type="submit" className="btn btn-primary w-full">Registrarse</button>
                     </div>
                 </div>
 
