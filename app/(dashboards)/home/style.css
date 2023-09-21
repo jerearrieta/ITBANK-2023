@@ -1,13 +1,3 @@
-.main-home {
-        display: flex;
-        padding: 130px 60px 60px 60px;
-        flex-direction: column;
-        align-items: flex-start;
-        flex: 1 0 0;
-        align-self: stretch;
-        background: #F1F1F1;
-}
-
 .welcome-user {
     display: flex;
     flex-direction: column;
