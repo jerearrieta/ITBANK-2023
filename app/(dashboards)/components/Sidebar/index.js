@@ -1,17 +1,30 @@
+"use client"
+
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useRouter } from 'next/navigation';
+
 import SidebarButton from './components/SidebarButton';
 import SidebarSubButton from './components/SidebarSubButton';
-
-import './style.css';
 
 import { AiOutlineClose, AiOutlineHome } from 'react-icons/ai';
 import { MdOutlineAccountBalance, MdCurrencyExchange } from 'react-icons/md';
 import { FaSackDollar } from 'react-icons/fa6';
 import { TbLogout } from 'react-icons/tb';
 
+import './style.css';
 
-const routes = ["", "cuentas", "transferencias", "prestamos"];
+
+const routes = ["home", "cuentas", "transferencias", "prestamos"];
 
 export default function Sidebar() {
+    const supabase = createClientComponentClient();
+    const router = useRouter();
+    
+    async function handleSignOut() {
+        await supabase.auth.signOut()
+        router.push("/");
+    }
+
     return (
         <>
             <input type="checkbox" id="drawer-left" className="drawer-toggle" />
@@ -40,7 +53,9 @@ export default function Sidebar() {
                         <SidebarSubButton route="calculadora" text="Calculadora" />
                     </SidebarButton>
 
-                    <SidebarButton route="login" icon={<TbLogout className='sidebar_button_icon' />} text="Cerrar Sesion" />
+                    {/** <SidebarButton route="login" icon={<TbLogout className='sidebar_button_icon' />} text="Cerrar Sesion" /> */}
+
+                    <button onClick={handleSignOut}>Cerrar Sesion</button>
                 </nav>
             </aside>
         </>
