@@ -2,7 +2,6 @@
 
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 
 export async function signUp(formData) {
@@ -14,6 +13,12 @@ export async function signUp(formData) {
         email,
         password
     });
+
+    if (error) {
+        return {status: error.status, name: error.name, message: error.message};
+    }
+
+    return null;
 }
 
 export async function signIn(formData) {
@@ -26,7 +31,9 @@ export async function signIn(formData) {
         password,
     });
 
-    if (error === null) {
-        redirect("/home");
+    if (error) {
+        return {status: error.status, name: error.name, message: error.message};
     }
+
+    return null;
 }
