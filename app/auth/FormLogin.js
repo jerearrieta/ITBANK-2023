@@ -34,11 +34,11 @@ export default function FormLogin({ setInLogin }) {
                 <div className="form-group gap-5">
                     <div className="form-field">
                         <label className="form-label text-black">Email</label>
-                        <input type="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su email aqui" />
+                        <input type="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su email aqui" required />
                     </div>
                     <div className="form-field">
                         <label className="form-label text-black">Clave</label>
-                        <input type="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su clave aqui" />
+                        <input type="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su clave aqui" required />
                     </div>
                     <div className="form-field">
                         <div className="form-control justify-between">

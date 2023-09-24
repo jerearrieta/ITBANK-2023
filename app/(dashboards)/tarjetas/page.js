@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const dynamic = "error";
 
-function Contacto({ id, first_name, last_name, dni }) {
+function CardListItem({ id, first_name, last_name, dni }) {
     return (
         <Link href={`/transferencias/${id}`} className="flex flex-col self-stretch gap-1 p-5">
             <p className="text-lg">{`${first_name} ${last_name}`}</p>
@@ -14,7 +14,7 @@ function Contacto({ id, first_name, last_name, dni }) {
     );
 }
 
-export default async function ListaContactos() {
+export default async function CardList() {
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
     const { data } = await supabase.from("users").select("id, dni, first_name, last_name");
 
@@ -24,4 +24,3 @@ export default async function ListaContactos() {
         </div>
     );
 }
-

@@ -33,11 +33,35 @@ export default function FormRegistro({ setInLogin }) {
                 <div className="form-group gap-5">
                     <div className="form-field">
                         <label className="form-label text-black">Email</label>
-                        <input type="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su email aqui" />
+                        <input type="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Email" required />
                     </div>
                     <div className="form-field">
                         <label className="form-label text-black">Clave</label>
-                        <input type="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su clave aqui" />
+                        <input type="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Clave" required />
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label text-black">DNI</label>
+                        <input type="text" name="dni" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="DNI" required />
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label text-black">Nombre</label>
+                        <input type="text" name="first_name" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Nombre" required />
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label text-black">Apellido</label>
+                        <input type="text" name="last_name" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Apellido" required />
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label text-black">Fecha de nacimiento</label>
+                        <input type="date" name="birth" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Fecha de nacimiento" required />
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label text-black">Sexo</label>
+                        <select className="select max-w-full border-[1px] bg-white border-gray-500" name="sex" required>
+                            <option selected disabled value="">Sexo</option>
+                            <option value="M">Hombre</option>
+                            <option value="F">Mujer</option>
+                        </select>
                     </div>
                     <div className="form-field pt-5">
                         <button type="submit" disabled={state === "processing"} className="btn btn-primary w-full">
@@ -58,8 +82,6 @@ export default function FormRegistro({ setInLogin }) {
                         </div>
                     </div>
                 </div>
-
-
             </form>
 
             {state === "error" && (
