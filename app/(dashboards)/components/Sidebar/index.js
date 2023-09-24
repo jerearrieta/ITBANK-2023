@@ -6,20 +6,18 @@ import { useRouter } from 'next/navigation';
 import SidebarButton from './components/SidebarButton';
 import SidebarSubButton from './components/SidebarSubButton';
 
-import { AiOutlineClose, AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineHome, AiFillCreditCard } from 'react-icons/ai';
 import { MdOutlineAccountBalance, MdCurrencyExchange } from 'react-icons/md';
-import { FaSackDollar } from 'react-icons/fa6';
+import { FaSackDollar, FaFileInvoiceDollar } from 'react-icons/fa6';
 import { TbLogout } from 'react-icons/tb';
 
 import './style.css';
 
 
-const routes = ["home", "cuentas", "transferencias", "prestamos"];
-
 export default function Sidebar() {
     const supabase = createClientComponentClient();
     const router = useRouter();
-    
+
     async function handleSignOut() {
         await supabase.auth.signOut()
         router.push("/");
@@ -37,25 +35,32 @@ export default function Sidebar() {
                 </header>
 
                 <nav className='sidebar-body'>
-                    <SidebarButton eventKey="0" route={routes[0]} icon={<AiOutlineHome className='sidebar_button_icon' />} text="Home" />
+                    <SidebarButton route="home" icon={<AiOutlineHome className='sidebar_button_icon' />} text="Inicio" />
 
-                    <SidebarButton eventKey="1" route={routes[1]} icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas">
-                        <SidebarSubButton route={routes[1]} text="Cuentas" />
+                    <SidebarButton route="cuentas" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" />
+
+                    <SidebarButton route="tarjetas" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas">
+                        <SidebarSubButton route="tarjetas" text="Ver tarjetas" />
                     </SidebarButton>
 
-                    <SidebarButton eventKey="2" route={routes[2]} icon={<MdCurrencyExchange className='sidebar_button_icon' />} text="Transferencias">
-                        <SidebarSubButton route={routes[2]} text="Transferencias" />
-                        <SidebarSubButton route="convertidor" text="Convertidor" />
+                    <SidebarButton route="transferencias" icon={<MdCurrencyExchange className='sidebar_button_icon' />} text="Transferencias">
+                        <SidebarSubButton route="transferencias" text="Transferir" />
+                        <SidebarSubButton route="convertidor" text="Convertidor de monedas" />
                     </SidebarButton>
 
-                    <SidebarButton eventKey="3" route={routes[3]} icon={<FaSackDollar className='sidebar_button_icon' />} text="Prestamos">
-                        <SidebarSubButton route={routes[3]} text="Prestamos" />
-                        <SidebarSubButton route="calculadora" text="Calculadora" />
+                    <SidebarButton route="prestamos" icon={<FaSackDollar className='sidebar_button_icon' />} text="Prestamos">
+                        <SidebarSubButton route="prestamos" text="Pedir prestamo" />
+                        <SidebarSubButton route="calculadora" text="Calculadora de prestamos" />
                     </SidebarButton>
 
-                    {/** <SidebarButton route="login" icon={<TbLogout className='sidebar_button_icon' />} text="Cerrar Sesion" /> */}
+                    <SidebarButton route="facturas" icon={<FaFileInvoiceDollar className='sidebar_button_icon' />} text="Facturas">
+                        <SidebarSubButton route="facturas" text="Ver facturas pendientes" />
+                    </SidebarButton>
 
-                    <button onClick={handleSignOut}>Cerrar Sesion</button>
+                    <div onClick={handleSignOut} className='flex items-center self-stretch gap-5 p-3 duration-500 hover:bg-[#02568A] hover:cursor-pointer'>
+                        <TbLogout className='sidebar_button_icon' />
+                        <p className="text-white text-sm">Cerrar Sesion</p>
+                    </div>
                 </nav>
             </aside>
         </>

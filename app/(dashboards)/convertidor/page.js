@@ -1,5 +1,9 @@
 'use client';
+
 import { useState, useEffect } from 'react';
+
+import { BiTransferAlt } from 'react-icons/bi';
+
 import './style.css';
 
 
@@ -128,7 +132,7 @@ export default function Convertidor() {
                         </select>
                         <input type="number" id="left-currency-input" className="currency-input" value={exchangeInputs["left-currency-input"]} onInput={handleChangeExchangeInputs} />
                     </div>
-                    <img id="exchange-icon" className="transfer-icon" src="img/transfer.png" alt="icon de intercambio" title='icon de intercambio' onClick={swapCurrencies} />
+                    <BiTransferAlt className="w-6 h-6 hover:cursor-pointer" onClick={swapCurrencies} />
                     <div className="currency-item">
                         <select id="right-currency-selector" className="currency-selector" value={exchangeInputs["right-currency-selector"]} onChange={handleChangeExchangeInputs}>
                             <option value="0">ARS</option>

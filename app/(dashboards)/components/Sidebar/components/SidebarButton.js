@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './SidebarButton.module.css';
 
 
-export default function SidebarButton({ route, icon, text, eventKey, children }) {
+export default function SidebarButton({ route, icon, text, children }) {
     let component = null;
 
     if (children) {
