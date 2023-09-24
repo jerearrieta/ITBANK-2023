@@ -9,7 +9,7 @@ import SidebarSubButton from './components/SidebarSubButton';
 import { AiOutlineClose, AiOutlineHome } from 'react-icons/ai';
 import { MdOutlineAccountBalance, MdCurrencyExchange } from 'react-icons/md';
 import { FaSackDollar } from 'react-icons/fa6';
-import { TbLogout } from 'react-icons/tb';
+import { BiLogOut } from 'react-icons/bi';
 
 import './style.css';
 
@@ -55,7 +55,7 @@ export default function Sidebar() {
 
                     {/** <SidebarButton route="login" icon={<TbLogout className='sidebar_button_icon' />} text="Cerrar Sesion" /> */}
 
-                    <button onClick={handleSignOut}>Cerrar Sesion</button>
+                    <button className='button' onClick={handleSignOut}>{<BiLogOut className='sidebar_button_icon' />} Cerrar Sesion</button>
                 </nav>
             </aside>
         </>
