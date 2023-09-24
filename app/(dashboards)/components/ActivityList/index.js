@@ -1,4 +1,4 @@
-function Transferencia({ title, value, to, date }) {
+function ActivityListItem({ title, value, to, date }) {
     return (
         <div className="flex flex-col self-stretch gap-1 p-5">
             <div className="flex self-stretch">
@@ -13,12 +13,12 @@ function Transferencia({ title, value, to, date }) {
     );
 }
 
-export default function ListaTransferencias() {
+export default function ActivityList() {
     return (
         <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">
-            <Transferencia title="Transferencia enviada" value="-$10.000" to="Google" date="20/8/2023" />
+            <ActivityListItem title="Transferencia enviada" value="-$10.000" to="Google" date="20/8/2023" />
             <hr />
-            <Transferencia title="Transferencia enviada" value="-$10.000" to="Google" date="20/8/2023" />
+            <ActivityListItem title="Transferencia enviada" value="-$10.000" to="Google" date="20/8/2023" />
         </div>
     );
 }

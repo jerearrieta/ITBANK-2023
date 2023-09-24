@@ -1,7 +1,6 @@
 import { cookies } from 'next/headers';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import ListaTransferencias from '../components/ListaTransferencias';
-import ListaContactos from '../components/ListaContactos';
+import ActivityList from '../components/ActivityList';
 
 import './style.css';
 
@@ -26,7 +25,7 @@ export default async function Home() {
             <hr />
             <div className="recent-activity">
                 <p className="recent-activity-label">Actividad reciente</p>
-                <ListaContactos />
+                <ActivityList />
             </div>
         </>
     );

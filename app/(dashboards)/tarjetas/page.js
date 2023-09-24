@@ -20,7 +20,7 @@ export default async function CardList() {
 
     return (
         <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">
-            {data.map((record) => <><Contacto id={record.id} first_name={record.first_name} last_name={record.last_name} dni={record.dni} /><hr /></>)}
+            {data.map((record) => <><CardListItem id={record.id} first_name={record.first_name} last_name={record.last_name} dni={record.dni} /><hr /></>)}
         </div>
     );
 }
