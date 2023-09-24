@@ -37,7 +37,7 @@ export default function Sidebar() {
                 <nav className='sidebar-body'>
                     <SidebarButton route="home" icon={<AiOutlineHome className='sidebar_button_icon' />} text="Inicio" />
 
-                    <SidebarButton route="cuentas" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" />
+                    {/* <SidebarButton route="cuentas" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" /> */}
 
                     <SidebarButton route="tarjetas" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas">
                         <SidebarSubButton route="tarjetas" text="Ver tarjetas" />
