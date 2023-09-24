@@ -3,6 +3,7 @@ import React from "react";
 import { datos } from "./actions.js";
 import { useState, useRef } from "react";
 
+
 const page = () => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
