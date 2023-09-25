@@ -16,7 +16,7 @@ export default function Header() {
                     <AiOutlineMenu className="w-5 h-5" fill='white' />
                 </label>
 
-                <Link className="header-logo-container" href="/home"><img className="header-logo" src="/white_logo_title.png" alt="ITBA" /></Link>
+                <Link className="header-logo-container" href="/home"><img className="header-logo" src="/white_logo_title.webp" alt="ITBA" /></Link>
             </div>
 
             <div className="header-right">

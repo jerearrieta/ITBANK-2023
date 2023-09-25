@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="p-10">
             <img
               className="h-16 w-auto"
-              src="/logo_title.png"
+              src="/logo_title.webp"
               alt="Guardian Bank"
               title="Guardian Bank"
             />
