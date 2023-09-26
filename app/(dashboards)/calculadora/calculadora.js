@@ -62,7 +62,7 @@ export default function Calculadora() {
                     <div className="loan-calculator-field-box">
                         <p>Plazo de amortización</p>
                         <div className="time-field-box">
-                            <select id="time-selector" className="time-selector" onChange={handleInputsChange}>
+                            <select id="time-selector" className="time-selector" aria-label='Selector de tiempo' onChange={handleInputsChange}>
                                 <option value="mes">Meses</option>
                                 <option value="año">Años</option>
                             </select>
