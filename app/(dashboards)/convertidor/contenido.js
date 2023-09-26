@@ -207,6 +207,7 @@ export default function Convertidor() {
             <select
               id="left-currency-selector"
               className="currency-selector"
+              aria-label="Selector de moneda"
               value={exchangeInputs["left-currency-selector"]}
               onChange={handleChangeExchangeInputs}
             >
@@ -244,6 +245,7 @@ export default function Convertidor() {
             <select
               id="right-currency-selector"
               className="currency-selector"
+              aria-label="Selector de moneda"
               value={exchangeInputs["right-currency-selector"]}
               onChange={handleChangeExchangeInputs}
             >
