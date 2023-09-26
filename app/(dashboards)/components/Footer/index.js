@@ -10,7 +10,7 @@ export default function Footer() {
       <Link href='/home'>
         <div className="p-10">
           <Image className="h-16 w-auto"
-              src="/logo_title.webp"
+              src="/assets/logo_title.webp"
               alt="Guardian Bank"
               title="Guardian Bank"
               width="150"

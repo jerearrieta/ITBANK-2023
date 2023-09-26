@@ -15,7 +15,7 @@ export default function Index() {
     <>
       <div className="min-h-screen bg-gradient-to-tr from-blue-900 to-slate-700">
         <header className="h-auto p-12 bg-inherit">
-          <Image width={420} height={0} src="/white_logo_title.png" alt="Guardian Bank" className="w-auto h-auto mx-auto" />
+          <Image width={420} height={0} src="/assets/white_logo_title.webp" alt="Guardian Bank" className="w-auto h-auto mx-auto" />
         </header>
 
         <main className="items-center bg-inherit p-12 px-96">

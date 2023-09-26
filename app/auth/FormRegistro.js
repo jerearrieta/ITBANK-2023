@@ -32,31 +32,31 @@ export default function FormRegistro({ setInLogin }) {
                 </div>
                 <div className="form-group gap-5">
                     <div className="form-field">
-                        <label for="email" className="form-label text-black">Email</label>
+                        <label htmlFor="email" className="form-label text-black">Email</label>
                         <input type="email" id="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Email" required />
                     </div>
                     <div className="form-field">
-                        <label for="password" className="form-label text-black">Clave</label>
+                        <label htmlFor="password" className="form-label text-black">Clave</label>
                         <input type="password" id="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Clave" required />
                     </div>
                     <div className="form-field">
-                        <label for="dni" className="form-label text-black">DNI</label>
+                        <label htmlFor="dni" className="form-label text-black">DNI</label>
                         <input type="text" id="dni" name="dni" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="DNI" required />
                     </div>
                     <div className="form-field">
-                        <label for="first_name" className="form-label text-black">Nombre</label>
+                        <label htmlFor="first_name" className="form-label text-black">Nombre</label>
                         <input type="text" id="first_name" name="first_name" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Nombre" required />
                     </div>
                     <div className="form-field">
-                        <label for="last_name" className="form-label text-black">Apellido</label>
+                        <label htmlFor="last_name" className="form-label text-black">Apellido</label>
                         <input type="text" id="last_name" name="last_name" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Apellido" required />
                     </div>
                     <div className="form-field">
-                        <label for="birth" className="form-label text-black">Fecha de nacimiento</label>
+                        <label htmlFor="birth" className="form-label text-black">Fecha de nacimiento</label>
                         <input type="date" id="birth" name="birth" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Fecha de nacimiento" required />
                     </div>
                     <div className="form-field">
-                        <label for="sex" className="form-label text-black">Sexo</label>
+                        <label htmlFor="sex" className="form-label text-black">Sexo</label>
                         <select className="select max-w-full border-[1px] bg-white border-gray-500" name="sex" id="sex" required>
                             <option selected disabled value="">Sexo</option>
                             <option value="M">Hombre</option>

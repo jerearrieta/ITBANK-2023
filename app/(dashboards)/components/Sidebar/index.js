@@ -32,7 +32,7 @@ export default function Sidebar() {
             <aside className='drawer'>
                 <header className='sidebar-header'>
                     <div className='header-logo-container'>
-                        <Image className="header-logo" src="/white_logo_title.webp" alt="logo guardian bank" title='logo guardian bank' width="150" height="100" />
+                        <Image className="header-logo" src="/assets/white_logo_title.webp" alt="logo guardian bank" title='logo guardian bank' width="150" height="100" />
                     </div>
                     <label htmlFor="drawer-left" className="btn btn-ghost h-auto w-auto p-0 flex m-auto"><AiOutlineClose className='fill-white w-4 h-4' /></label>
                 </header>

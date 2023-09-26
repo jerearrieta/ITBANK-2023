@@ -33,11 +33,11 @@ export default function FormLogin({ setInLogin }) {
                 </div>
                 <div className="form-group gap-5">
                     <div className="form-field">
-                        <label for="email" className="form-label text-black">Email</label>
+                        <label htmlFor="email" className="form-label text-black">Email</label>
                         <input type="email" id="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su email aqui" required />
                     </div>
                     <div className="form-field">
-                        <label  for="password" className="form-label text-black">Clave</label>
+                        <label  htmlFor="password" className="form-label text-black">Clave</label>
                         <input type="password" id="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su clave aqui" required />
                     </div>
                     <div className="form-field">
