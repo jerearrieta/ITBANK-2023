@@ -1,6 +1,6 @@
 import "./ListaOpcion.css";
 
-const ListaOpcion = ({id, name}) => {
+const ListaOpcion = () => {
 
     const monedas = [
         "Selecciona una moneda",
@@ -24,12 +24,12 @@ const ListaOpcion = ({id, name}) => {
     ]
 
     return <>
-        <select id="moneda" name="moneda" className="inputs">
+        <select id="moneda" name="moneda" className="inputs" aria-label="moneda">
             { monedas.map( (moneda, index) => {
                 return <option key={index}>{moneda}</option>
             } ) }
         </select>
-        <select id="motivo" name="motivo" className="inputs">
+        <select id="motivo" name="motivo" className="inputs" aria-label="motivo">
             { motivos.map( (motivo, index) => {
                 return <option key={index}>{motivo}</option>
             } ) }
