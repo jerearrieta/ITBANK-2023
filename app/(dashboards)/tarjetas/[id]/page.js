@@ -1,7 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
 
-import Link from "next/link";
-
 // dynamic = "error" fuerza a que el componente/pagina sea generado de forma estatica, y si algo lo impidiera, lanza un error.
 export const dynamic = "error";
 export const dynamicParams = false;
