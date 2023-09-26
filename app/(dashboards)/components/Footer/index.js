@@ -1,5 +1,6 @@
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 import "./style.css";
 
@@ -8,14 +9,12 @@ export default function Footer() {
     <footer>
       <Link href='/home'>
         <div className="p-10">
-            <img
-              className="h-16 w-auto"
+          <Image className="h-16 w-auto"
               src="/logo_title.webp"
               alt="Guardian Bank"
               title="Guardian Bank"
-              width="150px"
-              height="100px"
-            />
+              width="150"
+              height="100" />
         </div>
       </Link>
 
@@ -27,7 +26,7 @@ export default function Footer() {
         </div>
         <div className="legal-info">
           <a href="#" aria-label="Términos y condiciones">Términos y condiciones</a>
-          <a href="#" aria-aria-label="Políticas de privacidad">Políticas de privacidad</a>
+          <a href="#" aria-label="Políticas de privacidad">Políticas de privacidad</a>
           <p>© 2023 GUARDIAN BANK</p>
         </div>
         <div className="social-media">
