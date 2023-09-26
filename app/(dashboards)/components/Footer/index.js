@@ -13,44 +13,46 @@ export default function Footer() {
               src="/logo_title.webp"
               alt="Guardian Bank"
               title="Guardian Bank"
+              width="150px"
+              height="100px"
             />
         </div>
       </Link>
 
       <div className="footer-info">
         <div className="contact-info">
-          <p>example@itbank.com</p>
+          <p>example@guardianbank.com</p>
           <p>11 1234-5678 / 11 1234-5678</p>
           <p>Domicilio 1234</p>
         </div>
         <div className="legal-info">
-          <a href="#">Terminos y condiciones</a>
-          <a href="#">Politicas de privacidad</a>
-          <p>© 2023 ITBANK</p>
+          <a href="#" aria-label="Términos y condiciones">Términos y condiciones</a>
+          <a href="#" aria-aria-label="Políticas de privacidad">Políticas de privacidad</a>
+          <p>© 2023 GUARDIAN BANK</p>
         </div>
         <div className="social-media">
           <div>
-            <a href="https://www.facebook.com/">
+            <a href="https://www.facebook.com/" aria-label="Guardian Bank en Facebook">
               <FaFacebook className="w-5 h-5" />
             </a>
-            <a href="https://www.facebook.com/">
-              <p>/itbank</p>
+            <a href="https://www.facebook.com/" aria-label="Guardian Bank en Facebook">
+              <p>/guardianbank</p>
             </a>
           </div>
           <div>
-            <a href="https://www.twitter.com/">
+            <a href="https://www.twitter.com/" aria-label="Guardian Bank en Twitter">
               <FaTwitter className="w-5 h-5" />
             </a>
-            <a href="https://www.twitter.com/">
-              <p>@itbank</p>
+            <a href="https://www.twitter.com/" aria-label="Guardian Bank en Twitter">
+              <p>@guardianbank</p>
             </a>
           </div>
           <div>
-            <a href="https://www.instagram.com/">
+            <a href="https://www.instagram.com/" aria-label="Guardian Bank en Instagram">
               <FaInstagram className="w-5 h-5" />
             </a>
-            <a href="https://www.instagram.com/">
-              <p>@itbank</p>
+            <a href="https://www.instagram.com/" aria-label="Guardian Bank en Instagram">
+              <p>@guardianbank</p>
             </a>
           </div>
         </div>
