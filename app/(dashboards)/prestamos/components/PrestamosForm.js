@@ -1,6 +1,3 @@
-// import Boton from "../../Transferencias/components/Boton";
-// import CampoTexto from "../../Transferencias/components/CampoTexto";
-// import ListaOpcion from "./ListaOpcion";
 import ListaOpcion from "../components/ListaOpcion";
 import CampoTexto from "../components/CampoTexto";
 import Boton from "../components/Boton";

@@ -1,6 +1,6 @@
 import "./ListaOpcion.css";
 
-const ListaOpcion = ({id, name}) => {
+const ListaOpcion = () => {
 
     const motivos = [
         "Opción de cancelación",
@@ -9,7 +9,7 @@ const ListaOpcion = ({id, name}) => {
     ]
 
     return <>
-        <select id="motivo" name="motivo" className="inputs" required>
+        <select id="motivo" name="motivo" className="inputs" aria-label="motivo" required>
             { motivos.map( (motivo, index) => {
                 return <option key={index}>{motivo}</option>
             } ) }
