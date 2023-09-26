@@ -7,7 +7,7 @@ export const dynamic = "error";
 
 function UserListItem({ id, first_name, last_name, dni }) {
     return (
-        <Link href={`/usuarios/${id}`} className="flex flex-col self-stretch gap-1 p-5">
+        <Link href={`/usuarios/${id}`} className="flex flex-col self-stretch gap-1 p-5 border-t first:border-t-0">
             <p className="text-lg">{`${first_name} ${last_name}`}</p>
             <p className="text-sm">{dni}</p>
         </Link>
@@ -20,7 +20,7 @@ export default async function UserList() {
 
     return (
         <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">
-            {data.map((record) => <><UserListItem key={record.id} id={record.id} first_name={record.first_name} last_name={record.last_name} dni={record.dni} /><hr /></>)}
+            {data.map((record, index) => <UserListItem key={index} id={record.id} first_name={record.first_name} last_name={record.last_name} dni={record.dni} />)}
         </div>
     );
 }

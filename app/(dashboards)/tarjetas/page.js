@@ -2,12 +2,12 @@ import { createClient } from "@supabase/supabase-js";
 
 import Link from "next/link";
 
-
+// dynamic = "error" fuerza a que el componente/pagina sea generado de forma estatica, y si algo lo impidiera, lanza un error.
 export const dynamic = "error";
 
 function CardListItem({ id, first_name, last_name, dni }) {
     return (
-        <Link href={`/transferencias/${id}`} className="flex flex-col self-stretch gap-1 p-5">
+        <Link href={`/transferencias/${id}`} className="flex flex-col self-stretch gap-1 p-5 border-t first:border-t-0">
             <p className="text-lg">{`${first_name} ${last_name}`}</p>
             <p className="text-sm">{dni}</p>
         </Link>
@@ -20,7 +20,7 @@ export default async function CardList() {
 
     return (
         <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">
-            {data.map((record) => <><CardListItem id={record.id} first_name={record.first_name} last_name={record.last_name} dni={record.dni} /><hr /></>)}
+            {data.map((record, index) => <CardListItem key={index} id={record.id} first_name={record.first_name} last_name={record.last_name} dni={record.dni} />)}
         </div>
     );
 }

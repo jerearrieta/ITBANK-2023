@@ -15,18 +15,11 @@ export async function signUp(formData) {
     const birth = formData.get('birth');
     const sex = formData.get('sex');
 
-    var { data: { user }, error } = await supabase.auth.signUp({ email, password });
+    const { error } = await supabase.rpc('create_user', { email: email, password: password, dni: dni, first_name: first_name, last_name: last_name, birth: birth, sex: sex });
+    
+    if (error) return {code: error.code, details: error.details, message: error.message};
 
-    if (error) {
-        return {status: error.status, name: error.name, message: error.message};
-    }
-
-    var { error } = await supabase.from('users').insert({ user_id: user.id, dni: dni, first_name: first_name, last_name: last_name, birth: birth, sex: sex });
-
-    if (error) {
-        return {status: error.status, name: error.name, message: error.message};
-    }
-
+    revalidatePath("/transferencias");
     revalidatePath('/transferencias/[id]', 'page');
 
     return null;
