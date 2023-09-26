@@ -32,32 +32,32 @@ export default function FormRegistro({ setInLogin }) {
                 </div>
                 <div className="form-group gap-5">
                     <div className="form-field">
-                        <label className="form-label text-black">Email</label>
-                        <input type="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Email" required />
+                        <label for="email" className="form-label text-black">Email</label>
+                        <input type="email" id="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Email" required />
                     </div>
                     <div className="form-field">
-                        <label className="form-label text-black">Clave</label>
-                        <input type="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Clave" required />
+                        <label for="password" className="form-label text-black">Clave</label>
+                        <input type="password" id="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Clave" required />
                     </div>
                     <div className="form-field">
-                        <label className="form-label text-black">DNI</label>
-                        <input type="text" name="dni" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="DNI" required />
+                        <label for="dni" className="form-label text-black">DNI</label>
+                        <input type="text" id="dni" name="dni" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="DNI" required />
                     </div>
                     <div className="form-field">
-                        <label className="form-label text-black">Nombre</label>
-                        <input type="text" name="first_name" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Nombre" required />
+                        <label for="first_name" className="form-label text-black">Nombre</label>
+                        <input type="text" id="first_name" name="first_name" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Nombre" required />
                     </div>
                     <div className="form-field">
-                        <label className="form-label text-black">Apellido</label>
-                        <input type="text" name="last_name" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Apellido" required />
+                        <label for="last_name" className="form-label text-black">Apellido</label>
+                        <input type="text" id="last_name" name="last_name" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Apellido" required />
                     </div>
                     <div className="form-field">
-                        <label className="form-label text-black">Fecha de nacimiento</label>
-                        <input type="date" name="birth" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Fecha de nacimiento" required />
+                        <label for="birth" className="form-label text-black">Fecha de nacimiento</label>
+                        <input type="date" id="birth" name="birth" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Fecha de nacimiento" required />
                     </div>
                     <div className="form-field">
-                        <label className="form-label text-black">Sexo</label>
-                        <select className="select max-w-full border-[1px] bg-white border-gray-500" name="sex" required>
+                        <label for="sex" className="form-label text-black">Sexo</label>
+                        <select className="select max-w-full border-[1px] bg-white border-gray-500" name="sex" id="sex" required>
                             <option selected disabled value="">Sexo</option>
                             <option value="M">Hombre</option>
                             <option value="F">Mujer</option>
@@ -78,7 +78,7 @@ export default function FormRegistro({ setInLogin }) {
 
                     <div className="form-field">
                         <div className="form-control justify-center">
-                            <a className="link link-underline-hover link-primary text-sm" onClick={() => setInLogin(true)}>¿Ya tiene una cuenta? Inicie Sesion.</a>
+                            <a className="link link-underline-hover link-primary text-sm" aria-label="¿Ya tienes una cuenta? Inicie sesión." onClick={() => setInLogin(true)}>¿Ya tiene una cuenta? Inicie Sesión.</a>
                         </div>
                     </div>
                 </div>

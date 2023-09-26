@@ -33,12 +33,12 @@ export default function FormLogin({ setInLogin }) {
                 </div>
                 <div className="form-group gap-5">
                     <div className="form-field">
-                        <label className="form-label text-black">Email</label>
-                        <input type="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su email aqui" required />
+                        <label for="email" className="form-label text-black">Email</label>
+                        <input type="email" id="email" name="email" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su email aqui" required />
                     </div>
                     <div className="form-field">
-                        <label className="form-label text-black">Clave</label>
-                        <input type="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su clave aqui" required />
+                        <label  for="password" className="form-label text-black">Clave</label>
+                        <input type="password" id="password" name="password" className="input max-w-full border-[1px] bg-white border-gray-500" placeholder="Introduzca su clave aqui" required />
                     </div>
                     <div className="form-field">
                         <div className="form-control justify-between">
@@ -47,7 +47,7 @@ export default function FormLogin({ setInLogin }) {
                                 <label htmlFor="default-checkbox" className="text-sm font-medium text-gray-900 dark:text-gray-300">Recuerdame</label>
                             </div>
                             <label className="form-label">
-                                <a className="link link-underline-hover link-primary text-sm">¿Olvidaste tu clave?</a>
+                                <a className="link link-underline-hover link-primary text-sm" aria-label="¿Olvidaste tu clave?">¿Olvidaste tu clave?</a>
                             </label>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ export default function FormLogin({ setInLogin }) {
 
                     <div className="form-field">
                         <div className="form-control justify-center">
-                            <a className="link link-underline-hover link-primary text-sm" onClick={() => setInLogin(false)}>¿No tiene una cuenta? Regístrate.</a>
+                            <a className="link link-underline-hover link-primary text-sm" aria-label="¿No tienes una cuenta? Regístrate" onClick={() => setInLogin(false)}>¿No tiene una cuenta? Regístrate.</a>
                         </div>
                     </div>
                 </div>
