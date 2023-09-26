@@ -2,8 +2,6 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-import Link from "next/link";
-
 // dynamic = "force-dynamic" fuerza a que el componente/pagina sea generado de forma dinamica.
 export const dynamic = "force-dynamic";
 
