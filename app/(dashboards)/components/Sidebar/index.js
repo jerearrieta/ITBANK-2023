@@ -7,7 +7,7 @@ import SidebarButton from './components/SidebarButton';
 import SidebarSubButton from './components/SidebarSubButton';
 
 import { AiOutlineClose, AiOutlineHome, AiFillCreditCard } from 'react-icons/ai';
-import { MdOutlineAccountBalance, MdCurrencyExchange } from 'react-icons/md';
+import { MdCurrencyExchange } from 'react-icons/md';
 import { FaSackDollar, FaFileInvoiceDollar } from 'react-icons/fa6';
 import { TbLogout } from 'react-icons/tb';
 
@@ -30,7 +30,7 @@ export default function Sidebar() {
             <label className="overlay" htmlFor="drawer-left"></label>
             <aside className='drawer'>
                 <header className='sidebar-header'>
-                    <div className='header-logo-container'><img className="header-logo" src="/white_logo_title.webp" alt="logo guardian bank" title='logo guardian bank' /></div>
+                    <div className='header-logo-container'><img className="header-logo" src="/white_logo_title.webp" alt="logo guardian bank" title='logo guardian bank' width="150px" height="100px" /></div>
                     <label htmlFor="drawer-left" className="btn btn-ghost h-auto w-auto p-0 flex m-auto"><AiOutlineClose className='fill-white w-4 h-4' /></label>
                 </header>
 
