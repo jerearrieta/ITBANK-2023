@@ -10,6 +10,7 @@ import { AiOutlineClose, AiOutlineHome, AiFillCreditCard } from 'react-icons/ai'
 import { MdCurrencyExchange } from 'react-icons/md';
 import { FaSackDollar, FaFileInvoiceDollar } from 'react-icons/fa6';
 import { TbLogout } from 'react-icons/tb';
+import Image from 'next/image';
 
 import './style.css';
 
@@ -30,7 +31,9 @@ export default function Sidebar() {
             <label className="overlay" htmlFor="drawer-left"></label>
             <aside className='drawer'>
                 <header className='sidebar-header'>
-                    <div className='header-logo-container'><img className="header-logo" src="/white_logo_title.webp" alt="logo guardian bank" title='logo guardian bank' width="150px" height="100px" /></div>
+                    <div className='header-logo-container'>
+                        <Image className="header-logo" src="/white_logo_title.webp" alt="logo guardian bank" title='logo guardian bank' width="150" height="100" />
+                    </div>
                     <label htmlFor="drawer-left" className="btn btn-ghost h-auto w-auto p-0 flex m-auto"><AiOutlineClose className='fill-white w-4 h-4' /></label>
                 </header>
 
