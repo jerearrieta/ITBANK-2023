@@ -2,6 +2,7 @@
 
 import { initFlowbite } from 'flowbite';
 import { useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 import './style.css';
@@ -16,7 +17,9 @@ export default function Header() {
                     <AiOutlineMenu className="w-5 h-5" fill='white' />
                 </label>
 
-                <Link className="header-logo-container" href="/home"><img className="header-logo" src="/white_logo_title.webp" alt="ITBA" width="150px" height="100px" /></Link>
+                <Link className="header-logo-container" href="/home">
+                    <Image className="header-logo" src="/white_logo_title.webp" alt="Guardian Bank" width="150" height="100" />
+                </Link>
             </div>
 
             <div className="header-right">
