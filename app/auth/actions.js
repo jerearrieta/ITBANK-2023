@@ -21,6 +21,7 @@ export async function signUp(formData) {
 
     revalidatePath("/transferencias");
     revalidatePath('/transferencias/[id]', 'page');
+    revalidatePath('/usuarios/[id]', 'page');
 
     return null;
 }

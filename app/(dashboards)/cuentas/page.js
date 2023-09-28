@@ -4,7 +4,7 @@ import "./style.css";
 
 export default function Cuentas() {
   return (
-    <div class="cuentas-cont-main">
+    <div className="cuentas-cont-main">
       <SaldoCuentas />
       <div className="bot cont-card">
         <Card isPrincipal={true} numeroCard="001-0000001/1" />

@@ -22,8 +22,7 @@ export default async function UserDetail({ params }) {
 
     return (
         <div className="flex flex-col w-3/4 mx-auto rounded-2xl shadow-md bg-gray-300 p-3">
-            <p className="border-b py-2 font-bold">Id: {params.id}</p>
-            <p className="border-b py-2 font-bold">Dni: {data.dni}</p>
+            <p className="border-b py-2 font-bold">DNI: {data.dni}</p>
             <p className="border-b py-2 font-bold">Nombre: {data.first_name}</p>
             <p className="border-b py-2 font-bold">Apellido: {data.last_name}</p>
             <p className="border-b py-2 font-bold">Nacimiento: {data.birth}</p>

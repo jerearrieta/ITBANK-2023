@@ -7,7 +7,7 @@ const NotFoundPage = () => {
       <div>
         <img
           className="mx-auto pt-10"
-          src="./assets/white_logo_title.webp"
+          src="/assets/white_logo_title.webp"
           width={500}
         ></img>
       </div>
@@ -20,13 +20,11 @@ const NotFoundPage = () => {
           que estas buscando.
         </p>
       </div>
-      <Link href='/home'>
-        <div className="flex">
-          <button className="mx-auto mt-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Volver al sitio principal
-          </button>
-        </div>
-      </Link>
+      <div className="flex">
+        <Link href='/home' className="mx-auto mt-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Volver al sitio principal
+        </Link>
+      </div>
     </div>
   );
 };

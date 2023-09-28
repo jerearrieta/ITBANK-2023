@@ -1,21 +1,12 @@
-
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-// dynamic = "force-dynamic" fuerza a que el componente/pagina sea generado de forma dinamica.
-export const dynamic = "force-dynamic";
+import InvoiceDetail from "./InvoiceDetail";
 
-export default async function UserDetail({ params }) {
+
+export default async function Page({ params }) {
     const supabase = createServerComponentClient({ cookies });
-    const { data } = await supabase.from("invoices").select("id, total, invoice_pdf_url").eq("id", params.id).single();
+    const { data } = await supabase.from("invoices").select("issuer, total, invoice_pdf_url").eq("id", params.id).single();
 
-    return (
-        <div>
-            <p>{params.id}</p>
-            <p>{data.total}</p>
-            <p>{data.invoice_pdf_url}</p>
-
-            
-        </div>
-    );
+    return <InvoiceDetail id={params.id} issuer={data.issuer} total={data.total} invoice_pdf_url={data.invoice_pdf_url} />;
 }
