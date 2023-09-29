@@ -18,7 +18,7 @@ export default function Header() {
                 </label>
 
                 <Link className="header-logo-container" href="/home">
-                    <Image className="header-logo" src="/assets/white_logo_title.webp" alt="Guardian Bank" width="150" height="100" />
+                    <Image className="header-logo" src="/assets/white_logo_title.webp" alt="Guardian Bank" title='Guardian Bank' width="150" height="100" />
                 </Link>
             </div>
 
