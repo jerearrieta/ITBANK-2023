@@ -46,24 +46,24 @@ export default function FormLogin({ setInLogin }) {
                     </div>
                     <div className="form-field">
                         <div className="form-control justify-between">
+                            {/* 
+                            La casilla de "Recuerdame" estara comentada por el momento, ya que Supabase requiere que el token de autenticacion sea pasado mediante cookies para un manejo
+                            automatico de las sesiones. Si quisieramos usar sessionStorage o localStorage deberiamos pasar el token manualmente para cada request, lo cual atrasaria aun mas la entrega.
+
                             <div className="flex gap-2">
                                 <input type="checkbox" id="default-checkbox" disabled className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-500 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                 <label htmlFor="default-checkbox" className="text-sm font-medium text-gray-900 dark:text-gray-300">Recuerdame</label>
-                            </div>
-                            <label className="form-label">
-                                <a className="link link-underline-hover link-primary text-sm" aria-label="¿Olvidaste tu clave?">¿Olvidaste tu clave?</a>
-                            </label>
+                            </div> 
+                            */}
+                            
+                            <p className="link link-primary link-underline-hover ml-auto text-sm" aria-label="¿Olvidaste tu clave?">¿Olvidaste tu clave?</p>
                         </div>
                     </div>
                     <div className="form-field pt-5">
                         <ProcessingButton defaultText="Iniciar Sesion" isProcessing={state[0] === "processing"} className="btn btn-primary w-full" />
                     </div>
 
-                    <div className="form-field">
-                        <div className="form-control justify-center">
-                            <a className="link link-underline-hover link-primary text-sm" aria-label="¿No tienes una cuenta? Regístrate" onClick={() => setInLogin(false)}>¿No tiene una cuenta? Regístrate.</a>
-                        </div>
-                    </div>
+                    <p className="link link-primary link-underline-hover justify-center text-sm" aria-label="¿No tienes una cuenta? Regístrate" onClick={() => setInLogin(false)}>¿No tiene una cuenta? Regístrate</p>
                 </div>
             </form>
 
