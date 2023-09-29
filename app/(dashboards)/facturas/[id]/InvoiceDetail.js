@@ -50,7 +50,7 @@ export default function InvoiceDetail({ id, issuer, total, invoice_pdf_url }) {
       </div>
 
       {state[0] === "error" && <ErrorToast message={state[1]} />}
-      {state[0] === "success" && <SuccessModal title="Factura pagada!" message={`El pago de la factura Nº${id} fue registrado correctamente.`} onClick={() => router.push("facturas")} />}
+      {state[0] === "success" && <SuccessModal title="Factura pagada!" message={`El pago de la factura Nº${id} fue registrado correctamente.`} onClick={() => router.push("/facturas")} />}
     </>
   );
 }

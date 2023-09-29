@@ -15,7 +15,7 @@ function InvoiceListItem({ id, issuer, total }) {
 
 export default async function InvoiceList() {
     const supabase = createServerComponentClient({ cookies });
-    const { data } = await supabase.from("invoices").select("id, issuer, total");
+    const { data } = await supabase.from("invoices").select("id, issuer, total").eq("is_paid", false);
 
     return (
         <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">

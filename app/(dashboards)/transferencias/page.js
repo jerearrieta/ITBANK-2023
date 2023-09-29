@@ -1,9 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 import Link from "next/link";
 
-// dynamic = "error" fuerza a que el componente/pagina sea generado de forma estatica, y si algo lo impidiera, lanza un error.
-export const dynamic = "error";
 
 function UserListItem({ id, first_name, last_name, dni }) {
     return (
@@ -15,8 +15,9 @@ function UserListItem({ id, first_name, last_name, dni }) {
 }
 
 export default async function UserList() {
+    const user_id = (await createServerComponentClient({ cookies }).auth.getUser()).data.user.id;
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-    const { data } = await supabase.from("users").select("id, dni, first_name, last_name");
+    const { data } = await supabase.from("users").select("id, dni, first_name, last_name").neq("user_id", user_id);
 
     return (
         <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">
