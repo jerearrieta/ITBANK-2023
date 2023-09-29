@@ -18,17 +18,3 @@ main {
   align-self: stretch;
   background: #F1F1F1;
 }
-
-@media screen and (max-width: 480px) {
-  main {
-    padding: 14px;
-    width: 100%;
-  }
-}
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  main {
-    padding: 15px;
-    width: 100%;
-  }
-}

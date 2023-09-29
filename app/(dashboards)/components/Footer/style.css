@@ -1,7 +1,6 @@
 footer {
     display: flex;
     align-items: flex-start;
-    gap: 30px;
     flex: 1 0 0;
     align-self: stretch;
     border-top: 1px solid #000;
@@ -28,7 +27,6 @@ footer {
 }
 
 .footer-info a, .footer-info p {
-    display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1 0 0;
@@ -89,10 +87,6 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-    footer {
-        width: 100%;
-    }
-
     .footer-logo {
         display: none;
     }
@@ -132,17 +126,13 @@ footer {
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-    footer {
-        width: 100%;
-    }
-
     .footer-logo {
         display: none;
     }
 
     .footer-info {
         flex-direction: column;
-        width: 100%;
+        
     }
 
     .footer-info p, .footer-info a {
@@ -164,15 +154,5 @@ footer {
         flex-direction: row;
         padding: 1rem 0;
         width: 100%;
-    }
-
-    .social-media div {
-        gap: 0;
-        width: 100%;
-        margin: 0 5rem;
-    } 
-
-    .social-media p {
-        display: none;
     }
 }

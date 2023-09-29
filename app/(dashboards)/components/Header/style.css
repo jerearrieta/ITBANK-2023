@@ -7,7 +7,7 @@ header {
 }
 
 .header {
-    width: 100%;
+    width: 100vw;
     position: fixed;
 }
 
@@ -40,7 +40,6 @@ header {
     justify-content: flex-end;
     align-items: center;
     flex: 1;
-    gap: 50px;
 }
 
 .header-right a {
@@ -58,50 +57,4 @@ header {
 
 #lang-selector:hover {
     cursor: pointer;
-}
-
-@media screen and (max-width: 480px) {
-    .header-left {
-        width: 100%;
-        padding: 1rem;
-    }
-
-    .header-right {
-        padding: 1rem;
-        width: 75vw;
-    }
-
-    .header-right a {
-        display: none;
-    }
-
-    .header-right select {
-        font-size: 0.9rem;
-        padding: 0.6rem;
-    }
-}
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    .header-left {
-        width: 100%;
-        padding: 1rem;
-    }
-    
-    .header-right {
-        padding: 1rem;
-        gap: 2.5rem;
-    }
-    
-    .header-right a {
-        font-size: 0.7rem;
-    }
-    
-    .header-right select {
-        border: none;
-    }
-
-    .header-right select {
-        font-size: 0.9rem;
-        padding: 0.15rem;
-    }
 }
