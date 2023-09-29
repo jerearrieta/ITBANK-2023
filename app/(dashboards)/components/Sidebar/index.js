@@ -38,26 +38,26 @@ export default function Sidebar() {
                 </header>
 
                 <nav className='sidebar-body'>
-                    <SidebarButton route="home" icon={<AiOutlineHome className='sidebar_button_icon' />} text="Inicio" />
+                    <SidebarButton route="/home" icon={<AiOutlineHome className='sidebar_button_icon' />} text="Inicio" />
 
                     {/* <SidebarButton route="cuentas" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" /> */}
 
-                    <SidebarButton route="tarjetas" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas">
-                        <SidebarSubButton route="tarjetas" text="Ver tarjetas" />
+                    <SidebarButton route="/tarjetas" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas">
+                        <SidebarSubButton route="/tarjetas" text="Ver tarjetas" />
                     </SidebarButton>
 
-                    <SidebarButton route="transferencias" icon={<MdCurrencyExchange className='sidebar_button_icon' />} text="Transferencias">
-                        <SidebarSubButton route="transferencias" text="Transferir" />
-                        <SidebarSubButton route="convertidor" text="Convertidor de monedas" />
+                    <SidebarButton route="/transferencias" icon={<MdCurrencyExchange className='sidebar_button_icon' />} text="Transferencias">
+                        <SidebarSubButton route="/transferencias" text="Transferir" />
+                        <SidebarSubButton route="/convertidor" text="Convertidor de monedas" />
                     </SidebarButton>
 
-                    <SidebarButton route="prestamos" icon={<FaSackDollar className='sidebar_button_icon' />} text="Prestamos">
-                        <SidebarSubButton route="prestamos" text="Pedir prestamo" />
-                        <SidebarSubButton route="calculadora" text="Calculadora de prestamos" />
+                    <SidebarButton route="/prestamos" icon={<FaSackDollar className='sidebar_button_icon' />} text="Prestamos">
+                        <SidebarSubButton route="/prestamos" text="Pedir prestamo" />
+                        <SidebarSubButton route="/calculadora" text="Calculadora de prestamos" />
                     </SidebarButton>
 
-                    <SidebarButton route="facturas" icon={<FaFileInvoiceDollar className='sidebar_button_icon' />} text="Facturas">
-                        <SidebarSubButton route="facturas" text="Ver facturas pendientes" />
+                    <SidebarButton route="/facturas" icon={<FaFileInvoiceDollar className='sidebar_button_icon' />} text="Facturas">
+                        <SidebarSubButton route="/facturas" text="Ver facturas pendientes" />
                     </SidebarButton>
 
                     <div onClick={handleSignOut} className='flex items-center self-stretch gap-5 p-3 duration-500 hover:bg-[#02568A] hover:cursor-pointer'>
