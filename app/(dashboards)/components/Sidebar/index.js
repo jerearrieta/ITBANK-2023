@@ -13,22 +13,28 @@ import { TbLogout } from 'react-icons/tb';
 import Image from 'next/image';
 
 import './style.css';
+import { useState } from 'react';
 
 
 export default function Sidebar() {
     const supabase = createClientComponentClient();
+    const [open, setOpen] = useState(false);
     const router = useRouter();
 
     async function handleSignOut() {
-        await supabase.auth.signOut()
+        await supabase.auth.signOut();
         router.push("/");
+    }
+
+    async function toggleSidebar(_) {
+        setOpen(!open)
     }
 
     return (
         <>
-            <input type="checkbox" id="drawer-left" className="drawer-toggle" />
+            <input type="checkbox" id="drawer-left" checked={open} onChange={toggleSidebar} className="drawer-toggle" />
 
-            <label className="overlay" htmlFor="drawer-left"></label>
+            <label className="overlay" htmlFor="drawer-left" />
             <aside className='drawer'>
                 <header className='sidebar-header'>
                     <div className='header-logo-container'>
@@ -38,26 +44,26 @@ export default function Sidebar() {
                 </header>
 
                 <nav className='sidebar-body'>
-                    <SidebarButton route="/home" icon={<AiOutlineHome className='sidebar_button_icon' />} text="Inicio" />
+                    <SidebarButton route="/home" icon={<AiOutlineHome className='sidebar_button_icon' />} text="Inicio" toggleSidebar={toggleSidebar} />
 
                     {/* <SidebarButton route="cuentas" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" /> */}
 
                     <SidebarButton route="/tarjetas" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas">
-                        <SidebarSubButton route="/tarjetas" text="Ver tarjetas" />
+                        <SidebarSubButton route="/tarjetas" text="Ver tarjetas" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
                     <SidebarButton route="/transferencias" icon={<MdCurrencyExchange className='sidebar_button_icon' />} text="Transferencias">
-                        <SidebarSubButton route="/transferencias" text="Transferir" />
-                        <SidebarSubButton route="/convertidor" text="Convertidor de monedas" />
+                        <SidebarSubButton route="/transferencias" text="Transferir" toggleSidebar={toggleSidebar} />
+                        <SidebarSubButton route="/convertidor" text="Convertidor de monedas" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
                     <SidebarButton route="/prestamos" icon={<FaSackDollar className='sidebar_button_icon' />} text="Prestamos">
-                        <SidebarSubButton route="/prestamos" text="Pedir prestamo" />
-                        <SidebarSubButton route="/calculadora" text="Calculadora de prestamos" />
+                        <SidebarSubButton route="/prestamos" text="Pedir prestamo" toggleSidebar={toggleSidebar} />
+                        <SidebarSubButton route="/calculadora" text="Calculadora de prestamos" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
                     <SidebarButton route="/facturas" icon={<FaFileInvoiceDollar className='sidebar_button_icon' />} text="Facturas">
-                        <SidebarSubButton route="/facturas" text="Ver facturas pendientes" />
+                        <SidebarSubButton route="/facturas" text="Ver facturas pendientes" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
                     <div onClick={handleSignOut} className='flex items-center self-stretch gap-5 p-3 duration-500 hover:bg-[#02568A] hover:cursor-pointer'>

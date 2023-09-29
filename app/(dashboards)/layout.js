@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }) {
       <Header />
       <Sidebar />
       <main className="min-h-screen">
-        {children}
+          {children}
       </main>
       <Footer />
     </>

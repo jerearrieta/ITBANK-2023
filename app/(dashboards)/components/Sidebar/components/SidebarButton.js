@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './SidebarButton.module.css';
 
 
-export default function SidebarButton({ route, icon, text, children }) {
+export default function SidebarButton({ route, icon, text, children, toggleSidebar }) {
     let component = null;
 
     if (children) {
@@ -30,7 +30,7 @@ export default function SidebarButton({ route, icon, text, children }) {
     }
     else {
         component = (
-            <Link href={route} className={styles.sidebar_button}>
+            <Link href={route} onClick={toggleSidebar} className={styles.sidebar_button}>
                 {icon}
                 <p className={styles.sidebar_button_text}>{text}</p>
             </Link>
