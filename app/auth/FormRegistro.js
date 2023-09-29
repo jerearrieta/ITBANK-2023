@@ -30,8 +30,8 @@ export default function FormRegistro({ setInLogin }) {
         <div className="flex flex-col gap-4">
             <form onSubmit={handleSubmit} className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300">
                 <div className="flex flex-col items-center">
-                    <h1 className="text-3xl font-semibold">Bienvenido a Guardian Bank</h1>
-                    <p className="text-sm">Inicia sesion para acceder a su cuenta</p>
+                    <h1 className="text-3xl font-semibold text-center">Bienvenido a Guardian Bank</h1>
+                    <p className="text-sm text-center">Inicia sesion para acceder a su cuenta</p>
                 </div>
                 <div className="form-group gap-5">
                     <div className="form-field">
@@ -72,7 +72,7 @@ export default function FormRegistro({ setInLogin }) {
 
                     <div className="form-field">
                         <div className="form-control justify-center">
-                            <a className="link link-underline-hover link-primary text-sm" aria-label="¿Ya tienes una cuenta? Inicie sesión." onClick={() => setInLogin(true)}>¿Ya tiene una cuenta? Inicie Sesión.</a>
+                            <a className="link link-underline-hover link-primary text-center text-sm" aria-label="¿Ya tienes una cuenta? Inicie sesión." onClick={() => setInLogin(true)}>¿Ya tiene una cuenta? Inicie Sesión.</a>
                         </div>
                     </div>
                 </div>
