@@ -1,14 +1,14 @@
-
-import React from 'react'
-import './style.css';
 import Convertidor from './contenido';
+
+import './style.css';
+
 
 export const metadata = {
     title: 'Convertidor de monedas',
     description: 'Homebanking online del banco Guardian Bank',
   }
 
-const page = () => {
+const Page = () => {
   return (
     <div className='w-full'>
         <Convertidor />
@@ -16,5 +16,5 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
 

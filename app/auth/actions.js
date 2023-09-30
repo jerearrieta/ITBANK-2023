@@ -19,7 +19,6 @@ export async function signUp(formData) {
     
     if (error) return {code: error.code, details: error.details, message: error.message};
 
-    revalidatePath("/transferencias");
     revalidatePath('/transferencias/[id]', 'page');
     revalidatePath('/usuarios/[id]', 'page');
 
