@@ -116,7 +116,7 @@ h2 {
 
 @media screen and (max-width: 480px) {
     main {
-        width: 80%;
+        width: 100%;
     }
 
     .loan-calculator {
@@ -152,7 +152,7 @@ h2 {
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
     main {
-        width: 60%;
+        width: 100%;
     }
 
     .loan-calculator {
