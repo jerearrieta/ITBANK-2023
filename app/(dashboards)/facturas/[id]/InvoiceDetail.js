@@ -30,10 +30,12 @@ export default function InvoiceDetail({ id, issuer, total, invoice_pdf_url }) {
 
   return (
     <>
+      <h1 className="text-3xl font-bold mb-8 mx-auto">Datos de la factura</h1>
+
       <div className="flex mx-auto flex-col w-1/3 border-2 border-black p-4 rounded">
         <div className="flex flex-col mx-auto">
-          <p>Issuer: {issuer}</p>
-          <p className="pb-5">Total: {total}</p>
+          <p>Emisor: {issuer}</p>
+          <p className="pb-5">Total a pagar: {total}</p>
         </div>
         <Link href={invoice_pdf_url} target="_blank" className="btn">
           <div>

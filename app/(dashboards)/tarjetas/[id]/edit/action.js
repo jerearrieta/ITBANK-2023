@@ -12,7 +12,7 @@ export async function modifyCardLimit(id, limit) {
     
     if (error) return {code: error.code, details: error.details, message: error.message};
 
-    revalidatePath("/tarjetas/[id]");
+    revalidatePath("/tarjetas/[id]"); // Por alguna razon, el revalidatePath no funciona, por lo que no se actualiza el limite en la pagina de detalle de la tarjeta
 
     return null;
 }
