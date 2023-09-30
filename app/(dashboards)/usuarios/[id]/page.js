@@ -36,3 +36,8 @@ export default async function UserDetail({ params }) {
         </>
     );
 }
+
+export const metadata = {
+    title: 'Usuarios',
+    description: 'Usuarios de Guardian Bank',
+  }

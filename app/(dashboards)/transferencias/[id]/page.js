@@ -4,6 +4,10 @@ import { cookies } from "next/headers";
 
 import TransactionForm from "./TransactionForm";
 
+export const metadata = {
+    title: 'Sistema de transferencias',
+    description: 'Sistema de transferencias de Guardian Bank',
+  }
 
 export default async function Page({ params }) {
     const user_id = (await createServerComponentClient({ cookies }).auth.getUser()).data.user.id;
