@@ -6,6 +6,11 @@ import Link from "next/link";
 export const dynamic = "error";
 export const dynamicParams = false;
 
+export const metadata = {
+  title: 'Tarjeta',
+  description: 'Tarjetas disponibles de Guardian Bank',
+}
+
 // generateStaticParams es el equivalente a getStaticPaths del Pagers Router
 export async function generateStaticParams() {
   const supabase = createClient(

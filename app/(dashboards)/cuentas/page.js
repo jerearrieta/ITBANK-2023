@@ -2,6 +2,11 @@ import { Card } from "./components/Card";
 import { SaldoCuentas } from "./components/SaldoCuentas";
 import "./style.css";
 
+export const metadata = {
+  title: 'Tus cuentas',
+  description: 'Cuentas disponible de Guardian Bank',
+}
+
 export default function Cuentas() {
   return (
     <div className="cuentas-cont-main">

@@ -13,6 +13,11 @@ function InvoiceListItem({ id, issuer, total }) {
     );
 }
 
+export const metadata = {
+    title: 'Facturas pendientes',
+    description: 'Facturas pendientes de Guardian Bank',
+  }
+
 export default async function InvoiceList() {
     const supabase = createServerComponentClient({ cookies });
     const { data } = await supabase.from("invoices").select("id, issuer, total");

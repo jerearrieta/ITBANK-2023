@@ -3,7 +3,7 @@ import './style.css';
 
 export const metadata = {
     title: 'Prestamos',
-    description: 'Homebanking online del banco Guardian Bank',
+    description: 'Solicitador de prestamos de Guardian Bank',
   }
 
 export default function Prestamos() {

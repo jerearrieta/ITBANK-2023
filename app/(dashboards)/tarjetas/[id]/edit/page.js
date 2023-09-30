@@ -3,6 +3,11 @@ import { cookies } from "next/headers";
 
 import CardEdit from "./CardEdit";
 
+export const metadata = {
+    title: 'Modificador de limite de tarjeta',
+    description: 'Modificador de limite de Guardian Bank',
+  }
+
 
 export default async function Page({ params }) {
     const supabase = createServerComponentClient({ cookies });

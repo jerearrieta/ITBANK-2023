@@ -5,7 +5,7 @@ import Convertidor from './contenido';
 
 export const metadata = {
     title: 'Convertidor de monedas',
-    description: 'Homebanking online del banco Guardian Bank',
+    description: 'Convertidor de monedas de Guardian Bank',
   }
 
 const page = () => {

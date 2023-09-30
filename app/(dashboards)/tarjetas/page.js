@@ -15,6 +15,11 @@ function CardListItem({ id, number, expiration, cvc, limit }) {
     );
 }
 
+export const metadata = {
+    title: 'Tarjetas disponibles',
+    description: 'Tarjetas disponibles de Guardian Bank',
+  }
+
 export default async function CardList() {
     const supabase = createServerComponentClient({ cookies });
     const { data } = await supabase.from("cards").select("id, number, expiration, cvc, limit");

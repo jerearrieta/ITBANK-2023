@@ -24,3 +24,8 @@ export default async function UserList() {
         </div>
     );
 }
+
+export const metadata = {
+    title: 'Transferencias',
+    description: 'Sistema de transferencias de Guardian Bank',
+  }

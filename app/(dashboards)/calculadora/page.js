@@ -4,7 +4,7 @@ import Calculadora from './calculadora';
 
 export const metadata = {
     title: 'Calcular prestamos',
-    description: 'Homebanking online del banco Guardian Bank',
+    description: 'Calculadora de prestamos de Guardian Bank',
   }
 
 const page = () => {
