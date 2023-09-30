@@ -21,14 +21,18 @@ export default async function UserDetail({ params }) {
     const { data } = await supabase.from("users").select("dni, first_name, last_name, birth, sex").eq("id", params.id).single();
 
     return (
-        <div className="flex flex-col w-3/4 mx-auto rounded-2xl shadow-md bg-gray-300 p-3">
-            <p className="border-b py-2 font-bold">DNI: {data.dni}</p>
-            <p className="border-b py-2 font-bold">Nombre: {data.first_name}</p>
-            <p className="border-b py-2 font-bold">Apellido: {data.last_name}</p>
-            <p className="border-b py-2 font-bold">Nacimiento: {data.birth}</p>
-            <p className="border-b py-2 font-bold">Sexo: {data.sex}</p>
+        <>
+            <h1 className="text-3xl font-bold mb-4 mx-auto">{`Datos del usuario ${data.first_name} ${data.last_name}`}</h1>
 
-            <Link className="py-2 font-bold flex items-center justify-center self-stretch gap-5 p-3 duration-500 hover:bg-[#02568A] hover:cursor-pointer" href={`/transferencias/${params.id}`}>Transferir</Link>
-        </div>
+            <div className="flex flex-col w-3/4 mx-auto rounded-2xl shadow-md bg-gray-300 p-3">
+                <p className="border-b py-2 font-bold">DNI: {data.dni}</p>
+                <p className="border-b py-2 font-bold">Nombre: {data.first_name}</p>
+                <p className="border-b py-2 font-bold">Apellido: {data.last_name}</p>
+                <p className="border-b py-2 font-bold">Nacimiento: {data.birth}</p>
+                <p className="border-b py-2 font-bold">Sexo: {data.sex}</p>
+
+                <Link className="py-2 font-bold flex items-center justify-center self-stretch gap-5 p-3 duration-500 hover:bg-[#02568A] hover:cursor-pointer" href={`/transferencias/${params.id}`}>Transferir</Link>
+            </div>
+        </>
     );
 }

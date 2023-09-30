@@ -32,8 +32,8 @@ export default function FormLogin({ setInLogin }) {
         <div className="flex flex-col gap-4">
             <form onSubmit={handleSubmit} className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300">
                 <div className="flex flex-col items-center">
-                    <h1 className="text-3xl font-semibold">Bienvenido a Guardian Bank</h1>
-                    <p className="text-sm">Inicia sesion para acceder a su cuenta</p>
+                    <h1 className="text-3xl font-semibold text-center">Bienvenido a Guardian Bank</h1>
+                    <p className="text-sm text-center">Inicia sesion para acceder a su cuenta</p>
                 </div>
                 <div className="form-group gap-5">
                     <div className="form-field">
@@ -63,7 +63,7 @@ export default function FormLogin({ setInLogin }) {
                         <ProcessingButton defaultText="Iniciar Sesion" isProcessing={state[0] === "processing"} className="btn btn-primary w-full" />
                     </div>
 
-                    <p className="link link-primary link-underline-hover justify-center text-sm" aria-label="¿No tienes una cuenta? Regístrate" onClick={() => setInLogin(false)}>¿No tiene una cuenta? Regístrate</p>
+                    <p className="link link-primary link-underline-hover justify-center text-center text-sm" aria-label="¿No tienes una cuenta? Regístrate" onClick={() => setInLogin(false)}>¿No tiene una cuenta? Regístrate</p>
                 </div>
             </form>
 

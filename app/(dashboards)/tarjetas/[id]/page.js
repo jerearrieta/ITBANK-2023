@@ -38,13 +38,12 @@ export default async function CardDetail({ params }) {
   return (
     <div className="flex mx-auto flex-col w-1/3 border-2 border-black p-4 rounded">
       <div className="flex flex-col items-center mx-auto w-full">
-        <p className="py-1">{params.id}</p>
-        <p className="py-1">{data.number}</p>
-        <p className="py-1">{data.expiration}</p>
-        <p className="py-1">{data.cvc}</p>
-        <p className="py-1">{data.limit}</p>
+        <p className="py-1">Numero de tarjeta: {data.number}</p>
+        <p className="py-1">Fecha de caducidad: {data.expiration}</p>
+        <p className="py-1">CVC: {data.cvc}</p>
+        <p className="py-1">Limite: {data.limit}</p>
       </div>
-      <Link href={`/tarjetas/${params.id}/edit`} className="btn">
+      <Link href={`/tarjetas/${params.id}/edit`} className="btn mt-6">
         Modificar limite
       </Link>
     </div>

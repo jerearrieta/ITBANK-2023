@@ -1,17 +1,18 @@
 "use client";
-import React from "react";
+
+
 import { datos } from "./actions.js";
 import { useState, useRef } from "react";
 
 
-const page = () => {
+const Page = () => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [celular, setCelular] = useState("");
   const [msj, setMsj] = useState("");
   const [errorMensaje, setErrorMensaje] = useState("");
   const formRef = useRef(null)
-  
+
   const resetForm = () => {
     setNombre("");
     setEmail("");
@@ -22,24 +23,24 @@ const page = () => {
   async function handleSubmit(event) {
     event.preventDefault();
 
-      if (nombre === "" || email === "" || celular === "" || msj === "") {
-        mostrarMensaje("Por favor, completa todos los campos");
-      } else if (!email.includes("@")) {
-        mostrarMensaje("El correo electrónico debe contener @");
-      } else if (!/^[0-9]+$/.test(celular)) {
-        mostrarMensaje("El celular solo puede contener numeros");
-      } else {
-        const error = datos(new FormData(event.currentTarget));
-        resetForm();
-        formRef.current.reset();
-      }
-    };
+    if (nombre === "" || email === "" || celular === "" || msj === "") {
+      mostrarMensaje("Por favor, completa todos los campos");
+    } else if (!email.includes("@")) {
+      mostrarMensaje("El correo electrónico debe contener @");
+    } else if (!/^[0-9]+$/.test(celular)) {
+      mostrarMensaje("El celular solo puede contener numeros");
+    } else {
+      const error = datos(new FormData(event.currentTarget));
+      resetForm();
+      formRef.current.reset();
+    }
+  };
 
-    const mostrarMensaje = (mensaje) => {
-      setErrorMensaje(mensaje);
-      setTimeout(function () {
-        setErrorMensaje("");
-      }, 5000);
+  const mostrarMensaje = (mensaje) => {
+    setErrorMensaje(mensaje);
+    setTimeout(function () {
+      setErrorMensaje("");
+    }, 5000);
   }
 
   return (
@@ -132,4 +133,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

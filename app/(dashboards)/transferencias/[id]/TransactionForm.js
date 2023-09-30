@@ -49,7 +49,8 @@ export default function TransactionForm({ id, first_name, last_name }) {
 
     return (
         <>
-            <h1 className="text-3xl font-bold pb-4">{`Transferir dinero a ${first_name} ${last_name}`}</h1>
+            <h1 className="text-3xl font-bold mb-4">{`Transferir dinero a ${first_name} ${last_name}`}</h1>
+            
             <form onSubmit={handleSubmit} className="flex flex-col self-stretch p-6 gap-4 rounded-2xl bg-[#D9D9D9] shadow-xl">
                 <input type="number" name="amount" className="h-12 p-4 border-none rounded-lg" placeholder="Ingresa el monto a transferir" />
                 <select name="reason" defaultValue="Varios" className="h-12 pl-4 border-none rounded-lg" aria-label="motivo">

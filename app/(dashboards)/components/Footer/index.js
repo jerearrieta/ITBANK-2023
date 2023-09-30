@@ -7,16 +7,11 @@ import "./style.css";
 export default function Footer() {
   return (
     <footer>
-      <Link href='/home'>
-        <div className="p-10">
-          <Image className="h-16 w-auto"
-              src="/assets/logo_title.webp"
-              alt="Guardian Bank"
-              title="Guardian Bank"
-              width="150"
-              height="100" />
-        </div>
-      </Link>
+      <div className="p-10 hidden md:flex">
+        <Link href='/home'>
+          <Image src="/assets/logo_title.webp" alt="Guardian Bank" title="Guardian Bank" width="200" height="200" priority />
+        </Link>
+      </div>
 
       <div className="footer-info">
         <div className="contact-info">
@@ -31,26 +26,26 @@ export default function Footer() {
         </div>
         <div className="social-media">
           <div>
-            <a href="https://www.facebook.com/" aria-label="Guardian Bank en Facebook">
+            <a href="https://www.facebook.com/" aria-label="Guardian Bank en Facebook" className="mx-auto md:m-0">
               <FaFacebook className="w-5 h-5" />
             </a>
-            <a href="https://www.facebook.com/" aria-label="Guardian Bank en Facebook">
+            <a href="https://www.facebook.com/" aria-label="Guardian Bank en Facebook" className="hidden md:inline">
               <p>/guardianbank</p>
             </a>
           </div>
           <div>
-            <a href="https://www.twitter.com/" aria-label="Guardian Bank en Twitter">
+            <a href="https://www.twitter.com/" aria-label="Guardian Bank en Twitter" className="mx-auto md:m-0">
               <FaTwitter className="w-5 h-5" />
             </a>
-            <a href="https://www.twitter.com/" aria-label="Guardian Bank en Twitter">
+            <a href="https://www.twitter.com/" aria-label="Guardian Bank en Twitter" className="hidden md:inline">
               <p>@guardianbank</p>
             </a>
           </div>
           <div>
-            <a href="https://www.instagram.com/" aria-label="Guardian Bank en Instagram">
+            <a href="https://www.instagram.com/" aria-label="Guardian Bank en Instagram" className="mx-auto md:m-0">
               <FaInstagram className="w-5 h-5" />
             </a>
-            <a href="https://www.instagram.com/" aria-label="Guardian Bank en Instagram">
+            <a href="https://www.instagram.com/" aria-label="Guardian Bank en Instagram" className="hidden md:inline">
               <p>@guardianbank</p>
             </a>
           </div>
