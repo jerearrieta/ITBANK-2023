@@ -1,5 +1,4 @@
 import csv
-
 with open('datos.csv', 'r') as datos:
     lector_csv = csv.reader(datos, delimiter=',')
     for row in lector_csv:
@@ -13,3 +12,5 @@ with open('datos.csv', 'r') as datos:
         FechaPago = row[7]
         DNI = row[8]
         Estado = row[9]
+        Tipo = row[10]
+
