@@ -50,13 +50,14 @@ def filtrar_cheques(archivo: TextIOWrapper, salida: str, dni: str, tipo_cheque: 
 	"""
 	
 	salida = salida.lower()
+	cheques_filtrados = []
+	archivo_salida_csv, csv_writer = None, None
+	espacios = (11, 13, 16, 20, 21, 10, 20, 20, 10, 10, 0)
 
 	cheques = reader(archivo, delimiter=';')
 	encabezado = next(cheques)
-
-	espacios = (11, 13, 16, 20, 21, 10, 20, 20, 10, 10, 0)
-
-	archivo_salida_csv, csv_writer = None, None
+	
+	# Si `salida` es CSV, entonces crear y abrir el archivo de salida en modo escritura y escribir el encabezado. De lo contrario, solo imprimir el encabezado
 	if salida == "csv":
 		archivo_salida_csv = open(f"{dni}_{datetime.now().timestamp()}", "w", newline="")
 		csv_writer = writer(archivo_salida_csv, delimiter=";")
@@ -65,36 +66,39 @@ def filtrar_cheques(archivo: TextIOWrapper, salida: str, dni: str, tipo_cheque: 
 	else:
 		imprimir_espaciado(encabezado, espacios, separador="|")
 
-	cheques_filtrados = []
-
 	# Leemos el CSV linea por linea para evitar cargarlas todas juntas, lo cual podria sobrecargar la memoria en caso de que haya una excesiva cantidad de lineas
 	for cheque in cheques:
+		# Convertimos las fechas de timestamp a datetime
 		cheque[6] = datetime.fromtimestamp(int(cheque[6]))
 		cheque[7] = datetime.fromtimestamp(int(cheque[7]))
 
 		# Evaluamos cada cheque para saber si debe ser descartado o no segun los filtros ingresados
 		if evaluar_cheque(cheque[8], cheque[9], cheque[10], cheque[7], dni, tipo_cheque, estado_cheque, fecha): 
+			# Verificamos que no haya cheques con numeros repetidos
 			if cheque[0] in cheques_filtrados:
 				system("cls")
 				raise ValueError(f"Se encontraron dos cheques con el mismo numero ({cheque[0]}) bajo el DNI {dni}.")
 			
 			cheques_filtrados.append(cheque[0])
 
+			# Convertimos los datetime a su representacion en string para mostrarlos
 			cheque[6] = str(cheque[6])
 			cheque[7] = str(cheque[7])
 
+			# Mostramos/guardamos los datos segun `salida`
 			if salida == "pantalla":
 				imprimir_espaciado(cheque, espacios)
 
 			else:
 				csv_writer.writerow(cheque)
 
+	# Cerramos los archivos
 	archivo.close()
 	if salida == "csv":
 		archivo_salida_csv.close()
 
 def dni(value: str):
-	if not value.isdigit():
+	if not value.isdigit() or len(value) != 8:
 		raise ValueError()
 
 	return value
@@ -119,9 +123,9 @@ if __name__ == "__main__":
 	parser.add_argument("--fecha", nargs=2, type=date, metavar="fecha", help="Rango de fechas a filtrar en el formato dd/mm/yyyy")
 
 	# Parseamos los parametros ingresados por consola y llamamos a filtrar_cheques para el filtrado
-	#args = parser.parse_args()
+	args = parser.parse_args()
 
 	#args = parser.parse_args(["cheques.csv", "12345678", "PANTALLA", "EMITIDO", "--fecha", "10/12/2020", "10/12/2020"])
-	args = parser.parse_args(["cheques.csv", "12345678", "CSV", "EMITIDO"])
+	#args = parser.parse_args(["cheques.csv", "12345678", "CSV", "EMITIDO"])
 	
 	filtrar_cheques(**args.__dict__)
