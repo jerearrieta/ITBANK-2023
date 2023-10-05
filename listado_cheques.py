@@ -85,13 +85,13 @@ def filtrar_cheques(archivo: TextIOWrapper, salida: str, dni_filtro: str, tipo_f
 				raise ValueError(f"Se encontraron dos cheques con el mismo numero ({nro_cheque}) bajo el DNI {dni_filtro}.")
 			
 			cheques_filtrados.add(nro_cheque)
+
+			# Convertimos los timestamp a su representacion en string para mostrarlos
+			cheque[6] = str(datetime.fromtimestamp(int(cheque[6])))
+			cheque[7] = str(fecha_cheque)
 			
 			# Mostramos/guardamos los datos segun `salida`
 			if salida == "pantalla":
-				# Convertimos los timestamp a su representacion en string para mostrarlos
-				cheque[6] = str(datetime.fromtimestamp(int(cheque[6])))
-				cheque[7] = str(fecha_cheque)
-
 				imprimir_espaciado(cheque, espacios)
 
 			else:
