@@ -52,7 +52,7 @@ def filtrar_cheques(archivo: TextIOWrapper, salida: str, dni_filtro: str, tipo_f
 	salida = salida.lower()
 	cheques_filtrados = set()
 	archivo_salida_csv, csv_writer = None, None
-	espacios = (11, 13, 16, 20, 21, 10, 20, 20, 10, 10, 0)
+	espacios = (11, 13, 16, 20, 21, 10, 20, 20, 10, 10, 9)
 
 	cheques = reader(archivo, delimiter=';')
 	encabezado = next(cheques)
