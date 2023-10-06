@@ -8,6 +8,8 @@ export const metadata = {
 
 export default function Prestamos() {
     return (
-        <FormularioPrestamos title="Solicitar prestamos"></FormularioPrestamos>
+        <div className='w-full'>
+            <FormularioPrestamos title="Solicitar prestamos"></FormularioPrestamos>
+        </div>
     );
 }

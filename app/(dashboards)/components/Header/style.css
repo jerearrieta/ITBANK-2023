@@ -58,3 +58,9 @@ header {
 #lang-selector:hover {
     cursor: pointer;
 }
+
+@media screen and (max-width: 481px) {
+   .header-logo {
+    display: none;
+   }
+}

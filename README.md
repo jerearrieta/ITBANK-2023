@@ -6,6 +6,10 @@
 - Camila Gonzalez.
 - Jeremias Arrieta.
 
+## Nuevos cambios en el Sprint 4
+
+- Se agrego el script de python listado_cheques.py para el filtrado de cheques bancarios.
+
 ## Nuevos cambios en el Sprint 3
 
 - Se migro el proyecto a NextJS 13 (App Router).
