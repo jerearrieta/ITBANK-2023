@@ -54,13 +54,13 @@ def filtrar_cheques(archivo: TextIOWrapper, salida: str, dni_filtro: str, tipo_f
 	archivo_salida_csv, csv_writer = None, None
 	espacios = (11, 13, 16, 20, 21, 10, 20, 20, 10, 10, 9)
 
-	cheques = reader(archivo, delimiter=';')
+	cheques = reader(archivo)
 	encabezado = next(cheques)
 
 	# Si `salida` es CSV, entonces crear y abrir el archivo de salida en modo escritura y escribir el encabezado. De lo contrario, solo imprimir el encabezado
 	if salida == "csv":
 		archivo_salida_csv = open(f"{dni}_{datetime.now().timestamp()}", "w", newline="")
-		csv_writer = writer(archivo_salida_csv, delimiter=";")
+		csv_writer = writer(archivo_salida_csv)
 		csv_writer.writerow(encabezado)
 
 	else:
@@ -79,7 +79,7 @@ def filtrar_cheques(archivo: TextIOWrapper, salida: str, dni_filtro: str, tipo_f
 
 		# Evaluamos cada cheque para saber si debe ser descartado o no segun los filtros ingresados
 		if evaluar_cheque(dni_cheque, tipo_cheque, estado_cheque, fecha_cheque, dni_filtro, tipo_filtro, estado_filtro, fecha_filtro): 
-			# Verificamos que no haya cheques con numeros repetidos, en cuyo caso 
+			# Verificamos que no haya cheques con numeros repetidos, en cuyo caso consideramos la repeticion de numeros de cheques como un error grave, por lo que detenemos el programa arrojando un error e informando del mismo.
 			if nro_cheque in cheques_filtrados:
 				os.system('cls' if os.name == 'nt' else 'clear')
 				raise ValueError(f"Se encontraron dos cheques con el mismo numero ({nro_cheque}) bajo el DNI {dni_filtro}.")
