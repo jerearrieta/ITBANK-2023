@@ -21,6 +21,7 @@
 - Rediseñar el estilo de todas las paginas (excepto la de inicio de sesion y registro, la cual ya fue rediseñada).
 - Migrar todos (o la gran mayoria) de estilos a Tailwind CSS.
 - Implementar una lista de actividades recientes (pagos y transferencias).
+- Implementar un boton para ver notificaciones recientes.
 - Implementar el boton de "Recuerdame" para el inicio de sesion.
 - Implementar la pagina de recuperacion de contraseña.
 - Implementar mejores mensajes de error.
