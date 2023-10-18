@@ -60,7 +60,7 @@ def filtrar_cheques(archivo: TextIOWrapper, salida: str, dni_filtro: str, tipo_f
 
 	# Si `salida` es CSV, entonces crear y abrir el archivo de salida en modo escritura y escribir el encabezado. De lo contrario, solo imprimir el encabezado
 	if salida == "csv":
-		archivo_salida_csv = open(f"{dni_filtro}_{datetime.now().timestamp()}", "w", newline="")
+		archivo_salida_csv = open(f"{dni_filtro}_{datetime.now().timestamp()}.csv", "w", newline="")
 		csv_writer = writer(archivo_salida_csv)
 		csv_writer.writerow(encabezado)
 
