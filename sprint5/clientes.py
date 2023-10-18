@@ -5,24 +5,40 @@ class Cliente:
         self.nacimiento_cliente = nacimiento_cliente
         self.tipo_cliente = tipo_cliente
         
-    def calcular_monto_total(self, dolares):
+    def calcular_monto_total(self, monto, precio_dolar):
         "Calcula el monto total que se tiene que gastar para comprar dólares, teniendo en cuenta el impuesto país y ganancias"
-        precio_dolar = 1000*dolares
-        impuestos = precio_dolar*0.45 + precio_dolar*0.35
-        resultado = precio_dolar + impuestos
-        print(f"El monto total para comprar ${dolares} dólares es de ${resultado} pesos argentinos.")
+        IMPUESTO_PAIS = .3
+        IMPUESTO_GANANCIAS = .45
+        TOTAL_IMPUESTOS = IMPUESTO_PAIS + IMPUESTO_GANANCIAS
+
+        subtotal = precio_dolar * monto
+        total = subtotal * (1 + TOTAL_IMPUESTOS)
+
+        return total
     
-    def descontar_comision(self, monto):
+    def descontar_comision(self, monto, porcentaje_comision):
         "Calcula el monto descontando el % de comisión por transferencia saliente"
-        comision = monto*self.comision_transf_saliente
-        resultado = monto - comision
-        print(f"El monto con la comisión descontada es ${resultado}.")
+        valor_comision = monto * porcentaje_comision
+        return monto - valor_comision
     
-    def calcular_monto_plazo_fijo(self, monto):
-        "Calcula el monto del plazo fijo teniendo en cuenta el intéres de 60%"
-        interes = monto*0.60
-        resultado = monto + interes
-        print(f"El monto del plazo fijo es de ${resultado}.")
+    def calcular_monto_plazo_fijo(self, monto, porcentaje_interes):
+        "Calcula el monto del plazo fijo teniendo en cuenta el intéres"
+        interes = monto * porcentaje_interes
+        return monto + interes
+
+    @classmethod
+    def crear(cls, tipo, params):
+        "FactoryMethod para crear los distintos tipos de clientes"
+        MAPEO_TIPOS_CLIENTES = {
+            "CLASSIC":  ClienteClassic,
+            "GOLD": ClienteGold,
+            "BLACK": ClienteBlack,
+        }
+
+        if tipo not in MAPEO_TIPOS_CLIENTES:
+            raise ValueError(f"Bad client type {tipo}")
+        
+        return MAPEO_TIPOS_CLIENTES[tipo](params)
 
 class ClienteClassic(Cliente):
     def __init__(self, nombre_cliente, dni_cliente, nacimiento_cliente, tipo_cliente):
