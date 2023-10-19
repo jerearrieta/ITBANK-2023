@@ -1,9 +1,10 @@
 class Cliente:
-    def __init__(self, nombre_cliente, dni_cliente, nacimiento_cliente, tipo_cliente):
-        self.nombre_cliente = nombre_cliente
-        self.dni_cliente = dni_cliente
-        self.nacimiento_cliente = nacimiento_cliente
-        self.tipo_cliente = tipo_cliente
+    def __init__(self, numero, nombre, apellido, dni, tipo):
+        self.__numero = numero
+        self.__nombre = nombre
+        self.__apellido = apellido
+        self.__dni = dni
+        self.__tipo = tipo
         
     def calcular_monto_total(self, monto, precio_dolar):
         "Calcula el monto total que se tiene que gastar para comprar dólares, teniendo en cuenta el impuesto país y ganancias"
@@ -27,7 +28,7 @@ class Cliente:
         return monto + interes
 
     @classmethod
-    def crear(cls, tipo, params):
+    def crear(cls, tipo, *args, **kwargs):
         "FactoryMethod para crear los distintos tipos de clientes"
         MAPEO_TIPOS_CLIENTES = {
             "CLASSIC":  ClienteClassic,
@@ -38,9 +39,11 @@ class Cliente:
         if tipo not in MAPEO_TIPOS_CLIENTES:
             raise ValueError(f"Bad client type {tipo}")
         
-        return MAPEO_TIPOS_CLIENTES[tipo](params)
+        return MAPEO_TIPOS_CLIENTES[tipo](*args, **kwargs)
 
 class ClienteClassic(Cliente):
+    tarjeta_debito = 1
+
     def __init__(self, nombre_cliente, dni_cliente, nacimiento_cliente, tipo_cliente):
         super().__init__(nombre_cliente, dni_cliente, nacimiento_cliente, tipo_cliente)
         self.tarjeta_debito = 1
