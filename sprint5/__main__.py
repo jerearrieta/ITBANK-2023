@@ -1,7 +1,8 @@
 from argparse import ArgumentParser
 import json
-from . import analizar_json
-from .generadorhtml import generar_reporte
+
+from clientes import Cliente
+from generadorhtml import generar_reporte
 
 def json_file(path):
 	with open(path, "r") as file:
@@ -11,10 +12,10 @@ def json_file(path):
 if __name__ == "__main__":
 	parser = ArgumentParser()
 
-	parser.add_argument("archivo", type=json_file, help="La ruta del archivo JSON conteniendo los datos. Puede ser absoluta o relativa.")
+	parser.add_argument("datos_cliente", type=json_file, metavar="archivo_json", help="La ruta del archivo JSON conteniendo los datos. Puede ser absoluta o relativa.")
 
 	args = parser.parse_args()
+	
+	cliente = Cliente(**args.datos_cliente)
 
-	registros = analizar_json(args.archivo)
-
-	generar_reporte(registros)
+	#generar_reporte(cliente)
