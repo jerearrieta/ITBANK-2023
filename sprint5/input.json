@@ -10,14 +10,16 @@
 			"tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO",
 			"cuentaNumero": 190,
 			"permitidoActualParaTransaccion": 9000,
+			"saldoDisponibleEnCuenta": 10000,
 			"monto": 1000,
 			"fecha": "10/10/2022 16:00:55",
 			"numero": 1
 		},
 		{
 			"estado": "RECHAZADA",
-			"tipo": "COMPRA_EN_CUOTAS_TARJETA_VISA",
+			"tipo": "COMPRA_EN_CUOTAS_TARJETA_CREDITO_VISA",
 			"permitidoActualParaTransaccion": 9000,
+			"saldoDisponibleEnCuenta": 1000000,
 			"monto": 750000,
 			"fecha": "10/10/2022 16:14:35",
 			"numero": 2

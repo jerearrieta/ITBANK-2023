@@ -1,7 +1,7 @@
 from tiers import TierBase
 
 class Movimiento:
-    def __init__(self, numero, fecha, tipo, estado, monto, permitidoActualParaTransaccion, saldoDisponibleEnCuenta, cuentaNumero, tier_cliente):
+    def __init__(self, tier_cliente, numero, fecha, tipo, estado, monto, permitidoActualParaTransaccion = None, saldoDisponibleEnCuenta = None, cuentaNumero = None):
         self.numero = numero
         self.fecha = fecha
         self.tipo = tipo
@@ -40,37 +40,63 @@ class Movimiento:
         "Operación para realizar el retiro de efectivo por caja."
         self.RETIRO_EFECTIVO_CAJERO_AUTOMATICO()
 
-    def COMPRA_EN_CUOTAS_TARJETA_CREDITO(self):
+    def COMPRA_EN_CUOTAS_TARJETA_CREDITO(self, tipo_tarjeta):
         "Operación para realizar compras en cuotas con tarjeta de crédito."
 
         # 1er caso: el cliente no puede tener tarjetas de credito
-        if self.tier_cliente.tarjeta_credito == 0:
+        if len(self.tier_cliente.tarjetas_credito) == 0:
             self.motivo = "Usted no posee ninguna tarjeta de credito."
 
-        # 2do caso: el cliente no tiene suficiente saldo
+        # 2do caso: el tipo de la tarjeta es incorrecto para el cliente
+        elif tipo_tarjeta not in self.tier_cliente.tarjetas_credito:
+            self.motivo = "La tarjeta que esta intentando usar es invalida."
+
+        # 3er caso: el cliente no tiene suficiente saldo
         elif self.saldo_disponible < self.monto:
             self.motivo = "No tiene suficiente dinero."
 
-        # 3er caso: el cliente supero el limite de cuota de la tarjeta de credito.
+        # 4to caso: el cliente supero el limite de cuota de la tarjeta de credito.
         else:
             self.motivo = "Ha superado el límite máximo a pagar en cuotas con su tarjeta de crédito."
+
+    def COMPRA_EN_CUOTAS_TARJETA_CREDITO_MASTER(self):
+        self.COMPRA_EN_CUOTAS_TARJETA_CREDITO("MASTER")
+
+    def COMPRA_EN_CUOTAS_TARJETA_CREDITO_VISA(self):
+        self.COMPRA_EN_CUOTAS_TARJETA_CREDITO("VISA")
+
+    def COMPRA_EN_CUOTAS_TARJETA_CREDITO_AMEX(self):
+        self.COMPRA_EN_CUOTAS_TARJETA_CREDITO("AMEX")
     
-    def COMPRA_TARJETA_CREDITO(self):
+    def COMPRA_TARJETA_CREDITO(self, tipo_tarjeta):
         "Operación para realizar compras con tarjeta de crédito."
 
         # 1er caso: el cliente no puede tener tarjetas de credito
-        if self.tier_cliente.tarjeta_credito == 0:
+        if len(self.tier_cliente.tarjetas_credito) == 0:
             self.motivo = "Usted no posee ninguna tarjeta de credito."
 
-        # 2do caso: el cliente no tiene suficiente saldo
+        # 2do caso: el tipo de la tarjeta es incorrecto para el cliente
+        elif tipo_tarjeta not in self.tier_cliente.tarjetas_credito:
+            self.motivo = "La tarjeta que esta intentando usar es invalida."
+
+        # 3er caso: el cliente no tiene suficiente saldo
         elif self.saldo_disponible < self.monto:
             self.motivo = "No tiene suficiente dinero."
 
-        # 3er caso: el cliente supero el limite de cuota de la tarjeta de credito.
+        # 4to caso: el cliente supero el limite de cuota de la tarjeta de credito.
         else:
             self.motivo = "Ha superado el límite máximo de su tarjeta de crédito."
+
+    def COMPRA_TARJETA_CREDITO_MASTER(self):
+        self.COMPRA_TARJETA_CREDITO("MASTER")
+
+    def COMPRA_TARJETA_CREDITO_VISA(self):
+        self.COMPRA_TARJETA_CREDITO("VISA")
+
+    def COMPRA_TARJETA_CREDITO_AMEX(self):
+        self.COMPRA_TARJETA_CREDITO("AMEX")
     
-    def ALTA_TARJETA_CREDITO(self):
+    def ALTA_TARJETA_CREDITO(self, tipo_tarjeta):
         "Operación para dar de alta una nueva tarjeta de crédito."
         
         # 1er caso: el cliente no puede tener tarjetas de credito
@@ -82,6 +108,15 @@ class Movimiento:
             self.motivo = "Usted no puede solicitar una tarjeta de credito de este tipo."
 
         # 3er caso: el cliente alcanzo el maximo de tarjetas de credito (actualmente ningun tipo de cliente tiene un limite de tarjeta mayor a 0, por lo que no implementamos este chequeo)
+
+    def ALTA_TARJETA_CREDITO_MASTER(self):
+        self.ALTA_TARJETA_CREDITO("MASTER")
+
+    def ALTA_TARJETA_CREDITO_VISA(self):
+        self.ALTA_TARJETA_CREDITO("VISA")
+
+    def ALTA_TARJETA_CREDITO_AMEX(self):
+        self.ALTA_TARJETA_CREDITO("AMEX")
     
     def ALTA_TARJETA_DEBITO(self):
         "Operación para dar de alta una nueva tarjeta de debito."
@@ -100,26 +135,66 @@ class Movimiento:
         else:
             self.motivo = "Ha superado el límite máximo de tarjetas de crédito para su tipo de cuenta."
     
-    def ALTA_CUENTA_CTE(self):
+    def ALTA_CUENTA_CTE(self, moneda):
         "Operación para dar de alta una nueva cuenta corriente."
 
         # 1er caso: el cliente no puede tener cuentas corriente
-        if self.tier_cliente.cuenta_corriente == 0:
+        if self.tier_cliente.limite_cuentas_corriente == 0:
             self.motivo = "Su cuenta no cuenta con la posibilidad de tener una cuenta corriente. Si aún desea tenerla, puede consultar por nuestros otros planes de clientes."
         
          # 2do caso: el cliente alcanzo el limite de cajas de ahorro que puede tener
-        elif self.tier_cliente.cuenta_corriente < self.monto:
+        elif self.tier_cliente.limite_cuentas_corriente < self.monto:
             self.motivo = "Ha superado el límite máximo de cuentas corrientes para su tipo de cuenta."
+
+    def ALTA_CUENTA_CTE_ARG(self):
+        self.ALTA_CUENTA_CTE("ARG")
+
+    def ALTA_CUENTA_CTE_USD(self):
+        self.ALTA_CUENTA_CTE("USD")
     
-    def ALTA_CAJA_DE_AHORRO(self):
+    def ALTA_CAJA_DE_AHORRO(self, moneda):
         "Operación para dar de alta una nueva caja de ahorro."
 
         # 1er caso: el cliente no puede tener cajas de ahorro (no se aplica a ningun cliente actualmente)
-        if self.tier_cliente.caja_ahorro == 0:
+        if self.tier_cliente.limite_cajas_ahorro == 0:
             self.motivo = "Su cuenta no cuenta con la posibilidad de tener una caja de ahorro. Si aún desea tenerla, puede consultar por nuestros otros planes de clientes."
 
         # 2do caso: el cliente alcanzo el limite de cajas de ahorro que puede tener
-        elif not self.tier_cliente.caja_ahorro < self.monto:
+        elif not self.tier_cliente.limite_cajas_ahorro < self.monto:
+            self.motivo = "Ha superado el límite máximo de cajas de ahorro para su tipo de cuenta."
+
+    def ALTA_CAJA_DE_AHORRO_ARG(self):
+        # 1er caso: el cliente no puede tener cajas de ahorro en pesos (no se aplica a ningun cliente actualmente)
+        if self.tier_cliente.limite_cajas_ahorro_pesos == self.tier_cliente.limite_cajas_ahorro_pesos_extra == 0:
+            self.motivo = "Su cuenta no cuenta con la posibilidad de tener una caja de ahorro en pesos."
+
+        # 2do caso: el cliente alcanzo el maximo de cajas de ahorro en pesos que puede tener
+        elif self.tier_cliente.limite_cajas_ahorro_pesos_extra is not None and self.monto == self.tier_cliente.limite_cajas_ahorro_pesos + self.tier_cliente.limite_cajas_ahorro_pesos_extra:
+            self.motivo = "Ha superado el límite máximo de cajas de ahorro en pesos para su tipo de cuenta."
+
+        # 3er caso: el cliente no tiene saldo suficiente para pagar la tarifa extra
+        elif self.monto != self.tier_cliente.limite_cajas_ahorro_pesos_extra:
+            self.motivo = "No posee saldo suficiente para cubrir la tarifa extra."
+
+        # 4to caso: el cliente no puede tener mas cajas de ahorros de ningun tipo
+        else:
+            self.motivo = "Ha superado el límite máximo de cajas de ahorro para su tipo de cuenta."
+
+    def ALTA_CAJA_DE_AHORRO_USD(self):
+        # 1er caso: el cliente no puede tener cajas de ahorro en dolares
+        if self.tier_cliente.limite_cajas_ahorro_dolares == self.tier_cliente.limite_cajas_ahorro_dolares_extra == 0:
+            self.motivo = "Su cuenta no cuenta con la posibilidad de tener una caja de ahorro en dolares."
+
+        # 2do caso: el cliente alcanzo el maximo de cajas de ahorro en dolares que puede tener
+        elif self.tier_cliente.limite_cajas_ahorro_dolares_extra is not None and self.monto == self.tier_cliente.limite_cajas_ahorro_dolares + self.tier_cliente.limite_cajas_ahorro_dolares_extra:
+            self.motivo = "Ha superado el límite máximo de cajas de ahorro en dolares para su tipo de cuenta."
+
+        # 3er caso: el cliente no tiene saldo suficiente para pagar la tarifa extra
+        elif self.monto != self.tier_cliente.limite_cajas_ahorro_dolares_extra:
+            self.motivo = "No posee saldo suficiente para cubrir la tarifa extra."
+
+        # 4to caso: el cliente no puede tener mas cajas de ahorros de ningun tipo
+        else:
             self.motivo = "Ha superado el límite máximo de cajas de ahorro para su tipo de cuenta."
     
     def ALTA_CUENTA_DE_INVERSION(self):
@@ -144,7 +219,6 @@ class Movimiento:
         else:
             self.motivo = "Usted no posee una caja de ahorro en dólares. Para realizar una compra de dólares, debe contar con una caja de ahorro en la moneda."
         
-        
     def VENTA_DOLAR(self):
         "Operación para vender dólares."
 
@@ -162,6 +236,12 @@ class Movimiento:
         # Unico caso: el cliente no tiene suficiente dinero para pagar la comision de transferencia entrante.
         # Nota: se supone que una transferencia entrante nunca podria ser rechazada porque la comision se puede descontar directamente del monto ingresado.
         self.motivo = "La transferencia no pudo ser recibida debido a que no posee el saldo suficiente para cubrir la comision correspondiente."
+
+    def TRANSFERENCIA_RECIBIDA_ARG(self):
+        pass
+
+    def TRANSFERENCIA_RECIBIDA_USD(self):
+        pass
         
     def TRANSFERENCIA_ENVIADA(self):
         "Operación para mostrar en la cuenta la transferencia enviada."
@@ -173,6 +253,12 @@ class Movimiento:
         # 2do caso: el cliente no tiene suficiente dinero para pagar la comision de transferencia saliente.
         else:
             self.motivo = "La transferencia no pudo ser enviada debido a que no posee el saldo suficiente para cubrir la comision correspondiente."
+
+    def TRANSFERENCIA_ENVIADA_ARG(self):
+        pass
+
+    def TRANSFERENCIA_ENVIADA_USD(self):
+        pass
 
     @staticmethod
     def calcular_monto_total(monto, precio_dolar):

@@ -11,7 +11,31 @@ class Cliente:
 
         self.__movimientos = []
         for mov in transacciones:
-            self.__movimientos.append(Movimiento(**mov, tier_cliente=self.__tipo))
+            self.__movimientos.append(Movimiento(tier_cliente=self.__tipo, **mov))
+
+    @property
+    def numero(self):
+        return self.__numero
+    
+    @property
+    def nombre(self):
+        return self.__nombre
+    
+    @property
+    def apellido(self):
+        return self.__apellido
+    
+    @property
+    def dni(self):
+        return self.__dni
+    
+    @property
+    def tipo(self):
+        return type(self.__tipo).__name__
+
+    @property
+    def movimientos(self):
+        return self.__movimientos
 
     def validar_movimientos(self):
         for mov in self.__movimientos:
