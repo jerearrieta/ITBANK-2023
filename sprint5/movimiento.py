@@ -238,10 +238,10 @@ class Movimiento:
         self.motivo = "La transferencia no pudo ser recibida debido a que no posee el saldo suficiente para cubrir la comision correspondiente."
 
     def TRANSFERENCIA_RECIBIDA_ARG(self):
-        pass
+        self.TRANSFERENCIA_RECIBIDA()
 
     def TRANSFERENCIA_RECIBIDA_USD(self):
-        pass
+        self.TRANSFERENCIA_RECIBIDA()
         
     def TRANSFERENCIA_ENVIADA(self):
         "Operación para mostrar en la cuenta la transferencia enviada."
@@ -255,14 +255,27 @@ class Movimiento:
             self.motivo = "La transferencia no pudo ser enviada debido a que no posee el saldo suficiente para cubrir la comision correspondiente."
 
     def TRANSFERENCIA_ENVIADA_ARG(self):
-        pass
+        self.TRANSFERENCIA_ENVIADA()
 
     def TRANSFERENCIA_ENVIADA_USD(self):
-        pass
+        self.TRANSFERENCIA_ENVIADA()
 
     @staticmethod
     def calcular_monto_total(monto, precio_dolar):
         "Calcula el monto total que se tiene que gastar para comprar dólares, teniendo en cuenta el impuesto país y ganancias"
+
+        if not (type(monto) == int or type(monto) == float):
+            raise TypeError(f"El parametro 'monto' espera un valor de tipo int o float. Recibio un valor de tipo {type(monto)}.")
+        
+        if not (type(precio_dolar) == int or type(precio_dolar) == float):
+            raise TypeError(f"El parametro 'precio_dolar' espera un valor de tipo int o float. Recibio un valor de tipo {type(precio_dolar)}.")
+        
+        if monto < 0:
+            raise ValueError("El parametro 'monto' no puede ser un numero negativo.")
+        
+        if precio_dolar <= 0:
+            raise ValueError("El parametro 'precio_dolar' no puede ser un numero negativo ni cero.")
+
         IMPUESTO_PAIS = .3
         IMPUESTO_GANANCIAS = .45
         TOTAL_IMPUESTOS = IMPUESTO_PAIS + IMPUESTO_GANANCIAS
@@ -275,11 +288,38 @@ class Movimiento:
     @staticmethod
     def descontar_comision(monto, porcentaje_comision):
         "Calcula el monto descontando el % de comisión por transferencia saliente"
+
+        if not (type(monto) == int or type(monto) == float):
+            raise TypeError(f"El parametro 'monto' espera un valor de tipo int o float. Recibio un valor de tipo {type(monto)}.")
+        
+        if not (type(porcentaje_comision) == int or type(porcentaje_comision) == float):
+            raise TypeError(f"El parametro 'porcentaje_comision' espera un valor de tipo int o float. Recibio un valor de tipo {type(porcentaje_comision)}.")
+        
+        if monto < 0:
+            raise ValueError("El parametro 'monto' no puede ser un numero negativo.")
+        
+        if not 0 <= porcentaje_comision <= 1:
+            raise ValueError("El parametro 'porcentaje_comision' debe ser un numero entre 0 y 1 (incluidos).")
+        
         valor_comision = monto * porcentaje_comision
         return monto - valor_comision
     
     @staticmethod
     def calcular_monto_plazo_fijo(monto, porcentaje_interes):
         "Calcula el monto del plazo fijo teniendo en cuenta el intéres"
+
+        if not (type(monto) == int or type(monto) == float):
+            print("entra")
+            raise TypeError(f"El parametro 'monto' espera un valor de tipo int o float. Recibio un valor de tipo {type(monto)}.")
+        
+        if not (type(porcentaje_interes) == int or type(porcentaje_interes) == float):
+            raise TypeError(f"El parametro 'porcentaje_interes' espera un valor de tipo int o float. Recibio un valor de tipo {type(porcentaje_interes)}.")
+        
+        if monto < 0:
+            raise ValueError("El parametro 'monto' no puede ser un numero negativo.")
+        
+        if porcentaje_interes < 0:
+            raise ValueError("El parametro 'porcentaje_interes' no puede ser un numero negativo.")
+
         interes = monto * porcentaje_interes
         return monto + interes

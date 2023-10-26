@@ -32,7 +32,7 @@ class TierBase:
         }
 
         if tipo not in MAPEO_TIPOS_CLIENTES:
-            raise ValueError(f"Bad client type {tipo}")
+            raise ValueError(f"Tipo de cliente invalido: '{tipo}'")
         
         return MAPEO_TIPOS_CLIENTES[tipo](*args, **kwargs)
 
