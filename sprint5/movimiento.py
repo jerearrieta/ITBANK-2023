@@ -1,18 +1,32 @@
 from tiers import TierBase
 
 class Movimiento:
-    def __init__(self, tier_cliente, numero, fecha, tipo, estado, monto, permitidoActualParaTransaccion = None, saldoDisponibleEnCuenta = None, cuentaNumero = None):
+    def __init__(self,
+                 tier_cliente: TierBase,
+                 numero: int,
+                 fecha: str,
+                 tipo: str,
+                 estado: str,
+                 monto: int | float,
+                 permitidoActualParaTransaccion: int | float = None,
+                 saldoDisponibleEnCuenta: int | float = None,
+                 cuentaNumero: int = None):
+        
+        # Los siguientes atributos son obligatorios: deben ser definidos para cada operacion/movimiento (excepto claramente el motivo).
         self.numero = numero
         self.fecha = fecha
         self.tipo = tipo
         self.estado = estado
         self.motivo = None
         self.monto = monto
+        
+        self.tier_cliente = tier_cliente
+
+        # Debido a que estos 3 siguientes atributos se usan en algunos tipos de operaciones y en otras no, los consideramos opcionales.
+        # Por ese motivo vienen definidos por parametros con un valor por defecto de None.
         self.permitido_actual = permitidoActualParaTransaccion
         self.saldo_disponible = saldoDisponibleEnCuenta
         self.cuenta_numero = cuentaNumero
-
-        self.tier_cliente: TierBase = tier_cliente
 
     def validar(self):
         # Si el movimiento fue aceptado, no hace falta otorgar motivo (segun comentario de Maxi en slack)
@@ -30,7 +44,7 @@ class Movimiento:
 
         # 2do caso: maximo diario alcanzado
         elif self.permitido_actual < self.monto:
-            self.motivo = "Ha superado el límite diario de retiro en efectivo o ha superado el límite de cantidad de veces que puede retirar efectivo. Vuelva a ingresar el monto a retirar, o chequee no haber superado su límite de retiros mensuales sin comisiones."
+            self.motivo = "Ha superado el límite diario de retiro en efectivo o ha superado el límite de cantidad de veces que puede retirar efectivo."
 
         # 3er caso: maximo mensual alcanzado y el cliente no tiene suficiente dinero para pagar la tarifa extra (solo clientes Classic)
         else:
@@ -38,6 +52,7 @@ class Movimiento:
 
     def RETIRO_EFECTIVO_POR_CAJA(self):
         "Operación para realizar el retiro de efectivo por caja."
+        # No hayamos ninguna diferencia entre retiro en efectivo por caja o por cajero automatico.
         self.RETIRO_EFECTIVO_CAJERO_AUTOMATICO()
 
     def COMPRA_EN_CUOTAS_TARJETA_CREDITO(self, tipo_tarjeta):
@@ -100,7 +115,7 @@ class Movimiento:
         "Operación para dar de alta una nueva tarjeta de crédito."
         
         # 1er caso: el cliente no puede tener tarjetas de credito
-        if self.tier_cliente.tarjeta_credito == 0:
+        if self.tier_cliente.tarjetas_credito == 0:
             self.motivo = "Usted no puede tener tarjetas de credito."
 
         # 2do caso: el cliente no puede solicitar tarjetas de cierto tipo
@@ -128,7 +143,7 @@ class Movimiento:
         "Operación para dar de alta una nueva chequera."
 
         # 1er caso: el cliente no puede tener chequeras
-        if self.tier_cliente.chequera == 0:
+        if self.tier_cliente.limite_chequeras == 0:
             self.motivo = "Su cuenta no cuenta con la posibilidad de tener una chequera. Si aún desea tenerla, puede consultar por nuestros otros planes de clientes."
         
         # 2do caso: el cliente alcanzo el maximo de chequeras que puede tener
@@ -142,8 +157,8 @@ class Movimiento:
         if self.tier_cliente.limite_cuentas_corriente == 0:
             self.motivo = "Su cuenta no cuenta con la posibilidad de tener una cuenta corriente. Si aún desea tenerla, puede consultar por nuestros otros planes de clientes."
         
-         # 2do caso: el cliente alcanzo el limite de cajas de ahorro que puede tener
-        elif self.tier_cliente.limite_cuentas_corriente < self.monto:
+        # 2do caso: el cliente alcanzo el limite de cajas de ahorro que puede tener
+        else:
             self.motivo = "Ha superado el límite máximo de cuentas corrientes para su tipo de cuenta."
 
     def ALTA_CUENTA_CTE_ARG(self):
@@ -151,17 +166,6 @@ class Movimiento:
 
     def ALTA_CUENTA_CTE_USD(self):
         self.ALTA_CUENTA_CTE("USD")
-    
-    def ALTA_CAJA_DE_AHORRO(self, moneda):
-        "Operación para dar de alta una nueva caja de ahorro."
-
-        # 1er caso: el cliente no puede tener cajas de ahorro (no se aplica a ningun cliente actualmente)
-        if self.tier_cliente.limite_cajas_ahorro == 0:
-            self.motivo = "Su cuenta no cuenta con la posibilidad de tener una caja de ahorro. Si aún desea tenerla, puede consultar por nuestros otros planes de clientes."
-
-        # 2do caso: el cliente alcanzo el limite de cajas de ahorro que puede tener
-        elif not self.tier_cliente.limite_cajas_ahorro < self.monto:
-            self.motivo = "Ha superado el límite máximo de cajas de ahorro para su tipo de cuenta."
 
     def ALTA_CAJA_DE_AHORRO_ARG(self):
         # 1er caso: el cliente no puede tener cajas de ahorro en pesos (no se aplica a ningun cliente actualmente)
@@ -180,6 +184,8 @@ class Movimiento:
         else:
             self.motivo = "Ha superado el límite máximo de cajas de ahorro para su tipo de cuenta."
 
+        # Nota: el atributo 'monto' en este contexto indicaria el monto/cantidad de cajas de ahorro en pesos que el cliente posee.
+
     def ALTA_CAJA_DE_AHORRO_USD(self):
         # 1er caso: el cliente no puede tener cajas de ahorro en dolares
         if self.tier_cliente.limite_cajas_ahorro_dolares == self.tier_cliente.limite_cajas_ahorro_dolares_extra == 0:
@@ -196,12 +202,14 @@ class Movimiento:
         # 4to caso: el cliente no puede tener mas cajas de ahorros de ningun tipo
         else:
             self.motivo = "Ha superado el límite máximo de cajas de ahorro para su tipo de cuenta."
+
+        # Nota: el atributo 'monto' en este contexto indicaria el monto/cantidad de cajas de ahorro en dolares que el cliente posee.
     
     def ALTA_CUENTA_DE_INVERSION(self):
         "Operación para dar de alta una nueva cuenta de inversion."
 
         # 1er caso: el cliente no puede tener cuentas de inversion
-        if self.tier_cliente.cuenta_inversion == 0:
+        if self.tier_cliente.limite_cuentas_inversion == 0:
             self.motivo = "Su cuenta no cuenta con la posibilidad de tener una cuenta de inversión. Si aún desea tenerla, puede consultar por nuestros otros planes de clientes."
 
         # 2do caso: el cliente supero el limite de cuentas de inversion que puede tener
@@ -223,7 +231,7 @@ class Movimiento:
         "Operación para vender dólares."
 
         # 1er caso: el cliente no tiene suficientes dolares en la cuenta
-        if not self.monto <= self.tier_cliente.caja_ahorro_dolares:
+        if not self.monto <= self.tier_cliente.limite_cajas_ahorro_dolares:
             self.motivo = "Usted no posee la cantidad de dólares que desea vender."
 
         # 2do caso: el cliente no tiene caja de ahorro o cuenta corriente en pesos (caso hipotetico)
@@ -233,9 +241,10 @@ class Movimiento:
     def TRANSFERENCIA_RECIBIDA(self):
         "Operación para mostrar en la cuenta la transferencia recibida."
 
-        # Unico caso: el cliente no tiene suficiente dinero para pagar la comision de transferencia entrante.
-        # Nota: se supone que una transferencia entrante nunca podria ser rechazada porque la comision se puede descontar directamente del monto ingresado.
-        self.motivo = "La transferencia no pudo ser recibida debido a que no posee el saldo suficiente para cubrir la comision correspondiente."
+        # Unico caso: el cliente no una caja de ahorro o cuenta corriente donde depositar la transferencia.
+        self.motivo = "No cuenta con una caja de ahorro o cuenta corriente valida donde depositar la transferencia."
+
+        # Nota: se supone que una transferencia entrante nunca podria ser rechazada por la comision porque se podria descontar directamente del monto ingresado.
 
     def TRANSFERENCIA_RECIBIDA_ARG(self):
         self.TRANSFERENCIA_RECIBIDA()
@@ -251,8 +260,12 @@ class Movimiento:
             self.motivo = "No posee el saldo suficiente para realizar esta transferencia."
 
         # 2do caso: el cliente no tiene suficiente dinero para pagar la comision de transferencia saliente.
-        else:
+        elif self.saldo_disponible < self.monto * (1 + self.tier_cliente.comision_saliente):
             self.motivo = "La transferencia no pudo ser enviada debido a que no posee el saldo suficiente para cubrir la comision correspondiente."
+
+        # 3er caso: el cliente destino no tiene una caja de ahorro o cuenta corriente donde depositar la transferencia.
+        else:
+            self.motivo = "El destinatario no cuenta con una caja de ahorro o cuenta corriente valida donde depositar la transferencia."
 
     def TRANSFERENCIA_ENVIADA_ARG(self):
         self.TRANSFERENCIA_ENVIADA()
