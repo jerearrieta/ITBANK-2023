@@ -2,7 +2,7 @@ from argparse import ArgumentParser
 import json
 
 from clientes import Cliente
-from generadorhtml import Reportador
+from reportador import Reportador
 
 
 def json_file(path):
