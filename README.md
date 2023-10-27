@@ -6,6 +6,10 @@
 - Camila Gonzalez.
 - Jeremias Arrieta.
 
+## Nuevos cambios en el Sprint 5
+
+- Se agrego el paquete 'sprint5', el cual puede utilizarse ejecutando el comando 'python sprint5 .\sprint5\input.json' desde el root del proyecto. La ruta al archivo JSON puede cambiarse por la deseada.
+
 ## Nuevos cambios en el Sprint 4
 
 - Se agrego el script de python listado_cheques.py para el filtrado de cheques bancarios.
