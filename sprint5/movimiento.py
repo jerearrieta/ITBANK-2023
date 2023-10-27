@@ -322,7 +322,6 @@ class Movimiento:
         "Calcula el monto del plazo fijo teniendo en cuenta el intéres"
 
         if not (type(monto) == int or type(monto) == float):
-            print("entra")
             raise TypeError(f"El parametro 'monto' espera un valor de tipo int o float. Recibio un valor de tipo {type(monto)}.")
         
         if not (type(porcentaje_interes) == int or type(porcentaje_interes) == float):
