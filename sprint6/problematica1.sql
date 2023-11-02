@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 BEGIN TRANSACTION;
 
 /* 
@@ -99,15 +101,13 @@ Relacionar las tarjetas con el cliente al que pertenecen.
 
 CREATE TABLE IF NOT EXISTS tarjeta (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_cliente INTEGER,
-    numero TEXT NOT NULL UNIQUE, -- CHECK(LENGTH(numero) <= 20)
-    tipo TEXT NOT NULL, -- CHECK
-    id_marca INTEGER NOT NULL,
+    id_cliente INTEGER REFERENCES cliente ON UPDATE CASCADE ON DELETE SET NULL,
+    numero TEXT NOT NULL UNIQUE CHECK(LENGTH(numero) <= 20),
+    tipo TEXT NOT NULL CHECK(tipo IN ('DEBITO', 'CREDITO')),
+    id_marca INTEGER NOT NULL REFERENCES marca_tarjeta ON UPDATE CASCADE ON DELETE NO ACTION,
     cvv TEXT NOT NULL,
     fecha_expiracion TEXT NOT NULL,
-    fecha_creacion TEXT NOT NULL,
-    FOREIGN KEY (id_cliente) REFERENCES cliente (customer_id),
-    FOREIGN KEY (id_marca) REFERENCES marca_tarjeta (id)
+    fecha_creacion TEXT NOT NULL
 );
 
 /*
@@ -1147,6 +1147,27 @@ VALUES
     ("Colombia","Quindío","La Tebaida","558231","8305 Dapibus Rd."),
     ("Netherlands","Noord Brabant","Oss","3877 II","P.O. Box 109, 8600 Risus. Ave");
 
+CREATE TABLE IF NOT EXISTS direccion_cliente (
+    id_direccion INTEGER REFERENCES direccion ON UPDATE CASCADE ON DELETE SET NULL,
+    id_cliente INTEGER NOT NULL REFERENCES cliente ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY (id_direccion, id_cliente)
+);
+
+CREATE TABLE IF NOT EXISTS direccion_empleado (
+    id_direccion INTEGER REFERENCES direccion ON UPDATE CASCADE ON DELETE SET NULL,
+    id_empleado INTEGER NOT NULL REFERENCES empleado ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY (id_direccion, id_empleado)
+);
+
+UPDATE sucursal
+SET branch_address_id = ABS(RANDOM()) % 500 + 1;
+
+INSERT INTO direccion_cliente (id_direccion, id_cliente)
+SELECT ABS(RANDOM()) % 500 + 1, customer_id from cliente;
+
+INSERT INTO direccion_empleado (id_direccion, id_empleado)
+SELECT ABS(RANDOM()) % 500 + 1, employee_id from empleado;
+
 /*
 Octavo punto
 
@@ -1154,8 +1175,7 @@ Ampliar el alcance de la entidad cuenta para que identifique el tipo de la misma
 */
 
 ALTER TABLE cuenta 
-ADD COLUMN id_tipo INTEGER
-REFERENCES tipo_cuenta (id);
+ADD COLUMN id_tipo INTEGER REFERENCES tipo_cuenta ON UPDATE CASCADE ON DELETE NO ACTION;
 
 /*
 Noveno punto
@@ -1164,7 +1184,7 @@ Asignar un tipo de cuenta a cada registro de cuenta de forma aleatoria.
 */
 
 UPDATE cuenta
-SET id_tipo = ABS(RANDOM()) % 3 + 1;
+SET id_tipo = ABS(RANDOM()) % 5 + 1;
 
 /*
 Decimo punto
@@ -1177,6 +1197,7 @@ SET employee_hire_date = substr(employee_hire_date, 7, 4) || '-' ||
                          substr(employee_hire_date, 4, 2) || '-' ||
                          substr(employee_hire_date, 1, 2);
 
+/*
 SELECT * FROM tipo_cliente;
 
 SELECT * FROM tipo_cuenta;
@@ -1190,5 +1211,6 @@ SELECT * FROM direccion;
 SELECT * FROM cuenta;
 
 SELECT * FROM empleado;
+*/
 
--- COMMIT;
+COMMIT;
