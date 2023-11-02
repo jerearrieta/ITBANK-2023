@@ -18,7 +18,7 @@ Seleccionar el nombre, apellido y edad de los clientes que tengan en el apellido
 
 SELECT nombre, apellido, edad
 FROM vista_cliente
-WHERE apellido LIKE '%Z%';
+WHERE apellido LIKE '%Z%' OR apellido LIKE '%z%';
 
 /*
 Tercer punto
@@ -41,17 +41,11 @@ los préstamos prendarios utilizando la unión de tablas/consultas (recordar que
 bases de datos la moneda se guarda como integer, en este caso con 2 centavos).
 */
 
--- No se si esta bien porque no me da solo los de tipo prendario usando el UNION
 SELECT * FROM prestamo
 WHERE loan_total > 8000000
 UNION
 SELECT * FROM prestamo
 WHERE loan_type = 'PRENDARIO';
-
--- Aca si me da los tipo prendario pero no utilizo el UNION
-SELECT *
-FROM prestamo
-WHERE loan_type = 'PRENDARIO' AND loan_total > 8000000;
 
 /*
 Quinto punto
@@ -72,7 +66,6 @@ SELECT COUNT(*) AS clientes_menores_de_50
 FROM vista_cliente
 WHERE edad < 50;
 
-
 /*
 Septimo punto
 
@@ -80,7 +73,7 @@ Seleccionar las primeras 5 cuentas con saldo mayor a $8.000.
 */
 
 SELECT * FROM cuenta
-WHERE balance > 8000 -- Aca tambien habria que ponerlo con dos 0 mas por los centavos?
+WHERE balance > 800000
 LIMIT 5;
 
 /*
@@ -101,7 +94,6 @@ Por cada tipo de préstamo de la tabla préstamo, calcular la suma de sus
 importes. Renombrar la columna como loan_total_accu.
 */
 
--- Se refiere a renombrar la columna en el query o hacer un alter para cambiar el nombre de la columna 'loan_total' en la tabla?
 SELECT loan_type, SUM(loan_total) AS loan_total_accu
 FROM prestamo
 GROUP BY loan_type;

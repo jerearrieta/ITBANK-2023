@@ -16,11 +16,11 @@ Segundo punto
 
 Obtener la cantidad de empleados por cliente por sucursal en un número real.
 */
-SELECT branch_name, customer_name, customer_surname, CAST(COUNT(employee_id) AS REAL) AS employee_quantity
+SELECT branch_name, CAST(COUNT(DISTINCT employee_id) AS REAL) / COUNT(DISTINCT customer_id) AS proporcion_empleado_por_cliente
 FROM sucursal AS s
 INNER JOIN cliente AS c ON s.branch_id = c.branch_id
 INNER JOIN empleado AS e ON s.branch_id = e.branch_id
-GROUP BY branch_name, customer_name;
+GROUP BY branch_name;
 
 /*
 Tercer punto
@@ -32,6 +32,7 @@ FROM sucursal AS s
 INNER JOIN cliente AS c ON s.branch_id = c.branch_id
 INNER JOIN tarjeta AS t ON c.customer_id = t.id_cliente
 INNER JOIN marca_tarjeta AS mt ON t.id_marca = mt.id
+WHERE t.tipo = 'CREDITO'
 GROUP BY branch_name, mt.nombre;
 
 /*
@@ -60,8 +61,6 @@ campos balance, IBAN o tipo de cuenta registre en la tabla auditoria
 Restar $100 a las cuentas 10,11,12,13,14.
 */
 
-BEGIN TRANSACTION;
-
 CREATE TABLE auditoria_cuenta (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     old_id INT,
@@ -84,7 +83,7 @@ BEGIN
 END;
 
 UPDATE cuenta
-SET balance = balance - 100
+SET balance = balance - 10000
 WHERE account_id IN (10, 11, 12, 13, 14);
 
 SELECT * FROM auditoria_cuenta;
@@ -94,7 +93,11 @@ Sexto punto
 
 Mediante índices mejorar la performance la búsqueda de clientes por DNI.
 */
+EXPLAIN QUERY PLAN SELECT * FROM cliente WHERE customer_DNI = '15703200';
+
 CREATE UNIQUE INDEX idx_customer_DNI ON cliente(customer_DNI);
+
+EXPLAIN QUERY PLAN SELECT * FROM cliente WHERE customer_DNI = '15703200';
 
 /*
 Septimo punto
@@ -118,14 +121,16 @@ CREATE TABLE movimientos (
 
 SELECT balance FROM cuenta WHERE account_id IN (200, 400);
 
-UPDATE cuenta SET balance = balance - 1000 WHERE account_id = 200; -- Aca tambien habria que ponerlo con dos 0 mas por los centavos?
-UPDATE cuenta SET balance = balance + 1000 WHERE account_id = 400;
+BEGIN TRANSACTION;
+
+UPDATE cuenta SET balance = balance - 100000 WHERE account_id = 200;
+UPDATE cuenta SET balance = balance + 100000 WHERE account_id = 400;
 
 INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion)
-VALUES (200, -1000, 'Transferencia enviada');
+VALUES (200, -100000, 'Transferencia enviada');
 
 INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion)
-VALUES (400, 1000, 'Transferencia recibida');
+VALUES (400, 100000, 'Transferencia recibida');
 
 SELECT balance FROM cuenta WHERE account_id IN (200, 400);
 SELECT * FROM movimientos;
