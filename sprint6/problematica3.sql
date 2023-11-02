@@ -14,10 +14,8 @@ Segundo punto
 Seleccionar el nombre, apellido y edad de los clientes que tengan en el apellido la letra Z.
 */
 
-SELECT customer_name AS nombre, customer_surname AS apellido, 
-       strftime('%Y', 'now') - strftime('%Y', dob) - 
-       (strftime('%m%d', 'now') < strftime('%m%d', dob)) AS edad
-FROM cliente
+SELECT customer_name AS nombre, customer_surname AS apellido, edad
+FROM vista_cliente
 WHERE customer_surname LIKE '%Z%';
 
 /*
@@ -27,11 +25,9 @@ Seleccionar el nombre, apellido, edad y nombre de sucursal de las personas
 cuyo nombre sea “Brendan” y el resultado ordenarlo por nombre de sucursal.
 */
 
-SELECT c.customer_name AS nombre, c.customer_surname AS apellido,
-        strftime('%Y', 'now') - strftime('%Y', dob) - 
-       (strftime('%m%d', 'now') < strftime('%m%d', dob)) AS edad,
+SELECT c.customer_name AS nombre, c.customer_surname AS apellido, edad,
        s.branch_name AS nombre_sucursal
-FROM cliente c
+FROM vista_cliente c
 INNER JOIN sucursal s ON s.branch_id = c.branch_id
 WHERE c.customer_name = 'Brendan'
 ORDER BY nombre_sucursal ASC;
@@ -46,7 +42,7 @@ bases de datos la moneda se guarda como integer, en este caso con 2 centavos).
 
 -- No se si esta bien porque no me da solo los de tipo prendario usando el UNION
 SELECT * FROM prestamo
-WHERE loan_total > 80000
+WHERE loan_total > 8000000
 UNION
 SELECT * FROM prestamo
 WHERE loan_type = 'PRENDARIO';
@@ -54,7 +50,7 @@ WHERE loan_type = 'PRENDARIO';
 -- Aca si me da los tipo prendario pero no utilizo el UNION
 SELECT *
 FROM prestamo
-WHERE loan_type = 'PRENDARIO' AND loan_total > 80000
+WHERE loan_type = 'PRENDARIO' AND loan_total > 8000000
 
 
 /*
@@ -73,9 +69,7 @@ Contar la cantidad de clientes menores a 50 años.
 */
 
 SELECT COUNT(*) AS clientes_menores_de_50
-FROM (SELECT strftime('%Y', 'now') - strftime('%Y', dob) - 
-       (strftime('%m%d', 'now') < strftime('%m%d', dob)) AS edad
-FROM cliente)
+FROM vista_cliente
 WHERE edad < 50;
 
 
@@ -112,3 +106,7 @@ FROM prestamo
 GROUP BY loan_type;
 
 -- COMMIT;
+
+
+
+
