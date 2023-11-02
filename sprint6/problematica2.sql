@@ -127,4 +127,4 @@ SELECT loan_type from prestamo WHERE loan_total = (SELECT MAX(loan_total) FROM p
 
 SELECT loan_type from prestamo ORDER BY loan_total DESC LIMIT 1;
 
--- COMMIT;
+COMMIT;

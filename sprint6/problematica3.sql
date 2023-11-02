@@ -16,9 +16,9 @@ Segundo punto
 Seleccionar el nombre, apellido y edad de los clientes que tengan en el apellido la letra Z.
 */
 
-SELECT customer_name AS nombre, customer_surname AS apellido, edad
+SELECT nombre, apellido, edad
 FROM vista_cliente
-WHERE customer_surname LIKE '%Z%';
+WHERE apellido LIKE '%Z%';
 
 /*
 Tercer punto
@@ -27,11 +27,10 @@ Seleccionar el nombre, apellido, edad y nombre de sucursal de las personas
 cuyo nombre sea “Brendan” y el resultado ordenarlo por nombre de sucursal.
 */
 
-SELECT c.customer_name AS nombre, c.customer_surname AS apellido, edad,
-       s.branch_name AS nombre_sucursal
+SELECT c.nombre, c.apellido, edad, s.branch_name AS nombre_sucursal
 FROM vista_cliente c
-INNER JOIN sucursal s ON s.branch_id = c.branch_id
-WHERE c.customer_name = 'Brendan'
+INNER JOIN sucursal s ON s.branch_id = c.numero_sucursal
+WHERE c.nombre = 'Brendan'
 ORDER BY nombre_sucursal ASC;
 
 /*
@@ -52,8 +51,7 @@ WHERE loan_type = 'PRENDARIO';
 -- Aca si me da los tipo prendario pero no utilizo el UNION
 SELECT *
 FROM prestamo
-WHERE loan_type = 'PRENDARIO' AND loan_total > 8000000
-
+WHERE loan_type = 'PRENDARIO' AND loan_total > 8000000;
 
 /*
 Quinto punto
@@ -82,7 +80,7 @@ Seleccionar las primeras 5 cuentas con saldo mayor a $8.000.
 */
 
 SELECT * FROM cuenta
-WHERE balance > 8000
+WHERE balance > 8000 -- Aca tambien habria que ponerlo con dos 0 mas por los centavos?
 LIMIT 5;
 
 /*
@@ -103,12 +101,7 @@ Por cada tipo de préstamo de la tabla préstamo, calcular la suma de sus
 importes. Renombrar la columna como loan_total_accu.
 */
 
+-- Se refiere a renombrar la columna en el query o hacer un alter para cambiar el nombre de la columna 'loan_total' en la tabla?
 SELECT loan_type, SUM(loan_total) AS loan_total_accu
 FROM prestamo
 GROUP BY loan_type;
-
--- COMMIT;
-
-
-
-
