@@ -73,19 +73,21 @@ CREATE TABLE auditoria_cuenta (
     old_type VARCHAR(50),
     new_type VARCHAR(50),
     user_action VARCHAR(100),
-    created_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT (DATETIME())
 );
 
 CREATE TRIGGER IF NOT EXISTS auditoria_cuenta_trigger
-AFTER UPDATE OF balance, iban, type ON cuenta
+AFTER UPDATE OF balance, iban, id_tipo ON cuenta
 BEGIN
-    INSERT INTO auditoria_cuenta (old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action, created_at)
-    VALUES (OLD.id, NEW.id, OLD.balance, NEW.balance, OLD.iban, NEW.iban, OLD.type, NEW.type, 'Actualizado', DATETIME('now'));
+    INSERT INTO auditoria_cuenta (old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action)
+    VALUES (OLD.account_id, NEW.account_id, OLD.balance, NEW.balance, OLD.iban, NEW.iban, OLD.id_tipo, NEW.id_tipo, 'Actualizado');
 END;
 
 UPDATE cuenta
 SET balance = balance - 100
 WHERE account_id IN (10, 11, 12, 13, 14);
+
+SELECT * FROM auditoria_cuenta;
 
 /*
 Sexto punto
@@ -107,26 +109,25 @@ Registrar el movimiento en la tabla movimientos.
 En caso de no poder realizar la operación de forma completa, realizar un ROLLBACK.
 */
 CREATE TABLE movimientos (
-    movimiento_id INT AUTO_INCREMENT PRIMARY KEY,
-    numero_cuenta INTEGER,
+    movimiento_id INTEGER PRIMARY KEY AUTOINCREMENT ,
+    numero_cuenta INTEGER REFERENCES cuenta ON UPDATE CASCADE ON DELETE SET NULL,
     monto DECIMAL(10, 2),
     tipo_operacion VARCHAR(50),
-    hora TIMESTAMP
+    hora TIMESTAMP DEFAULT (DATETIME())
 );
 
-BEGIN;
-SELECT balance FROM cuenta WHERE account_id = 200;
-UPDATE cuenta SET balance = balance - 1000 WHERE account_id = 200;
+SELECT balance FROM cuenta WHERE account_id IN (200, 400);
 
-SELECT COUNT(*) FROM cuenta WHERE account_id = 400;
+UPDATE cuenta SET balance = balance - 1000 WHERE account_id = 200; -- Aca tambien habria que ponerlo con dos 0 mas por los centavos?
 UPDATE cuenta SET balance = balance + 1000 WHERE account_id = 400;
 
-INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion, hora)
-VALUES (200, -1000, 'Transferencia enviada', DATETIME('now'));
-INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion, hora)
-VALUES (400, 1000, 'Transferencia recibida', DATETIME('now'));
+INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion)
+VALUES (200, -1000, 'Transferencia enviada');
 
-SELECT changes();
+INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion)
+VALUES (400, 1000, 'Transferencia recibida');
+
+SELECT balance FROM cuenta WHERE account_id IN (200, 400);
+SELECT * FROM movimientos;
+
 COMMIT;
-
--- COMMIT;
