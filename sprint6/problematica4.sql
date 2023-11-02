@@ -75,31 +75,10 @@ CREATE TABLE auditoria_cuenta (
 );
 
 CREATE TRIGGER IF NOT EXISTS auditoria_cuenta_trigger
-AFTER UPDATE ON cuenta
+AFTER UPDATE OF balance, iban, type ON cuenta
 BEGIN
-    -- campo balance
-    UPDATE auditoria_cuenta
-    SET actualización = CASE
-        WHEN NEW.balance <> OLD.balance THEN 'Balance actualizado de ' || OLD.balance || ' a ' || NEW.balance
-        ELSE NULL
-    END
-    WHERE NEW.balance <> OLD.balance;
-
-    -- campo IBAN
-    UPDATE auditoria_cuenta
-    SET actualización = CASE
-        WHEN NEW.IBAN <> OLD.IBAN THEN 'IBAN actualizado de ' || OLD.IBAN || ' a ' || NEW.IBAN
-        ELSE NULL
-    END
-    WHERE NEW.IBAN <> OLD.IBAN;
-
-    -- campo tipo de cuenta
-    UPDATE auditoria_cuenta
-    SET actualización = CASE
-        WHEN NEW.tipo_cuenta <> OLD.tipo_cuenta THEN 'Tipo de cuenta actualizado de ' || OLD.tipo_cuenta || ' a ' || NEW.tipo_cuenta
-        ELSE NULL
-    END
-    WHERE NEW.tipo_cuenta <> OLD.tipo_cuenta;
+    INSERT INTO auditoria_cuenta (old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action, created_at)
+    VALUES (OLD.id, NEW.id, OLD.balance, NEW.balance, OLD.iban, NEW.iban, OLD.type, NEW.type, 'Actualizado', DATETIME('now'));
 END;
 
 UPDATE cuenta
@@ -133,35 +112,19 @@ CREATE TABLE movimientos (
     hora TIMESTAMP
 );
 
-CREATE VIEW cuentas AS
-SELECT account_id, balance
-FROM cuenta
-WHERE account_id IN (200, 400);
+BEGIN;
+SELECT balance FROM cuenta WHERE account_id = 200;
+UPDATE cuenta SET balance = balance - 1000 WHERE account_id = 200;
 
-SELECT 
-    CASE
-        WHEN (SELECT balance FROM cuentas WHERE account_id = 200) >= 1000 THEN
-            (
-                UPDATE cuenta
-                SET balance = balance - 1000
-                WHERE account_id = 200;
+SELECT COUNT(*) FROM cuenta WHERE account_id = 400;
+UPDATE cuenta SET balance = balance + 1000 WHERE account_id = 400;
 
-                UPDATE cuenta
-                SET balance = balance + 1000
-                WHERE account_id = 400;
+INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion, hora)
+VALUES (200, -1000, 'Transferencia enviada', DATETIME('now'));
+INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion, hora)
+VALUES (400, 1000, 'Transferencia recibida', DATETIME('now'));
 
-                INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion, hora)
-                VALUES (200, -1000, 'Transferencia enviada', CURRENT_TIMESTAMP);
-
-                INSERT INTO movimientos (numero_cuenta, monto, tipo_operacion, hora)
-                VALUES (400, 1000, 'Transferencia recibida', CURRENT_TIMESTAMP);
-
-                COMMIT;
-                'La transferencia ha sido exitosa.'
-            )
-        ELSE
-            ROLLBACK;
-            'El saldo en la cuenta es insuficiente para realizar la transferencia.'
-    END;
+SELECT changes();
+COMMIT;
 
 -- COMMIT;
