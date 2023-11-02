@@ -25,7 +25,7 @@ Tercer punto
 
 Obtener la cantidad de tarjetas de crédito por tipo por sucursal.
 */
-SELECT branch_name, marca_tarjeta.nombre, COUNT(tarjeta.id) AS card_quantity
+SELECT branch_name, mt.nombre, COUNT(t.id) AS card_quantity
 FROM sucursal AS s
 INNER JOIN cliente AS c ON s.branch_id = c.branch_id
 INNER JOIN tarjeta AS t ON c.customer_id = t.id_cliente
@@ -58,8 +58,10 @@ campos balance, IBAN o tipo de cuenta registre en la tabla auditoria
 Restar $100 a las cuentas 10,11,12,13,14.
 */
 
+BEGIN TRANSACTION;
+
 CREATE TABLE auditoria_cuenta (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     old_id INT,
     new_id INT,
     old_balance DECIMAL(10, 2),
@@ -104,10 +106,6 @@ UPDATE cuenta
 SET balance = balance - 100
 WHERE account_id IN (10, 11, 12, 13, 14);
 
-BEGIN TRANSACTION;
-
--- COMMIT;
-
 /*
 Sexto punto
 
@@ -140,8 +138,6 @@ SELECT account_id, balance
 FROM cuenta
 WHERE account_id IN (200, 400);
 
-BEGIN TRANSACTION;
-
 SELECT 
     CASE
         WHEN (SELECT balance FROM cuentas WHERE account_id = 200) >= 1000 THEN
@@ -167,3 +163,5 @@ SELECT
             ROLLBACK;
             'El saldo en la cuenta es insuficiente para realizar la transferencia.'
     END;
+
+-- COMMIT;
