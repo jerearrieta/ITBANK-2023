@@ -34,5 +34,8 @@ next-env.d.ts
 # python
 __pycache__
 
+# pycharm
+/.idea/
+
 # sqlite
 itbank.db
