@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rippleui@1.12.1/dist/css/styles.css" />
+
+  <title>{% block title %}{% endblock %}</title>
+	<link rel="icon" href="{% static 'base/favicon.ico' %}" />
+</head>
+<body>
+	{% include "base/header.html" %}
+  {% include "base/sidebar.html" %}
+  <main class="min-h-screen">
+      {% block content %}{% endblock %}
+  </main>
+  {% include "base/footer.html" %}
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+</body>
+</html>

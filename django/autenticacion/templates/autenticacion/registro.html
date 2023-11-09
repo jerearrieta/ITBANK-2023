@@ -1,0 +1,60 @@
+{% extends "autenticacion/base.html" %}
+
+{% block title %}Iniciar Sesion{% endblock %}
+
+{% block content %}
+<div class="flex flex-col gap-4">
+  <form class="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300">
+    <div class="flex flex-col items-center">
+      <h1 class="text-3xl font-semibold text-center">Bienvenido a Guardian Bank</h1>
+      <p class="text-sm text-center">Inicia sesion para acceder a su cuenta</p>
+    </div>
+    <div class="form-group gap-5">
+      <div class="form-field">
+        <label for="email" class="form-label text-black">Email</label>
+        <input type="email" id="email" name="email" class="input max-w-full border bg-white border-gray-500 text-black" placeholder="Email" required />
+      </div>
+      <div class="form-field">
+        <label for="password" class="form-label text-black">Clave</label>
+        <input type="password" id="password" name="password" class="input max-w-full border bg-white border-gray-500 text-black" placeholder="Clave" required />
+      </div>
+      <div class="form-field">
+        <label for="dni" class="form-label text-black">DNI</label>
+        <input type="text" id="dni" name="dni" class="input max-w-full border bg-white border-gray-500 text-black" placeholder="DNI" required />
+      </div>
+      <div class="form-field">
+        <label for="first_name" class="form-label text-black">Nombre</label>
+        <input type="text" id="first_name" name="first_name" class="input max-w-full border bg-white border-gray-500 text-black" placeholder="Nombre" required />
+      </div>
+      <div class="form-field">
+        <label for="last_name" class="form-label text-black">Apellido</label>
+        <input type="text" id="last_name" name="last_name" class="input max-w-full border bg-white border-gray-500 text-black" placeholder="Apellido" required />
+      </div>
+      <div class="form-field">
+        <label for="birth" class="form-label text-black">Fecha de nacimiento</label>
+        <input type="date" id="birth" name="birth" class="input max-w-full border bg-white border-gray-500 text-black" placeholder="Fecha de nacimiento" required />
+      </div>
+      <div class="form-field">
+        <label for="sex" class="form-label text-black">Sexo</label>
+        <select id="sex" name="sex" class="select max-w-full border bg-white border-gray-500 text-black" required>
+          <option disabled value="">Sexo</option>
+          <option value="M">Hombre</option>
+          <option value="F">Mujer</option>
+        </select>
+      </div>
+      <div class="form-field pt-5">
+        {# <ProcessingButton defaultText="Registrarse" isProcessing={state[0] === "processing"} class="btn btn-primary w-full" /> #}
+      </div>
+
+      <div class="form-field">
+        <div class="form-control justify-center">
+          <a class="link link-underline-hover link-primary text-center text-sm" aria-label="¿Ya tienes una cuenta? Inicie sesión." onClick={() => setInLogin(true)}>¿Ya tiene una cuenta? Inicie Sesión.</a>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  {# state[0] === "error" && <ErrorToast message={state[1]} /> #}
+  {# state[0] === "success" && <SuccessModal title="Se ha registrado exitosamente!" message="Ahora puede iniciar sesion para acceder a su cuenta." onClick={() => setInLogin(true)} /> #}
+</div>
+{% endblock %}
