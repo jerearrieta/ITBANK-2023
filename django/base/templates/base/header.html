@@ -1,19 +1,23 @@
-<header class='header'>
-  <div class="header-left">
-    <label for="drawer-left" class='btn btn-ghost h-auto w-auto p-0'>
-      {# <AiOutlineMenu class="w-5 h-5" fill='white' /> #}
-    </label>
+{% load static %}
 
-    <a href="/home" class="header-logo-container">
-      <img src="/assets/white_logo_title.webp" width="150" height="100" class="header-logo"  alt="Guardian Bank" title='Guardian Bank'  />
+<header class="fixed w-full h-[70px] flex p-4 bg-[#23282D] ">
+  <div class="flex items-center gap-6">
+    <label for="drawer-left" class='btn btn-ghost h-auto w-auto p-0'>
+      <i class="bi bi-list text-2xl"></i>
+    </label>
+    
+    <a href="/home" class="self-stretch flex-1">
+      <img src="{% static 'base/white_logo_title.webp' %}" width="150" height="100" class="h-full w-auto"  alt="Guardian Bank" title='Guardian Bank' />
     </a>
   </div>
 
-  <div class="header-right gap-6 sm:gap-12">
-    <a href='/consultas'>
+  <div class="flex justify-end items-center flex-1 gap-6 sm:gap-12">
+    <a href="/consultas" class="text-sm font-medium text-white no-underline">
       <p class='text-white'>Atencion al cliente</p>
     </a>
-    {/* <p class='text-white'>Notificaciones</p> */}
+
+    {# <p class='text-white'>Notificaciones</p> #}
+
     <div class="flex items-center md:order-2">
       <button type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center font-medium justify-center mr-2 text-sm rounded-lg cursor-pointer ">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rounded-full" viewBox="0 0 512 512"><mask id="a"><circle cx="256" cy="256" r="256" fill="#fff" /></mask><g mask="url(#a)"><path fill="#338af3" d="M0 0h512v144.7L488 256l24 111.3V512H0V367.3L26 256 0 144.7z" /><path fill="#eee" d="M0 144.7h512v222.6H0z" /><path fill="#ffda44" d="m332.4 256-31.2 14.7 16.7 30.3-34-6.5-4.2 34.3-23.7-25.2-23.6 25.2-4.3-34.3-34 6.5 16.6-30.3-31.2-14.7 31.3-14.7L194 211l34 6.5 4.3-34.3 23.6 25.2 23.6-25.2 4.4 34.3 34-6.5-16.7 30.3z" /></g></svg>

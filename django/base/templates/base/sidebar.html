@@ -1,0 +1,111 @@
+{% load static %}
+
+<input type="checkbox" id="drawer-left" class="drawer-toggle" /> {# checked={open} onChange={toggleSidebar} #}
+
+<label class="overlay" for="drawer-left"></label>
+<aside class='drawer flex flex-col flex-1 bg-[#23282D]'>
+  <header class="h-[70px] flex p-4 bg-[#23282D]">
+    <div class="self-stretch flex-1">
+      <img src="{% static 'base/white_logo_title.webp' %}" width="150" height="100" class="header-logo" alt="Guardian Bank" title='Guardian Bank' />
+    </div>
+
+    <label for="drawer-left" class="btn btn-ghost h-auto w-auto p-0 flex m-auto">
+      <i class="bi bi-x fill-white text-xl"></i>
+    </label>
+  </header>
+
+  <nav class="flex-1">
+	  <a href="home" class="flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A]">
+      <i class="bi bi-house text-xl"></i>
+      <p class="text-white text-sm font-bold m-0">Inicio</p>
+    </a>
+
+	  <a href="cuentas" class="flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A]">
+      <i class="bi bi-bank text-xl"></i>
+      <p class="text-white text-sm font-bold m-0">Cuentas</p>
+    </a>
+
+	  <div>
+      <input type="checkbox" id="tarjetas" class="menu-toggle" />
+
+      <label class="menu-item flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A] rounded-none" for="tarjetas">
+        <i class="bi bi-credit-card text-xl"></i>
+        <p class="text-white text-sm font-bold m-0">Tarjetas</p>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon h-5 w-5 ml-auto" viewBox="0 0 20 20" fill="white">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </label>
+
+      <div class="menu-item-collapse">
+        <div class="min-h-0 flex flex-col gap-1 self-stretch bg-[#32373C]">
+          <a href="tarjetas" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Ver tarjetas</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <input type="checkbox" id="transferencias" class="menu-toggle" />
+
+      <label class="menu-item flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A] rounded-none" for="transferencias">
+        <i class="bi bi-arrow-left-right text-xl"></i>
+        <p class="text-white text-sm font-bold m-0">Transferencias</p>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon h-5 w-5 ml-auto" viewBox="0 0 20 20" fill="white">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </label>
+
+      <div class="menu-item-collapse">
+        <div class="min-h-0 flex flex-col gap-1 self-stretch bg-[#32373C]">
+          <a href="transferencias" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Transferir</a>
+          <a href="convertidor" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Convertidor de monedas</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <input type="checkbox" id="prestamos" class="menu-toggle" />
+
+      <label class="menu-item flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A] rounded-none" for="prestamos">
+        <i class="bi bi-cash text-xl"></i>
+        <p class="text-white text-sm font-bold m-0">Prestamos</p>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon h-5 w-5 ml-auto" viewBox="0 0 20 20" fill="white">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </label>
+
+      <div class="menu-item-collapse">
+        <div class="min-h-0 flex flex-col gap-1 self-stretch bg-[#32373C]">
+          <a href="prestamos" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Pedir prestamos</a>
+          <a href="calculadora" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Calculadora de prestamos</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <input type="checkbox" id="facturas" class="menu-toggle" />
+
+      <label class="menu-item flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A] rounded-none" for="facturas">
+        <i class="bi bi-receipt text-xl"></i>
+        <p class="text-white text-sm font-bold m-0">Facturas</p>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon h-5 w-5 ml-auto" viewBox="0 0 20 20" fill="white">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </label>
+
+      <div class="menu-item-collapse">
+        <div class="min-h-0 flex flex-col gap-1 self-stretch bg-[#32373C]">
+          <a href="facturas" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Ver facturas</a>
+        </div>
+      </div>
+    </div>
+
+    <div onClick={handleSignOut} class='flex items-center self-stretch gap-5 p-3 duration-500 hover:bg-[#02568A] hover:cursor-pointer'>
+      <i class="bi bi-box-arrow-right text-xl"></i>
+      <p class="text-white text-sm font-bold m-0">Cerrar Sesion</p>
+    </div>
+  </nav>
+</aside>
