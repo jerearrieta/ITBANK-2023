@@ -43,18 +43,18 @@
         </select>
       </div>
       <div class="form-field pt-5">
-        {# <ProcessingButton defaultText="Registrarse" isProcessing={state[0] === "processing"} class="btn btn-primary w-full" /> #}
+        <ProcessingButton defaultText="Registrarse" isProcessing={state[0] === "processing"} class="btn btn-primary w-full" /> 
       </div>
 
       <div class="form-field">
         <div class="form-control justify-center">
-          <a class="link link-underline-hover link-primary text-center text-sm" aria-label="¿Ya tienes una cuenta? Inicie sesión." onClick={() => setInLogin(true)}>¿Ya tiene una cuenta? Inicie Sesión.</a>
+          <a href="/" class="link link-underline-hover link-primary text-center text-sm" aria-label="¿Ya tienes una cuenta? Inicie sesión.">¿Ya tiene una cuenta? Inicie Sesión.</a>
         </div>
       </div>
     </div>
   </form>
 
   {# state[0] === "error" && <ErrorToast message={state[1]} /> #}
-  {# state[0] === "success" && <SuccessModal title="Se ha registrado exitosamente!" message="Ahora puede iniciar sesion para acceder a su cuenta." onClick={() => setInLogin(true)} /> #}
+  {# state[0] === "success" && <SuccessModal title="Se ha registrado exitosamente!" message="Ahora puede iniciar sesion para acceder a su cuenta."/> #}
 </div>
 {% endblock %}
