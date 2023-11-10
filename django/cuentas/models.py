@@ -1,24 +1,25 @@
 from django.db import models
 
 # Create your models here.
-
-class Cuenta(models.Model):
-    account_id = models.AutoField(primary_key=True)
-    customer_id = models.ForeignKey("cliente.Cliente", on_delete=models.PROTECT)
-    id_tipo = models.ForeignKey("cuenta.TipoCuenta", on_delete=models.PROTECT)
-    iban = models.CharField(unique=True, max_length=34) # unique=True agregado
-    balance = models.IntegerField()
-
-    class Meta:
-        # managed = False
-        db_table = 'cuenta'
-
 class TipoCuenta(models.Model):
     nombre = models.CharField(unique=True, max_length=50)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'tipo_cuenta'
+
+
+class Cuenta(models.Model):
+    account_id = models.AutoField(primary_key=True)
+    customer_id = models.ForeignKey("clientes.Cliente", on_delete=models.PROTECT)
+    id_tipo = models.ForeignKey(TipoCuenta, on_delete=models.PROTECT)
+    iban = models.CharField(unique=True, max_length=34) # unique=True agregado
+    balance = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'cuenta'
+
 
 class AuditoriaCuenta(models.Model):
     old_id = models.IntegerField(blank=True, null=True)
@@ -37,5 +38,5 @@ class AuditoriaCuenta(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'auditoria_cuenta'
