@@ -13,7 +13,7 @@ tarjeta. Insertar los valores según la información provista en el Sprint 5
 
 CREATE TABLE IF NOT EXISTS tipo_cliente (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre NOT NULL UNIQUE,
+    nombre TEXT NOT NULL UNIQUE,
 
     limite_cajas_ahorro INTEGER,
     limite_cajas_ahorro_pesos INTEGER,
@@ -27,15 +27,15 @@ CREATE TABLE IF NOT EXISTS tipo_cliente (
     limite_tarjetas_debito INTEGER,
     limite_tarjetas_credito INTEGER,
     limite_extensiones INTEGER,
-    limite_credito REAL,
-    limite_cuota_credito REAL,
+    limite_credito INTEGER,
+    limite_cuota_credito INTEGER,
     -- Nota: deberia usar campos para determinar las marcas de tarjeta o una tabla intermedia?
     master_disponible BOOLEAN, 
     visa_disponible BOOLEAN,
     amex_disponible BOOLEAN,
 
     limite_retiro_mensual INTEGER,
-    limite_retiro_diario REAL,
+    limite_retiro_diario INTEGER,
 
     comision_saliente REAL,
     comision_entrante REAL,
@@ -1148,15 +1148,15 @@ VALUES
     ("Netherlands","Noord Brabant","Oss","3877 II","P.O. Box 109, 8600 Risus. Ave");
 
 CREATE TABLE IF NOT EXISTS direccion_cliente (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     id_direccion INTEGER REFERENCES direccion ON UPDATE CASCADE ON DELETE SET NULL,
-    id_cliente INTEGER NOT NULL REFERENCES cliente ON UPDATE CASCADE ON DELETE CASCADE,
-    PRIMARY KEY (id_direccion, id_cliente)
+    id_cliente INTEGER NOT NULL REFERENCES cliente ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS direccion_empleado (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     id_direccion INTEGER REFERENCES direccion ON UPDATE CASCADE ON DELETE SET NULL,
-    id_empleado INTEGER NOT NULL REFERENCES empleado ON UPDATE CASCADE ON DELETE CASCADE,
-    PRIMARY KEY (id_direccion, id_empleado)
+    id_empleado INTEGER NOT NULL REFERENCES empleado ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 UPDATE sucursal
