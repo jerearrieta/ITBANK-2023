@@ -40,6 +40,7 @@ class TipoCliente(models.Model):
 class Cliente(models.Model):
     customer_id = models.AutoField(primary_key=True)
     customer_dni = models.CharField(db_column='customer_DNI', unique=True, max_length=8)
+    id_tipo = models.ForeignKey(TipoCliente, on_delete=models.PROTECT)
     customer_name = models.CharField(max_length=50)
     customer_surname = models.CharField(max_length=50)
     dob = models.DateField()

@@ -1,0 +1,7 @@
+ALTER TABLE cliente
+ADD COLUMN id_tipo INTEGER REFERENCES tipo_cliente ON UPDATE CASCADE ON DELETE RESTRICT;
+
+UPDATE cliente
+SET id_tipo = ABS(RANDOM()) % 3 + 1;
+
+SELECT * FROM cliente;
