@@ -35,6 +35,9 @@ class TipoCliente(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_cliente'
+    
+    def __str__(self):
+        return self.nombre
 
 
 class Cliente(models.Model):
@@ -43,17 +46,21 @@ class Cliente(models.Model):
     customer_name = models.CharField(max_length=50)
     customer_surname = models.CharField(max_length=50)
     dob = models.DateField()
-    branch_id = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT)
+    branch = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT)
 
     class Meta:
         managed = False
         db_table = 'cliente'
+    
+    def __str__(self):
+        return str(self.customer_id)
 
 
 class DireccionCliente(models.Model):
-    id_direccion = models.ForeignKey("base.Direccion", on_delete=models.SET_NULL, blank=True, null=True)
-    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    direccion = models.ForeignKey("base.Direccion", on_delete=models.SET_NULL, blank=True, null=True, db_column='id_direccion')
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, db_column='id_cliente')
 
     class Meta:
         managed = False
         db_table = 'direccion_cliente'
+    

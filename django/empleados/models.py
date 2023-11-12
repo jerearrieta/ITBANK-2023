@@ -7,17 +7,19 @@ class Empleado(models.Model):
     employee_name = models.CharField(max_length=50)
     employee_surname = models.CharField(max_length=50)
     employee_hire_date = models.DateField()
-    branch_id = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT)
+    branch = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT, db_column='branch_id')
 
     class Meta:
         managed = False
         db_table = 'empleado'
 
+    def __str__(self):
+        return self.employee_id
+
 class DireccionEmpleado(models.Model):
-    id_direccion = models.ForeignKey("base.Direccion", models.SET_NULL, blank=True, null=True)
-    id_empleado = models.ForeignKey(Empleado, models.CASCADE)
+    direccion = models.ForeignKey("base.Direccion", models.SET_NULL, blank=True, null=True, db_column='id_direccion')
+    empleado = models.ForeignKey(Empleado, models.CASCADE, db_column='id_empleado')
 
     class Meta:
         managed = False
         db_table = 'direccion_empleado'
-
