@@ -15,12 +15,12 @@
   </header>
 
   <nav class="flex-1">
-	  <a href="home" class="flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A]">
+	  <a href="{% url 'home' %}" class="flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A]">
       <i class="bi bi-house text-xl"></i>
       <p class="text-white text-sm font-bold m-0">Inicio</p>
     </a>
 
-	  <a href="cuentas" class="flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A]">
+	  <a href="{% url 'cuentas' %}" class="flex p-3 items-center gap-5 self-stretch no-underline duration-500 cursor-pointer hover:bg-[#02568A]">
       <i class="bi bi-bank text-xl"></i>
       <p class="text-white text-sm font-bold m-0">Cuentas</p>
     </a>
@@ -39,7 +39,7 @@
 
       <div class="menu-item-collapse">
         <div class="min-h-0 flex flex-col gap-1 self-stretch bg-[#32373C]">
-          <a href="tarjetas" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Ver tarjetas</a>
+          <a href="{% url 'tarjetas' %}" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Ver tarjetas</a>
         </div>
       </div>
     </div>
@@ -58,8 +58,8 @@
 
       <div class="menu-item-collapse">
         <div class="min-h-0 flex flex-col gap-1 self-stretch bg-[#32373C]">
-          <a href="transferencias" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Transferir</a>
-          <a href="convertidor" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Convertidor de monedas</a>
+          <a href="{% url 'transferencias' %}" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Transferir</a>
+          <a href="{% url 'convertidor' %}" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Convertidor de monedas</a>
         </div>
       </div>
     </div>
@@ -78,8 +78,8 @@
 
       <div class="menu-item-collapse">
         <div class="min-h-0 flex flex-col gap-1 self-stretch bg-[#32373C]">
-          <a href="prestamos" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Pedir prestamos</a>
-          <a href="calculadora" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Calculadora de prestamos</a>
+          <a href="{% url 'pedir_prestamo' %}" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Pedir prestamos</a>
+          <a href="{% url 'calcular_prestamo' %}" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Calculadora de prestamos</a>
         </div>
       </div>
     </div>
