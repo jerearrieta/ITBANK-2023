@@ -38,6 +38,8 @@ class TipoCliente(models.Model):
 
 
 class Cliente(models.Model):
+    # Hay que hacer que la primary key de cliente sea tambien una foreign key que apunte al id de la tabla user de Django.
+    # Otra opcion es simplemente crear una columna mas y que esa sea la foreign key que apunte al id de user.
     customer_id = models.AutoField(primary_key=True)
     customer_dni = models.CharField(db_column='customer_DNI', unique=True, max_length=8)
     id_tipo = models.ForeignKey(TipoCliente, on_delete=models.PROTECT)
