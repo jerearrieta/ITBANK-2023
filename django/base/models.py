@@ -17,8 +17,11 @@ class Sucursal(models.Model):
     branch_id = models.AutoField(primary_key=True)
     branch_number = models.IntegerField()
     branch_name = models.CharField(max_length=50)
-    branch_address_id = models.ForeignKey(Direccion, on_delete=models.CASCADE)
+    branch_address = models.ForeignKey(Direccion, on_delete=models.CASCADE, db_column='branch_address_id')
 
     class Meta:
         managed = False
         db_table = 'sucursal'
+
+    def __str__(self):
+        return f"{self.branch_number}: {self.branch_name}"

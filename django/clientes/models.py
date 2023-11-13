@@ -49,7 +49,7 @@ class Cliente(models.Model):
     customer_name = models.CharField(max_length=50)
     customer_surname = models.CharField(max_length=50)
     dob = models.DateField()
-    branch = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT)
+    branch = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT, db_column='branch_id')
 
     class Meta:
         managed = False
