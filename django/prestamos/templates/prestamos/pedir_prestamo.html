@@ -1,1 +1,10 @@
 {% extends "base/base.html" %}
+
+{% block content %}
+<h2>Formulario de Solicitud de Prestamo</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar Solicitud</button>
+</form>
+{% endblock %}
