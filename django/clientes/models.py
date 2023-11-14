@@ -41,13 +41,11 @@ class TipoCliente(models.Model):
 
 
 class Cliente(models.Model):
-    # Hay que hacer que la primary key de cliente sea tambien una foreign key que apunte al id de la tabla user de Django.
-    # Otra opcion es simplemente crear una columna mas y que esa sea la foreign key que apunte al id de user.
-    customer_id = models.AutoField(primary_key=True)
+    user = models.OneToOneField("auth.User", on_delete=models.PROTECT, primary_key=True, db_column='customer_id')
     customer_dni = models.CharField(db_column='customer_DNI', unique=True, max_length=8)
-    id_tipo = models.ForeignKey(TipoCliente, on_delete=models.PROTECT)
-    customer_name = models.CharField(max_length=50)
-    customer_surname = models.CharField(max_length=50)
+    tipo = models.ForeignKey(TipoCliente, on_delete=models.PROTECT, db_column='id_tipo')
+    customer_name = models.CharField(blank=True, max_length=150, default="")
+    customer_surname = models.CharField(blank=True, max_length=150, default="")
     dob = models.DateField()
     branch = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT, db_column='branch_id')
 
@@ -56,7 +54,7 @@ class Cliente(models.Model):
         db_table = 'cliente'
     
     def __str__(self):
-        return str(self.customer_id)
+        return self.user.username
 
 
 class DireccionCliente(models.Model):
