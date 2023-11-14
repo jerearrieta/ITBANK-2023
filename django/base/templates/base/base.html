@@ -10,13 +10,13 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rippleui@1.12.1/dist/css/styles.css" />
 
-  <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}Guardian Bank{% endblock %}</title>
 	<link rel="icon" href="{% static 'base/favicon.ico' %}" />
 </head>
-<body>
+<body class="bg-[#F1F1F1]">
 	{% include "base/header.html" %}
   {% include "base/sidebar.html" %}
-  <main class="min-h-screen flex p-[60px] pt-[130px] flex-col flex-1 self-stretch bg-[#F1F1F1]">
+  <main class="w-1/2 min-h-screen mx-auto flex flex-col pt-32 pb-16 text-black">
       {% block content %}{% endblock %}
   </main>
   {% include "base/footer.html" %}

@@ -1,7 +1,18 @@
 {% extends "base/base.html" %}
 
-{% block title %}Home{% endblock %}
-
 {% block content %}
-Inicio
+<h1 class="pb-3 text-3xl font-bold">Bienvenido, {{ full_name }}</h1>
+<hr class="border-black" />
+<div class="flex flex-col py-10 gap-4">
+  <h2 class="text-2xl font-bold">Estado de tu cuenta</h2>
+  <div class="flex flex-col p-5 gap-3 flex-1 rounded-2xl bg-[#D9D9D9] shadow-[4px_4px_4px_0_rgba(0,0,0,0.25)]">
+    <p class="text-base font-normal">Dinero disponible</p>
+    <p class="text-2xl font-bold"></p>
+  </div>
+</div>
+<hr class="border-black"/>
+<div class="flex flex-col pt-10 gap-4">
+  <h2 class="text-2xl font-bold">Actividad reciente</h2>
+  {# <ActivityList /> #}
+</div>
 {% endblock %}
