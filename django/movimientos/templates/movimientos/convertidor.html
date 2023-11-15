@@ -1,1 +1,69 @@
 {% extends "base/base.html" %}
+
+{% load static %}
+
+{% block external %}
+<script src="{% static 'movimientos/convertidor.js' %}"></script>
+{% endblock %}
+
+{% block title %}Convertidor de monedas{% endblock %}
+
+{% block content %}
+<div class="flex flex-col gap-4">
+  <h1 class="mx-auto pb-3 text-3xl font-bold">Convertidor de monedas</h1>
+  
+  <div class="flex flex-col p-5 gap-5 rounded-2xl bg-[#D9D9D9] shadow-[4px_4px_4px_0_rgba(0,0,0,0.25)]">
+    <div class="flex justify-center items-center gap-8">
+      <div class="flex items-center flex-1 rounded-lg bg-white">
+        <select id="left-currency-selector" class="flex items-center p-2 gap-2 rounded-l-lg border-0 border-r-[1px]" onchange="updateValues(event.target)">
+          <option value="0">ARS</option>
+          <option value="1" selected>USD</option>
+          <option value="2">EUR</option>
+          <option value="3">CAD</option>
+          <option value="4">AUD</option>
+          <option value="5">NZD</option>
+          <option value="6">BRL</option>
+          <option value="7">MXN</option>
+          <option value="8">UYU</option>
+          <option value="9">PYG</option>
+          <option value="10">CLP</option>
+          <option value="11">COP</option>
+          <option value="12">BOB</option>
+          <option value="13">JPY</option>
+          <option value="14">GBP</option>
+        </select>
+
+        <input type="number" id="left-currency-input" class="flex flex-1 self-stretch items-center px-2 py-0 rounded-r-lg border-none" value="1" oninput="updateValues(event.target)" />
+      </div>
+
+	    <i class="bi bi-arrow-left-right text-2xl hover:cursor-pointer" onclick="swapCurrencies(event)"></i>
+
+      <div class="flex items-center flex-1 rounded-lg bg-white">
+        <select id="right-currency-selector" class="flex items-center p-2 gap-2 rounded-l-lg border-0 border-r-[1px]" onchange="updateValues(event.target)">
+          <option value="0">ARS</option>
+          <option value="1">USD</option>
+          <option value="2">EUR</option>
+          <option value="3">CAD</option>
+          <option value="4">AUD</option>
+          <option value="5">NZD</option>
+          <option value="6">BRL</option>
+          <option value="7">MXN</option>
+          <option value="8">UYU</option>
+          <option value="9">PYG</option>
+          <option value="10">CLP</option>
+          <option value="11">COP</option>
+          <option value="12">BOB</option>
+          <option value="13">JPY</option>
+          <option value="14">GBP</option>
+        </select>
+
+        <input type="number" id="right-currency-input" class="flex flex-1 self-stretch items-center px-2 py-0 rounded-r-lg border-none" value="1" oninput="updateValues(event.target)" />
+      </div>
+    </div>
+
+    <p id="currency-info-top" class="text-base font-normal"></p>
+
+    <p id="currency-info-bottom" class="text-base font-normal"></p>
+  </div>
+</div>
+{% endblock %}
