@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class TipoCuenta(models.Model):
     nombre = models.CharField(unique=True, max_length=50)
