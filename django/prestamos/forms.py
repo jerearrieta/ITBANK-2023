@@ -8,4 +8,4 @@ class PrestamoForm(forms.Form):
     ]
 
     tipo_prestamo = forms.ChoiceField(choices=TIPOS_PRESTAMO)
-    feacha_inicio = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    fecha_inicio = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
