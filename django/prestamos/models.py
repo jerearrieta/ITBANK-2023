@@ -15,7 +15,3 @@ class Prestamo(models.Model):
 
     def __str__(self):
         return str(self.loan_id)
-
-
-
-    

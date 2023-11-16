@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 # Create your views here.
 def inicio_sesion(req):
 	if req.user.is_authenticated:
-		return redirect("home/")
+		return redirect("/home/")
 
 	if req.method == 'POST':
 		form = ClientAuthenticationForm(req, data=req.POST)
@@ -26,7 +26,7 @@ def inicio_sesion(req):
 
 def registro(req):
 	if req.user.is_authenticated:
-		return redirect("home/")
+		return redirect("/home/")
 
 	context = {
 		"forms": (UserForm(), ClienteForm(), DireccionForm()),

@@ -26,16 +26,13 @@ def pedir_prestamo(req):
 
         if form.is_valid():
             tipo_prestamo = form.cleaned_data['tipo_prestamo']
-            fecha_inicio = form.cleaned_data['fecha_inicio']
 
-            prestamo = Prestamo(customer=req.user.cliente, loan_type=tipo_prestamo, loan_total=mount)
-            prestamo.save()
+            Prestamo.objects.create(customer=req.user.cliente, loan_type=tipo_prestamo, loan_total=mount)
 
             return redirect('exito_prestamo')
     
     else:
         form = PrestamoForm()
-
 
     return render(req, 'prestamos/pedir_prestamo.html', {'account_type': user, 'mount': mount, 'form': form})
 
