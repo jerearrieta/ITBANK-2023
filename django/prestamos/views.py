@@ -25,7 +25,7 @@ def pedir_prestamo(req):
         form = PrestamoForm(req.POST)
 
         if form.is_valid():
-            tipo_prestamo = form.cleaned_date['tipo_prestamo']
+            tipo_prestamo = form.cleaned_data['tipo_prestamo']
             fecha_inicio = form.cleaned_data['fecha_inicio']
 
             prestamo = Prestamo(customer=req.user.cliente, loan_type=tipo_prestamo, loan_total=mount)
