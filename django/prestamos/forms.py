@@ -1,13 +1,11 @@
 from django import forms
 
 class PrestamoForm(forms.Form):
-    TIPOS_CLIENTE = [
-        ('BLACK', 'BLACK'),
-        ('GOLD', 'GOLD'),
-        ('CLASSIC', 'CLASSIC'),
+    TIPOS_PRESTAMO = [
+        ('hipotecario', 'Hipotecario'),
+        ('personal', 'Personal'),
+        ('prendario', 'Prendario'),
     ]
 
-    tipo_cliente = forms.ChoiceField(choices=TIPOS_CLIENTE)
-    fecha_inicio = forms.DateField()
-
-
+    tipo_prestamo = forms.ChoiceField(choices=TIPOS_PRESTAMO)
+    feacha_inicio = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))

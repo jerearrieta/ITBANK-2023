@@ -1,35 +1,43 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import PrestamoForm
+from .models import Prestamo
+
 
 # Create your views here.
 @login_required
 def calcular_prestamo(req):
     return render(req, 'prestamos/calcular_prestamo.html')
 
-def calcular_monto_preaprobado(tipo_cliente):
-    MONTOS_PREAPROBADOS = {
-        'BLACK': 500000,
-        'GOLD': 300000,
-        'CLASSIC': 100000,
-    }
-
-    if tipo_cliente not in MONTOS_PREAPROBADOS:
-        raise ValueError('Tipo de cliente no valido')
-    
-    return MONTOS_PREAPROBADOS[tipo_cliente]
-
 @login_required
-def pedir_prestamo(request):
-    if request.method == 'POST':
-        form = PrestamoForm(request.POST)
-        if form.is_valid():
-            tipo_cliente = form.cleaned_data['tipo_cliente']
-            monto_preaprobado = calcular_monto_preaprobado(tipo_cliente)
+def pedir_prestamo(req):
+    user = req.user.cliente.tipo.nombre
 
-            return render(request, 'prestamos/exito.html', {'monto_preaprobado': monto_preaprobado})
+    mount = 0
+    if user == 'Black':
+        mount = 500000
+    elif user == 'Gold':
+        mount = 300000
+    elif user == 'Classic':
+        mount = 100000
+    
+    if req.method == 'POST':
+        form = PrestamoForm(req.POST)
+
+        if form.is_valid():
+            tipo_prestamo = form.cleaned_date['tipo_prestamo']
+            fecha_inicio = form.cleaned_data['fecha_inicio']
+
+            prestamo = Prestamo(customer=req.user.cliente, loan_type=tipo_prestamo, loan_total=mount)
+            prestamo.save()
+
+            return redirect('exito_prestamo')
+    
     else:
         form = PrestamoForm()
 
-    return render(request, 'prestamos/pedir_prestamo.html', {'form': form})
 
+    return render(req, 'prestamos/pedir_prestamo.html', {'account_type': user, 'mount': mount, 'form': form})
+
+def exito_prestamo(req):
+    return render(req, 'prestamos/exito.html')

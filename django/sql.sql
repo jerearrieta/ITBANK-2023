@@ -1,0 +1,1 @@
+SELECT customer_name FROM clientes;
