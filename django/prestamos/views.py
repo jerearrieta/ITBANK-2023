@@ -6,11 +6,6 @@ from .models import Prestamo
 
 # Create your views here.
 @login_required
-def calcular_prestamo(req):
-    return render(req, 'prestamos/calcular_prestamo.html')
-
-
-@login_required
 def pedir_prestamo(req):
     user = req.user.cliente.tipo.nombre
 
@@ -41,3 +36,8 @@ def pedir_prestamo(req):
 @login_required
 def exito_prestamo(req):
     return render(req, 'prestamos/exito.html')
+
+
+@login_required
+def calculadora(req):
+    return render(req, 'prestamos/calculadora.html')
