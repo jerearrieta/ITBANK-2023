@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-def tarjeta(req):
+def listar_tarjetas(req):
 	cliente = req.user.cliente
 
 	context = {

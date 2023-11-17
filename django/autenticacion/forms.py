@@ -38,21 +38,21 @@ class UserForm(UserCreationForm):
 class ClienteForm(forms.ModelForm):
 	class Meta:
 		model = Cliente
-		fields = ("customer_dni", "dob", "tipo", "branch")
+		fields = ("dni", "fecha_nacimiento", "tipo", "sucursal")
 
 		widgets = {
-			"dob": forms.DateInput(attrs={'type':'date'}),
+			"fecha_nacimiento": forms.DateInput(attrs={'type':'date'}),
 		}
 
 		labels = {
-			"customer_dni": _("DNI"),
-			"dob": _("Fecha de nacimiento"),
+			"dni": _("DNI"),
+			"fecha_nacimiento": _("Fecha de nacimiento"),
 			"tipo": _("Tipo de cliente"),
-			"branch": _("Sucursal"),
+			"sucursal": _("Sucursal"),
 		}
 
 		error_messages = {
-			"customer_dni": {
+			"dni": {
 				"unique": _("Ya existe un cliente con este DNI."),
 			},
 		}

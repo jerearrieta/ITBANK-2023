@@ -14,37 +14,20 @@ class TipoCuenta(models.Model):
 
 
 class Cuenta(models.Model):
-    account_id = models.AutoField(primary_key=True)
-    customer = models.ForeignKey("clientes.Cliente", on_delete=models.PROTECT, db_column='customer_id')
-    tipo = models.ForeignKey(TipoCuenta, on_delete=models.PROTECT, db_column='id_tipo')
-    iban = models.CharField(unique=True, max_length=34) # unique=True agregado
-    balance = models.IntegerField()
+    id = models.AutoField(primary_key=True, db_column='account_id')
+    tipo = models.ForeignKey(TipoCuenta, on_delete=models.PROTECT, db_column='id_tipo', related_name="cuentas", related_query_name="cuenta")
+    cliente = models.ForeignKey("clientes.Cliente", on_delete=models.PROTECT, db_column='customer_id', related_name="cuentas", related_query_name="cuenta")
+    iban = models.CharField(unique=True, max_length=34)
+    saldo = models.IntegerField(db_column='balance')
 
     class Meta:
         managed = False
         db_table = 'cuenta'
     
     def __str__(self):
-        return str(self.account_id)
+        return str(self.id)
 
 
-class AuditoriaCuenta(models.Model):
-    old_id = models.IntegerField(blank=True, null=True)
-    new_id = models.IntegerField(blank=True, null=True)
-
-    old_balance = models.IntegerField(blank=True, null=True)
-    new_balance = models.IntegerField(blank=True, null=True)
-
-    old_iban = models.CharField(max_length=34, blank=True, null=True)
-    new_iban = models.CharField(max_length=34, blank=True, null=True)
-
-    old_type = models.IntegerField(blank=True, null=True)
-    new_type = models.IntegerField(blank=True, null=True)
-
-    user_action = models.CharField(max_length=20, blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        managed = False
-        db_table = 'auditoria_cuenta'
-
+# No incluimos el modelo AuditoriaCuenta aqui ya que su unico uso (al menos por ahora) es guardar el historial de
+# auditorias de la tabla Cuenta, y sus registros surgen a traves de un trigger en la BD, por lo que no tiene mucho
+# sentido incluirla en los modelos de Django. En su lugar, preferimos mantenerla "oculta" solo para la BD.

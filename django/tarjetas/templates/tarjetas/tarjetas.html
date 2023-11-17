@@ -17,99 +17,50 @@
 
   <div class="card-grid">
     <div class="card-container">
-      <div class="inner">
-        <div class="front">
+      <div class="card-inner">
+        <div class="card-front">
           
-          <div class="row">
-            <img src="{% static 'tarjetas/master.png' %}" class="w-1/6" />
-            <img src="{% static 'tarjetas/chip.png' %}" class="w-1/6" />
+          <div class="card-row h-1/5">
+            <div class="h-full flex gap-3">
+              <img src="{% static 'tarjetas/master.png' %}" class="h-full" />
+              <span class="self-center text-lg font-medium">Mastercard</span>
+            </div>
+            
+            <img src="{% static 'tarjetas/chip.png' %}" class="h-3/4" />
           </div>
           
-          <div class="row mt-14 text-2xl">
+          <div class="card-row text-2xl">
             <p>5325 4546 3425 3254</p>
           </div>
 
-          <div class="row text-xs mt-10">
-            <p>CARD HOLDER</p>
-            <p>VALID TILL</p>
-          </div>
-
-          <div class="row text-xl mt-5">
-            <p>JOE ALISON</p>
-            <p>10 / 25</p>
+          <div>
+            <div class="card-row text-xs">
+              <p>Propietario</p>
+              <p>Valido hasta</p>
+            </div>
+  
+            <div class="card-row mt-1.5 text-xl">
+              <p>JOE ALISON</p>
+              <p>10 / 25</p>
+            </div>
           </div>
         </div>
 
-        <div class="back">
-          <div class="bg-[#222] mx-[-30px] mt-3 h-[60px]">
+        <div class="card-back">
+          <div class="bg-[#222] mx-[-30px] h-[50px] mt-1"></div>
+
+          <div class="card-row w-full h-1/5">
+            <img src="{% static 'tarjetas/pattern.png' %}" class="h-full">
+            <span class="h-5/6 flex flex-1 justify-center items-center bg-white text-black text-xl">824</span>
           </div>
 
-          <div class="row text-xl mt-5">
-            <div class="flex-1">
-              <img src="{% static 'tarjetas/pattern.png' %}" class="block w-full">
-            </div>
-            <p class="bg-white text-black text-xl py-2 px-5">824</p>
-          </div>
-
-          <div class="row mt-12 text-sm">
-            <p>This is a virtual card design built using HTML and CSS. You can also design something like this.</p>
-          </div>
-
-          <div class="row mt-8">
-            <p>CUSTOMER SIGNATURE</p>
-            <img src="{% static 'tarjetas/master.png' %}" class="w-20">
+          <div class="card-row h-1/5">
+            <img src="{% static 'base/white_logo_title.webp' %}" class="h-full">
+            <img src="{% static 'tarjetas/master.png' %}" class="h-full">
           </div>
         </div>
       </div>
     </div>
-
-    <div class="card-container">
-      <div class="inner">
-        <div class="front">
-          
-          <div class="row">
-            <img src="{% static 'tarjetas/master.png' %}" class="w-1/6" />
-            <img src="{% static 'tarjetas/chip.png' %}" class="w-1/6" />
-          </div>
-          
-          <div class="row mt-14 text-2xl">
-            <p>5325 4546 3425 3254</p>
-          </div>
-
-          <div class="row text-xs mt-10">
-            <p>CARD HOLDER</p>
-            <p>VALID TILL</p>
-          </div>
-
-          <div class="row text-xl mt-5">
-            <p>JOE ALISON</p>
-            <p>10 / 25</p>
-          </div>
-        </div>
-
-        <div class="back">
-          <div class="bg-[#222] mx-[-30px] mt-3 h-[60px]">
-          </div>
-
-          <div class="row text-xl mt-5">
-            <div class="flex-1">
-              <img src="{% static 'tarjetas/pattern.png' %}" class="block w-full">
-            </div>
-            <p class="bg-white text-black text-xl py-2 px-5">824</p>
-          </div>
-
-          <div class="row mt-12 text-sm">
-            <p>This is a virtual card design built using HTML and CSS. You can also design something like this.</p>
-          </div>
-
-          <div class="row mt-8">
-            <p>CUSTOMER SIGNATURE</p>
-            <img src="{% static 'tarjetas/master.png' %}" class="w-20">
-          </div>
-        </div>
-      </div>
-    </div>
-
 
     {% for tarjeta in tarjetas_debito %}
       
@@ -122,5 +73,6 @@
   {% for tarjeta in tarjetas_credito %}
       
   {% endfor %}
+  
 </div>
 {% endblock %}

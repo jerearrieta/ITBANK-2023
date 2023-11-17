@@ -7,29 +7,32 @@
 }
 
 .card-container {
-    aspect-ratio: 500/300;
+    aspect-ratio: 5/3;
     color: white;
     font-family: 'Poppins', sans-serif;
     perspective: 1000px;
 }
 
-.inner {
+.card-inner {
     width: 100%;
     height: 100%;
     transition: transform 0.75s;
     transform-style: preserve-3d;
 }
 
-.card-container:hover .inner {
+.card-container:hover .card-inner {
     transform: rotateY(-180deg);
 }
 
-.front, .back {
+.card-front, .card-back {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 20px 30px;
     border-radius: 15px;
     overflow: hidden;
@@ -38,18 +41,18 @@
     backface-visibility: hidden;
 }
 
-.back {
+.card-back {
     transform: rotateY(180deg);
 }
 
-.row {
+.card-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .card-grid {
-        grid-template-columns: repeat(2, minmax(300px, auto));
+        grid-template-columns: repeat(1, minmax(350px, auto));
     }
 }

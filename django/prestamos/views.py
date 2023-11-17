@@ -27,7 +27,7 @@ def pedir_prestamo(req):
         if form.is_valid():
             tipo_prestamo = form.cleaned_data['tipo_prestamo']
 
-            Prestamo.objects.create(customer=req.user.cliente, loan_type=tipo_prestamo, loan_total=mount)
+            Prestamo.objects.create(cliente=req.user.cliente, tipo=tipo_prestamo, monto=mount)
 
             return redirect('exito_prestamo')
     

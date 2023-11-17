@@ -40,13 +40,12 @@ def registro(req):
 
 		if user_form.is_valid() and cliente_form.is_valid() and direccion_form.is_valid():
 			user = user_form.save()
+			direccion = direccion_form.save()
 
 			cliente = cliente_form.save(commit=False)
 			cliente.user = user
+			cliente.direcciones.add(direccion)
 			cliente.save()
-
-			direccion = direccion_form.save()
-			DireccionCliente(cliente=cliente, direccion=direccion).save()
 
 			context["show_modal"] = True
 

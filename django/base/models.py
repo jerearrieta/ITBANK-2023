@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Direccion(models.Model):
     pais = models.CharField(max_length=50)
@@ -14,14 +15,14 @@ class Direccion(models.Model):
 
 
 class Sucursal(models.Model):
-    branch_id = models.AutoField(primary_key=True)
-    branch_number = models.IntegerField()
-    branch_name = models.CharField(max_length=50)
-    branch_address = models.ForeignKey(Direccion, on_delete=models.CASCADE, db_column='branch_address_id')
+    id = models.AutoField(primary_key=True, db_column='branch_id')
+    numero = models.IntegerField(db_column='branch_number')
+    nombre = models.CharField(max_length=50, db_column='branch_name')
+    direccion = models.ForeignKey(Direccion, on_delete=models.CASCADE, db_column='branch_address_id', related_name="sucursales", related_query_name="sucursal")
 
     class Meta:
         managed = False
         db_table = 'sucursal'
 
     def __str__(self):
-        return f"{self.branch_number}: {self.branch_name}"
+        return f"{self.numero}: {self.nombre}"

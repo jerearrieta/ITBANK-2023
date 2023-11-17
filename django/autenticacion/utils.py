@@ -21,8 +21,8 @@ def insert_users():
 	"""
 
 	for cliente in Cliente.objects.all():
-		first_name = cliente.customer_name
-		last_name = cliente.customer_surname
+		first_name = cliente.nombre
+		last_name = cliente.apellido
 
 		first_name_alpha = re.sub(r"[^a-zA-Z]", "", first_name)
 		last_name_alpha = re.sub(r"[^a-zA-Z]", "", last_name)
@@ -31,7 +31,7 @@ def insert_users():
 		email = f"{first_name_alpha.lower()}.{last_name_alpha.lower()}@gmail.com"
 		password = "123456789"
 
-		User.objects.create_user(id=cliente.customer_id,
+		User.objects.create_user(id=cliente.id,
 								 username=username,
 								 email=email,
 								 password=password,
@@ -47,4 +47,4 @@ def clean_clients():
 	Importante: Antes de ejecutar esta funcion, deberia ejecutar `insert_users`.
 	"""
 
-	Cliente.objects.all().update(customer_name="", customer_surname="")
+	Cliente.objects.all().update(nombre="", apellido="")

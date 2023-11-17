@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
 # Create your views here.
-def cuenta(req):
+def listar_cuentas(req):
 	cuentas = []
-	for cuenta in req.user.cliente.cuenta_set.all():
-		cuentas.append({"id": cuenta.account_id, "tipo": cuenta.tipo, "iban": cuenta.iban, "saldo": cuenta.balance/100})
+	for cuenta in req.user.cliente.cuentas.all():
+		cuentas.append({"id": cuenta.id, "tipo": cuenta.tipo, "iban": cuenta.iban, "saldo": cuenta.saldo/100})
 
 	return render(req, "cuentas/cuentas.html", {"cuentas": cuentas})

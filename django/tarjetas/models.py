@@ -11,13 +11,13 @@ class MarcaTarjeta(models.Model):
 
 
 class Tarjeta(models.Model):
-    id_cliente = models.ForeignKey("clientes.Cliente", models.PROTECT, blank=True, null=True)
-    id_marca = models.ForeignKey(MarcaTarjeta, models.PROTECT)
+    cliente = models.ForeignKey("clientes.Cliente", models.PROTECT, blank=True, null=True, db_column='id_cliente', related_name="tarjetas", related_query_name="tarjeta")
+    marca = models.ForeignKey(MarcaTarjeta, models.PROTECT, db_column='id_marca', related_name="tarjetas", related_query_name="tarjeta")
     numero = models.CharField(unique=True, max_length=20)
     tipo = models.CharField(max_length=7, choices=[("DEBITO", "DEBITO"), ("CREDITO", "CREDITO")])
     cvv = models.CharField(max_length=3)
     fecha_expiracion = models.DateField()
-    fecha_creacion = models.DateField()
+    fecha_creacion = models.DateField(auto_now_add=True)
 
     class Meta:
         managed = False
