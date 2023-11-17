@@ -9,6 +9,7 @@ from .models import Prestamo
 def calcular_prestamo(req):
     return render(req, 'prestamos/calcular_prestamo.html')
 
+
 @login_required
 def pedir_prestamo(req):
     user = req.user.cliente.tipo.nombre
@@ -36,5 +37,7 @@ def pedir_prestamo(req):
 
     return render(req, 'prestamos/pedir_prestamo.html', {'account_type': user, 'mount': mount, 'form': form})
 
+
+@login_required
 def exito_prestamo(req):
     return render(req, 'prestamos/exito.html')

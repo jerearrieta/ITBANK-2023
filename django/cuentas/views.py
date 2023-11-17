@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
+@login_required
 def listar_cuentas(req):
 	cuentas = []
 	for cuenta in req.user.cliente.cuentas.all():
