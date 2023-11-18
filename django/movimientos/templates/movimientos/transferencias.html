@@ -1,1 +1,10 @@
 {% extends "base/base.html" %}
+
+{% block content %}
+<h1>Realizar transferencia</h1>
+<form method="post" action="{% url 'movimientos' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Transferir</button>
+</form>
+{% endblock %}
