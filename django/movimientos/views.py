@@ -20,10 +20,10 @@ def movimientos(req):
             monto = form.cleaned_data['monto']
             razon = form.cleaned_data['razon']
 
-            Movimiento.objects.create(cuenta=cuenta_origen, tipo_operacion=razon, monto=monto)
+            movimiento = Movimiento.objects.create(cuenta=cuenta_origen, tipo_operacion=razon, monto=monto)
             
 
-            return redirect('exito_transferencia')
+            return redirect('exito_transferencia', movimiento_id=movimiento.id)
     
     else:
         form = TransferenciaForm()
@@ -31,8 +31,9 @@ def movimientos(req):
     return render(req, 'movimientos/transferencias.html', {'form': form})
 
 @login_required
-def exito_transferencia(req):
-    return render(req, 'movimientos/exito_transferencia.html')
+def exito_transferencia(req, movimiento_id):
+    movimiento = get_object_or_404(Movimiento, id=movimiento_id)
+    return render(req, 'movimientos/exito_transferencia.html', {'movimiento': movimiento})
 
 
 # @login_required
