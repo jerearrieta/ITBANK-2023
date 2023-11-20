@@ -6,4 +6,6 @@ urlpatterns = [
     # path('<int:id>', views.movimientos_cuenta, name='movimientos_cuenta'),
     path('convertidor/', views.convertidor, name='convertidor'),
     path('exito_transferencia/<int:movimiento_id>/', views.exito_transferencia, name='exito_transferencia'),
+    path('lista_movimiento/', views.lista_movimiento, name='lista_movimiento'),
+
 ]

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, get_list_or_404
 from .forms import TransferenciaForm
 from .models import Movimiento
 from cuentas.models import Cuenta 
@@ -44,3 +44,9 @@ def exito_transferencia(req, movimiento_id):
 @login_required
 def convertidor(req):
     return render(req, 'movimientos/convertidor.html')
+
+@login_required
+def lista_movimiento(req):
+    movimientos = Movimiento.objects.filter(cuenta__cliente=req.user.cliente)
+    return render(req, 'movimientos/lista_movimiento.html', {'movimientos': movimientos})
+
