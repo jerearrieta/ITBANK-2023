@@ -60,7 +60,7 @@
         <div class="min-h-0 flex flex-col gap-1 self-stretch bg-[#32373C]">
           <a href="{% url 'movimientos' %}" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Transferir</a>
           <a href="{% url 'convertidor' %}" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Convertidor de monedas</a>
-          <a href="{% url 'lista_movimiento' %}" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Movimientos</a>
+          <a href="{% url 'movimientos_cliente' %}" class="flex py-3 px-5 self-stretch text-sm font-medium text-[#B4B9BE] no-underline">Movimientos</a>
         </div>
       </div>
     </div>
@@ -85,6 +85,7 @@
       </div>
     </div>
 
+    <!--
     <div>
       <input type="checkbox" id="facturas" class="menu-toggle" />
 
@@ -103,6 +104,7 @@
         </div>
       </div>
     </div>
+    --->
 
     <a href="{% url 'logout' %}" class='flex items-center gap-5 p-3 duration-500 hover:bg-[#02568A]'>
       <i class="bi bi-box-arrow-right text-xl"></i>
