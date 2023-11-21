@@ -6,6 +6,12 @@
 - Camila Gonzalez.
 - Jeremias Arrieta.
 
+## Nuevos cambios en el Sprint 7
+
+- Se migro gran parte del proyecto a Django.
+- Se implemento una base de datos Sqlite3 con Django, junto con la autenticacion y registro de usuarios.
+- Se movieron varios estilos "de unico uso" a Tailwind CSS.
+
 ## Nuevos cambios en el Sprint 6
 
 - Se agrego la base de datos del ITBANK.

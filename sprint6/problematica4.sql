@@ -63,23 +63,37 @@ Restar $100 a las cuentas 10,11,12,13,14.
 
 CREATE TABLE auditoria_cuenta (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    old_id INT,
-    new_id INT,
-    old_balance DECIMAL(10, 2),
-    new_balance DECIMAL(10, 2),
-    old_iban VARCHAR(20),
-    new_iban VARCHAR(20),
-    old_type VARCHAR(50),
-    new_type VARCHAR(50),
-    user_action VARCHAR(100),
-    created_at TIMESTAMP DEFAULT (DATETIME())
+    old_id INTEGER,
+    new_id INTEGER,
+    old_balance INTEGER,
+    new_balance INTEGER,
+    old_iban TEXT,
+    new_iban TEXT,
+    old_type INTEGER,
+    new_type INTEGER,
+    user_action TEXT,
+    created_at TEXT DEFAULT (DATETIME())
 );
 
-CREATE TRIGGER IF NOT EXISTS auditoria_cuenta_trigger
-AFTER UPDATE OF balance, iban, id_tipo ON cuenta
+CREATE TRIGGER IF NOT EXISTS auditoria_cuenta_balance_update_trigger
+AFTER UPDATE OF balance ON cuenta
 BEGIN
     INSERT INTO auditoria_cuenta (old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action)
-    VALUES (OLD.account_id, NEW.account_id, OLD.balance, NEW.balance, OLD.iban, NEW.iban, OLD.id_tipo, NEW.id_tipo, 'Actualizado');
+    VALUES (OLD.account_id, NEW.account_id, OLD.balance, NEW.balance, OLD.iban, NEW.iban, OLD.id_tipo, NEW.id_tipo, 'UPDATE balance');
+END;
+
+CREATE TRIGGER IF NOT EXISTS auditoria_cuenta_iban_update_trigger
+AFTER UPDATE OF iban ON cuenta
+BEGIN
+    INSERT INTO auditoria_cuenta (old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action)
+    VALUES (OLD.account_id, NEW.account_id, OLD.balance, NEW.balance, OLD.iban, NEW.iban, OLD.id_tipo, NEW.id_tipo, 'UPDATE iban');
+END;
+
+CREATE TRIGGER IF NOT EXISTS auditoria_cuenta_tipo_update_trigger
+AFTER UPDATE OF id_tipo ON cuenta
+BEGIN
+    INSERT INTO auditoria_cuenta (old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action)
+    VALUES (OLD.account_id, NEW.account_id, OLD.balance, NEW.balance, OLD.iban, NEW.iban, OLD.id_tipo, NEW.id_tipo, 'UPDATE id_tipo');
 END;
 
 UPDATE cuenta
@@ -114,9 +128,9 @@ En caso de no poder realizar la operación de forma completa, realizar un ROLLBA
 CREATE TABLE movimientos (
     movimiento_id INTEGER PRIMARY KEY AUTOINCREMENT ,
     numero_cuenta INTEGER REFERENCES cuenta ON UPDATE CASCADE ON DELETE SET NULL,
-    monto DECIMAL(10, 2),
-    tipo_operacion VARCHAR(50),
-    hora TIMESTAMP DEFAULT (DATETIME())
+    monto INTEGER,
+    tipo_operacion TEXT,
+    hora TEXT DEFAULT (DATETIME())
 );
 
 SELECT balance FROM cuenta WHERE account_id IN (200, 400);

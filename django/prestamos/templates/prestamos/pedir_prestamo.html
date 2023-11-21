@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div>
+    <h1 class="text-5xl flex justify-center mb-10 border-2 rounded border-black rounded-xl p-3">Solicitud de prestamos</h1>
+    <p class="text-4xl flex justify-center font-bold mb-5">¡Hola {{ user.first_name }}!</p>
+    <p class="text-xl flex justify-center">Segun tu tipo de cuenta {{ account_type }}, puede solicitar un prestamo de {{ mount }}</p>
+</div>
+    <form method="post" action="{% url 'pedir_prestamo' %}">
+        {% csrf_token %}
+        <div class="flex justify-center flex-col items-center gap-5 mt-8">
+            {{ form.as_p }}
+        </div>
+        <div class="flex justify-center">
+            <button type="submit" class="mt-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Solicitar prestamo
+            </button>
+        </div>
+    </form>
+
+{% endblock %}
