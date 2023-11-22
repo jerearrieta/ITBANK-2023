@@ -44,8 +44,8 @@ def registro(req):
 
 			cliente = cliente_form.save(commit=False)
 			cliente.user = user
-			cliente.direcciones.add(direccion)
 			cliente.save()
+			cliente.direcciones.add(direccion)
 
 			context["show_modal"] = True
 
