@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import login, logout
 from .forms import ClientAuthenticationForm, UserForm, ClienteForm, DireccionForm
-from clientes.models import DireccionCliente
 from django.shortcuts import redirect
 
 
