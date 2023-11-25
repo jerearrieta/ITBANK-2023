@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import PrestamoForm
 from .models import Prestamo
+from rest_framework import viewsets
+from .serializer import PrestamoSerializer
 
 
 # Create your views here.
@@ -41,3 +43,9 @@ def exito_prestamo(req):
 @login_required
 def calculadora(req):
     return render(req, 'prestamos/calculadora.html')
+
+
+class PrestamoViewset(viewsets.ModelViewSet):
+    queryset = Prestamo.objects.all()
+    serializer_class = PrestamoSerializer
+
