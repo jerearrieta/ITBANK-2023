@@ -6,6 +6,7 @@ from rest_framework import viewsets
 from .serializer import PrestamoSerializer
 
 
+
 # Create your views here.
 @login_required
 def pedir_prestamo(req):
@@ -48,4 +49,3 @@ def calculadora(req):
 class PrestamoViewset(viewsets.ModelViewSet):
     queryset = Prestamo.objects.all()
     serializer_class = PrestamoSerializer
-
