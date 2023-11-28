@@ -1,28 +1,33 @@
-from django.shortcuts import render
-from django.contrib.auth import login, logout
-from .forms import ClientAuthenticationForm, UserForm, ClienteForm, DireccionForm
-from django.shortcuts import redirect
+from django.contrib.auth import login as django_login, logout as django_logout, authenticate
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.exceptions import AuthenticationFailed, ParseError
+from rest_framework.views import APIView
 
 
 # Create your views here.
-def inicio_sesion(req):
-	if req.user.is_authenticated:
-		return redirect("/home/")
+class LoginView(APIView):
+    def post(self, request):
+        username = request.data.get("username", None)
+        password = request.data.get("password", None)
+        if not (username and password):
+            raise ParseError()
 
-	if req.method == 'POST':
-		form = ClientAuthenticationForm(req, data=req.POST)
+        user = authenticate(username=username, password=password)
+        if not user:
+            raise AuthenticationFailed()
 
-		if form.is_valid():
-			user = form.get_user()
-			login(req, user)
-			return redirect("/home")
-
-	else:
-		form = ClientAuthenticationForm(req)
-
-	return render(req, "autenticacion/login.html", {"form": form})
+        django_login(request, user)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+class LogoutView(APIView):
+    def post(self, request):
+        django_logout(request)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+"""
 def registro(req):
 	if req.user.is_authenticated:
 		return redirect("/home/")
@@ -54,8 +59,4 @@ def registro(req):
 			context["forms"] = (user_form, cliente_form, direccion_form)
 
 	return render(req, "autenticacion/registro.html", context)
-
-
-def cerrar_sesion(req):
-	logout(req)
-	return redirect("/")
+"""

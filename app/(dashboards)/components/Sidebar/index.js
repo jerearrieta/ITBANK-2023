@@ -1,7 +1,8 @@
 "use client"
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import useAPI from '@/app/hooks/useAPI';
 
 import SidebarButton from './components/SidebarButton';
 import SidebarSubButton from './components/SidebarSubButton';
@@ -13,16 +14,15 @@ import { TbLogout } from 'react-icons/tb';
 import Image from 'next/image';
 
 import './style.css';
-import { useState } from 'react';
 
 
 export default function Sidebar() {
-    const supabase = createClientComponentClient();
     const [open, setOpen] = useState(false);
     const router = useRouter();
+    const api = useAPI(false);
 
     async function handleSignOut() {
-        await supabase.auth.signOut();
+        await api.post("logout/");
         router.push("/");
     }
 

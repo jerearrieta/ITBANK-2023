@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import { signUp } from "./actions";
+import useAPI from "@/app/hooks/useAPI";
 
 import ProcessingButton from "@/app/components/ProcessingButton";
 import ErrorToast from "@/app/components/ErrorToast";
@@ -10,25 +10,19 @@ import SuccessModal from "@/app/components/SuccessModal";
 
 export default function FormRegistro({ setInLogin }) {
     const [state, setState] = useState([null]);
+    const api = useAPI(false);
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-
+    async function handleSubmit(formData) {
         setState(["processing"]);
 
-        const error = await signUp(new FormData(e.currentTarget));
-
-        if (error) {
-            setState(["error", error.message]);
-        }
-        else {
-            setState(["success"]);
-        }
+        api.post("signup/", formData)
+            .then(response => setState(["success"]))
+            .catch(error => setState(["error", error.message]))
     }
 
     return (
         <div className="flex flex-col gap-4">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300">
+            <form action={handleSubmit} className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300">
                 <div className="flex flex-col items-center">
                     <h1 className="text-3xl font-semibold text-center">Bienvenido a Guardian Bank</h1>
                     <p className="text-sm text-center">Inicia sesion para acceder a su cuenta</p>
