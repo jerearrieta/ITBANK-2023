@@ -4,6 +4,9 @@ from .forms import PrestamoForm
 from .models import Prestamo
 from rest_framework import viewsets
 from .serializer import PrestamoSerializer
+from django.db.models import Sum
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 
 

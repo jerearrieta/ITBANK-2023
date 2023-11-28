@@ -18,6 +18,7 @@ class EmpleadoTarjetaViewSet(viewsets.ModelViewSet):
 	queryset = Tarjeta.objects.all()
 	serializer_class = EmpleadoTarjetaSerializer
 
+
 	
 # Obtener datos de un cliente : retrieve detail
 
