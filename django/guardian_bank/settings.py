@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'widget_tweaks',
 
     'base',
     'autenticacion',

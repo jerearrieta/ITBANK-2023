@@ -1,13 +1,25 @@
-from django.shortcuts import render
 from rest_framework import viewsets
-from .serializer import EmpleadoSerializer
 from .models import Empleado
+from .serializer import EmpleadoSerializer, EmpleadoSucursalSerializer, EmpleadoTarjetaSerializer
+from base.models import Sucursal
+from tarjetas.models import Tarjeta
 
 # Create your views here.
-class EmpleadoView(viewsets.ModelViewSet):
-    serializer_class = EmpleadoSerializer
-    queryset = Empleado.objects.all()
 
+class EmpleadoViewSet(viewsets.ModelViewSet):
+	queryset = Empleado.objects.all()
+	serializer_class = EmpleadoSerializer
+
+class EmpleadoSucursalViewSet(viewsets.ModelViewSet):
+	queryset = Sucursal.objects.all()
+	serializer_class = EmpleadoSucursalSerializer
+
+class EmpleadoTarjetaViewSet(viewsets.ModelViewSet):
+	queryset = Tarjeta.objects.all()
+	serializer_class = EmpleadoTarjetaSerializer
+
+
+	
 # Obtener datos de un cliente : retrieve detail
 
 # Obtener saldo de cuenta de un cliente : retrieve detail
