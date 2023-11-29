@@ -1,10 +1,8 @@
 import Link from 'next/link';
 
-import styles from './SidebarSubButton.module.css';
-
 
 export default function SidebarSubButton({ route, text, toggleSidebar }) {
     return (
-        <Link href={route} onClick={toggleSidebar} className={styles.sidebar_subbutton}>{text}</Link>
+        <Link href={route} onClick={toggleSidebar} className="py-3 px-5 text-sm font-medium text-[#B4B9BE] no-underline">{text}</Link>
     );
 }

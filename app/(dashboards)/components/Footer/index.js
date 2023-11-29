@@ -1,54 +1,53 @@
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 
-import "./style.css";
+import logo_title from "@/public/assets/logo_title.webp";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+
+import styles from './Footer.module.css';
+
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="p-10 hidden md:flex">
-        <Link href='/home'>
-          <Image src="/assets/logo_title.webp" alt="Guardian Bank" title="Guardian Bank" width="200" height="200" priority />
+    <footer className="sm:h-40 flex border-t border-t-black bg-[#D9D9D9] text-black">
+      <div className="p-10 hidden min-[960px]:flex">
+        <Link href='/home' className="contents">
+          <Image src={logo_title} className="max-h-full w-auto self-center" alt="Guardian Bank" title="Guardian Bank" />
         </Link>
       </div>
 
-      <div className="footer-info">
-        <div className="contact-info">
+      <div className="min-w-fit flex flex-1 flex-col sm:flex-row gap-6 mx-auto px-6 py-8">
+        <div className={styles.section}>
           <p>example@guardianbank.com</p>
           <p>11 1234-5678 / 11 1234-5678</p>
           <p>Domicilio 1234</p>
         </div>
-        <div className="legal-info">
-          <a href="#" aria-label="Términos y condiciones">Términos y condiciones</a>
-          <a href="#" aria-label="Políticas de privacidad">Políticas de privacidad</a>
+
+        <div className={styles.border} />
+
+        <div className={styles.section}>
+          <a href="#">Términos y condiciones</a>
+          <a href="#">Políticas de privacidad</a>
           <p>© 2023 GUARDIAN BANK</p>
         </div>
-        <div className="social-media">
-          <div>
-            <a href="https://www.facebook.com/" aria-label="Guardian Bank en Facebook" className="mx-auto md:m-0">
-              <FaFacebook className="w-5 h-5" />
-            </a>
-            <a href="https://www.facebook.com/" aria-label="Guardian Bank en Facebook" className="hidden md:inline">
-              <p>/guardianbank</p>
-            </a>
-          </div>
-          <div>
-            <a href="https://www.twitter.com/" aria-label="Guardian Bank en Twitter" className="mx-auto md:m-0">
-              <FaTwitter className="w-5 h-5" />
-            </a>
-            <a href="https://www.twitter.com/" aria-label="Guardian Bank en Twitter" className="hidden md:inline">
-              <p>@guardianbank</p>
-            </a>
-          </div>
-          <div>
-            <a href="https://www.instagram.com/" aria-label="Guardian Bank en Instagram" className="mx-auto md:m-0">
-              <FaInstagram className="w-5 h-5" />
-            </a>
-            <a href="https://www.instagram.com/" aria-label="Guardian Bank en Instagram" className="hidden md:inline">
-              <p>@guardianbank</p>
-            </a>
-          </div>
+
+        <div className={styles.border} />
+
+        <div className={`${styles.section} ${styles.social_media}`}>
+          <a href="https://www.facebook.com/" target="_blank">
+            <FaFacebook />
+            <p>/guardianbank</p>
+          </a>
+
+          <a href="https://www.twitter.com/" target="_blank">
+            <FaTwitter />
+            <p>@guardianbank</p>
+          </a>
+
+          <a href="https://www.instagram.com/" target="_blank">
+            <FaInstagram />
+            <p>@guardianbank</p>
+          </a>
         </div>
       </div>
     </footer>

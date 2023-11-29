@@ -4,16 +4,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useAPI from '@/app/hooks/useAPI';
 
+import Image from 'next/image';
 import SidebarButton from './components/SidebarButton';
 import SidebarSubButton from './components/SidebarSubButton';
 
+import white_logo_title from "@/public/assets/white_logo_title.webp";
 import { AiOutlineClose, AiOutlineHome, AiFillCreditCard } from 'react-icons/ai';
-import { MdCurrencyExchange } from 'react-icons/md';
+import { MdCurrencyExchange, MdOutlineAccountBalance } from 'react-icons/md';
 import { FaSackDollar, FaFileInvoiceDollar } from 'react-icons/fa6';
 import { TbLogout } from 'react-icons/tb';
-import Image from 'next/image';
-
-import './style.css';
 
 
 export default function Sidebar() {
@@ -26,27 +25,28 @@ export default function Sidebar() {
         router.push("/");
     }
 
-    async function toggleSidebar(_) {
-        setOpen(!open)
-    }
+    const toggleSidebar =  async () => setOpen(!open);
 
     return (
         <>
             <input type="checkbox" id="drawer-left" checked={open} onChange={toggleSidebar} className="drawer-toggle" />
-
             <label className="overlay" htmlFor="drawer-left" />
-            <aside className='drawer'>
-                <header className='sidebar-header'>
-                    <div className='header-logo-container'>
-                        <Image className="header-logo" src="/assets/white_logo_title.webp" alt="logo guardian bank" title='logo guardian bank' width="150" height="100" />
+
+            <aside className='drawer flex flex-col bg-[#23282D] text-white'>
+                <header className='header_height header_padding flex justify-between'>
+                    <div className='h-full'>
+                        <Image src={white_logo_title} className="w-auto h-full" alt="logo guardian bank" title='logo guardian bank' />
                     </div>
-                    <label htmlFor="drawer-left" className="btn btn-ghost h-auto w-auto p-0 flex m-auto"><AiOutlineClose className='fill-white w-4 h-4' /></label>
+
+                    <label htmlFor="drawer-left" className="my-auto cursor-pointer">
+                        <AiOutlineClose className='w-4 h-4' />
+                    </label>
                 </header>
 
-                <nav className='sidebar-body'>
+                <nav className='flex-1 text-sm'>
                     <SidebarButton route="/home" icon={<AiOutlineHome className='sidebar_button_icon' />} text="Inicio" toggleSidebar={toggleSidebar} />
 
-                    {/* <SidebarButton route="cuentas" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" /> */}
+                    <SidebarButton route="cuentas" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" />
 
                     <SidebarButton route="/tarjetas" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas">
                         <SidebarSubButton route="/tarjetas" text="Ver tarjetas" toggleSidebar={toggleSidebar} />
@@ -66,9 +66,9 @@ export default function Sidebar() {
                         <SidebarSubButton route="/facturas" text="Ver facturas pendientes" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
-                    <div onClick={handleSignOut} className='flex items-center self-stretch gap-5 p-3 duration-500 hover:bg-[#02568A] hover:cursor-pointer'>
+                    <div onClick={handleSignOut} className='flex items-center p-3 gap-5 rounded-none no-underline transition duration-300 hover:bg-[#02568A] cursor-pointer'>
                         <TbLogout className='sidebar_button_icon' />
-                        <p className="text-white text-sm">Cerrar Sesion</p>
+                        <strong>Cerrar Sesion</strong>
                     </div>
                 </nav>
             </aside>
