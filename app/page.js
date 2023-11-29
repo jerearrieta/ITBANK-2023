@@ -23,7 +23,7 @@ export default function Index() {
           <Image width={420} height={0} src="/assets/white_logo_title.webp" alt="Guardian Bank" title="Logo Guardian Bank" className="w-auto h-auto mx-auto" priority />
         </header>
 
-        <main className="items-center bg-inherit py-12">
+        <main className="flex flex-col self-stretch px-[60px] items-center bg-inherit py-12">
           { inLogin ? <FormLogin setInLogin={setInLogin} /> : <FormRegistro setInLogin={setInLogin} /> }
         </main>
       </div>
