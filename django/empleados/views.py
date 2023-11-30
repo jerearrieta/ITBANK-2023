@@ -3,10 +3,12 @@ from .models import Empleado
 from .serializer import EmpleadoSerializer, EmpleadoSucursalSerializer, EmpleadoTarjetaSerializer
 from base.models import Sucursal
 from tarjetas.models import Tarjeta
+from rest_framework.authentication import BasicAuthentication
 
 # Create your views here.
 
 class EmpleadoViewSet(viewsets.ModelViewSet):
+	authentication_classes = [BasicAuthentication]
 	queryset = Empleado.objects.all()
 	serializer_class = EmpleadoSerializer
 
