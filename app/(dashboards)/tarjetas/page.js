@@ -1,35 +1,35 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import getAPI from "@/app/utils/api";
 
-import Link from "next/link";
+import Card from "./Card";
 
-
-function CardListItem({ id, number, expiration, limit }) {
-    return (
-        <Link href={`/tarjetas/${id}`} className="flex flex-col self-stretch gap-1 p-5 border-t first:border-t-0">
-            <p>Numero: {number}</p>
-            <p>Fecha de caducidad: {expiration}</p>
-            <p>Limite: {limit}</p>
-        </Link>
-    );
-}
 
 export const metadata = {
-    title: 'Tarjetas disponibles',
-    description: 'Tarjetas disponibles de Guardian Bank',
-  }
+	title: 'Tarjetas disponibles',
+	description: 'Tarjetas disponibles de Guardian Bank',
+}
+
 
 export default async function CardList() {
-    const supabase = createServerComponentClient({ cookies });
-    const { data } = await supabase.from("cards").select("id, number, expiration, limit");
+	const api = getAPI();
+	const { data } = await api.get("tarjetas/");
 
-    return (
-        <>
-            <h1 className="text-3xl font-bold mb-4">Selecciona una de sus tarjetas</h1>
+	return (
+		<div className="flex flex-col gap-10">
+			<h2 className="text-4xl font-bold">Tarjetas de debito</h2>
 
-            <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">
-                {data.map((record, index) => <CardListItem key={index} id={record.id} number={record.number} expiration={record.expiration} cvc={record.cvc} limit={record.limit} />)}
-            </div>
-        </>
-    );
+			{!data.length && <p>Actualmente no posee ninguna tarjeta de debito.</p>}
+
+			<div className="grid gap-8 grid-cols-cards">
+				{data.map((card, key) => <Card key={key} {...card} />)}
+			</div>
+
+			<h2 className="text-4xl font-bold">Tarjetas de credito</h2>
+
+			<p>Actualmente no posee ninguna tarjeta de credito.</p>
+
+			<div className="grid gap-8 grid-cols-cards">
+
+			</div>
+		</div>
+	);
 }

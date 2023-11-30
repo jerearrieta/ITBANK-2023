@@ -57,7 +57,7 @@ class Cliente(models.Model):
         db_table = 'cliente'
     
     def __str__(self):
-        return self.user.username
+        return f"{self.user.first_name} {self.user.last_name}"
 
 
 class DireccionCliente(models.Model):

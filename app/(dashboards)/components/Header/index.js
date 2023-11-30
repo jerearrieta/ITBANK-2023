@@ -10,7 +10,7 @@ import { IoIosNotifications } from "react-icons/io";
 
 export default function Header() {
     return (
-        <header className='fixed w-full header_height header_padding flex justify-between bg-[#23282D] text-white'>
+        <header className='fixed w-full header_height header_padding flex justify-between bg-[#23282D] text-white z-10'>
             <div className="flex items-center gap-6">
                 <label htmlFor="drawer-left" className='cursor-pointer'>
                     <AiOutlineMenu className="w-5 h-5" />

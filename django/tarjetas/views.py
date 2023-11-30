@@ -1,15 +1,13 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+from .serializers import TarjetaSerializer
+from . import models
 
 
 # Create your views here.
-@login_required
-def listar_tarjetas(req):
-	cliente = req.user.cliente
+class TarjetaView(ListAPIView):
+	serializer_class = TarjetaSerializer
+	permission_classes = [IsAuthenticated]
 
-	context = {
-		"tarjetas_debito": cliente.tarjetas.filter(tipo="DEBITO"),
-		"tarjetas_credito": cliente.tarjetas.filter(tipo="CREDITO"),
-	}
-
-	return render(req, "tarjetas/tarjetas.html", context)
+	def get_queryset(self):
+		return self.request.user.cliente.tarjetas.all()
