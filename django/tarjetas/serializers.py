@@ -1,6 +1,11 @@
 from rest_framework import serializers
 from . import models
 
+from rest_framework import generics
+from rest_framework import mixins, viewsets
+viewsets.GenericViewSet
+
+
 
 class MarcaTarjetaSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -12,6 +17,7 @@ class MarcaTarjetaSerializer(serializers.ModelSerializer):
 class TarjetaSerializer(serializers.ModelSerializer):
 	cliente = serializers.SerializerMethodField()
 	marca = MarcaTarjetaSerializer()
+	fecha_expiracion = serializers.DateField(format="%m / %Y")
 
 	def get_cliente(self, obj):
 		first_name = obj.cliente.user.first_name
