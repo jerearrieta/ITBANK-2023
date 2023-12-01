@@ -45,7 +45,7 @@ class Cliente(models.Model):
     tipo = models.ForeignKey(TipoCliente, on_delete=models.PROTECT, db_column='id_tipo', related_name="clientes", related_query_name="cliente")
     dni = models.CharField(unique=True, max_length=8, db_column='customer_DNI')
     fecha_nacimiento = models.DateField(db_column='dob')
-    sucursal = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT, db_column='branch_id', related_name="clientes", related_query_name="cliente")
+    sucursal = models.ForeignKey("sucursales.Sucursal", on_delete=models.PROTECT, db_column='branch_id', related_name="clientes", related_query_name="cliente")
     direcciones = models.ManyToManyField("base.Direccion", through="DireccionCliente", through_fields=("cliente", "direccion"), related_name="clientes", related_query_name="cliente")
 
     # Se utilizan el nombre y apellido del modelo User de Django. No usar estos campos.

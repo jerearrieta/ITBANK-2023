@@ -3,5 +3,5 @@ from .views import TransactionView
 
 
 urlpatterns = [
-    path('', TransactionView.as_view()),
+    path('movimientos/', TransactionView.as_view()),
 ]

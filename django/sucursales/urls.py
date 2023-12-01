@@ -1,10 +1,10 @@
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
-from . import views
+from .views import SucursalViewSet
 
 
 router = SimpleRouter()
-router.register("tarjetas", views.TarjetaView, "tarjeta")
+router.register('sucursales', SucursalViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

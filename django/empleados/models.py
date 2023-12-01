@@ -5,7 +5,7 @@ class Empleado(models.Model): # Django model inheritance
     user = models.OneToOneField("auth.User", on_delete=models.PROTECT, primary_key=True, db_column='employee_id')
     dni = models.CharField(unique=True, max_length=8, db_column='employee_DNI')
     fecha_contratacion = models.DateField(db_column='employee_hire_date')
-    sucursal = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT, db_column='branch_id', related_name="empleados", related_query_name="empleado")
+    sucursal = models.ForeignKey("sucursales.Sucursal", on_delete=models.PROTECT, db_column='branch_id', related_name="empleados", related_query_name="empleado")
     direcciones = models.ManyToManyField("base.Direccion", through="DireccionEmpleado", through_fields=("empleado", "direccion"), related_name="empleados", related_query_name="empleado")
 
     # Se utilizan el nombre y apellido del modelo User de Django. No usar estos campos.

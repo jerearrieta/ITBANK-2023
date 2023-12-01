@@ -1,5 +1,4 @@
 from rest_framework import generics, exceptions
-from rest_framework.authentication import BasicAuthentication
 from .serializers import TransactionSerializer
 from .models import Movimiento
 from clientes.permissions import IsCustomer
@@ -8,7 +7,6 @@ from django.db.models import Q
 
 class TransactionView(generics.ListCreateAPIView):
     serializer_class = TransactionSerializer
-    authentication_classes = [BasicAuthentication]
     permission_classes = [IsCustomer]
 
     def perform_create(self, serializer):
@@ -25,4 +23,20 @@ class TransactionView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         cliente = self.request.user.cliente
-        return Movimiento.objects.filter(Q(cuenta_origen__cliente=cliente) | Q(cuenta_destino__cliente=cliente))
+        queryset = Movimiento.objects.all()
+
+        cuenta_origen_param = self.request.query_params.get('origen')
+        cuenta_destino_param = self.request.query_params.get('destino')
+
+        if cuenta_origen_param is not None or cuenta_destino_param is not None:
+            filtro = Q()
+            if cuenta_origen_param is not None:
+                filtro = Q(cuenta_origen__iban=cuenta_origen_param)
+
+            if cuenta_destino_param is not None:
+                filtro = filtro | Q(cuenta_destino__iban=cuenta_destino_param)
+
+        else:
+            filtro = Q(cuenta_origen__cliente=cliente) | Q(cuenta_destino__cliente=cliente)
+
+        return queryset.filter(filtro)

@@ -11,7 +11,7 @@ class MarcaTarjetaSerializer(serializers.ModelSerializer):
 
 class TarjetaSerializer(serializers.ModelSerializer):
 	cliente = serializers.StringRelatedField()
-	marca = MarcaTarjetaSerializer()
+	marca = MarcaTarjetaSerializer(read_only=True)
 	fecha_expiracion = serializers.DateField(format="%m / %Y")
 
 	class Meta:

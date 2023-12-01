@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework import viewsets, mixins
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from .models import Tarjeta
 from .serializers import TarjetaSerializer
@@ -6,7 +6,7 @@ from empleados.permissions import IsEmployee
 from clientes.permissions import IsCustomer
 
 
-class TarjetaView(ListAPIView):
+class TarjetaView(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
 	serializer_class = TarjetaSerializer
 	authentication_classes = [SessionAuthentication, BasicAuthentication]
 	permission_classes = [IsCustomer|IsEmployee]

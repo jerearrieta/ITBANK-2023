@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.CuentaView.as_view())
+    path('cuentas/', views.CuentaView.as_view()),
 ]
