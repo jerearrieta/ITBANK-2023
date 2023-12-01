@@ -1,24 +1,28 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, exceptions
+from rest_framework.authentication import BasicAuthentication
 from .serializers import TransactionSerializer
 from .models import Movimiento
+from clientes.permissions import IsCustomer
+from django.db.models import Q
 
 
-# Create your views here.
 class TransactionView(generics.ListCreateAPIView):
     serializer_class = TransactionSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        return self.request.user.cliente.movimientos.all()
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsCustomer]
 
     def perform_create(self, serializer):
-        cuenta_origen = serializer.validated_data["cuenta"]
-        cuenta_destino = serializer.validated_data["cuenta"]
-        monto = serializer.validated_data["monto"]
-        tipo_operacion = serializer.validated["tipo_operacion"]
-        fecha = serializer.validated_data["fecha"]
+        """
+        Garantizamos que cuando se trata de crear una transferencia, la cuenta_origen pertenezca al usuario
+        autenticado que hace la request. De esta forma, garantizamos que un cliente no podra hacer una
+        transferencia desde una cuenta cualquiera hacia su cuenta.
+        """
+        cuenta_origen = serializer.validated_data.get("cuenta_origen")
 
-        Movimiento.objects.bulk_create([
-            Movimiento(cuenta=cuenta_origen, monto=-monto, tipo_operacion=tipo_operacion, fecha=fecha),
-            Movimiento(cuenta=cuenta_destino, monto=monto, tipo_operacion=tipo_operacion, fecha=fecha),
-        ])
+        if cuenta_origen.cliente != self.request.user.cliente:
+            raise exceptions.PermissionDenied(f"No existe ninguna cuenta a su nombre con el IBAN {cuenta_origen.iban}")
+        serializer.save()
+
+    def get_queryset(self):
+        cliente = self.request.user.cliente
+        return Movimiento.objects.filter(Q(cuenta_origen__cliente=cliente) | Q(cuenta_destino__cliente=cliente))

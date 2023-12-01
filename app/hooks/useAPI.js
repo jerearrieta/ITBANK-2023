@@ -16,6 +16,7 @@ export default function useAPI (handle403=true) {
         response => response,
         error => {
             if (handle403 && error.response.status === 403) {
+                api.post("logout/");
                 router.push("/");
             }
             return Promise.reject(error);

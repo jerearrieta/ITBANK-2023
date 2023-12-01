@@ -1,7 +1,7 @@
 from django.db import models
 
-# Create your models here.
-class Empleado(models.Model):
+
+class Empleado(models.Model): # Django model inheritance
     user = models.OneToOneField("auth.User", on_delete=models.PROTECT, primary_key=True, db_column='employee_id')
     dni = models.CharField(unique=True, max_length=8, db_column='employee_DNI')
     fecha_contratacion = models.DateField(db_column='employee_hire_date')

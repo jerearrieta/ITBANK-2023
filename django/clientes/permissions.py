@@ -8,5 +8,4 @@ class IsCustomer(permissions.BasePermission):
 
 	def has_permission(self, request, view):
 		user = request.user
-		print(hasattr(user, "cliente"), view)
 		return bool(user and user.is_authenticated and hasattr(user, "cliente"))

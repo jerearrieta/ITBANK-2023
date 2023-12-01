@@ -7,4 +7,3 @@ from .serializer import SucursalSerializer
 class SucursalViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Sucursal.objects.all()
     serializer_class = SucursalSerializer
-

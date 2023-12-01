@@ -22,12 +22,13 @@ export default function FormLogin({ setInLogin }) {
     }
 
     return (
-        <div className="flex flex-col gap-4">
-            <form action={handleSubmit} className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300">
-                <div className="flex flex-col items-center">
-                    <h1 className="text-3xl font-semibold text-center">Bienvenido a Guardian Bank</h1>
-                    <p className="text-sm text-center">Inicia sesion para acceder a su cuenta</p>
-                </div>
+        <div className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300 text-black">
+            <div className="flex flex-col items-center">
+                <h1 className="text-3xl font-semibold text-center">Bienvenido a Guardian Bank</h1>
+                <p className="text-sm text-center">Inicia sesion para acceder a su cuenta</p>
+            </div>
+
+            <form action={handleSubmit} className="flex flex-col form-group gap-5">
                 <div className="form-group gap-5">
                     <div className="form-field">
                         <label htmlFor="username" className="form-label text-black">Nombre de usuario</label>

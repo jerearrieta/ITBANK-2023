@@ -8,5 +8,4 @@ class IsEmployee(permissions.BasePermission):
 
 	def has_permission(self, request, view):
 		user = request.user
-		print(hasattr(user, "empleado"))
 		return bool(user and user.is_authenticated and hasattr(user, "empleado"))

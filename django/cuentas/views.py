@@ -1,20 +1,13 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from rest_framework import viewsets
-from .models import Cuenta, TipoCuenta
+from rest_framework import generics
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from .serializer import CuentaSerializer
+from clientes.permissions import IsCustomer
 
 
-# Create your views here.
-@login_required
-def listar_cuentas(req):
-	cuentas = []
-	for cuenta in req.user.cliente.cuentas.all():
-		cuentas.append({"id": cuenta.id, "tipo": cuenta.tipo, "iban": cuenta.iban, "saldo": cuenta.saldo/100})
-
-	return render(req, "cuentas/cuentas.html", {"cuentas": cuentas})
-
-
-class CuentaViewset(viewsets.ModelViewSet):
-	queryset = Cuenta.objects.all()
+class CuentaView(generics.ListCreateAPIView):
 	serializer_class = CuentaSerializer
+	authentication_classes = [SessionAuthentication, BasicAuthentication]
+	permission_classes = [IsCustomer]
+
+	def get_queryset(self):
+		return self.request.user.cliente.cuentas.all()
