@@ -11,6 +11,17 @@ class PrestamoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prestamo
         fields = ['id', 'cliente_tipo', 'nombre_cliente', 'tipo', 'monto', 'sucursal']
+
+
+class PrestamoClienteSerializer(serializers.ModelSerializer):
+    nombre_cliente = serializers.CharField(source='cliente')
+    tipo = serializers.CharField(source='cliente.tipo')
+    monto = serializers.IntegerField()
+
+    class Meta:
+        model = Prestamo
+        fields = [ 'nombre_cliente', 'tipo', 'monto']
+    
     
     
         

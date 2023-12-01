@@ -1,4 +1,4 @@
-from .serializer import PrestamoSerializer
+from .serializer import PrestamoSerializer, PrestamoClienteSerializer
 from rest_framework.authentication import BasicAuthentication
 from rest_framework import generics
 from empleados.permissions import IsEmployee
@@ -15,10 +15,10 @@ class PrestamoEmpleadoView(generics.ListAPIView):
     def get_queryset(self):
         return Prestamo.objects.filter(cliente__sucursal_id=self.kwargs['id'])
 
-class PrestamoClienteView(generics.RetrieveAPIView):
+class PrestamoClienteView(generics.ListAPIView):
     permission_classes = [IsCustomer]
     authentication_classes = [BasicAuthentication]
-    serializer_class = PrestamoSerializer
+    serializer_class = PrestamoClienteSerializer
 
-    def get_object(self):
-        return self.request.user.cliente.prestamos.first()
+    def get_queryset(self):
+        return self.request.user.cliente.prestamos.all()
