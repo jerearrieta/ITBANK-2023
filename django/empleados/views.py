@@ -1,20 +1,23 @@
-from rest_framework import viewsets
+from rest_framework import generics
 from .models import Empleado
 from .serializer import EmpleadoSerializer, EmpleadoSucursalSerializer
 from rest_framework.authentication import BasicAuthentication
-from rest_framework.generics import RetrieveAPIView
 from empleados.permissions import IsEmployee
+from sucursales.models import Sucursal
 
 # Create your views here.
 
-class EmpleadoViewSet(viewsets.ModelViewSet):
+class EmpleadoView(generics.ListAPIView):
+	permission_classes = [IsEmployee]
 	authentication_classes = [BasicAuthentication]
 	queryset = Empleado.objects.all()
 	serializer_class = EmpleadoSerializer
 
-class EmpleadoSucursalView(RetrieveAPIView):
-	serializer_class = EmpleadoSucursalSerializer
+class EmpleadoSucursalView(generics.RetrieveAPIView):
 	permission_classes = [IsEmployee]
+	authentication_classes = [BasicAuthentication]
+	queryset = Sucursal.objects.all()
+	serializer_class = EmpleadoSucursalSerializer
+	lookup_field = 'pk'
 
-	def get_queryset(self):
-		return self.request.sucursal
+

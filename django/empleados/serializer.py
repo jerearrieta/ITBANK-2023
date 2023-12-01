@@ -12,4 +12,4 @@ class EmpleadoSerializer(serializers.ModelSerializer):
 class EmpleadoSucursalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sucursal
-        fields = ['id', 'numero', 'nombre', 'direccion']
+        fields = '__all__'
