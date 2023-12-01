@@ -1,8 +1,8 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from .serializers import TarjetaSerializer
-from . import models
-
+from empleados.permissions import IsEmployee
+from clientes.permissions import IsCustomer
 
 # Create your views here.
 class TarjetaView(ListAPIView):

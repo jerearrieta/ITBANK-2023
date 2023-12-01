@@ -1,9 +1,9 @@
 from rest_framework import viewsets
 from .models import Empleado
-from .serializer import EmpleadoSerializer, EmpleadoSucursalSerializer, EmpleadoTarjetaSerializer
-from base.models import Sucursal
-from tarjetas.models import Tarjeta
+from .serializer import EmpleadoSerializer, EmpleadoSucursalSerializer
 from rest_framework.authentication import BasicAuthentication
+from rest_framework.generics import RetrieveAPIView
+from empleados.permissions import IsEmployee
 
 # Create your views here.
 
@@ -12,30 +12,9 @@ class EmpleadoViewSet(viewsets.ModelViewSet):
 	queryset = Empleado.objects.all()
 	serializer_class = EmpleadoSerializer
 
-class EmpleadoSucursalViewSet(viewsets.ModelViewSet):
-	queryset = Sucursal.objects.all()
+class EmpleadoSucursalView(RetrieveAPIView):
 	serializer_class = EmpleadoSucursalSerializer
+	permission_classes = [IsEmployee]
 
-class EmpleadoTarjetaViewSet(viewsets.ModelViewSet):
-	queryset = Tarjeta.objects.all()
-	serializer_class = EmpleadoTarjetaSerializer
-
-
-	
-# Obtener datos de un cliente : retrieve detail
-
-# Obtener saldo de cuenta de un cliente : retrieve detail
-
-# Obtener monto de prestamos de un cliente : retrieve detail
-
-# Obtener monto de prestamos de una sucursal : retrieve detail
-
-# Obtener tarjetas asociadas a un cliente : retrieve detail
-
-# Generar una solicitud de prestamos para un cliente : create
-
-# Anular solicitud de prestamo de cliente : delete
-
-# Modificar dirección de un cliente : update
-
-# Listado de todas las sucurlsales : retrieve no detail
+	def get_queryset(self):
+		return self.request.sucursal
