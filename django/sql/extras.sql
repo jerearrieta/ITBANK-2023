@@ -20,3 +20,13 @@ RENAME COLUMN hora TO fecha;
 ALTER TABLE movimientos ADD COLUMN cuenta_destino INTEGER REFERENCES cuenta ON UPDATE CASCADE ON DELETE SET NULL;
 
 SELECT * FROM movimientos;
+
+
+/*
+Debido a que en la problematica dos se pide que un empleado pueda anular un prestamo de un cliente, reviertiendo
+los cambios aplicados, debemos almacenar a cual cuenta fue a parar el dinero del prestamo. Por esa razon, eliminamos
+la tabla y la volvemos a armar con managed = True en Django, pero esta vez en vez de almacenar el campo de cliente,
+almacenamos el campo de cuenta, a traves del cual podemos obtener el cliente de todas formas.
+*/
+
+DROP TABLE prestamo;
