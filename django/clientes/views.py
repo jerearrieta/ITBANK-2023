@@ -40,13 +40,3 @@ class ClienteAutenticadoView(generics.RetrieveUpdateAPIView):
 
 	def get_object(self):
 		return self.request.user.cliente
-
-	def get_serializer_class(self):
-		if self.request.method in SAFE_METHODS:
-			return serializer.ReadClienteSerializer
-		return serializer.WriteClienteSerializer
-
-
-class TipoClienteView(generics.ListAPIView):
-	queryset = Cliente.objects.all()
-	serializer_class = serializer.TipoClienteSerializer

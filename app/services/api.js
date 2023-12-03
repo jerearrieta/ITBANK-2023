@@ -24,3 +24,12 @@ export default function getAPI (handle403=true) {
 
     return api;
 }
+
+
+export function getInfoFromTransactions() {
+    const api = getAPI();
+    const { data } = api.get("movimientos/");
+    const info = { own_ibans: [], other_ibans: [{iban: "hola", cliente: "hola"}]}
+
+    return info;
+}

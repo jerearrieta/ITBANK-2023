@@ -3,11 +3,12 @@ from .serializers import TransactionSerializer
 from .models import Movimiento
 from clientes.permissions import IsCustomer
 from django.db.models import Q
-
+from rest_framework.authentication import BasicAuthentication
 
 class TransactionView(generics.ListCreateAPIView):
 	serializer_class = TransactionSerializer
 	permission_classes = [IsCustomer]
+	authentication_classes = [BasicAuthentication]
 
 	def perform_create(self, serializer):
 		"""

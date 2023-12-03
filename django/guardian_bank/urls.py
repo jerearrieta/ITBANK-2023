@@ -11,6 +11,7 @@ api_v1_urls = [
     path('', include('movimientos.urls')),
     path('', include('sucursales.urls')),
     path('', include('facturas.urls')),
+    path('', include('base.urls')),
 ]
 
 urlpatterns = [
