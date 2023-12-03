@@ -13,15 +13,15 @@ class PrestamoView(generics.ListAPIView):
 
     def get_queryset(self):
         if IsCustomer().has_permission(self.request, self):
-            return self.request.user.cliente.prestamos.all()
+            return Prestamo.objects.filter(cuenta__cliente=self.request.user.cliente)
 
         queryset = Prestamo.objects.all()
         cliente = self.request.query_params.get('cliente')
         if cliente is not None:
-            queryset = queryset.filter(cliente=cliente)
+            queryset = queryset.filter(cuenta__cliente=cliente)
 
         sucursal = self.request.query_params.get('sucursal')
         if sucursal is not None:
-            queryset.filter(cliente__sucursal_id=sucursal)
+            queryset = queryset.filter(cuenta__cliente__sucursal_id=sucursal)
 
         return queryset
