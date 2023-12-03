@@ -10,7 +10,7 @@ import pattern from './img/pattern.png';
 import styles from './Tarjeta.module.css';
 
 
-export default function Card({ numero, cvv, cliente, marca, fecha_expiracion, tipo }) {
+export default function Card({ numero, cvv, cliente, marca, fecha_expiracion }) {
 	let front_brand, back_brand;
 
 	if (marca.codigo === "MASTER") {

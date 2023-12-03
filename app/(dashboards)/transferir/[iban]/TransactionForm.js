@@ -1,8 +1,8 @@
 "use client";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import useAPI from "@/app/hooks/useAPI";
 
 import ProcessingButton from "@/app/components/ProcessingButton";
 import ErrorToast from "@/app/components/ErrorToast";
@@ -12,6 +12,7 @@ import SuccessModal from "@/app/components/SuccessModal";
 export default function TransactionForm({ id, first_name, last_name }) {
     const [state, setState] = useState([null]);
     const router = useRouter();
+    const api = useAPI();
 
     const motivos = [
         "Factura",
@@ -27,17 +28,13 @@ export default function TransactionForm({ id, first_name, last_name }) {
         "Varios"
     ];
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-
+    async function handleSubmit(formData) {
         setState(["processing"]);
 
-        const formData = new FormData(e.currentTarget);
         const amount = formData.get('amount');
         const reason = formData.get('reason');
 
-        const supabase = createClientComponentClient();
-        const { error } = await supabase.rpc('create_transaction', { destination_user: id, amount: amount, reason: reason });
+        
 
         if (error) {
             setState(["error", error.message]);
@@ -51,7 +48,7 @@ export default function TransactionForm({ id, first_name, last_name }) {
         <>
             <h1 className="text-3xl font-bold mb-4">{`Transferir dinero a ${first_name} ${last_name}`}</h1>
             
-            <form onSubmit={handleSubmit} className="flex flex-col self-stretch p-6 gap-4 rounded-2xl bg-[#D9D9D9] shadow-xl">
+            <form action={handleSubmit} className="flex flex-col self-stretch p-6 gap-4 rounded-2xl bg-[#D9D9D9] shadow-xl">
                 <input type="number" name="amount" className="h-12 p-4 border-none rounded-lg" placeholder="Ingresa el monto a transferir" />
                 <select name="reason" defaultValue="Varios" className="h-12 pl-4 border-none rounded-lg" aria-label="motivo">
                     {motivos.map((motivo, index) => <option key={index} value={motivo}>{motivo}</option>)}

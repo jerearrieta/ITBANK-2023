@@ -7,14 +7,14 @@ export const metadata = {
 }
 
 
-function Account({ id, iban, tipo, saldo }) {
+function Account({ url, iban, tipo, saldo }) {
   return (
     <div className="flex flex-col flex-1 p-6 rounded-lg bg-white shadow-[4px_4px_4px_0_rgba(0,0,0,0.25)]">
       <h2 className="text-xl mb-10 font-bold">{ tipo } Nº { iban }</h2>
       <span className="font-semibold">Saldo</span>
       <span className="text-3xl font-bold">$ { saldo }</span>
       <hr className="border-gray-300 my-5" />
-      <a href={`/cuentas/${id}/`}>Ver movimientos</a>
+      <a href={`/cuentas/${iban}/`}>Ver movimientos</a>
     </div>
   );
 }

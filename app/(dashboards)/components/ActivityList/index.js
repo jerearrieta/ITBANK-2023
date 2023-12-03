@@ -1,3 +1,7 @@
+import getAPI from "@/app/services/api";
+import { cookies } from "next/headers";
+
+
 function ActivityListItem({ title, value, to, date }) {
     return (
         <div className="flex flex-col self-stretch gap-1 p-5">
@@ -13,12 +17,13 @@ function ActivityListItem({ title, value, to, date }) {
     );
 }
 
-export default function ActivityList() {
+export default async function ActivityList({ url }) {
+    const api = getAPI();
+    const { data } = await api.get(url);
+
     return (
         <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">
-            <ActivityListItem title="Transferencia enviada" value="-$10.000" to="Google" date="20/8/2023" />
-            <hr />
-            <ActivityListItem title="Transferencia enviada" value="-$10.000" to="Google" date="20/8/2023" />
+            {data.map((value, key) => <><ActivityListItem key={key} title="Transferencia" value={value.monto} to={value.cuenta_destino} date={value.fecha} /><hr key={key} /></>)}
         </div>
     );
 }

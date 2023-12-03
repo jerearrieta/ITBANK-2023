@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Sucursal
 
 
-class SucursalSerializer(serializers.ModelSerializer):
+class SucursalSerializer(serializers.HyperlinkedModelSerializer):
 	pais = serializers.CharField(source='direccion.pais')
 	distrito = serializers.CharField(source='direccion.distrito')
 	ciudad = serializers.CharField(source='direccion.ciudad')
@@ -11,4 +11,4 @@ class SucursalSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Sucursal
-		fields = ['numero', 'nombre', 'pais', 'distrito', 'ciudad', 'codigo_postal', 'direccion']
+		fields = ['url', 'numero', 'nombre', 'pais', 'distrito', 'ciudad', 'codigo_postal', 'direccion']

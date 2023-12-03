@@ -5,7 +5,6 @@ from django.urls import path, include
 api_v1_urls = [
     path('', include('autenticacion.urls')),
     path('', include('clientes.urls')),
-    path('', include('empleados.urls')),
     path('', include('cuentas.urls')),
     path('', include('tarjetas.urls')),
     path('', include('prestamos.urls')),

@@ -1,7 +1,13 @@
 from django.urls import path, include
-from .views import ClienteView
+from rest_framework.routers import SimpleRouter
+from . import views
 
+
+router = SimpleRouter()
+router.register("clientes", views.ClienteView)
 
 urlpatterns = [
-    path('clientes/', ClienteView.as_view()),
+    path('clientes/yo/', views.ClienteAutenticadoView.as_view()),
+    path('', include(router.urls)),
+    path("tipo-clientes/", views.TipoClienteView.as_view()),
 ]

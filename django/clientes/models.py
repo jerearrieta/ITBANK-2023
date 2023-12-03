@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class TipoCliente(models.Model):
     nombre = models.CharField(unique=True, max_length=20)
 

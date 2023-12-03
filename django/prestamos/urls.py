@@ -1,8 +1,7 @@
 from django.urls import path
-from .views import PrestamoEmpleadoView, PrestamoClienteView
+from .views import PrestamoView
 
 
 urlpatterns = [
-    path('prestamos/', PrestamoClienteView.as_view()),
-    path('prestamos/<int:id>/', PrestamoEmpleadoView.as_view()),
+    path('prestamos/', PrestamoView.as_view()),
 ]

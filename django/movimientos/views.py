@@ -6,37 +6,32 @@ from django.db.models import Q
 
 
 class TransactionView(generics.ListCreateAPIView):
-    serializer_class = TransactionSerializer
-    permission_classes = [IsCustomer]
+	serializer_class = TransactionSerializer
+	permission_classes = [IsCustomer]
 
-    def perform_create(self, serializer):
-        """
-        Garantizamos que cuando se trata de crear una transferencia, la cuenta_origen pertenezca al usuario
-        autenticado que hace la request. De esta forma, garantizamos que un cliente no podra hacer una
-        transferencia desde una cuenta cualquiera hacia su cuenta.
-        """
-        cuenta_origen = serializer.validated_data.get("cuenta_origen")
+	def perform_create(self, serializer):
+		"""
+		Garantizamos que cuando se trata de crear una transferencia, la cuenta_origen pertenezca al usuario
+		autenticado que hace la request. De esta forma, garantizamos que un cliente no podra hacer una
+		transferencia desde una cuenta cualquiera hacia su cuenta.
+		"""
+		cuenta_origen = serializer.validated_data.get("cuenta_origen")
 
-        if cuenta_origen.cliente != self.request.user.cliente:
-            raise exceptions.PermissionDenied(f"No existe ninguna cuenta a su nombre con el IBAN {cuenta_origen.iban}")
-        serializer.save()
+		if cuenta_origen.cliente != self.request.user.cliente:
+			raise exceptions.PermissionDenied(f"No existe ninguna cuenta a su nombre con el IBAN {cuenta_origen.iban}")
+		serializer.save()
 
-    def get_queryset(self):
-        cliente = self.request.user.cliente
-        queryset = Movimiento.objects.all()
+	def get_queryset(self):
+		cliente = self.request.user.cliente
 
-        cuenta_origen_param = self.request.query_params.get('origen')
-        cuenta_destino_param = self.request.query_params.get('destino')
+		cuenta_origen_param = self.request.query_params.get('origen')
+		cuenta_destino_param = self.request.query_params.get('destino')
 
-        if cuenta_origen_param is not None or cuenta_destino_param is not None:
-            filtro = Q()
-            if cuenta_origen_param is not None:
-                filtro = Q(cuenta_origen__iban=cuenta_origen_param)
+		filtro = Q()
+		if cuenta_origen_param is not None:
+			filtro = Q(cuenta_origen__iban=cuenta_origen_param)
 
-            if cuenta_destino_param is not None:
-                filtro = filtro | Q(cuenta_destino__iban=cuenta_destino_param)
+		if cuenta_destino_param is not None:
+			filtro = filtro | Q(cuenta_destino__iban=cuenta_destino_param)
 
-        else:
-            filtro = Q(cuenta_origen__cliente=cliente) | Q(cuenta_destino__cliente=cliente)
-
-        return queryset.filter(filtro)
+		return Movimiento.objects.filter((Q(cuenta_origen__cliente=cliente) | Q(cuenta_destino__cliente=cliente)) & filtro)

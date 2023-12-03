@@ -20,7 +20,9 @@ export default async function CardList() {
 			{!data.length && <p>Actualmente no posee ninguna tarjeta de debito.</p>}
 
 			<div className="grid gap-8 grid-cols-cards">
-				{data.map((card, key) => <Card key={key} {...card} />)}
+				{data.map((card, key) => {
+					if (card.tipo === "DEBITO") return <Card key={key} {...card} />;
+				})}
 			</div>
 
 			<h2 className="text-4xl font-bold">Tarjetas de credito</h2>
@@ -28,7 +30,9 @@ export default async function CardList() {
 			<p>Actualmente no posee ninguna tarjeta de credito.</p>
 
 			<div className="grid gap-8 grid-cols-cards">
-
+				{data.map((card, key) => {
+					if (card.tipo === "CREDITO") return <Card key={key} {...card} />;
+				})}
 			</div>
 		</div>
 	);

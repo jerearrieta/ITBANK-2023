@@ -1,24 +1,27 @@
-from .serializer import PrestamoSerializer, PrestamoClienteSerializer
-from rest_framework.authentication import BasicAuthentication
+from .serializer import PrestamoSerializer
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework import generics
 from empleados.permissions import IsEmployee
 from clientes.permissions import IsCustomer
 from prestamos.models import Prestamo
 
-# Create your views here.
 
-class PrestamoEmpleadoView(generics.ListAPIView):
-    permission_classes = [IsEmployee]
-    authentication_classes = [BasicAuthentication]
+class PrestamoView(generics.ListAPIView):
+    permission_classes = [IsCustomer|IsEmployee]
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
     serializer_class = PrestamoSerializer
 
     def get_queryset(self):
-        return Prestamo.objects.filter(cliente__sucursal_id=self.kwargs['id'])
+        if IsCustomer().has_permission(self.request, self):
+            return self.request.user.cliente.prestamos.all()
 
-class PrestamoClienteView(generics.ListAPIView):
-    permission_classes = [IsCustomer]
-    authentication_classes = [BasicAuthentication]
-    serializer_class = PrestamoClienteSerializer
+        queryset = Prestamo.objects.all()
+        cliente = self.request.query_params.get('cliente')
+        if cliente is not None:
+            queryset = queryset.filter(cliente=cliente)
 
-    def get_queryset(self):
-        return self.request.user.cliente.prestamos.all()
+        sucursal = self.request.query_params.get('sucursal')
+        if sucursal is not None:
+            queryset.filter(cliente__sucursal_id=sucursal)
+
+        return queryset
