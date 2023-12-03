@@ -39,7 +39,7 @@ class CuentaView(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.Create
 		if IsCustomer().has_permission(self.request, self):
 			self.request.data["cliente"] = self.request.user.id
 		
-		super().create(request, *args, **kwargs)
+		return super().create(request, *args, **kwargs)
 
 
 class TipoCuentaView(generics.ListAPIView):

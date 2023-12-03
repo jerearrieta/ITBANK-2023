@@ -9,5 +9,5 @@ router.register("clientes", views.ClienteView)
 urlpatterns = [
     path('clientes/yo/', views.ClienteAutenticadoView.as_view()),
     path('', include(router.urls)),
-    path("tipo-clientes/", views.TipoClienteView.as_view()),
+    # path("tipo-clientes/", views.TipoClienteView.as_view()),
 ]

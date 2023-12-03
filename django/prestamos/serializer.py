@@ -9,3 +9,8 @@ class PrestamoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prestamo
         fields = ['id', 'tipo', 'cliente', 'monto', 'fecha', 'sucursal']
+
+class PrestamoCreateDeleteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prestamo
+        fields = ['tipo', 'cliente', 'monto', 'fecha']
