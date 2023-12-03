@@ -22,16 +22,16 @@ class PrestamoView(mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.R
 
 	def get_queryset(self):
 		if IsCustomer().has_permission(self.request, self):
-			return self.request.user.cliente.prestamos.all()
+			return Prestamo.objects.filter(cuenta__cliente=self.request.user.cliente)
 
 		queryset = Prestamo.objects.all()
 		cliente = self.request.query_params.get('cliente')
 		if cliente is not None:
-			queryset = queryset.filter(cliente=cliente)
+			queryset = queryset.filter(cuenta__cliente=cliente)
 
 		sucursal = self.request.query_params.get('sucursal')
 		if sucursal is not None:
-			queryset = queryset.filter(cliente__sucursal_id=sucursal)
+			queryset = queryset.filter(cuenta__cliente__sucursal_id=sucursal)
 
 		return queryset
 
@@ -39,7 +39,7 @@ class PrestamoView(mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.R
 	def get_object(self):
 		obj = super().get_object()
 
-		if IsCustomer().has_permission(self.request, self) and obj.cliente != self.request.user.cliente:
+		if IsCustomer().has_permission(self.request, self) and obj.cuenta.cliente != self.request.user.cliente:
 			raise exceptions.PermissionDenied()
 
 		return obj
@@ -49,25 +49,25 @@ class PrestamoView(mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.R
 			raise exceptions.PermissionDenied('No tienes acceso a esta accion.')
 		return super().destroy(request, *args, **kwargs)
 	
+	def perform_destroy(self, instance):
+		cuenta = instance.cuenta
+		cuenta.saldo -= instance.monto
+		cuenta.save()
+		instance.delete()
+	
 	def create(self, request, *args, **kwargs):
-		if IsCustomer().has_permission(self.request, self):
-			self.request.data["cliente"] = self.request.user.id
-
 		cuenta = self.request.data.get('cuenta')
 		if not cuenta:
 			raise exceptions.ParseError()
-		
-		cliente = self.request.data.get('cliente')
-		if not cliente:
-			raise exceptions.ParseError()
-		
-		cuenta = Cuenta.objects.filter(id=cuenta, cliente=cliente)	
 	
+		cuenta = Cuenta.objects.filter(id=cuenta)
+
 		if not cuenta.exists():
-			raise exceptions.PermissionDenied()
-		
-		
+			raise exceptions.NotFound()
 		cuenta = cuenta.first()
+
+		if IsCustomer().has_permission(self.request, self) and not self.request.user.cliente == cuenta.cliente:
+			raise exceptions.PermissionDenied()
 
 		serializer = self.get_serializer(data=request.data)
 		serializer.is_valid(raise_exception=True)
