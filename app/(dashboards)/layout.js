@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 import { initFlowbite } from "flowbite";
 
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import Footer from "./components/Footer";
+import Header from "./layout/Header";
+import Sidebar from "./layout/Sidebar";
+import Footer from "./layout/Footer";
 
 
 export default function DashboardLayout({ children }) {

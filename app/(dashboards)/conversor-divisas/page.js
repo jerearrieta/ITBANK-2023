@@ -9,12 +9,7 @@ export const metadata = {
 }
 
 const Page = () => {
-  return (
-    <div className='w-full'>
-      <Convertidor />
-    </div>
-  )
+  return <Convertidor />;
 }
 
 export default Page
-

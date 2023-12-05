@@ -26,10 +26,14 @@ export default function getAPI (handle403=true) {
 }
 
 
-export function getInfoFromTransactions() {
+export async function getCustomerIBANs() {
     const api = getAPI();
-    const { data } = api.get("movimientos/");
-    const info = { own_ibans: [], other_ibans: [{iban: "hola", cliente: "hola"}]}
+    const { data } = await api.get("cuentas/");
+    const ibans = [];
 
-    return info;
+    for (const cuenta of data) {
+        ibans.push(cuenta.iban);
+    }
+
+    return ibans;
 }

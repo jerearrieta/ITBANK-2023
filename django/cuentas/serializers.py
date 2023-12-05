@@ -29,6 +29,14 @@ class WriteCuentaSerializer(serializers.ModelSerializer):
         return cuenta
 
 
+class ReadOtherCuentaSerializer(serializers.ModelSerializer):
+    cliente = serializers.StringRelatedField()
+
+    class Meta:
+        model = Cuenta
+        fields = ['cliente', 'iban']
+
+
 class TipoCuentaSerializer(serializers.ModelSerializer):
 
     class Meta:

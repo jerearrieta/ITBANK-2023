@@ -11,4 +11,4 @@ class SucursalSerializer(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = Sucursal
-		fields = ['url', 'numero', 'nombre', 'pais', 'distrito', 'ciudad', 'codigo_postal', 'direccion']
+		fields = ['url', 'id', 'numero', 'nombre', 'pais', 'distrito', 'ciudad', 'codigo_postal', 'direccion']

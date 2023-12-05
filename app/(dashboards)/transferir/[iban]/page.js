@@ -1,6 +1,6 @@
-import { cookies } from "next/headers";
+import { getCustomerIBANs } from "@/app/services/api";
 
-import TransactionForm from "./TransactionForm";
+import TransactionForm from "./FormTransferencia";
 
 
 export const metadata = {
@@ -9,12 +9,12 @@ export const metadata = {
   }
 
 
-export default async function Page({ params }) {
-    
+export default async function Page({ params: { iban } }) {
+  const ibans = await getCustomerIBANs();
 
-    if (data === null) {
-        return <p>No puedes transferirte a ti mismo</p>
-    }
+  if (ibans.includes(iban)) {
+    return <p>No puedes transferirte a ti mismo</p>;
+  }
 
-    return <TransactionForm id={params.id} first_name={data.first_name} last_name={data.last_name}/>;
+  return <TransactionForm iban_destino={iban} />;
 }

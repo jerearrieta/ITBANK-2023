@@ -3,12 +3,11 @@ from .serializers import TransactionSerializer
 from .models import Movimiento
 from clientes.permissions import IsCustomer
 from django.db.models import Q
-from rest_framework.authentication import BasicAuthentication
+
 
 class TransactionView(generics.ListCreateAPIView):
 	serializer_class = TransactionSerializer
 	permission_classes = [IsCustomer]
-	authentication_classes = [BasicAuthentication]
 
 	def perform_create(self, serializer):
 		"""
@@ -17,10 +16,17 @@ class TransactionView(generics.ListCreateAPIView):
 		transferencia desde una cuenta cualquiera hacia su cuenta.
 		"""
 		cuenta_origen = serializer.validated_data.get("cuenta_origen")
-
+		cuenta_destino = serializer.validated_data.get("cuenta_destino")
 		if cuenta_origen.cliente != self.request.user.cliente:
 			raise exceptions.PermissionDenied(f"No existe ninguna cuenta a su nombre con el IBAN {cuenta_origen.iban}")
-		serializer.save()
+
+		transferencia = serializer.save()
+
+		cuenta_origen.saldo -= transferencia.monto
+		cuenta_destino.saldo += transferencia.monto
+
+		cuenta_origen.save()
+		cuenta_destino.save()
 
 	def get_queryset(self):
 		cliente = self.request.user.cliente

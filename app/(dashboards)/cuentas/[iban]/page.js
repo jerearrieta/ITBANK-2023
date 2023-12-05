@@ -1,47 +1,39 @@
 import getAPI from "@/app/services/api";
 
+import ListaMovimientos from "@/app/components/ListaMovimientos";
 
-function Movimiento({ title, value, to, date }) {
+
+export default async function CuentaDetail({ params: { iban } }) {
+    const api = getAPI();
+    const { data: cuenta } = await api.get(`cuentas/${iban}/`);
+
     return (
-        <div className="flex flex-col self-stretch gap-1 p-5">
-            <div className="flex self-stretch">
-                <p className="flex-1 text-lg">{title}</p>
-                <p className="text-lg text-right">{value}</p>
+        <div className="flex flex-col gap-10">
+            <div>
+                <h1 className="text-3xl font-bold mb-4">Cuenta Nº {cuenta.iban}</h1>
+                <hr className="border-gray-400" />
             </div>
-            <div className="flex self-stretch">
-                <p className="flex-1 text-sm">{to}</p>
-                <p className="text-sm text-right">{date}</p>
+
+            <div className="flex flex-col bg-white rounded-xl shadow-lg">
+                <h2 className="px-4 py-3 text-2xl font-semibold">Datos de la cuenta</h2>
+                <hr />
+                <div className="flex flex-col gap-4 p-4 text-lg">
+                    <p>Propietario/a: {cuenta.cliente}</p>
+                    <p>Tipo de cuenta: {cuenta.tipo}</p>
+                    <p>Saldo: {cuenta.saldo}</p>
+                </div>
+            </div>
+
+            <div className="flex flex-col bg-white rounded-xl shadow-lg">
+                <div className="flex justify-between items-center px-4 py-3">
+                    <h2 className="text-2xl font-semibold">Movimientos</h2>
+                    {/* <Link href={`/transferir/${iban}/`} className="px-3 py-2 bg-[#009ee3] text-white rounded-lg font-medium">Realizar transferencia</Link> */}
+                </div>
+                
+                <hr />
+                
+                <ListaMovimientos ibans={[iban]} cuenta_origen={iban} cuenta_destino={iban} />
             </div>
         </div>
-    );
-}
-
-
-export default async function CuentaDetail({ params }) {
-    const api = getAPI();
-    const { data: cuenta } = await api.get(`cuentas/${params.iban}`);
-    const { data: movimientos } = await api.get(`movimientos?origen=${params.iban}&destino=${params.iban}`);
-
-    return (
-        <>
-            <h1>Cuenta Nº {cuenta.iban}</h1>
-            <hr />
-            <div>
-                <h2>Datos de la cuenta</h2>
-                <div>
-                    {cuenta.iban}
-                    {cuenta.tipo}
-                    {cuenta.cliente}
-                    {cuenta.saldo}
-                </div>
-            </div>
-
-            <div>
-                <h2>Movimientos</h2>
-                <div>
-                    {movimientos.map((mov, key) => <Movimiento key={key} title="Transferencia" value={mov.monto} to={mov.cuenta_destino} date={mov.fecha} />)}
-                </div>
-            </div>
-        </>
     );
 }

@@ -42,16 +42,16 @@ INSTALLED_APPS = [
     'corsheaders',
     'widget_tweaks',
 
-    'base',
     'autenticacion',
     'clientes',
     'cuentas',
+    'direcciones',
     'empleados',
+    'facturas',
     'movimientos',
     'prestamos',
-    'tarjetas',
     'sucursales',
-    'facturas',
+    'tarjetas',
 ]
 
 MIDDLEWARE = [

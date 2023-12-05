@@ -6,7 +6,7 @@ class Empleado(models.Model): # Django model inheritance
     dni = models.CharField(unique=True, max_length=8, db_column='employee_DNI')
     fecha_contratacion = models.DateField(db_column='employee_hire_date')
     sucursal = models.ForeignKey("sucursales.Sucursal", on_delete=models.PROTECT, db_column='branch_id', related_name="empleados", related_query_name="empleado")
-    direcciones = models.ManyToManyField("base.Direccion", through="DireccionEmpleado", through_fields=("empleado", "direccion"), related_name="empleados", related_query_name="empleado")
+    direcciones = models.ManyToManyField("direcciones.Direccion", through="DireccionEmpleado", through_fields=("empleado", "direccion"), related_name="empleados", related_query_name="empleado")
 
     # Se utilizan el nombre y apellido del modelo User de Django. No usar estos campos.
     nombre = models.CharField(blank=True, max_length=150, default="", db_column='employee_name')
@@ -21,7 +21,7 @@ class Empleado(models.Model): # Django model inheritance
 
 class DireccionEmpleado(models.Model):
     empleado = models.ForeignKey(Empleado, models.CASCADE, db_column='id_empleado')
-    direccion = models.ForeignKey("base.Direccion", models.SET_NULL, blank=True, null=True, db_column='id_direccion')
+    direccion = models.ForeignKey("direcciones.Direccion", models.SET_NULL, blank=True, null=True, db_column='id_direccion')
 
     class Meta:
         managed = False

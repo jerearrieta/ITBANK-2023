@@ -1,11 +1,10 @@
 from rest_framework import viewsets, generics
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
-from .permissions import CustomerPermissions, IsCustomer
+from .permissions import CustomerPermissions, IsCustomer, UserPermissions
 from rest_framework.permissions import OR, SAFE_METHODS
 from empleados.permissions import EmployeePermissions
-from base.permissions import UserPermissions
 from . import serializer
-from .models import Cliente
+from .models import Cliente, TipoCliente
 
 
 class ClienteView(viewsets.ModelViewSet):
@@ -40,6 +39,17 @@ class ClienteAutenticadoView(generics.RetrieveUpdateAPIView):
 
 	def get_object(self):
 		return self.request.user.cliente
+
+	def get_serializer_class(self):
+		if self.request.method in SAFE_METHODS:
+			return serializer.ReadClienteSerializer
+		return serializer.WriteClienteSerializer
+
+
+class TipoClienteView(generics.ListAPIView):
+	queryset = TipoCliente.objects.all()
+	serializer_class = serializer.TipoClienteSerializer
+	authentication_classes = []
 	
 	def get_serializer_class(self):
 		if self.request.method in SAFE_METHODS:

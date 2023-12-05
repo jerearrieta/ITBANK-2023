@@ -4,10 +4,9 @@ from . import views
 
 
 router = SimpleRouter()
-router.register("clientes", views.ClienteView)
+router.register("direcciones", views.DireccionClienteView)
+
 
 urlpatterns = [
-    path('clientes/yo/', views.ClienteAutenticadoView.as_view()),
     path('', include(router.urls)),
-    path("tipos-cliente/", views.TipoClienteView.as_view()),
 ]

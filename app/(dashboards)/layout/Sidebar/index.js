@@ -46,24 +46,24 @@ export default function Sidebar() {
                 <nav className='flex-1 text-sm'>
                     <SidebarButton route="/home" icon={<AiOutlineHome className='sidebar_button_icon' />} text="Inicio" toggleSidebar={toggleSidebar} />
 
-                    <SidebarButton route="cuentas" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" />
+                    <SidebarButton route="/cuentas/" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" />
 
-                    <SidebarButton route="/tarjetas" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas">
-                        <SidebarSubButton route="/tarjetas" text="Ver tarjetas" toggleSidebar={toggleSidebar} />
+                    <SidebarButton route="/tarjetas/" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas">
+                        <SidebarSubButton route="/tarjetas/" text="Ver tarjetas" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
-                    <SidebarButton route="/transferencias" icon={<MdCurrencyExchange className='sidebar_button_icon' />} text="Transferencias">
-                        <SidebarSubButton route="/transferencias" text="Transferir" toggleSidebar={toggleSidebar} />
-                        <SidebarSubButton route="/convertidor" text="Convertidor de monedas" toggleSidebar={toggleSidebar} />
+                    <SidebarButton route="/transferir/" icon={<MdCurrencyExchange className='sidebar_button_icon' />} text="Transferencias">
+                        <SidebarSubButton route="/transferir/" text="Transferir" toggleSidebar={toggleSidebar} />
+                        <SidebarSubButton route="/conversor-divisas/" text="Convertidor de monedas" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
-                    <SidebarButton route="/prestamos" icon={<FaSackDollar className='sidebar_button_icon' />} text="Prestamos">
-                        <SidebarSubButton route="/prestamos" text="Pedir prestamo" toggleSidebar={toggleSidebar} />
-                        <SidebarSubButton route="/calculadora" text="Calculadora de prestamos" toggleSidebar={toggleSidebar} />
+                    <SidebarButton route="/prestamos/" icon={<FaSackDollar className='sidebar_button_icon' />} text="Prestamos">
+                        <SidebarSubButton route="/prestamos/" text="Pedir prestamo" toggleSidebar={toggleSidebar} />
+                        <SidebarSubButton route="/prestamos/calculadora/" text="Calculadora de prestamos" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
-                    <SidebarButton route="/facturas" icon={<FaFileInvoiceDollar className='sidebar_button_icon' />} text="Facturas">
-                        <SidebarSubButton route="/facturas" text="Ver facturas pendientes" toggleSidebar={toggleSidebar} />
+                    <SidebarButton route="/facturas/" icon={<FaFileInvoiceDollar className='sidebar_button_icon' />} text="Facturas">
+                        <SidebarSubButton route="/facturas/" text="Ver facturas pendientes" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
                     <div onClick={handleSignOut} className='flex items-center p-3 gap-5 rounded-none no-underline transition duration-300 hover:bg-[#02568A] cursor-pointer'>

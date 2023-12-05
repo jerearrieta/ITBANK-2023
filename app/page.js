@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 
 import Image from "next/image";
 import FormLogin from "./auth/FormLogin";
-import Footer from "./(dashboards)/components/Footer";
+import Footer from "./(dashboards)/layout/Footer";
 
 const FormRegistro = dynamic(() => import("./auth/FormRegistro"), {loading: () => <div className="flex w-1/3 p-8 items-center justify-center rounded-2xl bg-gray-300"><div className="spinner-circle" /></div>});
 
