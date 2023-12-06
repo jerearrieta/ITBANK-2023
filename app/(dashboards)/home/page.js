@@ -1,4 +1,5 @@
-import getAPI from "@/app/services/api";
+import getAPI from "@/app/utils/api";
+import { obtenerStringDineroDecimal } from "@/app/utils/dinero";
 
 import ListaMovimientos from "@/app/components/ListaMovimientos";
 
@@ -9,19 +10,16 @@ export default async function Home() {
     const { data: cliente } = await api.get("clientes/yo/");
     const { data: cuentas } = await api.get("cuentas/");
 
-    const ibans = [];
     let saldo = 0;
-    for (const cuenta of cuentas) {
-        ibans.push(cuenta.iban);
+    const ibans = cuentas.map(cuenta => {
         saldo += cuenta.saldo;
-    }
-
-    saldo = (saldo/100).toFixed(2);
+        return cuenta.iban;
+    });
 
     return (
         <div className="flex flex-col gap-10">
             <div>
-                <h1 className="text-3xl font-bold">Hola, {`${cliente.first_name} ${cliente.last_name}`}</h1>
+                <h1 className="text-3xl font-bold">Hola, {cliente.first_name} {cliente.last_name}</h1>
                 <hr className="border-gray-400" />
             </div>
 
@@ -30,7 +28,7 @@ export default async function Home() {
                 <hr />
                 <div className="px-4 py-3">
                     <p>Dinero disponible</p>
-                    <p className="text-2xl font-bold">{saldo < 0 ? `- $ ${Math.abs(saldo)}` : `$ ${saldo}` }</p>
+                    <p className="text-2xl font-bold">{obtenerStringDineroDecimal(saldo)}</p>
                 </div>
             </div>
 

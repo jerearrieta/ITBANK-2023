@@ -1,20 +1,18 @@
-import { getCustomerIBANs } from "@/app/services/api";
+import getAPI from "@/app/utils/api";
 
 import TransactionForm from "./FormTransferencia";
 
 
 export const metadata = {
-    title: 'Sistema de transferencias',
-    description: 'Sistema de transferencias de Guardian Bank',
-  }
+  title: 'Sistema de transferencias',
+  description: 'Sistema de transferencias de Guardian Bank',
+}
 
 
 export default async function Page({ params: { iban } }) {
-  const ibans = await getCustomerIBANs();
+  const api = getAPI();
 
-  if (ibans.includes(iban)) {
-    return <p>No puedes transferirte a ti mismo</p>;
-  }
+  const response = await api.get(`cuentas/${iban}/`);
 
-  return <TransactionForm iban_destino={iban} />;
+  return <TransactionForm cuentaDestino={response.data} />;
 }

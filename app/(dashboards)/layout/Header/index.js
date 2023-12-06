@@ -17,7 +17,7 @@ export default function Header() {
                 </label>
 
                 <Link href="/home" className="h-full">
-                    <Image src={white_logo_title} className="w-auto h-full" alt="Guardian Bank" title='Guardian Bank' />
+                    <Image src={white_logo_title} className="w-auto h-full" alt="Guardian Bank" title='Guardian Bank' priority />
                 </Link>
             </div>
 

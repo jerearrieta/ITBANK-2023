@@ -1,4 +1,12 @@
+"use client"
+
+import { useEffect } from "react";
+import { initFlowbite } from "flowbite";
+
+
 export default function ErrorToast({ message }) {
+    useEffect(() => initFlowbite());
+
     return (
         <div className="alert alert-error max-w-sm fixed bottom-5 right-5" id="error-toast">
             <svg className="w-12 h-12" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
