@@ -4,7 +4,7 @@ from . import views
 
 
 router = SimpleRouter()
-router.register("facturas", views.FacturaView, "factura")
+router.register("facturas", views.FacturaView, basename="factura")
 
 
 urlpatterns = [

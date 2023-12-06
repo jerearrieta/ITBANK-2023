@@ -1,12 +1,16 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-
 import InvoiceDetail from "./InvoiceDetail";
+import getAPI from "@/app/services/api";
 
 
 export default async function Page({ params }) {
-    const supabase = createServerComponentClient({ cookies });
-    const { data } = await supabase.from("invoices").select("issuer, total, is_paid, paid_at, invoice_pdf_url").eq("id", params.id).single();
+    try{
+    const api = getAPI();
+    const { data } = await api.get('facturas/')
 
-    return <InvoiceDetail id={params.id} issuer={data.issuer} total={data.total} invoice_pdf_url={data.invoice_pdf_url} />;
+    return <InvoiceDetail id={params.id} cliente={data.cliente} emisor={data.emisor} monto={data.monto} pdf={data.pdf} />;
+} catch (error) {
+    console.error("Error al obtener facturas:", error);
+    return <p>Error al cargar las facturas.</p>;
+}
+    
 }
