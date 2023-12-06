@@ -1,5 +1,4 @@
-import FormularioPrestamos from './components/PrestamosForm';
-import './style.css';
+import FormularioPrestamos from './PrestamosForm';
 
 
 export const metadata = {
@@ -9,6 +8,5 @@ export const metadata = {
 
 
 export default function Prestamos() {
-    return <FormularioPrestamos title="Solicitar prestamos"></FormularioPrestamos>;
-    
+    return <FormularioPrestamos />;
 }
