@@ -18,7 +18,7 @@ export default async function Home() {
 
     return (
         <div className="flex flex-col gap-10">
-            <div>
+            <div className="flex flex-col gap-2">
                 <h1 className="text-3xl font-bold">Hola, {cliente.first_name} {cliente.last_name}</h1>
                 <hr className="border-gray-400" />
             </div>

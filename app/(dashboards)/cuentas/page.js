@@ -29,7 +29,13 @@ export default async function ListaCuentasBancarias() {
 
   return (
     <div className="flex flex-col gap-10">
-      <h1 className="text-4xl font-bold">Cuentas</h1>
+      <div className="flex flex-col gap-2">
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold">Tus cuentas</h1>
+          <Link href="/cuentas/nueva/" className="btn bg-sky-500 text-black font-semibold">Solicitar nueva cuenta</Link>
+        </div>
+        <hr className="border-gray-400" />
+      </div>
 
       {cuentas.length === 0 && <p>Actualmente no posee ninguna cuenta.</p>}
 
