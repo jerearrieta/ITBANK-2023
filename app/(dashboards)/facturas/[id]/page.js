@@ -1,16 +1,17 @@
+import getAPI from "@/app/utils/api";
+
 import InvoiceDetail from "./InvoiceDetail";
-import getAPI from "@/app/services/api";
 
 
-export default async function Page({ params }) {
-    try{
+export default async function Page({ params: { id } }) {
     const api = getAPI();
-    const { data } = await api.get('facturas/')
 
-    return <InvoiceDetail id={params.id} cliente={data.cliente} emisor={data.emisor} monto={data.monto} pdf={data.pdf} />;
-} catch (error) {
-    console.error("Error al obtener facturas:", error);
-    return <p>Error al cargar las facturas.</p>;
-}
-    
+    try {
+        const { data: factura } = await api.get(`facturas/${id}/`);
+
+        return <InvoiceDetail id={factura.id} cliente={factura.cliente} emisor={factura.emisor} monto={factura.monto} pdf={factura.pdf} />;
+    }
+    catch {
+        return <p>Error al cargar la factura.</p>;
+    }
 }

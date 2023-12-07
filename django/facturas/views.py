@@ -5,6 +5,8 @@ from rest_framework import exceptions
 from cuentas.models import Cuenta
 from rest_framework.response import Response
 from datetime import datetime
+from django.shortcuts import get_object_or_404
+from django.http import Http404
 
 
 class FacturaView(
@@ -31,38 +33,29 @@ class FacturaView(
         return obj
 
     def update(self, request, *args, **kwargs):
-        fue_pagada = request.data.get("fue_pagada", None)
-        if fue_pagada is not None:
-            factura = self.get_object()
-            factura.fue_pagada = fue_pagada
-            factura.fecha_pago = datetime.now()
-            factura.save()
-            return Response(self.get_serializer(factura).data)
-        else:
-            cuenta = request.data.get("cuenta", None)
-            print(cuenta)
-            if cuenta is None:
-                raise exceptions.ParseError(
-                    "El campo cuenta es obligatorio en la solicitud."
-                )
+        factura = self.get_object()
 
-            factura = self.get_object()
-            cuenta = Cuenta.objects.filter(iban=cuenta)
-            if not cuenta.exists():
-                raise exceptions.NotFound("No se pudo encontrar la cuenta")
+        if factura.fue_pagada:
+            raise exceptions.ValidationError("Esta factura ya fue pagada.")
 
-            cuenta = cuenta.first()
-            if cuenta.cliente != self.request.user.cliente:
-                raise exceptions.PermissionDenied()
+        cuenta = request.data.get("cuenta", None)
+        if not cuenta:
+            raise exceptions.ParseError("El campo 'cuenta' es obligatorio.")
 
-            if cuenta.saldo - factura.monto < 0:
-                raise exceptions.PermissionDenied()
+        try:
+            cuenta = get_object_or_404(Cuenta, iban=cuenta)
 
-            factura.fue_pagada = True
-            factura.fecha_pago = datetime.now()
-            factura.save()
+        except Http404:
+            raise exceptions.NotFound("No se pudo encontrar la cuenta.")
 
-            return Response(self.get_serializer(factura).data)
+        if cuenta.cliente != self.request.user.cliente:
+            raise exceptions.PermissionDenied("La cuenta que ingresó no le pertenece.")
 
-    def partial_update(self, request, *args, **kwargs):
-        self.update(request, *args, **kwargs)
+        if cuenta.saldo - factura.monto < 0:
+            raise exceptions.PermissionDenied("No tiene saldo suficiente en la cuenta para pagar la factura.")
+
+        factura.fue_pagada = True
+        factura.fecha_pago = datetime.now()
+        factura.save()
+
+        return Response(self.get_serializer(factura).data)

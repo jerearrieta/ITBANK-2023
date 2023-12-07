@@ -6,6 +6,8 @@ from rest_framework.views import APIView
 
 
 class LoginView(APIView):
+    authentication_classes = []
+
     def post(self, request):
         username = request.data.get("username", None)
         password = request.data.get("password", None)
@@ -21,6 +23,8 @@ class LoginView(APIView):
 
 
 class LogoutView(APIView):
+    authentication_classes = []
+
     def post(self, request):
         django_logout(request)
         return Response(status=status.HTTP_204_NO_CONTENT)

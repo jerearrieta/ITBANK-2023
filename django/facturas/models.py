@@ -8,4 +8,4 @@ class Factura(models.Model):
 	pdf = models.FileField(upload_to="facturas/")
 	fecha_creacion = models.DateTimeField(auto_now_add=True)
 	fue_pagada = models.BooleanField()
-	fecha_pago = models.DateTimeField()
+	fecha_pago = models.DateTimeField(null=True, blank=True, default=None)
