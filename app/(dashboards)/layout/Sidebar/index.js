@@ -48,9 +48,7 @@ export default function Sidebar() {
 
                     <SidebarButton route="/cuentas/" icon={<MdOutlineAccountBalance className='sidebar_button_icon' />} text="Cuentas" />
 
-                    <SidebarButton route="/tarjetas/" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas">
-                        <SidebarSubButton route="/tarjetas/" text="Ver tarjetas" toggleSidebar={toggleSidebar} />
-                    </SidebarButton>
+                    <SidebarButton route="/tarjetas/" icon={<AiFillCreditCard className='sidebar_button_icon' />} text="Tarjetas" />
 
                     <SidebarButton route="/transferir/" icon={<MdCurrencyExchange className='sidebar_button_icon' />} text="Transferencias">
                         <SidebarSubButton route="/transferir/" text="Transferir" toggleSidebar={toggleSidebar} />
@@ -62,9 +60,7 @@ export default function Sidebar() {
                         <SidebarSubButton route="/prestamos/calculadora/" text="Calculadora de prestamos" toggleSidebar={toggleSidebar} />
                     </SidebarButton>
 
-                    <SidebarButton route="/facturas/" icon={<FaFileInvoiceDollar className='sidebar_button_icon' />} text="Facturas">
-                        <SidebarSubButton route="/facturas/" text="Ver facturas pendientes" toggleSidebar={toggleSidebar} />
-                    </SidebarButton>
+                    <SidebarButton route="/facturas/" icon={<FaFileInvoiceDollar className='sidebar_button_icon' />} text="Facturas" />
 
                     <div onClick={handleSignOut} className='flex items-center p-3 gap-5 rounded-none no-underline transition duration-300 hover:bg-[#02568A] cursor-pointer'>
                         <TbLogout className='sidebar_button_icon' />

@@ -30,7 +30,7 @@ export default async function ListaFacturas() {
     <>
       <h1 className="text-3xl font-bold mb-4">Sus facturas pendientes</h1>
 
-      {facturas.data.length === 0 && <p>No posee ninguna factura pendiente.</p>}
+      {facturasNoPagadas.length === 0 && <p>No posee ninguna factura pendiente.</p>}
 
       <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">
         {facturasNoPagadas.map((record, index) => (
