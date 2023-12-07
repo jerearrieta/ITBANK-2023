@@ -50,8 +50,3 @@ class TipoClienteView(generics.ListAPIView):
 	queryset = TipoCliente.objects.all()
 	serializer_class = serializer.TipoClienteSerializer
 	authentication_classes = []
-	
-	def get_serializer_class(self):
-		if self.request.method in SAFE_METHODS:
-			return serializer.ReadClienteSerializer
-		return serializer.WriteClienteSerializer
