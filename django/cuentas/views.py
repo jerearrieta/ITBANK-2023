@@ -6,6 +6,7 @@ from . import serializers
 from .models import Cuenta, TipoCuenta
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
+from rest_framework import status
 
 
 class CuentaView(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
@@ -42,10 +43,16 @@ class CuentaView(mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.Create
 		return Response(serializer.data)
 
 	def create(self, request, *args, **kwargs):
+		data = request.data.copy()
+
 		if IsCustomer().has_permission(self.request, self):
-			self.request.data["cliente"] = self.request.user.id
+			data["cliente"] = self.request.user.id
 		
-		return super().create(request, *args, **kwargs)
+		serializer = self.get_serializer(data=data)
+		serializer.is_valid(raise_exception=True)
+		self.perform_create(serializer)
+		headers = self.get_success_headers(serializer.data)
+		return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class TipoCuentaView(generics.ListAPIView):

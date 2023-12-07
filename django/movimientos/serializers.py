@@ -8,7 +8,7 @@ class TransactionSerializer(serializers.ModelSerializer):
 	cliente_origen = serializers.StringRelatedField(source="cuenta_origen.cliente", read_only=True)
 	cuenta_destino = serializers.SlugRelatedField("iban", queryset=Cuenta.objects.all())
 	cliente_destino = serializers.StringRelatedField(source="cuenta_destino.cliente", read_only=True)
-	fecha = serializers.DateTimeField(format="%d/%m/%Y")
+	fecha = serializers.DateTimeField(format="%d/%m/%Y", read_only=True)
 
 	class Meta:
 		model = Movimiento

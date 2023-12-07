@@ -40,5 +40,5 @@ class TransactionView(generics.ListCreateAPIView):
 
 		if cuenta_destino_param is not None:
 			filtro = filtro | Q(cuenta_destino__iban=cuenta_destino_param)
-
-		return Movimiento.objects.filter((Q(cuenta_origen__cliente=cliente) | Q(cuenta_destino__cliente=cliente)) & filtro)
+			
+		return Movimiento.objects.filter((Q(cuenta_origen__cliente=cliente) | Q(cuenta_destino__cliente=cliente)) & filtro).order_by('-fecha')
