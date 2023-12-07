@@ -15,13 +15,7 @@ export default function CrearTarjetaForm() {
     const router = useRouter();
     const api = useAPI();
 
-    // const { data: marcasTarjetas } = useSWR("marcas-tarjetas/", api.get);
-
-    const marcasTarjetas = [
-        ["MASTER", "Mastercard"],
-        ["VISA", "Visa"],
-        ["AMEX", "American Express"],
-    ];
+    const { data: marcasTarjetas } = useSWR("marcas-tarjetas/", api.get);
 
     const tiposTarjetas = [
         ["DEBITO", "Debito"],
@@ -33,7 +27,7 @@ export default function CrearTarjetaForm() {
 
         api.post("tarjetas/", formData)
             .then(response => setState(["success"]))
-            .catch(error => setState(["error", error.message]));
+            .catch(error => setState(["error", error.response.data.detail]));
     }
 
     return (
@@ -51,7 +45,7 @@ export default function CrearTarjetaForm() {
                     <label htmlFor="marca_tarjeta_select">Marca de la tarjeta</label>
                     <select id="marca_tarjeta_select" name="marca" className="h-12 pl-4 rounded-lg" required defaultValue="">
                         <option disabled value="">Seleccione la marca de la tarjeta</option>
-                        {marcasTarjetas && marcasTarjetas.map((marca, key) => <option key={key} value={marca[0]}>{marca[1]}</option>)}
+                        {marcasTarjetas && marcasTarjetas.data.map((marca) => <option key={marca.id} value={marca.id}>{marca.nombre}</option>)}
                     </select>
                 </div>
 
@@ -59,7 +53,7 @@ export default function CrearTarjetaForm() {
             </form>
 
             {state[0] === "error" && <ErrorToast message={state[1]} />}
-            {state[0] === "success" && <SuccessModal title="Cuenta creada!" message="Su nueva cuenta fue creada exitosamente." onClick={() => router.push("/home/")} />}
+            {state[0] === "success" && <SuccessModal title="Tarjeta creada!" message="Su tarjeta fue creada exitosamente." onClick={() => router.push("/tarjetas/")} />}
         </>
     );
 }

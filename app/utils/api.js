@@ -14,7 +14,7 @@ export default function getAPI (handle403=true) {
     api.interceptors.response.use(
         response => response,
         error => {
-            if (handle403 && error.response.status === 403) {
+            if (handle403 && error.response?.status === 403) {
                 api.post("logout/");
                 redirect("/");
             }

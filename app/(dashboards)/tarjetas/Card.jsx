@@ -14,7 +14,7 @@ export default function Card({ numero, cvv, cliente, marca, fecha_expiracion }) 
 	let front_brand, back_brand;
 
 	if (marca.codigo === "MASTER") {
-		back_brand = <Image src={master_logo} className="h-full w-auto" />;
+		back_brand = <Image src={master_logo} className="h-full w-auto" alt='Mastercard' />;
 
 		front_brand = (
 			<>
@@ -24,11 +24,11 @@ export default function Card({ numero, cvv, cliente, marca, fecha_expiracion }) 
 		);
 	}
 	else if (marca.codigo === "VISA") {
-		back_brand = <Image src={visa_logo} className="h-3/4 w-auto" />;
+		back_brand = <Image src={visa_logo} className="h-3/4 w-auto" alt='Visa' />;
 		front_brand = back_brand;
 	}
 	else {
-		back_brand = <Image src={amex_logo} className="h-full w-auto" />;
+		back_brand = <Image src={amex_logo} className="h-full w-auto" alt='American Express' />;
 
 		front_brand = (
 			<>
@@ -48,7 +48,7 @@ export default function Card({ numero, cvv, cliente, marca, fecha_expiracion }) 
 							{front_brand}
 						</div>
 
-						<Image src={chip} className="h-3/4 w-auto" />
+						<Image src={chip} className="h-3/4 w-auto" alt='Chip' />
 					</div>
 
 					<div>
@@ -73,12 +73,12 @@ export default function Card({ numero, cvv, cliente, marca, fecha_expiracion }) 
 					<div className="bg-[#222] mx-[-30px] h-[50px] mt-1"></div>
 
 					<div className={`${styles.card_row} w-full h-1/5`}>
-						<Image src={pattern} className="h-full w-auto" />
+						<Image src={pattern} className="h-full w-auto" alt='' />
 						<span className="h-5/6 flex flex-1 justify-center items-center bg-white text-black text-xl">{cvv}</span>
 					</div>
 
 					<div className={`${styles.card_row} h-1/5`}>
-						<Image src={white_logo_title} className="h-full w-auto" />
+						<Image src={white_logo_title} className="h-full w-auto" alt='Guardian Bank' />
 						{back_brand}
 					</div>
 				</div>

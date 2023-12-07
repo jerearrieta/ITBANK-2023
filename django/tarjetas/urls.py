@@ -8,4 +8,5 @@ router.register("tarjetas", views.TarjetaView, "tarjeta")
 
 urlpatterns = [
     path('', include(router.urls)),
+    path("marcas-tarjetas/", views.MarcaTarjetaView.as_view()),
 ]
