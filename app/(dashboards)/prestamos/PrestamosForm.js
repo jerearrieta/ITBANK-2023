@@ -36,7 +36,7 @@ export default function FormularioPrestamos() {
                 setState(["success"]);
             })
             .catch(error => {
-                setState(["error", error.response.message]);
+                setState(["error", error.response.data.detail]);
             });
     }
 

@@ -60,7 +60,7 @@ class PrestamoView(mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.R
 		if not cuenta:
 			raise exceptions.ParseError()
 	
-		cuenta = Cuenta.objects.filter(id=cuenta)
+		cuenta = Cuenta.objects.filter(iban=cuenta)
 
 		if not cuenta.exists():
 			raise exceptions.NotFound()

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Prestamo
+from cuentas.models import Cuenta
 
 
 class PrestamoSerializer(serializers.ModelSerializer):
@@ -10,6 +11,8 @@ class PrestamoSerializer(serializers.ModelSerializer):
         fields = ['id', 'tipo', 'cuenta', 'monto', 'fecha', 'sucursal']
 
 class PrestamoCreateDeleteSerializer(serializers.ModelSerializer):
+    cuenta = serializers.SlugRelatedField(slug_field='iban', queryset=Cuenta.objects.all())
+
     class Meta:
         model = Prestamo
         fields = ['tipo', 'cuenta', 'monto']
