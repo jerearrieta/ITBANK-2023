@@ -12,4 +12,4 @@ class PrestamoSerializer(serializers.ModelSerializer):
 class PrestamoCreateDeleteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prestamo
-        fields = ['tipo', 'cuenta', 'monto', 'fecha']
+        fields = ['tipo', 'cuenta', 'monto']

@@ -1,4 +1,4 @@
-import getAPI from "@/app/services/api";
+import getAPI from "@/app/utils/api";
 
 import Link from 'next/link';
 

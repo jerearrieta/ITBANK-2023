@@ -10,31 +10,48 @@ import SuccessModal from "@/app/components/SuccessModal";
 import ErrorToast from "@/app/components/ErrorToast";
 
 
-export default function FormCrearCuenta() {ç
+export default function CrearTarjetaForm() {
     const [state, setState] = useState([null]);
     const router = useRouter();
     const api = useAPI();
 
-    const { data: tiposCuenta } = useSWR("tipos-cuentas/", api.get);
+    // const { data: marcasTarjetas } = useSWR("marcas-tarjetas/", api.get);
+
+    const marcasTarjetas = [
+        ["MASTER", "Mastercard"],
+        ["VISA", "Visa"],
+        ["AMEX", "American Express"],
+    ];
+
+    const tiposTarjetas = [
+        ["DEBITO", "Debito"],
+        ["CREDITO", "Credito"],
+    ];
 
     async function handleSubmit(formData) {
         setState(["processing"]);
 
-        api.post("cuentas/", formData)
+        api.post("tarjetas/", formData)
             .then(response => setState(["success"]))
             .catch(error => setState(["error", error.message]));
     }
 
     return (
         <>
-            <h1 className="text-3xl font-bold mb-4">Solicitar una nueva cuenta</h1>
+            <h1 className="text-3xl font-bold mb-4">Solicitar una nueva tarjeta</h1>
             
             <form action={handleSubmit} className="flex flex-col self-stretch p-6 gap-4 rounded-2xl bg-[#D9D9D9] shadow-xl">
                 <div className="form-field">
-                    <label htmlFor="tipo_cuenta_select">Tipo de cuenta</label>
-                    <select id="tipo_cuenta_select" name="tipo" className="h-12 pl-4 rounded-lg" required defaultValue="">
-                        <option disabled value="">Seleccione un tipo de cuenta</option>
-                        {tiposCuenta && tiposCuenta.data.map((tipo) => <option key={tipo.id} value={tipo.id}>{tipo.nombre}</option>)}
+                    <label htmlFor="tipo_tarjeta_select">Tipo de tarjeta</label>
+                    <select id="tipo_tarjeta_select" name="tipo" className="h-12 pl-4 rounded-lg" required defaultValue="">
+                        <option disabled value="">Seleccione un tipo de tarjeta</option>
+                        {tiposTarjetas && tiposTarjetas.map((tipo, key) => <option key={key} value={tipo[0]}>{tipo[1]}</option>)}
+                    </select>
+
+                    <label htmlFor="marca_tarjeta_select">Marca de la tarjeta</label>
+                    <select id="marca_tarjeta_select" name="marca" className="h-12 pl-4 rounded-lg" required defaultValue="">
+                        <option disabled value="">Seleccione la marca de la tarjeta</option>
+                        {marcasTarjetas && marcasTarjetas.map((marca, key) => <option key={key} value={marca[0]}>{marca[1]}</option>)}
                     </select>
                 </div>
 

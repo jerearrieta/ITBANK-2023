@@ -1,10 +1,12 @@
-import getAPI from "@/app/services/api";
+import getAPI from "@/app/utils/api";
+import { obtenerStringDineroDecimal } from "@/app/utils/dinero";
 
 import ListaMovimientos from "@/app/components/ListaMovimientos";
 
 
-export default async function CuentaDetail({ params: { iban } }) {
+export default async function DetalleCuenta({ params: { iban } }) {
     const api = getAPI();
+
     const { data: cuenta } = await api.get(`cuentas/${iban}/`);
 
     return (
@@ -20,18 +22,13 @@ export default async function CuentaDetail({ params: { iban } }) {
                 <div className="flex flex-col gap-4 p-4 text-lg">
                     <p>Propietario/a: {cuenta.cliente}</p>
                     <p>Tipo de cuenta: {cuenta.tipo}</p>
-                    <p>Saldo: {cuenta.saldo}</p>
+                    <p>Saldo: {obtenerStringDineroDecimal(cuenta.saldo)}</p>
                 </div>
             </div>
 
             <div className="flex flex-col bg-white rounded-xl shadow-lg">
-                <div className="flex justify-between items-center px-4 py-3">
-                    <h2 className="text-2xl font-semibold">Movimientos</h2>
-                    {/* <Link href={`/transferir/${iban}/`} className="px-3 py-2 bg-[#009ee3] text-white rounded-lg font-medium">Realizar transferencia</Link> */}
-                </div>
-                
+                <h2 className="px-4 py-3 text-2xl font-semibold">Movimientos</h2>
                 <hr />
-                
                 <ListaMovimientos ibans={[iban]} cuenta_origen={iban} cuenta_destino={iban} />
             </div>
         </div>

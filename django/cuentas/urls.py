@@ -8,5 +8,5 @@ router.register("cuentas", views.CuentaView, "cuenta")
 
 urlpatterns = [
     path("", include(router.urls)),
-    path("tipo-cuentas/", views.TipoCuentaView.as_view()),
+    path("tipos-cuentas/", views.TipoCuentaView.as_view()),
 ]
