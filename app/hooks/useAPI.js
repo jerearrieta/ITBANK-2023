@@ -16,7 +16,9 @@ export default function useAPI (handleAuth=true) {
     api.interceptors.response.use(
         response => response,
         error => {
-            if (handleAuth && error.response?.status === 403) {
+            if (error.response === undefined) redirect("/");
+
+            if (handleAuth && error.response.status === 403) {
                 api.post("logout/");
                 router.push("/");
             }
