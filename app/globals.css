@@ -2,19 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  color: #000;
+.header_height {
+  height: 70px;
 }
 
-main {
-  display: flex;
-  padding: 130px 60px 60px 60px;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 1 0 0;
-  align-self: stretch;
-  background: #F1F1F1;
+.header_padding {
+  padding: 15px;
+}
+
+.sidebar_button_icon {
+  width: 24px;
+  height: 24px;
+  color: white;
+  stroke: white;
 }

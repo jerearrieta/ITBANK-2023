@@ -1,57 +1,44 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, get_list_or_404
-from .forms import TransferenciaForm
+from rest_framework import generics, exceptions
+from .serializers import TransactionSerializer
 from .models import Movimiento
-from cuentas.models import Cuenta 
+from clientes.permissions import IsCustomer
+from django.db.models import Q
 
 
-# Create your views here.
-@login_required
-def movimientos_cliente(req):
-    movimientos = Movimiento.objects.filter(cuenta__cliente=req.user.cliente)
-    return render(req, 'movimientos/lista_movimiento.html', {'movimientos': movimientos})
+class TransactionView(generics.ListCreateAPIView):
+	serializer_class = TransactionSerializer
+	permission_classes = [IsCustomer]
 
+	def perform_create(self, serializer):
+		"""
+		Garantizamos que cuando se trata de crear una transferencia, la cuenta_origen pertenezca al usuario
+		autenticado que hace la request. De esta forma, garantizamos que un cliente no podra hacer una
+		transferencia desde una cuenta cualquiera hacia su cuenta.
+		"""
+		cuenta_origen = serializer.validated_data.get("cuenta_origen")
+		cuenta_destino = serializer.validated_data.get("cuenta_destino")
+		if cuenta_origen.cliente != self.request.user.cliente:
+			raise exceptions.PermissionDenied(f"No existe ninguna cuenta a su nombre con el IBAN {cuenta_origen.iban}")
 
-@login_required
-def movimientos_cuenta(req, id_cuenta):
-    cliente = req.user.cliente
-    cuenta = get_object_or_404(Cuenta, id=id_cuenta, cliente=cliente)
-    movimientos = cuenta.movimientos.all()
+		transferencia = serializer.save()
 
-    return render(req, 'movimientos/lista_movimiento.html', {'movimientos': movimientos})
+		cuenta_origen.saldo -= transferencia.monto
+		cuenta_destino.saldo += transferencia.monto
 
+		cuenta_origen.save()
+		cuenta_destino.save()
 
-@login_required
-def movimientos(req):
-    cliente = req.user.cliente
+	def get_queryset(self):
+		cliente = self.request.user.cliente
 
-    # get_object_or_404 para manejar automáticamente el caso de cuenta no encontrada
-    cuenta_origen = get_list_or_404(Cuenta, cliente=cliente)[0]
+		cuenta_origen_param = self.request.query_params.get('origen')
+		cuenta_destino_param = self.request.query_params.get('destino')
 
-    if req.method == 'POST':
-        form = TransferenciaForm(req.POST)
+		filtro = Q()
+		if cuenta_origen_param is not None:
+			filtro = Q(cuenta_origen__iban=cuenta_origen_param)
 
-        if form.is_valid():
-            monto = form.cleaned_data['monto']
-            razon = form.cleaned_data['razon']
-
-            movimiento = Movimiento.objects.create(cuenta=cuenta_origen, tipo_operacion=razon, monto=monto)
-
-            return redirect('exito_transferencia', movimiento_id=movimiento.id)
-    
-    else:
-        form = TransferenciaForm()
-
-    return render(req, 'movimientos/transferencias.html', {'form': form})
-
-
-@login_required
-def exito_transferencia(req, movimiento_id):
-    movimiento = get_object_or_404(Movimiento, id=movimiento_id)
-    return render(req, 'movimientos/exito_transferencia.html', {'movimiento': movimiento})
-
-
-@login_required
-def convertidor(req):
-    return render(req, 'movimientos/convertidor.html')
+		if cuenta_destino_param is not None:
+			filtro = filtro | Q(cuenta_destino__iban=cuenta_destino_param)
+			
+		return Movimiento.objects.filter((Q(cuenta_origen__cliente=cliente) | Q(cuenta_destino__cliente=cliente)) & filtro).order_by('-fecha')

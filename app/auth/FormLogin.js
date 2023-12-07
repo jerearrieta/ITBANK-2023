@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn } from "./actions";
+import useAPI from "@/app/hooks/useAPI";
 
 import ProcessingButton from "@/app/components/ProcessingButton";
 import ErrorToast from "@/app/components/ErrorToast";
@@ -11,34 +11,28 @@ import ErrorToast from "@/app/components/ErrorToast";
 export default function FormLogin({ setInLogin }) {
     const [state, setState] = useState([null]);
     const router = useRouter();
+    const api = useAPI(false);
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-
+    async function handleSubmit(formData) {
         setState(["processing"]);
 
-        const error = await signIn(new FormData(e.currentTarget));
-
-        if (error) {
-            setState(["error", error.message]);
-        }
-        else {
-            setState([null]);
-            router.push("/home");
-        }
+        api.post("login/", formData)
+            .then(response => router.push("home/"))
+            .catch(error => setState(["error", error.message]))
     }
 
     return (
-        <div className="flex flex-col gap-4">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300">
-                <div className="flex flex-col items-center">
-                    <h1 className="text-3xl font-semibold text-center">Bienvenido a Guardian Bank</h1>
-                    <p className="text-sm text-center">Inicia sesion para acceder a su cuenta</p>
-                </div>
+        <div className="flex flex-col gap-10 p-8 rounded-2xl bg-gray-300 text-black">
+            <div className="flex flex-col items-center">
+                <h1 className="text-3xl font-semibold text-center">Bienvenido a Guardian Bank</h1>
+                <p className="text-sm text-center">Inicia sesion para acceder a su cuenta</p>
+            </div>
+
+            <form action={handleSubmit} className="flex flex-col form-group gap-5">
                 <div className="form-group gap-5">
                     <div className="form-field">
-                        <label htmlFor="email" className="form-label text-black">Email</label>
-                        <input type="email" id="email" name="email" className="input max-w-full border bg-white border-gray-500 text-black" placeholder="Introduzca su email aqui" required />
+                        <label htmlFor="username" className="form-label text-black">Nombre de usuario</label>
+                        <input type="text" id="username" name="username" className="input max-w-full border bg-white border-gray-500 text-black" placeholder="Introduzca su email aqui" required />
                     </div>
                     <div className="form-field">
                         <label htmlFor="password" className="form-label text-black">Clave</label>
@@ -55,7 +49,7 @@ export default function FormLogin({ setInLogin }) {
                                 <label htmlFor="default-checkbox" className="text-sm font-medium text-gray-900 dark:text-gray-300">Recuerdame</label>
                             </div> 
                             */}
-                            
+
                             <p className="link link-primary link-underline-hover ml-auto text-sm" aria-label="¿Olvidaste tu clave?">¿Olvidaste tu clave?</p>
                         </div>
                     </div>

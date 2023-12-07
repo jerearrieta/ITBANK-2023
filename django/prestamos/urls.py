@@ -1,8 +1,11 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from .views import PrestamoView
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+router.register('prestamos', PrestamoView, basename='prestamo')
+
 
 urlpatterns = [
-     path('', views.pedir_prestamo, name='pedir_prestamo'),
-     path('exito/', views.exito_prestamo, name='exito_prestamo'),
-     path('calculadora/', views.calculadora, name='calculadora_prestamo'),
+    path('', include(router.urls)),
 ]

@@ -38,22 +38,26 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+    'corsheaders',
     'widget_tweaks',
 
-    'base',
     'autenticacion',
     'clientes',
     'cuentas',
+    'direcciones',
     'empleados',
+    'facturas',
     'movimientos',
     'prestamos',
+    'sucursales',
     'tarjetas',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -129,14 +133,42 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+# Media files
+# https://docs.djangoproject.com/en/4.2/topics/files/
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media/"
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Default auth URL redirects
-# https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-LOGIN_URL
 
-LOGIN_URL = "/"
-LOGIN_REDIRECT_URL = "home/"
-LOGOUT_REDIRECT_URL = "/"
+# REST settings
+# https://www.django-rest-framework.org/api-guide/settings/
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
+
+# CORS settings
+# https://pypi.org/project/django-cors-headers/
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:3000',
+]
+
+
+# CSRF settings
+# https://pypi.org/project/django-cors-headers/
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:3000',
+]

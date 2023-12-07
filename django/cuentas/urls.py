@@ -1,6 +1,12 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
 from . import views
 
+
+router = SimpleRouter()
+router.register("cuentas", views.CuentaView, "cuenta")
+
 urlpatterns = [
-    path('', views.listar_cuentas, name='cuentas'),
+    path("", include(router.urls)),
+    path("tipos-cuentas/", views.TipoCuentaView.as_view()),
 ]

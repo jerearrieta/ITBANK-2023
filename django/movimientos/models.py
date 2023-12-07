@@ -1,16 +1,25 @@
 from django.db import models
 
-# Create your models here.
+
 class Movimiento(models.Model):
-    id = models.AutoField(primary_key=True, db_column='movimiento_id')
-    cuenta = models.ForeignKey("cuentas.Cuenta", models.SET_NULL, blank=True, null=True, db_column='numero_cuenta', related_name="movimientos", related_query_name="movimiento")
-    tipo_operacion = models.CharField(max_length=50, blank=True, null=True)
-    monto = models.IntegerField(blank=True, null=True)
-    fecha = models.DateTimeField(auto_now_add=True, db_column='hora')
+    cuenta_origen = models.ForeignKey("cuentas.Cuenta",
+                                      models.SET_NULL,
+                                      null=True,
+                                      db_column='cuenta_origen',
+                                      related_name="transferencias_salientes",
+                                      related_query_name="transferencia_saliente")
+
+    cuenta_destino = models.ForeignKey("cuentas.Cuenta",
+                                       models.SET_NULL,
+                                       null=True,
+                                       db_column='cuenta_destino',
+                                       related_name="transferencias_entrantes",
+                                       related_query_name="transferencia_entrante")
+
+    tipo_operacion = models.CharField(max_length=50)
+    monto = models.IntegerField()
+    fecha = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         managed = False
         db_table = 'movimientos'
-
-    def __str__(self):
-        return str(self.id)

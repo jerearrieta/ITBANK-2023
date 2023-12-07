@@ -1,28 +1,57 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets, generics
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+from .permissions import CustomerPermissions, IsCustomer, UserPermissions
+from rest_framework.permissions import OR, SAFE_METHODS
+from empleados.permissions import EmployeePermissions
+from . import serializer
+from .models import Cliente, TipoCliente
 
 
-# Create your views here.
-@login_required
-def datos_cliente(req):
-	user = req.user
-	cliente = user.cliente
-	direccion = cliente.direcciones.first()
+class ClienteView(viewsets.ModelViewSet):
+	queryset = Cliente.objects.all()
+	authentication_classes = [SessionAuthentication, BasicAuthentication]
 
-	context = {
-		"usuario": user.username,
-		"email": user.email,
-		"nombre": user.first_name,
-		"apellido": user.last_name,
-		"dni": cliente.dni,
-		"fecha_nacimiento": cliente.fecha_nacimiento,
-		"tipo_cliente": cliente.tipo,
-		"sucursal": cliente.sucursal,
-		"pais": direccion.pais,
-		"distrito": direccion.distrito,
-		"ciudad": direccion.ciudad,
-		"codigo_postal": direccion.codigo_postal,
-		"domicilio": direccion.direccion,
-	}
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
 
-	return render(req, "clientes/datos_cliente.html", context)
+		self.permissions = OR(
+			CustomerPermissions(allowed_actions=["retrieve", "update", "partial_update"], customer_field_name=None),
+			EmployeePermissions(allowed_actions=["list", "retrieve", "update", "partial_update", "destroy"]),
+		)
+
+		self.permissions = OR(
+			self.permissions,
+			UserPermissions(allowed_actions=["create"])
+		)
+
+	def get_permissions(self):
+		return [self.permissions]
+
+	def get_serializer_class(self):
+		if self.request.method in SAFE_METHODS:
+			return serializer.ReadClienteSerializer
+		return serializer.WriteClienteSerializer
+
+
+class ClienteAutenticadoView(generics.RetrieveUpdateAPIView):
+	authentication_classes = [SessionAuthentication, BasicAuthentication]
+	permission_classes = [IsCustomer]
+
+	def get_object(self):
+		return self.request.user.cliente
+
+	def get_serializer_class(self):
+		if self.request.method in SAFE_METHODS:
+			return serializer.ReadClienteSerializer
+		return serializer.WriteClienteSerializer
+
+
+class TipoClienteView(generics.ListAPIView):
+	queryset = TipoCliente.objects.all()
+	serializer_class = serializer.TipoClienteSerializer
+	authentication_classes = []
+	
+	def get_serializer_class(self):
+		if self.request.method in SAFE_METHODS:
+			return serializer.ReadClienteSerializer
+		return serializer.WriteClienteSerializer

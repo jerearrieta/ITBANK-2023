@@ -1,0 +1,123 @@
+.currency-converter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    align-self: stretch;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+    padding-bottom: 10px;
+}
+
+.currency-converter-box {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+    border-radius: 20px;
+    background: #D9D9D9;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.currency-item-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    align-self: stretch;
+}
+
+.currency-info {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.currency-item {
+    display: flex;
+    align-items: center;
+    flex: 1 0 0;
+
+    border-radius: 10px;
+    background: #FFF;
+}
+
+.currency-selector {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    gap: 6px;
+
+    border-radius: 10px 0px 0px 10px;
+    border: none;
+    border-right: 1px solid;
+}
+
+.currency-input {
+    display: flex;
+    padding: 0px 10px;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.transfer-icon {
+    width: 24px;
+}
+
+.transfer-icon:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+    .currency-converter {
+        width: 100%;
+    }
+
+    .currency-converter-box {
+        padding: 1rem;
+    }
+
+    .currency-item-box {
+        flex-direction: column;
+    }
+
+    .currency-selector {
+        width: 28%;
+    }
+
+    .currency-input {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .currency-converter {
+        width: 100%;
+    }
+
+    .currency-converter-box {
+        padding: 1rem;
+    }
+
+    .currency-item-box {
+        /* width: 100%;
+        flex-wrap: wrap; */
+        flex-direction: column;
+    }
+
+    .currency-selector {
+        width: 28%;
+    }
+
+    .currency-input {
+        width: 70%;
+    }
+}

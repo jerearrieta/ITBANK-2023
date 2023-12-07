@@ -1,43 +1,80 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from .forms import PrestamoForm
-from .models import Prestamo
+from .serializer import PrestamoSerializer, PrestamoCreateDeleteSerializer
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+from rest_framework import viewsets
+from rest_framework import mixins
+from rest_framework import exceptions
+from rest_framework.response import Response
+from rest_framework import status
+from empleados.permissions import IsEmployee
+from clientes.permissions import IsCustomer
+from prestamos.models import Prestamo
+from cuentas.models import Cuenta
 
 
-# Create your views here.
-@login_required
-def pedir_prestamo(req):
-    user = req.user.cliente.tipo.nombre
+class PrestamoView(mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.ReadOnlyModelViewSet):
+	permission_classes = [IsCustomer|IsEmployee]
+	authentication_classes = [SessionAuthentication, BasicAuthentication]
 
-    mount = 0
-    if user == 'Black':
-        mount = 500000
-    elif user == 'Gold':
-        mount = 300000
-    elif user == 'Classic':
-        mount = 100000
-    
-    if req.method == 'POST':
-        form = PrestamoForm(req.POST)
+	def get_serializer_class(self):
+		if self.action in ['create', 'destroy']:
+			return PrestamoCreateDeleteSerializer
+		return PrestamoSerializer
 
-        if form.is_valid():
-            tipo_prestamo = form.cleaned_data['tipo_prestamo']
+	def get_queryset(self):
+		if IsCustomer().has_permission(self.request, self):
+			return Prestamo.objects.filter(cuenta__cliente=self.request.user.cliente)
 
-            Prestamo.objects.create(cliente=req.user.cliente, tipo=tipo_prestamo, monto=mount)
+		queryset = Prestamo.objects.all()
+		cliente = self.request.query_params.get('cliente')
+		if cliente is not None:
+			queryset = queryset.filter(cuenta__cliente=cliente)
 
-            return redirect('exito_prestamo')
-    
-    else:
-        form = PrestamoForm()
+		sucursal = self.request.query_params.get('sucursal')
+		if sucursal is not None:
+			queryset = queryset.filter(cuenta__cliente__sucursal_id=sucursal)
 
-    return render(req, 'prestamos/pedir_prestamo.html', {'account_type': user, 'mount': mount, 'form': form})
+		return queryset
 
 
-@login_required
-def exito_prestamo(req):
-    return render(req, 'prestamos/exito.html')
+	def get_object(self):
+		obj = super().get_object()
 
+		if IsCustomer().has_permission(self.request, self) and obj.cuenta.cliente != self.request.user.cliente:
+			raise exceptions.PermissionDenied()
 
-@login_required
-def calculadora(req):
-    return render(req, 'prestamos/calculadora.html')
+		return obj
+	
+	def destroy(self, request, *args, **kwargs):
+		if IsCustomer().has_permission(self.request, self):
+			raise exceptions.PermissionDenied('No tienes acceso a esta accion.')
+		return super().destroy(request, *args, **kwargs)
+	
+	def perform_destroy(self, instance):
+		cuenta = instance.cuenta
+		cuenta.saldo -= instance.monto
+		cuenta.save()
+		instance.delete()
+	
+	def create(self, request, *args, **kwargs):
+		cuenta = self.request.data.get('cuenta')
+		if not cuenta:
+			raise exceptions.ParseError()
+	
+		cuenta = Cuenta.objects.filter(iban=cuenta)
+
+		if not cuenta.exists():
+			raise exceptions.NotFound()
+		cuenta = cuenta.first()
+
+		if IsCustomer().has_permission(self.request, self) and not self.request.user.cliente == cuenta.cliente:
+			raise exceptions.PermissionDenied()
+
+		serializer = self.get_serializer(data=request.data)
+		serializer.is_valid(raise_exception=True)
+		serializer.save()
+
+		cuenta.saldo += serializer.validated_data['monto']
+		cuenta.save()
+
+		headers = self.get_success_headers(serializer.data)
+		return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)

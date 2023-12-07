@@ -1,25 +1,27 @@
 from django.db import models
 
-# Create your models here.
-class Empleado(models.Model):
-    id = models.AutoField(primary_key=True, db_column='employee_id')
+
+class Empleado(models.Model): # Django model inheritance
+    user = models.OneToOneField("auth.User", on_delete=models.PROTECT, primary_key=True, db_column='employee_id')
     dni = models.CharField(unique=True, max_length=8, db_column='employee_DNI')
-    nombre = models.CharField(max_length=50, db_column='employee_name')
-    apellido = models.CharField(max_length=50, db_column='employee_surname')
     fecha_contratacion = models.DateField(db_column='employee_hire_date')
-    sucursal = models.ForeignKey("base.Sucursal", on_delete=models.PROTECT, db_column='branch_id', related_name="empleados", related_query_name="empleado")
-    direcciones = models.ManyToManyField("base.Direccion", through="DireccionEmpleado", through_fields=("empleado", "direccion"), related_name="empleados", related_query_name="empleado")
+    sucursal = models.ForeignKey("sucursales.Sucursal", on_delete=models.PROTECT, db_column='branch_id', related_name="empleados", related_query_name="empleado")
+    direcciones = models.ManyToManyField("direcciones.Direccion", through="DireccionEmpleado", through_fields=("empleado", "direccion"), related_name="empleados", related_query_name="empleado")
+
+    # Se utilizan el nombre y apellido del modelo User de Django. No usar estos campos.
+    nombre = models.CharField(blank=True, max_length=150, default="", db_column='employee_name')
+    apellido = models.CharField(blank=True, max_length=150, default="", db_column='employee_surname')
 
     class Meta:
         managed = False
         db_table = 'empleado'
 
     def __str__(self):
-        return self.id
+        return f"{self.user.first_name} {self.user.last_name}"
 
 class DireccionEmpleado(models.Model):
     empleado = models.ForeignKey(Empleado, models.CASCADE, db_column='id_empleado')
-    direccion = models.ForeignKey("base.Direccion", models.SET_NULL, blank=True, null=True, db_column='id_direccion')
+    direccion = models.ForeignKey("direcciones.Direccion", models.SET_NULL, blank=True, null=True, db_column='id_direccion')
 
     class Meta:
         managed = False
