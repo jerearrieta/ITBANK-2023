@@ -10,7 +10,7 @@ import SuccessModal from "@/app/components/SuccessModal";
 import ErrorToast from "@/app/components/ErrorToast";
 
 
-export default function FormCrearCuenta() {ç
+export default function FormCrearCuenta() {
     const [state, setState] = useState([null]);
     const router = useRouter();
     const api = useAPI();
@@ -22,7 +22,7 @@ export default function FormCrearCuenta() {ç
 
         api.post("cuentas/", formData)
             .then(response => setState(["success"]))
-            .catch(error => setState(["error", error.message]));
+            .catch(error => setState(["error", error.response.data.detail]));
     }
 
     return (

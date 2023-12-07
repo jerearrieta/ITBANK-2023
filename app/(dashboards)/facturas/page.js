@@ -24,17 +24,20 @@ export default async function ListaFacturas() {
 
   const { data: facturas } = await api.get("facturas/");
 
+  const facturasNoPagadas = facturas.filter((factura) => !factura.fue_pagada);
+
   return (
     <>
       <h1 className="text-3xl font-bold mb-4">Sus facturas pendientes</h1>
 
       <div className="flex flex-col self-stretch rounded-2xl shadow-md bg-gray-300">
-        {facturas.map((record, index) => (
+        {facturasNoPagadas.map((record, index) => (
           <Factura
             key={index}
             id={record.id}
             emisor={record.emisor}
             monto={record.monto}
+            fue_pagada={record.fue_pagada}
           />
         ))}
       </div>

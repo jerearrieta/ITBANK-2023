@@ -24,7 +24,7 @@ export default function InvoiceDetail({ id, emisor, monto, pdf }) {
 
     api.put(`facturas/${id}/`, formData)
       .then(response => setState(["success"]))
-      .catch(error => setState(["error", error.message]));
+      .catch(error => setState(["error", error.response.data.detail]));
   }
 
   return (
