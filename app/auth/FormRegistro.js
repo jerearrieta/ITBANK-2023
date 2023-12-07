@@ -21,7 +21,7 @@ export default function FormRegistro({ setInLogin }) {
 
         api.post("clientes/", formData)
             .then(response => setState(["success"]))
-            .catch(error => setState(["error", error.message]))
+            .catch(error => setState(["error", error.response.data.detail]))
     }
 
     return (

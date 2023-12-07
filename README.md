@@ -6,6 +6,13 @@
 - Camila Gonzalez.
 - Jeremias Arrieta.
 
+## Nuevos cambios en el Sprint 8
+
+- Se migro el backend a Django REST Framework, generando los APIs endpoints necesarios para que sean consumidos por otros clientes.
+- Se migro el frontend a Next JS, integrandolo con la API REST de Django, y mejorandolo y añadiendo features faltantes desde el Sprint 3.
+- Se mejoraron ligeramente los estilos de algunas paginas.
+- Se generaron requests desde Postman para probar algunos de los endpoints. Puede encontrar la coleccion de Postman en el archivo "Guardian Bank.postman_collection.json"
+
 ## Nuevos cambios en el Sprint 7
 
 - Se migro gran parte del proyecto a Django.
@@ -38,7 +45,6 @@
 
 - Rediseñar el estilo de todas las paginas (excepto la de inicio de sesion y registro, la cual ya fue rediseñada).
 - Migrar todos (o la gran mayoria) de estilos a Tailwind CSS.
-- Implementar una lista de actividades recientes (pagos y transferencias).
 - Implementar un boton para ver notificaciones recientes.
 - Implementar el boton de "Recuerdame" para el inicio de sesion.
 - Implementar la pagina de recuperacion de contraseña.
