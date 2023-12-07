@@ -58,4 +58,7 @@ class FacturaView(
         factura.fecha_pago = datetime.now()
         factura.save()
 
+        cuenta.saldo -= factura.monto
+        cuenta.save()
+
         return Response(self.get_serializer(factura).data)

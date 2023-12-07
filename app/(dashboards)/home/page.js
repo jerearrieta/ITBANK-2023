@@ -26,7 +26,7 @@ export default async function Home() {
             <div className="flex flex-col bg-white rounded-xl shadow-lg">
                 <h2 className="px-4 py-3 text-2xl font-semibold">Resumen de tus cuentas</h2>
                 <hr />
-                <div className="px-4 py-3">
+                <div className="flex flex-col gap-1 px-4 py-3">
                     <p>Dinero disponible</p>
                     <p className="text-2xl font-bold">{obtenerStringDineroDecimal(saldo)}</p>
                 </div>

@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import useAPI from '@/app/hooks/useAPI';
 
 import Image from 'next/image';
-import SidebarButton from './components/SidebarButton';
-import SidebarSubButton from './components/SidebarSubButton';
+import SidebarButton from './SidebarButton';
+import SidebarSubButton from './SidebarSubButton';
 
 import white_logo_title from "@/public/assets/white_logo_title.webp";
 import { AiOutlineClose, AiOutlineHome, AiFillCreditCard } from 'react-icons/ai';

@@ -1,7 +1,8 @@
-import { useRouter } from "next/navigation";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
-export default function useAPI (handle403=true) {
+
+export default function useAPI (handleAuth=true) {
     const router = useRouter();
 
     const api = axios.create({
@@ -15,7 +16,7 @@ export default function useAPI (handle403=true) {
     api.interceptors.response.use(
         response => response,
         error => {
-            if (handle403 && error.response.status === 403) {
+            if (handleAuth && error.response?.status === 403) {
                 api.post("logout/");
                 router.push("/");
             }

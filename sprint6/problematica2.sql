@@ -127,4 +127,18 @@ SELECT loan_type from prestamo WHERE loan_total = (SELECT MAX(loan_total) FROM p
 
 SELECT loan_type from prestamo ORDER BY loan_total DESC LIMIT 1;
 
+/*
+Punto extra (no lo pide en la consigna)
+
+Agregar una columna id_tipo para la tabla 'cliente' y asignar un tipo a cada cliente.
+*/
+
+ALTER TABLE cliente
+ADD COLUMN id_tipo INTEGER REFERENCES tipo_cliente ON UPDATE CASCADE ON DELETE RESTRICT;
+
+UPDATE cliente
+SET id_tipo = ABS(RANDOM()) % 3 + 1;
+
+SELECT * FROM cliente;
+
 COMMIT;

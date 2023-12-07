@@ -6,10 +6,7 @@ export const metadata = {
   description: 'Homebanking online del banco Guardian Bank',
 }
 
-const Page = () => {
-  return (
-    <div className='mx-auto'><Validacion /></div>
-  )
-}
 
-export default Page
+export default async function Page() {
+  return <Validacion />;
+}

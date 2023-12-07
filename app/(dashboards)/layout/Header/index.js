@@ -24,7 +24,7 @@ export default function Header() {
             <div className="flex items-center gap-6 sm:gap-12">
                 <Link href='/consultas'>Atencion al cliente</Link>
                 
-                <IoIosNotifications className='w-7 h-7 cursor-pointer' />
+                {/* <IoIosNotifications className='w-7 h-7 cursor-pointer' /> */}
             </div>
         </header>
     );

@@ -1,15 +1,13 @@
-import Convertidor from './contenido';
+import Conversor from './Conversor';
 
 import './style.css';
 
 
 export const metadata = {
-  title: 'Convertidor de monedas',
-  description: 'Convertidor de monedas de Guardian Bank',
+  title: 'Conversor de divisas',
+  description: 'Conversor de monedas de Guardian Bank',
 }
 
-const Page = () => {
-  return <Convertidor />;
+export default async function Page() {
+  return <Conversor />;
 }
-
-export default Page
