@@ -12,6 +12,7 @@
 - Se migro el frontend a Next JS, integrandolo con la API REST de Django, y mejorandolo y añadiendo features faltantes desde el Sprint 3.
 - Se mejoraron ligeramente los estilos de algunas paginas.
 - Se generaron requests desde Postman para probar algunos de los endpoints. Puede encontrar la coleccion de Postman en el archivo "Guardian Bank.postman_collection.json"
+- Es necesario entrar con la url 127.0.0.1:3000 para que funcione la aplicacion, ya que por default se abre en el localhost
 
 ## Nuevos cambios en el Sprint 7
 
